@@ -1,0 +1,6 @@
+{
+  "name": "TeesZone",
+  "description": "Premium Custom T-Shirt Printing & Corporate Apparel Landing Page",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
