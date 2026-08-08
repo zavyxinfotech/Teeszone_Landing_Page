@@ -1,8 +1,9 @@
-import heroMockupImg from '../assets/images/teeszone_hero_mockup_1786102788341.jpg';
-import corporatePolosImg from '../assets/images/teeszone_corporate_polos_1786102801522.jpg';
-import oversizedTeesImg from '../assets/images/teeszone_oversized_tees_1786102813133.jpg';
-import hoodiesSweatsImg from '../assets/images/teeszone_hoodies_sweats_1786102824199.jpg';
-import sportsJerseysImg from '../assets/images/teeszone_sports_jerseys_1786102836823.jpg';
+import catalogPoloPoster from '../assets/images/catalog_polo_poster.jpg';
+import catalogPremiumPoster from '../assets/images/catalog_premium_poster.jpg';
+import catalogOversizedPoster from '../assets/images/catalog_oversized_poster.jpg';
+import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster.jpg';
+import catalogJerseyPoster from '../assets/images/catalog_jersey_poster.jpg';
+import catalogUniformPoster from '../assets/images/catalog_uniform_poster.jpg';
 
 export interface EnterpriseCatalogItem {
   id: string;
@@ -10,6 +11,7 @@ export interface EnterpriseCatalogItem {
   category: string;
   description: string;
   image: string;
+  backdropTitle: string;
   price: number; // INR (₹)
   colors: { name: string; hex: string; bgClass: string }[];
   sizes: string[];
@@ -25,8 +27,9 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     id: 'polo-shirts',
     name: 'Executive Polo T-Shirts',
     category: 'Polo T-Shirts',
+    backdropTitle: 'POLO',
     description: 'Premium 220-260 GSM combed cotton honeycomb polo shirts customized with precision high-density embroidery. Essential for tech teams, sales reps, and executives.',
-    image: corporatePolosImg,
+    image: catalogPoloPoster,
     price: 399,
     colors: [
       { name: 'Navy Blue', hex: '#0A2540', bgClass: 'bg-[#0A2540]' },
@@ -45,8 +48,9 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     id: 'round-neck',
     name: 'Premium Bio-Washed T-Shirts',
     category: 'Premium T-Shirts',
+    backdropTitle: 'PREMIUM',
     description: 'Bio-washed 180 GSM 100% ring-spun combed cotton tees engineered for event launches, hackathons, employee onboarding, and promotional drives.',
-    image: heroMockupImg,
+    image: catalogPremiumPoster,
     price: 249,
     colors: [
       { name: 'Jet Black', hex: '#000000', bgClass: 'bg-black' },
@@ -65,8 +69,9 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     id: 'oversized',
     name: '240 GSM Heavyweight Oversized Tees',
     category: 'Oversized T-Shirts',
+    backdropTitle: 'OVERSIZED',
     description: 'Trendy drop-shoulder boxy cuts crafted from 240+ GSM ultra-heavyweight cotton. Designed for creator merch, startup launches, and youth brands.',
-    image: oversizedTeesImg,
+    image: catalogOversizedPoster,
     price: 499,
     colors: [
       { name: 'Pitch Black', hex: '#0F172A', bgClass: 'bg-slate-900' },
@@ -85,8 +90,9 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     id: 'hoodies-sweats',
     name: 'Luxury Heavy Fleece Hoodies & Sweats',
     category: 'Hoodies & Sweatshirts',
+    backdropTitle: 'HOODIE',
     description: '380 GSM dense fleece hoodies and crewneck sweatshirts with double-lined hoods, ribbed cuffs, and custom inside neck branding.',
-    image: hoodiesSweatsImg,
+    image: catalogHoodiePoster,
     price: 899,
     colors: [
       { name: 'Deep Navy', hex: '#0A2540', bgClass: 'bg-[#0A2540]' },
@@ -105,8 +111,9 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     id: 'sports-jerseys',
     name: 'Sublimated Sports & Athletic Jerseys',
     category: 'Sports Jerseys',
+    backdropTitle: 'JERSEY',
     description: 'Moisture-wicking micro-poly mesh athletic jerseys featuring full-bleed vibrant edge-to-edge sublimation that never fades, cracks, or peels.',
-    image: sportsJerseysImg,
+    image: catalogJerseyPoster,
     price: 349,
     colors: [
       { name: 'Neon Blue', hex: '#0284C7', bgClass: 'bg-sky-600' },
@@ -125,8 +132,9 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     id: 'corporate-apparel',
     name: 'Industrial & Corporate Uniforms',
     category: 'Corporate Apparel',
+    backdropTitle: 'UNIFORM',
     description: 'Tailored button-up shirts, field jackets, and hospitality uniforms equipped with stain-resistant coatings and anti-wrinkle twill weaves.',
-    image: corporatePolosImg,
+    image: catalogUniformPoster,
     price: 599,
     colors: [
       { name: 'Navy Blue', hex: '#0A2540', bgClass: 'bg-[#0A2540]' },

@@ -32,7 +32,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
           </p>
         </div>
 
-        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Card Spotlight */}
+        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & High-Fashion Editorial Card Spotlight */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Interactive Vertical Expand Accordion Stack (Skiper #53 Foundation) */}
@@ -94,7 +94,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
             </div>
           </div>
 
-          {/* Right Column: Dynamic Category Spotlight Showcase Frame */}
+          {/* Right Column: Editorial Fashion Magazine Poster Frame (Reference Design Match) */}
           <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
               <motion.div
@@ -102,32 +102,40 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                 initial={{ opacity: 0, scale: 0.98, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98, y: -10 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="rounded-3xl p-5 sm:p-6 shadow-xl bg-white/95 backdrop-blur-xl space-y-4"
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="rounded-3xl p-5 sm:p-6 shadow-2xl bg-white/95 backdrop-blur-xl space-y-4"
               >
-                {/* Visual Category Showcase Header */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-md group">
+                {/* Visual Editorial Poster Frame */}
+                <div className="relative rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-[4/3] max-h-[420px] shadow-lg group bg-[#E5E5E5] flex items-center justify-center">
+                  
+                  {/* Category Poster Image with Typography baked behind male model */}
                   <img
                     src={selectedItem.image}
                     alt={selectedItem.name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 text-[11px] font-poppins font-extrabold uppercase tracking-wider text-white bg-[#0A2540]/90 backdrop-blur-md rounded-full shadow-md">
-                      {selectedItem.badge}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-3 left-3 right-3 bg-[#0A2540]/90 backdrop-blur-md p-3 rounded-2xl text-white flex items-center justify-between shadow-xl">
-                    <div>
-                      <span className="text-[11px] text-slate-300 block font-medium">Recommended Weight:</span>
-                      <span className="text-xs sm:text-sm font-bold">{selectedItem.recommendedGsm}</span>
+
+                  {/* High-Fashion Editorial Magazine Overlay Labels */}
+                  <div className="absolute inset-0 pointer-events-none p-4 flex flex-col justify-between">
+                    {/* Top Editorial Line */}
+                    <div className="flex items-center justify-between text-[10px] sm:text-xs font-poppins font-bold text-slate-800/80 uppercase tracking-widest bg-white/40 backdrop-blur-md px-3 py-1 rounded-full w-fit">
+                      <span>TeesZone • 2026 Collection</span>
                     </div>
-                    <span className="text-xs font-bold text-[#38BDF8] bg-[#38BDF8]/15 px-3 py-1 rounded-xl">
-                      Starting at {formatCurrency(selectedItem.price)} / pc
-                    </span>
+
+                    {/* Bottom Info Glass Bar */}
+                    <div className="bg-[#0A2540]/90 backdrop-blur-md p-3.5 rounded-2xl text-white flex items-center justify-between shadow-xl pointer-events-auto">
+                      <div>
+                        <span className="text-[11px] text-slate-300 block font-medium">Recommended Weight:</span>
+                        <span className="text-xs sm:text-sm font-bold text-[#38BDF8]">{selectedItem.recommendedGsm}</span>
+                      </div>
+                      <span className="text-xs font-bold text-white bg-[#635BFF] px-3.5 py-1.5 rounded-xl shadow-md">
+                        Starting at {formatCurrency(selectedItem.price)} / pc
+                      </span>
+                    </div>
                   </div>
+
                 </div>
 
                 {/* Category Details & Specs */}
