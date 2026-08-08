@@ -117,42 +117,42 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
             </div>
           </div>
 
-          {/* Right Column: Seamlessly Blended Image + Top Half Backdrop Typography */}
-          <div className="lg:col-span-7 flex items-center justify-center relative min-h-[380px] lg:min-h-[440px]">
+          {/* Right Column: Dark Colored Typography Backdrop & Blended Model Image */}
+          <div className="lg:col-span-7 flex items-center justify-center relative min-h-[380px] lg:min-h-[445px]">
             
             {/* Dynamic Animated Ambient Glow */}
             <motion.div
               animate={{
-                opacity: [0.35, 0.65, 0.35],
+                opacity: [0.3, 0.6, 0.3],
                 scale: [0.98, 1.03, 0.98],
               }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 bg-gradient-to-r from-[#635BFF]/25 via-[#38BDF8]/25 to-[#0A2540]/25 rounded-3xl blur-2xl pointer-events-none"
+              className="absolute inset-0 bg-gradient-to-r from-[#635BFF]/20 via-[#38BDF8]/20 to-[#0A2540]/20 rounded-3xl blur-2xl pointer-events-none"
             />
 
-            {/* Top Half Giant Category Backdrop Typography */}
+            {/* Top Half Giant Dark Colored Category Backdrop Typography */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedItem.backdropTitle}
-                initial={{ opacity: 0, y: -15, scale: 0.95 }}
-                animate={{ opacity: 0.18, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 0.85, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.25 }}
+                className="absolute top-2 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden"
               >
-                <span className="font-poppins font-black text-7xl sm:text-8xl xl:text-9xl tracking-tighter text-[#0A2540] uppercase leading-none block whitespace-nowrap opacity-90 drop-shadow-sm">
+                <span className="font-poppins font-black text-7xl sm:text-8xl xl:text-9xl tracking-tighter text-[#0A2540] uppercase leading-none block whitespace-nowrap drop-shadow-sm">
                   {selectedItem.backdropTitle}
                 </span>
               </motion.div>
             </AnimatePresence>
 
-            {/* Seamlessly Blended Model Image */}
+            {/* Seamlessly Blended Model Image (Outer Background Color Removed) */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedItem.id}
-                initial={{ opacity: 0, scale: 0.96, y: 5 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: -5 }}
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative rounded-2xl overflow-hidden shadow-2xl group flex items-center justify-center max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto bg-transparent z-10"
               >
@@ -161,7 +161,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                   alt={selectedItem.name}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto object-contain transition-transform duration-500 group-hover:scale-102 rounded-2xl mix-blend-multiply drop-shadow-xl"
+                  className="max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto object-contain transition-transform duration-500 group-hover:scale-102 rounded-2xl mix-blend-multiply filter contrast-105 brightness-102"
                 />
               </motion.div>
             </AnimatePresence>
