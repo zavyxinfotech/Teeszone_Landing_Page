@@ -1,9 +1,9 @@
-import catalogPoloPoster from '../assets/images/catalog_polo_poster.jpg';
-import catalogPremiumPoster from '../assets/images/catalog_premium_poster.jpg';
-import catalogOversizedPoster from '../assets/images/catalog_oversized_poster.jpg';
-import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster.jpg';
-import catalogJerseyPoster from '../assets/images/catalog_jersey_poster.jpg';
-import catalogUniformPoster from '../assets/images/catalog_uniform_poster.jpg';
+import catalogPoloPoster from '../assets/images/catalog_polo_poster_processed.png';
+import catalogPremiumPoster from '../assets/images/catalog_premium_poster_processed.png';
+import catalogOversizedPoster from '../assets/images/catalog_oversized_poster_processed.png';
+import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster_processed.png';
+import catalogJerseyPoster from '../assets/images/catalog_jersey_poster_processed.png';
+import catalogUniformPoster from '../assets/images/catalog_uniform_poster_processed.png';
 
 export interface EnterpriseCatalogItem {
   id: string;
