@@ -32,7 +32,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
           </p>
         </div>
 
-        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Background Merged Image Spotlight */}
+        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Pure Image Spotlight (Only Image on Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Interactive Vertical Expand Accordion Stack (Skiper #53 Foundation) */}
@@ -94,7 +94,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
             </div>
           </div>
 
-          {/* Right Column: High-Fashion Editorial Image Showcase (Merged with Background - No White Card Box) */}
+          {/* Right Column: Pure Image Display Only (No Layouts, No Badges, No Glass Bar, No Text) */}
           <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
               <motion.div
@@ -103,60 +103,16 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98, y: -10 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="space-y-4"
+                className="relative rounded-3xl overflow-hidden aspect-[4/3] max-h-[480px] shadow-2xl group flex items-center justify-center bg-transparent"
               >
-                {/* Clean Image Showcase Merged With Background */}
-                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] max-h-[440px] shadow-2xl group flex items-center justify-center bg-transparent">
-                  
-                  {/* Category Poster Image with Top-Half Typography Baked Behind Model */}
-                  <img
-                    src={selectedItem.image}
-                    alt={selectedItem.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103 rounded-3xl"
-                  />
-
-                  {/* High-Fashion Editorial Overlay Badges & Spec Glass Bar */}
-                  <div className="absolute inset-0 pointer-events-none p-4 sm:p-5 flex flex-col justify-between">
-                    {/* Top Editorial Line */}
-                    <div className="flex items-center justify-between text-[10px] sm:text-xs font-poppins font-bold text-slate-900 bg-white/70 backdrop-blur-md px-3.5 py-1.5 rounded-full w-fit shadow-sm">
-                      <span>TeesZone • 2026 Collection</span>
-                    </div>
-
-                    {/* Bottom Floating Info Glass Bar */}
-                    <div className="bg-[#0A2540]/90 backdrop-blur-md p-3.5 rounded-2xl text-white flex items-center justify-between shadow-xl pointer-events-auto">
-                      <div>
-                        <span className="text-[11px] text-slate-300 block font-medium">Recommended Weight:</span>
-                        <span className="text-xs sm:text-sm font-bold text-[#38BDF8]">{selectedItem.recommendedGsm}</span>
-                      </div>
-                      <span className="text-xs font-bold text-white bg-[#635BFF] px-3.5 py-1.5 rounded-xl shadow-md">
-                        Starting at {formatCurrency(selectedItem.price)} / pc
-                      </span>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Category Details & Specs Below Image */}
-                <div className="space-y-1.5 px-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#635BFF] uppercase tracking-widest font-poppins">
-                      Category: {selectedItem.category}
-                    </span>
-                    <span className="text-xs font-mono font-semibold text-slate-400">
-                      {selectedItem.code}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#0A2540]">
-                    {selectedItem.name}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-[#425466] leading-relaxed font-inter">
-                    {selectedItem.description}
-                  </p>
-                </div>
+                {/* Pure Image Only */}
+                <img
+                  src={selectedItem.image}
+                  alt={selectedItem.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103 rounded-3xl"
+                />
               </motion.div>
             </AnimatePresence>
           </div>
