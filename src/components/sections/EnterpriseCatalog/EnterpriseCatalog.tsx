@@ -16,10 +16,10 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
   const selectedItem = ENTERPRISE_CATALOG_DATA.find((item) => item.id === activeId) || ENTERPRISE_CATALOG_DATA[0];
 
   return (
-    <section id="categories" className="py-8 lg:py-12 lg:h-screen lg:max-h-screen lg:flex lg:flex-col lg:justify-center bg-[#F4F7FB]/50 relative overflow-hidden" aria-label="Enterprise Catalog">
+    <section id="categories" className="py-8 lg:py-12 lg:h-screen lg:max-h-screen lg:flex lg:flex-col lg:justify-center bg-[#F4F7FB] relative overflow-hidden" aria-label="Enterprise Catalog">
       
       {/* Background Animated Ambient Lights */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
+      <div className="absolute inset-0 pointer-events-none opacity-40">
         <motion.div
           animate={{
             x: [0, 40, -40, 0],
@@ -55,11 +55,11 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
           </p>
         </div>
 
-        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Compact Full Image Spotlight */}
+        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Blended Model Spotlight */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Interactive Vertical Expand Accordion Stack */}
-          <div className="lg:col-span-5 space-y-2 flex flex-col justify-center">
+          <div className="lg:col-span-5 space-y-2 flex flex-col justify-center z-10">
             <span className="text-[11px] font-poppins font-bold text-[#635BFF] uppercase tracking-wider block mb-1 px-1">
               Select Apparel Line to Preview:
             </span>
@@ -117,38 +117,55 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
             </div>
           </div>
 
-          {/* Right Column: Full Image View Decreased Size (Fitted within Desktop Screen) */}
-          <div className="lg:col-span-7 flex items-center justify-center relative">
+          {/* Right Column: Seamlessly Blended Image + Top Half Backdrop Typography */}
+          <div className="lg:col-span-7 flex items-center justify-center relative min-h-[380px] lg:min-h-[440px]">
             
-            {/* Dynamic Animated Image Ambient Glow Box */}
+            {/* Dynamic Animated Ambient Glow */}
             <motion.div
               animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [0.98, 1.02, 0.98],
+                opacity: [0.35, 0.65, 0.35],
+                scale: [0.98, 1.03, 0.98],
               }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -inset-2 bg-gradient-to-r from-[#635BFF]/30 via-[#38BDF8]/30 to-[#0A2540]/30 rounded-3xl blur-xl pointer-events-none"
+              className="absolute inset-0 bg-gradient-to-r from-[#635BFF]/25 via-[#38BDF8]/25 to-[#0A2540]/25 rounded-3xl blur-2xl pointer-events-none"
             />
 
+            {/* Top Half Giant Category Backdrop Typography */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedItem.backdropTitle}
+                initial={{ opacity: 0, y: -15, scale: 0.95 }}
+                animate={{ opacity: 0.18, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden"
+              >
+                <span className="font-poppins font-black text-7xl sm:text-8xl xl:text-9xl tracking-tighter text-[#0A2540] uppercase leading-none block whitespace-nowrap opacity-90 drop-shadow-sm">
+                  {selectedItem.backdropTitle}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Seamlessly Blended Model Image */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedItem.id}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0, scale: 0.96, y: 5 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: -5 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative rounded-2xl overflow-hidden shadow-xl group flex items-center justify-center max-h-[360px] sm:max-h-[380px] lg:max-h-[400px] w-auto bg-[#DCD9D4]"
+                className="relative rounded-2xl overflow-hidden shadow-2xl group flex items-center justify-center max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto bg-transparent z-10"
               >
-                {/* Full Image Displayed Without Cropping */}
                 <img
                   src={selectedItem.image}
                   alt={selectedItem.name}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-[360px] sm:max-h-[380px] lg:max-h-[400px] w-auto object-contain transition-transform duration-500 group-hover:scale-102 rounded-2xl"
+                  className="max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto object-contain transition-transform duration-500 group-hover:scale-102 rounded-2xl mix-blend-multiply drop-shadow-xl"
                 />
               </motion.div>
             </AnimatePresence>
+
           </div>
 
         </div>
