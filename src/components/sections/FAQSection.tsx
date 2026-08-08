@@ -19,41 +19,41 @@ export const FAQSection: React.FC = () => {
   });
 
   return (
-    <section id="faq" className="py-20 lg:py-28 bg-transparent relative" aria-label="Frequently Asked Questions">
-      <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section id="faq" className="py-12 lg:py-16 lg:min-h-screen lg:flex lg:flex-col lg:justify-center bg-transparent relative" aria-label="Frequently Asked Questions">
+      <div className="w-full max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
           <Badge variant="primary" size="md">
             FREQUENTLY ASKED QUESTIONS
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
             Everything You Need to Know About Ordering
           </h2>
-          <p className="text-base sm:text-lg text-[#425466] font-inter leading-relaxed">
-            Have questions about minimum order quantities, Pantone matching, sample kits, or express dispatch? We’ve got answers.
+          <p className="text-xs sm:text-sm text-[#425466] font-inter leading-relaxed">
+            Have questions about minimum order quantities, Pantone matching, sample kits, or express dispatch?
           </p>
         </div>
 
-        {/* Search Bar & Category Filter (Borderless) */}
-        <div className="space-y-5 mb-10">
+        {/* Search Bar & Category Filter */}
+        <div className="space-y-4 mb-6">
           <div className="relative">
-            <Search className="w-5 h-5 text-slate-500 absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-500 absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search questions (e.g. MOQ, Turnaround, Pantone, Samples)..."
+              placeholder="Search questions (e.g. MOQ, Turnaround, Pantone)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-2xl text-sm text-[#0A2540] font-medium bg-white/90 backdrop-blur-xl focus:bg-white focus:outline-none transition-all shadow-md"
+              className="w-full pl-11 pr-4 py-3 rounded-2xl text-xs sm:text-sm text-[#0A2540] font-medium bg-white/90 backdrop-blur-xl focus:bg-white focus:outline-none transition-all shadow-md"
             />
           </div>
 
-          <div className="flex items-center gap-2.5 overflow-x-auto pb-2 no-scrollbar justify-start sm:justify-center">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar justify-start sm:justify-center">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-2xl text-xs font-poppins font-bold whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-poppins font-bold whitespace-nowrap transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-[#0A2540] text-white shadow-md scale-102'
                     : 'bg-white/80 backdrop-blur-md text-[#425466] hover:bg-[#635BFF]/10 hover:text-[#0A2540] shadow-xs'
@@ -65,30 +65,30 @@ export const FAQSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Accordion FAQ Items (Borderless Glass Cards) */}
-        <div className="space-y-4">
-          {filteredFaqs.map((faq) => {
+        {/* Accordion FAQ Items */}
+        <div className="space-y-3">
+          {filteredFaqs.slice(0, 5).map((faq) => {
             const isOpen = openFaqId === faq.id;
             return (
               <div
                 key={faq.id}
-                className="rounded-2xl bg-white/90 backdrop-blur-xl overflow-hidden transition-all shadow-sm"
+                className="rounded-2xl bg-white/90 backdrop-blur-xl overflow-hidden transition-all shadow-2xs"
               >
                 <button
                   onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
                   aria-expanded={isOpen}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-white transition-colors"
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-white transition-colors"
                 >
-                  <span className="text-base sm:text-lg font-poppins font-bold text-[#0A2540]">
+                  <span className="text-sm sm:text-base font-poppins font-bold text-[#0A2540]">
                     {faq.question}
                   </span>
-                  <div className={`p-2 rounded-xl transition-all duration-200 ${isOpen ? 'rotate-180 bg-[#635BFF] text-white' : 'bg-slate-100 text-[#0A2540]'}`}>
-                    <ChevronDown className="w-5 h-5" />
+                  <div className={`p-1.5 rounded-lg transition-all duration-200 ${isOpen ? 'rotate-180 bg-[#635BFF] text-white' : 'bg-slate-100 text-[#0A2540]'}`}>
+                    <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-[#425466] leading-relaxed font-inter bg-slate-50/50">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#425466] leading-relaxed font-inter bg-slate-50/50">
                     {faq.answer}
                   </div>
                 )}
@@ -97,20 +97,20 @@ export const FAQSection: React.FC = () => {
           })}
         </div>
 
-        {/* Help Banner (Borderless) */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-lg">
-          <div className="flex items-center gap-4">
-            <div className="p-3.5 bg-[#635BFF]/10 text-[#635BFF] rounded-2xl hidden sm:block">
-              <PhoneCall className="w-7 h-7" />
+        {/* Help Banner */}
+        <div className="mt-8 p-5 rounded-3xl bg-white/90 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-[#635BFF]/10 text-[#635BFF] rounded-2xl hidden sm:block">
+              <PhoneCall className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-poppins font-bold text-[#0A2540]">Need specialized corporate ordering support?</h3>
-              <p className="text-xs sm:text-sm text-slate-600 font-inter">Our dedicated prepress apparel engineers are available 24/7.</p>
+              <h3 className="text-sm font-poppins font-bold text-[#0A2540]">Need specialized corporate ordering support?</h3>
+              <p className="text-xs text-slate-600 font-inter">Our dedicated prepress apparel engineers are available 24/7.</p>
             </div>
           </div>
           <a
             href={`tel:${BRAND.contact.phone}`}
-            className="px-6 py-3.5 bg-[#0A2540] hover:bg-[#1E3A5F] text-white text-xs sm:text-sm font-poppins font-bold rounded-2xl transition-all whitespace-nowrap shadow-md"
+            className="px-5 py-2.5 bg-[#0A2540] hover:bg-[#1E3A5F] text-white text-xs font-poppins font-bold rounded-xl transition-all whitespace-nowrap shadow-md"
           >
             Call {BRAND.contact.phone}
           </a>

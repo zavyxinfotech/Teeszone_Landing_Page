@@ -16,52 +16,52 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
   const selectedItem = ENTERPRISE_CATALOG_DATA.find((item) => item.id === activeId) || ENTERPRISE_CATALOG_DATA[0];
 
   return (
-    <section id="categories" className="py-20 lg:py-28 bg-[#F4F7FB]/50 relative" aria-label="Enterprise Catalog">
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
+    <section id="categories" className="py-12 lg:py-16 lg:min-h-screen lg:flex lg:flex-col lg:justify-center bg-[#F4F7FB]/50 relative" aria-label="Enterprise Catalog">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <Badge variant="primary" size="md">
             ENTERPRISE APPAREL CATALOG
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
             Curated Custom Lines Built For Enterprise Orders
           </h2>
-          <p className="text-base sm:text-lg text-[#425466] font-inter leading-relaxed">
+          <p className="text-sm sm:text-base text-[#425466] font-inter leading-relaxed">
             Engineered with zero-lint bio-washed cotton, 100% Pantone solid coated precision, and 48-hour express dispatch ready specs.
           </p>
         </div>
 
         {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Card Spotlight */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Interactive Vertical Expand Accordion Stack (Skiper #53 Foundation) */}
-          <div className="lg:col-span-5 space-y-3">
-            <span className="text-xs font-poppins font-bold text-[#635BFF] uppercase tracking-wider block mb-2 px-1">
+          <div className="lg:col-span-5 space-y-2.5">
+            <span className="text-xs font-poppins font-bold text-[#635BFF] uppercase tracking-wider block mb-1 px-1">
               Select Apparel Line to Preview:
             </span>
-            <div className="flex flex-col gap-2.5 w-full">
+            <div className="flex flex-col gap-2 w-full">
               {ENTERPRISE_CATALOG_DATA.map((item, index) => {
                 const isActive = item.id === activeId;
                 return (
                   <motion.div
                     key={item.id}
                     layout
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    transition={{ duration: 0.25, delay: index * 0.04 }}
                     onClick={() => setActiveId(item.id)}
                     onMouseEnter={() => setActiveId(item.id)}
-                    className={`group relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 p-4 ${
+                    className={`group relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 p-3.5 ${
                       isActive
-                        ? 'bg-[#0A2540] text-white shadow-xl scale-[1.01]'
-                        : 'bg-white/90 backdrop-blur-md text-[#0A2540] hover:bg-[#635BFF]/10 shadow-xs'
+                        ? 'bg-[#0A2540] text-white shadow-lg scale-[1.01]'
+                        : 'bg-white/90 backdrop-blur-md text-[#0A2540] hover:bg-[#635BFF]/10 shadow-2xs'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-outfit text-xs font-bold ${
+                        <div className={`w-7 h-7 rounded-xl flex items-center justify-center font-outfit text-xs font-bold ${
                           isActive ? 'bg-[#635BFF] text-white' : 'bg-slate-100 text-[#0A2540]'
                         }`}>
                           0{index + 1}
@@ -102,8 +102,8 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                 initial={{ opacity: 0, scale: 0.98, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98, y: -10 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="rounded-3xl p-6 sm:p-8 shadow-2xl bg-white/95 backdrop-blur-xl space-y-6"
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="rounded-3xl p-5 sm:p-6 shadow-xl bg-white/95 backdrop-blur-xl space-y-4"
               >
                 {/* Visual Category Showcase Header */}
                 <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-md group">
@@ -114,24 +114,24 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 text-xs font-poppins font-extrabold uppercase tracking-wider text-white bg-[#0A2540]/90 backdrop-blur-md rounded-full shadow-md">
+                  <div className="absolute top-3 left-3">
+                    <span className="px-3 py-1 text-[11px] font-poppins font-extrabold uppercase tracking-wider text-white bg-[#0A2540]/90 backdrop-blur-md rounded-full shadow-md">
                       {selectedItem.badge}
                     </span>
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4 bg-[#0A2540]/90 backdrop-blur-md p-4 rounded-2xl text-white flex items-center justify-between shadow-xl">
+                  <div className="absolute bottom-3 left-3 right-3 bg-[#0A2540]/90 backdrop-blur-md p-3 rounded-2xl text-white flex items-center justify-between shadow-xl">
                     <div>
-                      <span className="text-xs text-slate-300 block font-medium">Recommended Weight:</span>
-                      <span className="text-sm font-bold">{selectedItem.recommendedGsm}</span>
+                      <span className="text-[11px] text-slate-300 block font-medium">Recommended Weight:</span>
+                      <span className="text-xs sm:text-sm font-bold">{selectedItem.recommendedGsm}</span>
                     </div>
-                    <span className="text-xs font-bold text-[#38BDF8] bg-[#38BDF8]/15 px-3 py-1.5 rounded-xl">
+                    <span className="text-xs font-bold text-[#38BDF8] bg-[#38BDF8]/15 px-3 py-1 rounded-xl">
                       Starting at {formatCurrency(selectedItem.price)} / pc
                     </span>
                   </div>
                 </div>
 
                 {/* Category Details & Specs */}
-                <div className="space-y-4">
+                <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-[#635BFF] uppercase tracking-widest font-poppins">
                       Category: {selectedItem.category}
@@ -141,11 +141,11 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-poppins font-extrabold text-[#0A2540]">
+                  <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#0A2540]">
                     {selectedItem.name}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-[#425466] leading-relaxed font-inter">
+                  <p className="text-xs sm:text-sm text-[#425466] leading-relaxed font-inter">
                     {selectedItem.description}
                   </p>
                 </div>

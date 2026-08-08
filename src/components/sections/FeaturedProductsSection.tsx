@@ -29,24 +29,24 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
     : PRODUCTS.filter((p) => p.category === selectedFilter);
 
   return (
-    <section id="products" className="py-20 lg:py-28 bg-[#F8FAFC] relative">
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
+    <section id="products" className="py-12 lg:py-16 lg:min-h-screen lg:flex lg:flex-col lg:justify-center bg-[#F8FAFC] relative">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="space-y-4 max-w-2xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div className="space-y-3 max-w-2xl">
             <Badge variant="primary" size="md">
               ENTERPRISE APPAREL COLLECTION
             </Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
               Featured Custom Apparel & Uniforms
             </h2>
-            <p className="text-base sm:text-lg text-[#425466] font-inter leading-relaxed">
-              Explore our best-selling corporate polo shirts, heavyweight 240 GSM tees, hoodies, and sublimated sports jerseys.
+            <p className="text-xs sm:text-sm text-[#425466] font-inter leading-relaxed">
+              Best-selling corporate polo shirts, 240 GSM heavyweight tees, hoodies, and sublimated jerseys.
             </p>
           </div>
 
-          {/* Category Filter Buttons (Borderless) */}
+          {/* Category Filter Buttons */}
           <div className="flex flex-wrap items-center gap-2">
             {[
               { id: 'all', label: 'All Apparel' },
@@ -59,7 +59,7 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
               <button
                 key={filter.id}
                 onClick={() => setSelectedFilter(filter.id as any)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-poppins font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-poppins font-bold transition-all cursor-pointer ${
                   selectedFilter === filter.id
                     ? 'bg-[#0A2540] text-white shadow-md scale-102'
                     : 'bg-white text-[#425466] hover:bg-[#635BFF]/10 hover:text-[#0A2540] shadow-2xs'
@@ -72,7 +72,7 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
         </div>
 
         {/* Skiper UI Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {filteredProducts.map((product) => (
             <Skiper50ProductCard
               key={product.id}
