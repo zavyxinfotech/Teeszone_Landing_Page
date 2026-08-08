@@ -17,11 +17,11 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#0A2540] text-white pt-16 pb-10 border-t border-[#1E3A5F] relative overflow-hidden font-inter" aria-label="Footer">
+    <footer className="bg-[#0A2540] text-white pt-16 pb-10 relative overflow-hidden font-inter" aria-label="Footer">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
         
         {/* Main Multi-Column Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#1E3A5F]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12">
           
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-4">
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[#635BFF] text-xs font-semibold text-slate-200 hover:text-white transition-all border border-white/15"
+                  className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[#635BFF] text-xs font-semibold text-slate-200 hover:text-white transition-all shadow-xs"
                 >
                   {s.name}
                 </a>
@@ -91,7 +91,7 @@ export const Footer: React.FC = () => {
             </p>
 
             {newsletterSuccess ? (
-              <div className="p-3 bg-emerald-500/20 rounded-xl border border-emerald-500/30 text-xs text-emerald-300 flex items-center gap-2">
+              <div className="p-3 bg-emerald-500/20 rounded-xl text-xs text-emerald-300 flex items-center gap-2">
                 <Check className="w-4 h-4" />
                 <span>Subscribed successfully!</span>
               </div>
@@ -103,7 +103,7 @@ export const Footer: React.FC = () => {
                   placeholder="Enter work email..."
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="flex-1 px-3.5 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-2 focus:ring-[#635BFF]/30 transition-all"
+                  className="flex-1 px-3.5 py-2.5 rounded-2xl bg-white/10 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#635BFF]/30 transition-all"
                 />
                 <button
                   type="submit"

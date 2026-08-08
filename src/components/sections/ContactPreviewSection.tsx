@@ -23,7 +23,7 @@ export const ContactPreviewSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-transparent border-t border-slate-200/80 relative" aria-label="Contact & Prepress Consultation">
+    <section className="py-20 lg:py-28 bg-transparent relative" aria-label="Contact & Prepress Consultation">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -43,7 +43,7 @@ export const ContactPreviewSection: React.FC = () => {
             </div>
 
             <div className="space-y-4 pt-2 font-inter">
-              <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-xl rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-4">
+              <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm flex items-start gap-4">
                 <div className="p-3 bg-[#635BFF]/10 text-[#635BFF] rounded-2xl shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
@@ -56,7 +56,7 @@ export const ContactPreviewSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-xl rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-4">
+              <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm flex items-start gap-4">
                 <div className="p-3 bg-[#38BDF8]/15 text-[#0284C7] rounded-2xl shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
@@ -69,7 +69,7 @@ export const ContactPreviewSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-xl rounded-2xl border border-slate-200/80 shadow-xs flex items-start gap-4">
+              <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm flex items-start gap-4">
                 <div className="p-3 bg-emerald-100 text-emerald-700 rounded-2xl shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
@@ -82,8 +82,8 @@ export const ContactPreviewSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Contact & Callback Form */}
-          <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-2xl">
+          {/* Right Column: Contact & Callback Form (Borderless Glass Card) */}
+          <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl">
             <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#0A2540] mb-2">
               Request an Instant Prepress Consultation
             </h3>
@@ -92,7 +92,7 @@ export const ContactPreviewSection: React.FC = () => {
             </p>
 
             {submitted ? (
-              <div className="py-12 text-center space-y-3 bg-emerald-50 rounded-2xl border border-emerald-200 font-inter">
+              <div className="py-12 text-center space-y-3 bg-emerald-50/90 rounded-2xl font-inter shadow-xs">
                 <Check className="w-12 h-12 text-emerald-600 mx-auto" />
                 <h4 className="text-xl font-bold text-[#0A2540] font-poppins">Consultation Request Received!</h4>
                 <p className="text-sm text-slate-600">
@@ -110,7 +110,7 @@ export const ContactPreviewSection: React.FC = () => {
                       placeholder="e.g. Sarah Lin"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl border border-slate-200 text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:border-[#635BFF] focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
+                      className="w-full px-4 py-3 rounded-2xl text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
                     />
                   </div>
                   <div>
@@ -121,7 +121,7 @@ export const ContactPreviewSection: React.FC = () => {
                       placeholder="sarah@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl border border-slate-200 text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:border-[#635BFF] focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
+                      className="w-full px-4 py-3 rounded-2xl text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
                     />
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export const ContactPreviewSection: React.FC = () => {
                     placeholder="+1 (555) 000-0000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:border-[#635BFF] focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
+                    className="w-full px-4 py-3 rounded-2xl text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
                   />
                 </div>
 
@@ -145,7 +145,7 @@ export const ContactPreviewSection: React.FC = () => {
                     placeholder="Describe your custom apparel requirements, event date, or preferred print technique..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:border-[#635BFF] focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
+                    className="w-full px-4 py-3 rounded-2xl text-sm text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
                   />
                 </div>
 

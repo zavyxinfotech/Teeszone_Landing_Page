@@ -8,13 +8,10 @@ import {
   Eye, 
   Sliders, 
   ShoppingBag, 
-  Sparkles,
-  ArrowRight,
   CheckCircle2
 } from "lucide-react";
 import { Product } from "../../../types";
 import { formatCurrency, calculateBulkPrice } from "../../../utils/formatters";
-import { Badge } from "../../common/Badge";
 
 export interface Skiper50ProductCardProps {
   product: Product;
@@ -65,7 +62,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative group rounded-3xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden flex flex-col justify-between ${className}`}
+      className={`relative group rounded-3xl bg-white/95 backdrop-blur-md shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden flex flex-col justify-between ${className}`}
       style={{
         borderRadius: "22px",
       }}
@@ -92,6 +89,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
             src={product.image}
             alt={product.name}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
@@ -99,7 +97,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           {/* Tag Badge */}
           {product.tag && (
             <div className="absolute top-3 left-3 z-20">
-              <span className="px-2.5 py-1 text-[10px] font-poppins font-black uppercase tracking-wider text-white bg-[#0A2540]/90 backdrop-blur-md rounded-full border border-white/20 shadow-xs">
+              <span className="px-2.5 py-1 text-[10px] font-poppins font-black uppercase tracking-wider text-white bg-[#0A2540]/90 backdrop-blur-md rounded-full shadow-xs">
                 {product.tag}
               </span>
             </div>
@@ -150,10 +148,10 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
         <div className="p-5 space-y-3">
           {/* GSM & Category Header Row */}
           <div className="flex items-center justify-between text-xs">
-            <span className="text-[#635BFF] font-poppins font-black text-[10px] uppercase tracking-wider bg-[#635BFF]/10 px-2.5 py-0.5 rounded-full border border-[#635BFF]/20">
+            <span className="text-[#635BFF] font-poppins font-black text-[10px] uppercase tracking-wider bg-[#635BFF]/10 px-2.5 py-0.5 rounded-full">
               {product.gsm} GSM • {product.category.replace("-", " ")}
             </span>
-            <div className="flex items-center gap-1 font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/60">
+            <div className="flex items-center gap-1 font-bold text-amber-600 bg-amber-50/90 px-2 py-0.5 rounded-md">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               <span className="text-xs">{product.rating}</span>
               <span className="text-[10px] text-slate-400">({product.reviewCount})</span>
@@ -182,7 +180,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
             {product.sizes.map((size) => (
               <span
                 key={size}
-                className="px-1.5 py-0.5 text-[9px] font-bold text-slate-600 bg-slate-100 rounded border border-slate-200/80 uppercase"
+                className="px-1.5 py-0.5 text-[9px] font-bold text-slate-600 bg-slate-100 rounded uppercase"
               >
                 {size}
               </span>
@@ -206,7 +204,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
       </div>
 
       {/* Card Footer: Pricing in INR & Main Action Button */}
-      <div className="p-5 pt-3 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between rounded-b-3xl">
+      <div className="p-5 pt-3 bg-slate-50/70 flex items-center justify-between rounded-b-3xl">
         <div>
           <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">
             Bulk Rate (100+ pcs)
@@ -223,7 +221,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           {onOrderSample && (
             <button
               onClick={() => onOrderSample(product)}
-              className="px-3.5 py-2.5 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] text-xs font-poppins font-bold rounded-xl border border-slate-200 shadow-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer transform active:scale-95"
+              className="px-3.5 py-2.5 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] text-xs font-poppins font-bold rounded-xl shadow-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer transform active:scale-95"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>Sample</span>

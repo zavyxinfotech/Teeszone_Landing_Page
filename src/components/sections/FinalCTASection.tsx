@@ -16,8 +16,8 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({
     <section className="py-20 lg:py-28 bg-transparent relative overflow-hidden" aria-label="Call to Action Banner">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
         
-        {/* Stripe Banner Container */}
-        <div className="relative rounded-3xl p-8 sm:p-14 lg:p-16 bg-[#0A2540] text-white shadow-2xl overflow-hidden border border-white/20">
+        {/* Stripe Banner Container (Borderless Premium Surface) */}
+        <div className="relative rounded-3xl p-8 sm:p-14 lg:p-16 bg-[#0A2540] text-white shadow-2xl overflow-hidden">
           
           {/* Background Ambient Glows */}
           <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-[#635BFF]/30 rounded-full blur-3xl pointer-events-none" />
@@ -50,7 +50,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({
 
               <a
                 href="#products"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl text-sm font-bold text-white bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md transition-all cursor-pointer shadow-lg"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl text-sm font-bold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md transition-all cursor-pointer shadow-lg"
               >
                 <Compass className="w-4 h-4 text-[#38BDF8]" />
                 <span>Explore Catalog</span>
@@ -58,7 +58,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({
             </div>
 
             {/* Bottom Trust Badges */}
-            <div className="pt-8 border-t border-white/15 flex flex-wrap items-center gap-6 text-xs sm:text-sm font-inter text-slate-200">
+            <div className="pt-8 border-t border-white/10 flex flex-wrap items-center gap-6 text-xs sm:text-sm font-inter text-slate-200">
               <div className="flex items-center gap-2.5">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
                 <span>Free Digital Vector Proof in 2 Hours</span>

@@ -24,7 +24,7 @@ export const PrintingProcessSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Timeline Navigation Tabs */}
+        {/* Timeline Navigation Tabs (Borderless) */}
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 mb-10">
           {PRINTING_PROCESS.map((proc, idx) => {
             const isActive = activeStepIndex === idx;
@@ -32,10 +32,10 @@ export const PrintingProcessSection: React.FC = () => {
               <button
                 key={proc.stepNumber}
                 onClick={() => setActiveStepIndex(idx)}
-                className={`p-4 sm:p-5 rounded-2xl text-left border transition-all cursor-pointer relative overflow-hidden ${
+                className={`p-4 sm:p-5 rounded-2xl text-left transition-all cursor-pointer relative overflow-hidden ${
                   isActive
-                    ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-xl scale-102'
-                    : 'bg-white/80 backdrop-blur-md text-[#425466] border-slate-200 hover:border-[#635BFF] hover:text-[#0A2540] shadow-2xs'
+                    ? 'bg-[#0A2540] text-white shadow-xl scale-102'
+                    : 'bg-white/80 backdrop-blur-md text-[#425466] hover:bg-[#635BFF]/10 hover:text-[#0A2540] shadow-sm'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -52,8 +52,8 @@ export const PrintingProcessSection: React.FC = () => {
           })}
         </div>
 
-        {/* Active Step Content Spotlight Card */}
-        <div className="stripe-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/80 backdrop-blur-xl">
+        {/* Active Step Content Spotlight Card (Borderless Premium Glass) */}
+        <div className="stripe-card rounded-3xl p-8 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/90 backdrop-blur-xl">
           
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ export const PrintingProcessSection: React.FC = () => {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {currentStep.keyOutputs.map((output, i) => (
-                  <div key={i} className="flex items-center gap-2.5 p-3 bg-white rounded-2xl border border-slate-200 text-xs font-semibold text-[#0A2540] shadow-xs">
+                  <div key={i} className="flex items-center gap-2.5 p-3 bg-white/90 rounded-2xl text-xs font-semibold text-[#0A2540] shadow-xs">
                     <ShieldCheck className="w-4 h-4 text-[#635BFF] shrink-0" />
                     <span>{output}</span>
                   </div>
@@ -93,11 +93,11 @@ export const PrintingProcessSection: React.FC = () => {
           <div className="lg:col-span-5 bg-[#0A2540] text-white p-8 sm:p-10 rounded-3xl space-y-6 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-36 h-36 bg-[#635BFF]/20 rounded-full blur-2xl pointer-events-none" />
 
-            <div className="flex items-center justify-between border-b border-slate-700 pb-4 font-poppins">
+            <div className="flex items-center justify-between border-b border-slate-700/50 pb-4 font-poppins">
               <span className="text-xs font-bold text-[#38BDF8] uppercase tracking-widest">
                 QUALITY AUDIT LOCK
               </span>
-              <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 font-mono font-bold">
+              <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full font-mono font-bold">
                 STAGE PASSED ✓
               </span>
             </div>
@@ -117,7 +117,7 @@ export const PrintingProcessSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-700">
+            <div className="pt-4 border-t border-slate-700/50">
               <button
                 onClick={() => setActiveStepIndex((prev) => (prev + 1) % PRINTING_PROCESS.length)}
                 className="w-full text-center py-3.5 bg-[#635BFF] hover:bg-[#574BFF] text-white text-xs sm:text-sm font-poppins font-bold rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-[#635BFF]/30"

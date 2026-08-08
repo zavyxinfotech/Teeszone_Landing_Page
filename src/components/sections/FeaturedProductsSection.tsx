@@ -29,7 +29,7 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
     : PRODUCTS.filter((p) => p.category === selectedFilter);
 
   return (
-    <section id="products" className="py-20 lg:py-28 bg-[#F8FAFC] border-y border-slate-200/80">
+    <section id="products" className="py-20 lg:py-28 bg-[#F8FAFC] relative">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20">
         
         {/* Section Header */}
@@ -46,7 +46,7 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
             </p>
           </div>
 
-          {/* Category Filter Buttons */}
+          {/* Category Filter Buttons (Borderless) */}
           <div className="flex flex-wrap items-center gap-2">
             {[
               { id: 'all', label: 'All Apparel' },
@@ -59,10 +59,10 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
               <button
                 key={filter.id}
                 onClick={() => setSelectedFilter(filter.id as any)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-poppins font-bold transition-all cursor-pointer border ${
+                className={`px-4 py-2.5 rounded-2xl text-xs font-poppins font-bold transition-all cursor-pointer ${
                   selectedFilter === filter.id
-                    ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-md scale-102'
-                    : 'bg-white text-[#425466] border-slate-200 hover:border-[#635BFF] hover:text-[#0A2540] shadow-2xs'
+                    ? 'bg-[#0A2540] text-white shadow-md scale-102'
+                    : 'bg-white text-[#425466] hover:bg-[#635BFF]/10 hover:text-[#0A2540] shadow-2xs'
                 }`}
               >
                 {filter.label}

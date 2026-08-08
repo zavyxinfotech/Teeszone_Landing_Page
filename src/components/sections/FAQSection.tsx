@@ -35,7 +35,7 @@ export const FAQSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Search Bar & Category Filter */}
+        {/* Search Bar & Category Filter (Borderless) */}
         <div className="space-y-5 mb-10">
           <div className="relative">
             <Search className="w-5 h-5 text-slate-500 absolute left-4 top-1/2 -translate-y-1/2" />
@@ -44,7 +44,7 @@ export const FAQSection: React.FC = () => {
               placeholder="Search questions (e.g. MOQ, Turnaround, Pantone, Samples)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 text-sm text-[#0A2540] font-medium bg-white/90 backdrop-blur-xl focus:bg-white focus:outline-none focus:border-[#635BFF] focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-xs"
+              className="w-full pl-12 pr-4 py-4 rounded-2xl text-sm text-[#0A2540] font-medium bg-white/90 backdrop-blur-xl focus:bg-white focus:outline-none transition-all shadow-md"
             />
           </div>
 
@@ -53,10 +53,10 @@ export const FAQSection: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-2xl text-xs font-poppins font-bold whitespace-nowrap transition-all cursor-pointer border ${
+                className={`px-4 py-2 rounded-2xl text-xs font-poppins font-bold whitespace-nowrap transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-md scale-102'
-                    : 'bg-white/80 backdrop-blur-md text-[#425466] border-slate-200 hover:border-[#635BFF] hover:text-[#0A2540] shadow-2xs'
+                    ? 'bg-[#0A2540] text-white shadow-md scale-102'
+                    : 'bg-white/80 backdrop-blur-md text-[#425466] hover:bg-[#635BFF]/10 hover:text-[#0A2540] shadow-xs'
                 }`}
               >
                 {cat}
@@ -65,14 +65,14 @@ export const FAQSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Accordion FAQ Items */}
+        {/* Accordion FAQ Items (Borderless Glass Cards) */}
         <div className="space-y-4">
           {filteredFaqs.map((faq) => {
             const isOpen = openFaqId === faq.id;
             return (
               <div
                 key={faq.id}
-                className="rounded-2xl border border-slate-200/80 bg-white/90 backdrop-blur-xl overflow-hidden transition-all shadow-xs"
+                className="rounded-2xl bg-white/90 backdrop-blur-xl overflow-hidden transition-all shadow-sm"
               >
                 <button
                   onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
@@ -88,7 +88,7 @@ export const FAQSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-[#425466] leading-relaxed font-inter border-t border-slate-100 bg-slate-50/50">
+                  <div className="px-6 pb-6 pt-2 text-sm sm:text-base text-[#425466] leading-relaxed font-inter bg-slate-50/50">
                     {faq.answer}
                   </div>
                 )}
@@ -97,8 +97,8 @@ export const FAQSection: React.FC = () => {
           })}
         </div>
 
-        {/* Help Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-md">
+        {/* Help Banner (Borderless) */}
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white/90 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-lg">
           <div className="flex items-center gap-4">
             <div className="p-3.5 bg-[#635BFF]/10 text-[#635BFF] rounded-2xl hidden sm:block">
               <PhoneCall className="w-7 h-7" />

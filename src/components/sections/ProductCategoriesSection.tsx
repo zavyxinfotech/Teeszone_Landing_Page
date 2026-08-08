@@ -3,7 +3,7 @@ import { CATEGORIES } from '../../data/categories';
 import { CategoryInfo, ApparelCategory } from '../../types';
 import { Button } from '../common/Button';
 import { Badge } from '../common/Badge';
-import { ArrowRight, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
 
 interface ProductCategoriesSectionProps {
   onOpenCustomizer: (category?: ApparelCategory) => void;
@@ -37,10 +37,10 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-3 rounded-2xl text-xs font-poppins font-bold whitespace-nowrap transition-all cursor-pointer border ${
+              className={`px-5 py-3 rounded-2xl text-xs font-poppins font-bold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory.id === cat.id
-                  ? 'bg-[#0A2540] text-white border-[#0A2540] shadow-lg scale-102'
-                  : 'bg-white/80 backdrop-blur-md text-[#425466] border-slate-200 hover:border-[#635BFF] hover:text-[#0A2540] shadow-2xs'
+                  ? 'bg-[#0A2540] text-white shadow-lg scale-102'
+                  : 'bg-white/80 backdrop-blur-md text-[#425466] hover:bg-[#635BFF]/10 hover:text-[#0A2540] shadow-sm'
               }`}
             >
               <span>{cat.name}</span>
@@ -53,14 +53,16 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
           ))}
         </div>
 
-        {/* Highlighted Selected Category Spotlight Card */}
-        <div className="stripe-card rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/80 backdrop-blur-xl">
+        {/* Highlighted Selected Category Spotlight Card (Borderless Premium Layout) */}
+        <div className="stripe-card rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/90 backdrop-blur-xl">
           
           {/* Left Column: Product Category Image Showcase */}
-          <div className="lg:col-span-6 relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg group border border-slate-200/60">
+          <div className="lg:col-span-6 relative rounded-2xl overflow-hidden aspect-[4/3] shadow-xl group">
             <img
               src={selectedCategory.image}
               alt={selectedCategory.name}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
@@ -76,7 +78,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 <span className="text-xs text-slate-300 block font-medium">Recommended Spec:</span>
                 <span className="text-sm font-bold">{selectedCategory.recommendedGsm}</span>
               </div>
-              <span className="text-xs font-bold text-[#38BDF8] bg-[#38BDF8]/15 px-3 py-1.5 rounded-xl border border-[#38BDF8]/30">
+              <span className="text-xs font-bold text-[#38BDF8] bg-[#38BDF8]/15 px-3 py-1.5 rounded-xl">
                 {selectedCategory.itemCount} Styles Available
               </span>
             </div>
@@ -97,7 +99,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
             </div>
 
             {/* Popular Customization Techniques */}
-            <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+            <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm space-y-3">
               <h4 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider font-poppins">
                 Optimal Printing & Customization Methods
               </h4>
@@ -105,7 +107,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 {selectedCategory.popularTechniques.map((tech, i) => (
                   <span
                     key={i}
-                    className="flex items-center gap-2 text-xs font-semibold text-[#0A2540] bg-slate-100/90 px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs"
+                    className="flex items-center gap-2 text-xs font-semibold text-[#0A2540] bg-slate-100/90 px-3 py-1.5 rounded-xl shadow-2xs"
                   >
                     <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
                     <span>{tech}</span>
@@ -116,11 +118,11 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
 
             {/* Category Stats Grid */}
             <div className="grid grid-cols-2 gap-4 text-xs font-inter">
-              <div className="p-3.5 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/80 shadow-2xs">
+              <div className="p-3.5 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xs">
                 <span className="text-slate-500 block font-medium">Dispatch Speed:</span>
                 <span className="font-bold text-[#0A2540] text-sm">48-Hour Rush Ready</span>
               </div>
-              <div className="p-3.5 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/80 shadow-2xs">
+              <div className="p-3.5 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xs">
                 <span className="text-slate-500 block font-medium">Minimum Order:</span>
                 <span className="font-bold text-[#635BFF] text-sm">10 Pcs Low MOQ</span>
               </div>
