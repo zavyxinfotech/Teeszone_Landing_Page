@@ -28,6 +28,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <!-- Kraya AI WhatsApp Chat Widget -->
+    <script>
+      (function() {
+        function initWhatsAppWidget() {
+          window.chatWidgetConfig = {
+            whatsappNumber: "917550067721",
+            welcomeMessage: "👋 Welcome to TeesZone! \nNeed Customized T-Shirts, Uniforms, Sports Jerseys, or Bulk Apparel? \nShare your requirement and quantity. \nWe'll provide the best quote. 😊",
+            buttonText: "Chat on WhatsApp",
+            profileName: "TeesZone",
+            profileImageUrl: "https://prod-kraya.s3.ap-south-1.amazonaws.com/a1b91004-8544-43ad-9462-4331026d60ca/uNpxJayWjoMbD9up4beDHKUzcYIDTshR7jIg2NEW.png",
+            appUrl: "https://api.kraya-ai.com"
+          };
+
+          var script = document.createElement('script');
+          script.src = "https://api.kraya-ai.com/widget/chat.js?v=1786164739852";
+          script.async = true;
+          document.head.appendChild(script);
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initWhatsAppWidget);
+        } else {
+          initWhatsAppWidget();
+        }
+      })();
+    </script>
+
     <!-- Schema.org JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
       {
