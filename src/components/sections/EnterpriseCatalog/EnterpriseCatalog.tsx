@@ -55,7 +55,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
           </p>
         </div>
 
-        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Clean Model Poster Display */}
+        {/* Skiper #53 ExpandOnHover Interactive Vertical Stack & Blended Model Spotlight */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Interactive Vertical Expand Accordion Stack */}
@@ -117,10 +117,10 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
             </div>
           </div>
 
-          {/* Right Column: Clean Image Display (Studio Background Removed, Original Magazine Texts Kept in Dark Navy) */}
+          {/* Right Column: Dark Colored Typography Backdrop & Blended Model Image */}
           <div className="lg:col-span-7 flex items-center justify-center relative min-h-[380px] lg:min-h-[445px]">
             
-            {/* Dynamic Animated Ambient Glow Box */}
+            {/* Dynamic Animated Ambient Glow */}
             <motion.div
               animate={{
                 opacity: [0.3, 0.6, 0.3],
@@ -130,7 +130,23 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
               className="absolute inset-0 bg-gradient-to-r from-[#635BFF]/20 via-[#38BDF8]/20 to-[#0A2540]/20 rounded-3xl blur-2xl pointer-events-none"
             />
 
-            {/* Poster Image with Outer Studio Background Color Removed and Magazine Texts Intact */}
+            {/* Top Half Giant Dark Colored Category Backdrop Typography */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedItem.backdropTitle}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 0.85, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.25 }}
+                className="absolute top-2 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden"
+              >
+                <span className="font-poppins font-black text-7xl sm:text-8xl xl:text-9xl tracking-tighter text-[#0A2540] uppercase leading-none block whitespace-nowrap drop-shadow-sm">
+                  {selectedItem.backdropTitle}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Seamlessly Blended Model Image (Outer Background Color Removed) */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedItem.id}
@@ -145,7 +161,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                   alt={selectedItem.name}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto object-contain transition-transform duration-500 group-hover:scale-102 rounded-2xl drop-shadow-xl"
+                  className="max-h-[390px] sm:max-h-[420px] lg:max-h-[445px] w-auto object-contain transition-transform duration-500 group-hover:scale-102 rounded-2xl mix-blend-multiply filter contrast-105 brightness-102"
                 />
               </motion.div>
             </AnimatePresence>

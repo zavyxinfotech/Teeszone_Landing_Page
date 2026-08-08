@@ -1,9 +1,9 @@
-import catalogPoloPoster from '../assets/images/catalog_polo_poster_processed.png';
-import catalogPremiumPoster from '../assets/images/catalog_premium_poster_processed.png';
-import catalogOversizedPoster from '../assets/images/catalog_oversized_poster_processed.png';
-import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster_processed.png';
-import catalogJerseyPoster from '../assets/images/catalog_jersey_poster_processed.png';
-import catalogUniformPoster from '../assets/images/catalog_uniform_poster_processed.png';
+import catalogPoloPoster from '../assets/images/catalog_polo_poster.jpg';
+import catalogPremiumPoster from '../assets/images/catalog_premium_poster.jpg';
+import catalogOversizedPoster from '../assets/images/catalog_oversized_poster.jpg';
+import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster.jpg';
+import catalogJerseyPoster from '../assets/images/catalog_jersey_poster.jpg';
+import corporateUniformTeeImg from '../assets/images/teeszone_corporate_polos_1786102801522.jpg';
 
 export interface EnterpriseCatalogItem {
   id: string;
@@ -133,8 +133,8 @@ export const ENTERPRISE_CATALOG_DATA: EnterpriseCatalogItem[] = [
     name: 'Industrial & Corporate Uniforms',
     category: 'Corporate Apparel',
     backdropTitle: 'UNIFORM',
-    description: 'Tailored button-up shirts, field jackets, and hospitality uniforms equipped with stain-resistant coatings and anti-wrinkle twill weaves.',
-    image: catalogUniformPoster,
+    description: 'Custom corporate uniform T-shirts and industrial workwear tees equipped with stain-resistant coatings and anti-shrink combed weaves.',
+    image: corporateUniformTeeImg,
     price: 599,
     colors: [
       { name: 'Navy Blue', hex: '#0A2540', bgClass: 'bg-[#0A2540]' },
