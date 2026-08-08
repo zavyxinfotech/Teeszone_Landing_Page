@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ENTERPRISE_CATALOG_DATA, EnterpriseCatalogItem } from '../../../data/enterpriseCatalog';
-import { Button } from '../../common/Button';
+import { ENTERPRISE_CATALOG_DATA } from '../../../data/enterpriseCatalog';
 import { Badge } from '../../common/Badge';
-import { ArrowRight, CheckCircle2, Sliders, ShoppingBag, ChevronRight, Tag } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { formatCurrency } from '../../../utils/formatters';
 
 interface EnterpriseCatalogProps {
@@ -11,10 +10,7 @@ interface EnterpriseCatalogProps {
   onOpenQuoteModal?: () => void;
 }
 
-export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = ({
-  onOpenCustomizer,
-  onOpenQuoteModal
-}) => {
+export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
   const [activeId, setActiveId] = useState<string>(ENTERPRISE_CATALOG_DATA[0].id);
 
   const selectedItem = ENTERPRISE_CATALOG_DATA.find((item) => item.id === activeId) || ENTERPRISE_CATALOG_DATA[0];
@@ -152,72 +148,6 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = ({
                   <p className="text-sm sm:text-base text-[#425466] leading-relaxed font-inter">
                     {selectedItem.description}
                   </p>
-
-                  {/* Available Colors & Sizes */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-inter text-xs">
-                    <div className="p-3.5 bg-[#F8FAFC] rounded-2xl shadow-2xs space-y-2">
-                      <span className="font-bold text-[#0A2540] uppercase tracking-wider block font-poppins text-[10px]">
-                        Available Colorways:
-                      </span>
-                      <div className="flex items-center gap-2">
-                        {selectedItem.colors.map((c, i) => (
-                          <div key={i} className="flex items-center gap-1.5">
-                            <span className={`w-4 h-4 rounded-full ${c.bgClass} shadow-xs ring-1 ring-slate-300`} title={c.name} />
-                            <span className="text-[11px] font-medium text-slate-700 hidden sm:inline">{c.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="p-3.5 bg-[#F8FAFC] rounded-2xl shadow-2xs space-y-2">
-                      <span className="font-bold text-[#0A2540] uppercase tracking-wider block font-poppins text-[10px]">
-                        Available Size Grid:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {selectedItem.sizes.map((size) => (
-                          <span key={size} className="px-2 py-0.5 text-[10px] font-bold text-[#0A2540] bg-white rounded shadow-2xs">
-                            {size}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Optimal Customization Techniques */}
-                  <div className="p-4 bg-[#F8FAFC] rounded-2xl space-y-2.5">
-                    <span className="text-[10px] font-bold text-[#0A2540] uppercase tracking-wider block font-poppins">
-                      Recommended Printing & Embroidery Techniques:
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedItem.popularTechniques.map((tech, i) => (
-                        <span key={i} className="flex items-center gap-1.5 text-xs font-semibold text-[#0A2540] bg-white px-3 py-1 rounded-xl shadow-2xs">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#635BFF]" />
-                          <span>{tech}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action CTAs */}
-                  <div className="flex flex-wrap items-center gap-4 pt-3">
-                    <Button
-                      variant="primary"
-                      size="md"
-                      onClick={() => onOpenCustomizer?.(selectedItem.id)}
-                      icon={<Sliders className="w-4 h-4" />}
-                      className="shadow-lg shadow-[#635BFF]/30"
-                    >
-                      {selectedItem.cta}
-                    </Button>
-                    <button
-                      onClick={onOpenQuoteModal}
-                      className="px-5 py-3 rounded-xl bg-[#0A2540] hover:bg-[#1E3A5F] text-white text-xs sm:text-sm font-poppins font-bold transition-all shadow-md flex items-center gap-2 cursor-pointer"
-                    >
-                      <ShoppingBag className="w-4 h-4 text-[#38BDF8]" />
-                      <span>Request Bulk INR Quote</span>
-                    </button>
-                  </div>
-
                 </div>
               </motion.div>
             </AnimatePresence>
