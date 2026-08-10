@@ -11,7 +11,6 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { Product } from "../../../types";
-import { formatCurrency, calculateBulkPrice } from "../../../utils/formatters";
 
 export interface Skiper50ProductCardProps {
   product: Product;
@@ -40,8 +39,6 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-
-  const bulkPricing = calculateBulkPrice(product.basePrice, 100);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -168,10 +165,10 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
             {product.description}
           </p>
 
-          {/* Fabric & Fit Details */}
+          {/* Fabric Details */}
           <div className="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 pt-0.5">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-            <span className="truncate">{product.material}</span>
+            <span className="truncate">{product.fabric}</span>
           </div>
 
           {/* Available Sizes Row */}
@@ -203,28 +200,25 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
         </div>
       </div>
 
-      {/* Card Footer: Pricing in INR & Main Action Button */}
+      {/* Card Footer: MOQ & Main Action Button */}
       <div className="p-5 pt-3 bg-slate-50/70 flex items-center justify-between rounded-b-3xl">
         <div>
           <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">
-            Bulk Rate (100+ pcs)
+            Bulk Order MOQ
           </span>
-          <div className="flex items-baseline gap-1">
-            <span className="text-lg font-poppins font-black text-[#0A2540]">
-              {formatCurrency(bulkPricing.unitPrice)}
-            </span>
-            <span className="text-[11px] text-slate-500 font-medium">/pc</span>
-          </div>
+          <span className="text-sm font-poppins font-bold text-[#0A2540]">
+            {product.minQuantity} units min
+          </span>
         </div>
 
         <div className="flex items-center gap-2">
           {onOrderSample && (
             <button
               onClick={() => onOrderSample(product)}
-              className="px-3.5 py-2.5 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] text-xs font-poppins font-bold rounded-xl shadow-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer transform active:scale-95"
+              className="px-3.5 py-2.5 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] text-xs font-poppins font-bold rounded-xl shadow-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer transform active:scale-95 border border-slate-200"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
-              <span>Sample</span>
+              <span>Sample Kit</span>
             </button>
           )}
 

@@ -33,8 +33,8 @@ export interface Product {
   printTechniques: PrintTechnique[];
   rating: number;
   reviewCount: number;
-  basePrice: number; // For bulk 100+
-  samplePrice: number;
+  basePrice?: number;
+  samplePrice?: number;
   minQuantity: number;
   colors: ProductColor[];
   sizes: string[];
@@ -64,18 +64,6 @@ export interface ProcessStep {
   duration: string;
   keyOutputs: string[];
   iconName: string;
-}
-
-export interface IndustryCard {
-  id: string;
-  name: string;
-  subtitle: string;
-  description: string;
-  image: string;
-  popularApparel: string[];
-  keyBenefits: string[];
-  iconName: string;
-  clientCount: string;
 }
 
 export interface Testimonial {

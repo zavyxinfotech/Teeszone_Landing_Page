@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ENTERPRISE_CATALOG_DATA } from '../../../data/enterpriseCatalog';
 import { Badge } from '../../common/Badge';
 import { ChevronRight } from 'lucide-react';
-import { formatCurrency } from '../../../utils/formatters';
 
 interface EnterpriseCatalogProps {
   onOpenCustomizer?: (categoryId?: string) => void;
@@ -94,7 +93,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                             {item.name}
                           </h3>
                           <span className={`text-[10px] font-inter ${isActive ? 'text-slate-300' : 'text-[#6B7C93]'}`}>
-                            {item.recommendedGsm} • From {formatCurrency(item.price)}/pc
+                            {item.recommendedGsm} • {item.badge}
                           </span>
                         </div>
                       </div>

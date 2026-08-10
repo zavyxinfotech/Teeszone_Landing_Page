@@ -14,15 +14,16 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Exact navigation links as specified
+  // Nav links matching active sections
   const primaryNavLinks = [
     { name: 'Categories', href: '#categories' },
     { name: 'Why Us', href: '#why-us' },
     { name: 'How It Works', href: '#process' },
     { name: 'Products', href: '#products' },
-    { name: 'Industries', href: '#industries' },
+    { name: 'Our Team', href: '#team' },
     { name: 'Testimonials', href: '#testimonials' },
-    { name: 'FAQs', href: '#faq' }
+    { name: 'FAQs', href: '#faq' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   return (

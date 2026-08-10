@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Product, PrintTechnique } from '../../types';
-import { X, Upload, Check, RefreshCw, Layers, Sparkles, Send, ShieldCheck, Palette } from 'lucide-react';
+import { X, Upload, Check, Layers, Send } from 'lucide-react';
 import { Button } from './Button';
-import { calculateBulkPrice, formatCurrency } from '../../utils/formatters';
 
 interface CustomizerModalProps {
   product: Product | null;
@@ -45,9 +44,6 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
 
-  const basePrice = product ? product.basePrice : 495;
-  const priceInfo = calculateBulkPrice(basePrice, quantity);
-
   const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -72,8 +68,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
           printTechnique,
           printPosition,
           customText,
-          quantity,
-          totalPrice: priceInfo.totalPrice
+          quantity
         });
         onClose();
       }, 1500);
@@ -100,7 +95,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
               TeesZone Real-Time Apparel Customizer
             </h2>
             <p className="text-xs text-[#6B7C93]">
-              Configure colors, print techniques, and vector placement with instant live quote estimation.
+              Configure colors, print techniques, and vector placement with instant prepress quote submission.
             </p>
           </div>
         </div>
@@ -288,12 +283,12 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                 </div>
               </div>
 
-              {/* Bulk Quantity Slider & Pricing */}
+              {/* Bulk Quantity Slider */}
               <div className="p-4 bg-[#F8FAFC] rounded-2xl border border-slate-200 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#0A2540] uppercase">Quantity ({quantity} Pcs)</span>
+                  <span className="text-xs font-bold text-[#0A2540] uppercase">Estimated Bulk Quantity ({quantity} Pcs)</span>
                   <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                    {priceInfo.discountPercentage}% Wholesale Discount Applied
+                    Bulk Production Ready
                   </span>
                 </div>
                 <input
@@ -305,10 +300,6 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                   onChange={(e) => setQuantity(Number(e.target.value))}
                   className="w-full accent-[#635BFF] cursor-pointer"
                 />
-                <div className="flex items-center justify-between text-xs pt-1 border-t border-slate-200">
-                  <span className="text-[#6B7C93]">Unit Price: <strong>{formatCurrency(priceInfo.unitPrice)}</strong></span>
-                  <span className="text-sm font-extrabold text-[#635BFF]">Estimated Total: {formatCurrency(priceInfo.totalPrice)}</span>
-                </div>
               </div>
 
               {/* Submit CTA */}
@@ -320,7 +311,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                 className="w-full"
                 icon={<Send className="w-4 h-4" />}
               >
-                Request Free Prepress Proof & Instant Quote
+                Request Free Prepress Proof & Custom Quote
               </Button>
             </div>
           </form>

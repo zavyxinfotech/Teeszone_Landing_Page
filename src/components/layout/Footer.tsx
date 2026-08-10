@@ -28,9 +28,7 @@ export const Footer: React.FC = () => {
             <Logo variant="dark" size="md" showTagline />
             
             <div className="space-y-2 pt-1">
-              <h3 className="text-sm font-poppins font-bold text-white tracking-wide uppercase">
-                {BRAND.legalName}
-              </h3>
+             
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#635BFF]/20 border border-[#635BFF]/30 text-xs font-mono text-[#38BDF8]">
                 <FileText className="w-3.5 h-3.5" />
                 <span>GSTIN: {BRAND.gstin}</span>

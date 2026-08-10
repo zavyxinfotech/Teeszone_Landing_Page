@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Product } from '../../types';
-import { X, Star, ShieldCheck, Check, Truck, Zap, ShoppingBag, Sliders } from 'lucide-react';
-import { calculateBulkPrice, formatCurrency } from '../../utils/formatters';
+import { X, Star, Sliders, ShoppingBag } from 'lucide-react';
 import { Button } from './Button';
 import { Badge } from './Badge';
 
@@ -23,8 +22,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2] || product.sizes[0]);
   const [quantity, setQuantity] = useState(100);
-
-  const priceInfo = calculateBulkPrice(product.basePrice, quantity);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A2540]/60 backdrop-blur-md animate-fadeIn">
@@ -64,7 +61,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
             {/* Print techniques badges */}
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <h4 className="text-xs font-bold text-[#6B7C93] uppercase tracking-wider mb-2">Available Customizations</h4>
+              <h4 className="text-xs font-bold text-[#6B7C93] uppercase tracking-wider mb-2">Available Customization Methods</h4>
               <div className="flex flex-wrap gap-1.5">
                 {product.printTechniques.map((tech, idx) => (
                   <span key={idx} className="text-xs bg-white text-[#0A2540] border border-slate-200 px-2.5 py-1 rounded-lg font-medium shadow-xs">
@@ -75,7 +72,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             </div>
           </div>
 
-          {/* Right Column: Details & Pricing Calculator */}
+          {/* Right Column: Details & Custom Order Parameters */}
           <div className="space-y-5">
             <div>
               <div className="flex items-center gap-2 mb-1">
@@ -156,14 +153,14 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               </div>
             </div>
 
-            {/* Quantity Price Calculator Slider */}
+            {/* Quantity Selector Slider */}
             <div className="p-4 bg-[#F4F7FB] rounded-2xl border border-slate-200/80 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-[#0A2540] uppercase tracking-wide">
-                  3. Bulk Order Quantity
+                  3. Enterprise Order Quantity
                 </span>
                 <span className="text-xs font-bold text-[#635BFF] bg-[#635BFF]/10 px-2.5 py-0.5 rounded-full">
-                  Save {priceInfo.discountPercentage}%
+                  Bulk Wholesale Solution
                 </span>
               </div>
 
@@ -184,18 +181,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
                   className="w-20 px-2 py-1 text-sm font-bold border border-slate-300 rounded-lg text-center bg-white"
                 />
-              </div>
-
-              <div className="flex items-baseline justify-between pt-2 border-t border-slate-200">
-                <div>
-                  <span className="text-xs text-[#6B7C93]">Price per unit: </span>
-                  <span className="text-lg font-bold text-[#0A2540]">{formatCurrency(priceInfo.unitPrice)}</span>
-                  <span className="text-xs text-slate-400 line-through ml-1">{formatCurrency(product.basePrice)}</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-xs text-[#6B7C93] block">Estimated Total:</span>
-                  <span className="text-xl font-extrabold text-[#635BFF]">{formatCurrency(priceInfo.totalPrice)}</span>
-                </div>
               </div>
             </div>
 
@@ -221,7 +206,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                 }}
                 icon={<ShoppingBag className="w-4 h-4" />}
               >
-                Order Sample Kit
+                Request Sample Kit
               </Button>
             </div>
           </div>

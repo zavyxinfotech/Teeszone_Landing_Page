@@ -7,7 +7,7 @@ import { ProductCategoriesSection } from '../components/sections/ProductCategori
 import { WhyChooseSection } from '../components/sections/WhyChooseSection';
 import { PrintingProcessSection } from '../components/sections/PrintingProcessSection';
 import { FeaturedProductsSection } from '../components/sections/FeaturedProductsSection';
-import { IndustriesSection } from '../components/sections/IndustriesSection';
+import { MeetOurTeamSection } from '../components/sections/MeetOurTeamSection';
 import { StatisticsSection } from '../components/sections/StatisticsSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
 import { FAQSection } from '../components/sections/FAQSection';
@@ -85,7 +85,7 @@ export const Home: React.FC = () => {
             <ProductCategoriesSection onOpenCustomizer={handleOpenCustomizer} />
           </SectionTransition>
 
-          {/* 5. Why Choose TeesZone (Bento Grid) */}
+          {/* 5. Why Choose TeesZone */}
           <SectionTransition index={3}>
             <WhyChooseSection />
           </SectionTransition>
@@ -104,9 +104,9 @@ export const Home: React.FC = () => {
             />
           </SectionTransition>
 
-          {/* 8. Industries We Serve */}
+          {/* 8. Meet Our Team */}
           <SectionTransition index={6}>
-            <IndustriesSection onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
+            <MeetOurTeamSection />
           </SectionTransition>
 
           {/* 9. Statistics */}
@@ -133,7 +133,7 @@ export const Home: React.FC = () => {
             />
           </SectionTransition>
 
-          {/* 13. Contact Preview */}
+          {/* 13. Contact Preview & Corporate Office Map */}
           <SectionTransition index={11}>
             <ContactPreviewSection />
           </SectionTransition>

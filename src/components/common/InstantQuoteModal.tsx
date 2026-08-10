@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { X, Calculator, Check, ArrowRight, Download, Send, Zap } from 'lucide-react';
-import { calculateBulkPrice, formatCurrency } from '../../utils/formatters';
+import { X, Calculator, Check, Send } from 'lucide-react';
 import { Button } from './Button';
 
 interface InstantQuoteModalProps {
@@ -12,15 +11,10 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
   if (!isOpen) return null;
 
   const [apparelType, setApparelType] = useState('Executive Honeycomb Polo');
-  const [basePrice, setBasePrice] = useState(575);
   const [quantity, setQuantity] = useState(250);
   const [numLocations, setNumLocations] = useState(1);
   const [email, setEmail] = useState('');
   const [isSent, setIsSent] = useState(false);
-
-  // Print location surcharge (₹95 per addl location)
-  const effectiveBasePrice = basePrice + (numLocations - 1) * 95;
-  const priceInfo = calculateBulkPrice(effectiveBasePrice, quantity);
 
   const handleSendQuote = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,10 +42,10 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
           </div>
           <div>
             <h2 className="text-xl md:text-2xl font-poppins font-bold text-[#0A2540]">
-              Instant Bulk Wholesale Price Calculator
+              Instant Bulk Wholesale Inquiry
             </h2>
             <p className="text-xs text-[#6B7C93]">
-              Real-time transparent pricing tiers for corporate orders, sports leagues, and merchandise.
+              Submit your project specs for corporate orders, sports leagues, and enterprise merchandise.
             </p>
           </div>
         </div>
@@ -61,9 +55,9 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
             <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-[#0A2540]">Official Quote PDF Emailed!</h3>
+            <h3 className="text-2xl font-bold text-[#0A2540]">Inquiry Submitted!</h3>
             <p className="text-sm text-[#6B7C93]">
-              We sent your line-item quotation and volume breakdown to <strong>{email}</strong>.
+              We sent your line-item spec overview to <strong>{email}</strong>. Our prepress team will contact you shortly.
             </p>
           </div>
         ) : (
@@ -75,20 +69,17 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {[
-                  { name: 'Executive Polo', price: 575 },
-                  { name: '240 GSM Oversized Tee', price: 495 },
-                  { name: 'Bio-Washed Crewneck', price: 325 },
-                  { name: '380 GSM Fleece Hoodie', price: 1250 },
-                  { name: 'Sublimated Sports Jersey', price: 450 },
-                  { name: 'Corporate Work Shirt', price: 750 }
+                  { name: 'Executive Polo' },
+                  { name: '240 GSM Oversized Tee' },
+                  { name: 'Bio-Washed Crewneck' },
+                  { name: '380 GSM Fleece Hoodie' },
+                  { name: 'Sublimated Sports Jersey' },
+                  { name: 'Corporate Work Shirt' }
                 ].map((item) => (
                   <button
                     key={item.name}
                     type="button"
-                    onClick={() => {
-                      setApparelType(item.name);
-                      setBasePrice(item.price);
-                    }}
+                    onClick={() => setApparelType(item.name)}
                     className={`p-2.5 rounded-xl text-xs font-semibold text-left border transition-all cursor-pointer ${
                       apparelType === item.name
                         ? 'border-[#635BFF] bg-[#635BFF]/10 text-[#635BFF]'
@@ -96,7 +87,6 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
                     }`}
                   >
                     <span className="block truncate">{item.name}</span>
-                    <span className="text-[10px] text-[#6B7C93]">From {formatCurrency(item.price)}</span>
                   </button>
                 ))}
               </div>
@@ -136,7 +126,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
                   3. Order Quantity: <span className="text-[#635BFF] font-extrabold text-sm">{quantity} Units</span>
                 </label>
                 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  {priceInfo.discountPercentage}% Tier Discount
+                  Bulk Tier Wholesale
                 </span>
               </div>
               <input
@@ -156,38 +146,18 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
               </div>
             </div>
 
-            {/* Pricing Summary Box */}
-            <div className="p-4 bg-[#F4F7FB] rounded-2xl border border-slate-200/90 space-y-2">
-              <div className="flex items-center justify-between text-xs text-[#6B7C93]">
-                <span>Base Garment & Print Cost:</span>
-                <span className="font-semibold text-[#0A2540]">{formatCurrency(effectiveBasePrice)} / unit</span>
-              </div>
-              <div className="flex items-center justify-between text-xs text-[#6B7C93]">
-                <span>Volume Discount ({priceInfo.discountPercentage}%):</span>
-                <span className="font-semibold text-emerald-600">-{formatCurrency(priceInfo.savings)} total</span>
-              </div>
-              <div className="flex items-center justify-between text-sm font-bold text-[#0A2540] pt-2 border-t border-slate-200">
-                <span>Effective Cost per Unit:</span>
-                <span className="text-[#0A2540]">{formatCurrency(priceInfo.unitPrice)}</span>
-              </div>
-              <div className="flex items-center justify-between text-base font-extrabold text-[#635BFF] pt-1">
-                <span>Total Project Investment:</span>
-                <span className="text-2xl font-poppins">{formatCurrency(priceInfo.totalPrice)}</span>
-              </div>
-            </div>
-
-            {/* Email for official PDF quote */}
-            <div className="flex gap-2">
+            {/* Email for official quote */}
+            <div className="flex gap-2 pt-2">
               <input
                 required
                 type="email"
-                placeholder="Enter work email for instant PDF quote..."
+                placeholder="Enter work email for custom bulk quote..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-4 py-3 rounded-xl border border-slate-200 text-xs text-[#0A2540] focus:outline-none focus:border-[#635BFF]"
               />
               <Button type="submit" variant="primary" size="md" icon={<Send className="w-4 h-4" />}>
-                Email Quote
+                Submit Inquiry
               </Button>
             </div>
           </form>
