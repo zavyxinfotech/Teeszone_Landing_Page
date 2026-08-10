@@ -57,7 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden bg-slate-950 -mt-[69px] pt-[69px]" aria-label="TeesZone Custom Apparel Hero">
       
-      {/* 1. Optimized Responsive Background Video Layer */}
+      {/* 1. Full-Width Balanced Background Video Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
           ref={videoRef}
@@ -66,18 +66,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           muted
           playsInline
           preload="metadata"
-          className="w-full h-full object-cover object-[70%_center] sm:object-right filter brightness-[1.05] contrast-[1.05] saturate-[1.05] transition-all duration-700"
+          className="w-full h-full object-cover object-center filter brightness-[1.05] contrast-[1.05] saturate-[1.05] transition-all duration-700"
         >
           <source src={heroBgVideo} type="video/mp4" />
           <source src="/assets/videos/Hero_Section_Background_Video.mp4" type="video/mp4" />
         </video>
 
-        {/* Readability Scrim Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 sm:via-slate-950/70 to-slate-950/20 w-full lg:w-[68%]" />
-        <div className="absolute inset-0 bg-slate-950/25" />
+        {/* Cohesive Full-Width Cinematic Scrim Gradient (No Harsh Vertical Half-Split) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/35 w-full h-full" />
+        
+        {/* Subtle Ambient Radial Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(99,91,255,0.15),transparent_60%)]" />
 
         {/* Bottom Fade to Main Page Background (#F8FAFC) */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] via-slate-950/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] via-slate-950/20 to-transparent" />
       </div>
 
       {/* 2. Bottom-Left Animated Glowing Particle Effect */}
@@ -85,11 +87,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <motion.div
           animate={{
             scale: [0.9, 1.15, 0.9],
-            opacity: [0.35, 0.65, 0.35],
+            opacity: [0.3, 0.6, 0.3],
             rotate: [0, 45, 0]
           }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-tr from-[#38BDF8]/25 via-[#635BFF]/20 to-transparent rounded-full blur-3xl"
+          className="w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-tr from-[#38BDF8]/20 via-[#635BFF]/15 to-transparent rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -111,24 +113,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         />
       </div>
 
-      {/* 3. Bottom-Right Soft Cinematic Smoky Mist Effect */}
+      {/* 3. Bottom-Right Soft Cinematic Smoky Mist Effect (Replacing AI/Gemini Visual) */}
       <div className="absolute bottom-0 right-0 z-10 pointer-events-none overflow-hidden w-72 h-72 sm:w-96 sm:h-96">
         <motion.div
           animate={{
             x: [20, -20, 20],
             y: [10, -15, 10],
             scale: [1, 1.1, 1],
-            opacity: [0.3, 0.55, 0.3]
+            opacity: [0.25, 0.5, 0.25]
           }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 right-0 w-full h-full rounded-full blur-3xl bg-[radial-gradient(circle_at_90%_90%,rgba(255,255,255,0.12),rgba(99,91,255,0.08),transparent_70%)]"
+          className="absolute bottom-0 right-0 w-full h-full rounded-full blur-3xl bg-[radial-gradient(circle_at_90%_90%,rgba(255,255,255,0.1),rgba(99,91,255,0.08),transparent_70%)]"
         />
         <motion.div
           animate={{
             x: [-15, 15, -15],
             y: [-10, 15, -10],
             scale: [1.05, 0.95, 1.05],
-            opacity: [0.25, 0.45, 0.25]
+            opacity: [0.2, 0.4, 0.2]
           }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-4 right-4 w-4/5 h-4/5 rounded-full blur-2xl bg-[radial-gradient(circle_at_80%_80%,rgba(56,189,248,0.1),rgba(10,37,64,0.15),transparent_65%)]"

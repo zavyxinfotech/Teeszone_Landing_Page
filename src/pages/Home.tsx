@@ -15,6 +15,7 @@ import { FinalCTASection } from '../components/sections/FinalCTASection';
 import { ContactPreviewSection } from '../components/sections/ContactPreviewSection';
 import { Footer } from '../components/layout/Footer';
 import { SectionTransition } from '../components/common/SectionTransition';
+import { FloatingWhatsApp } from '../components/common/FloatingWhatsApp';
 
 // Modals
 import { QuickViewModal } from '../components/common/QuickViewModal';
@@ -143,6 +144,9 @@ export const Home: React.FC = () => {
         <SectionTransition index={12}>
           <Footer />
         </SectionTransition>
+
+        {/* Floating Clean Native WhatsApp Button */}
+        <FloatingWhatsApp />
 
         {/* Interactive Modals */}
         <QuickViewModal
