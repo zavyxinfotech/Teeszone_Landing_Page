@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '../common/Button';
-import { 
-  ArrowRight, 
-  Play, 
-  Pause 
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import heroBgVideo from '../../assets/videos/Hero_Section_Background_Video.mp4';
 
 interface HeroSectionProps {
@@ -14,7 +10,7 @@ interface HeroSectionProps {
   onOpenCustomizerModal?: () => void;
 }
 
-// Hero Carousel Slide Data
+// Hero Carousel Headline Messages (Auto-rotating silently)
 const HERO_SLIDES = [
   {
     id: 0,
@@ -34,47 +30,34 @@ const HERO_SLIDES = [
     id: 2,
     headlinePrefix: "Express 48-Hour Dispatch & ",
     headlineGradient: "Low 10 Pcs MOQ.",
-    subtitle: "Fastest turnaround time in the custom apparel industry with zero MOQ constraints. Order executive sample prototypes or 10,000 corporate polo units with live pricing.",
+    subtitle: "Fastest turnaround time in the custom apparel industry with zero MOQ constraints. Order executive sample prototypes or 10,000 corporate polo units with live specs.",
     ctaText: "Start Order Inquiry"
   }
 ];
 
-const SLIDE_DURATION = 6000; // 6 seconds per slide
+const SLIDE_DURATION = 6000; // 6 seconds silent auto-transition
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenQuoteModal
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-advance slide carousel with linear loader timing
+  // Silent background headline rotation
   useEffect(() => {
-    if (!isPlaying) return;
-
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, SLIDE_DURATION);
 
     return () => clearInterval(timer);
-  }, [isPlaying, currentSlide]);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  }, []);
 
   const activeSlideData = HERO_SLIDES[currentSlide];
 
   return (
-    <section className="relative min-h-screen lg:h-screen flex items-center overflow-hidden bg-slate-950 -mt-[69px] pt-[69px]">
-      {/* 1. Single Optimized Background Animation Video Layer (Aligned Right) */}
+    <section className="relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden bg-slate-950 -mt-[69px] pt-[69px]" aria-label="TeesZone Custom Apparel Hero">
+      
+      {/* 1. Optimized Responsive Background Video Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
           ref={videoRef}
@@ -83,22 +66,77 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           muted
           playsInline
           preload="metadata"
-          className="w-full h-full object-cover object-right filter brightness-[1.05] contrast-[1.05] saturate-[1.05] transition-all duration-700"
+          className="w-full h-full object-cover object-[70%_center] sm:object-right filter brightness-[1.05] contrast-[1.05] saturate-[1.05] transition-all duration-700"
         >
           <source src={heroBgVideo} type="video/mp4" />
           <source src="/assets/videos/Hero_Section_Background_Video.mp4" type="video/mp4" />
         </video>
 
-        {/* Dark Left Scrim Gradient for Readability, Clear Right Side Video */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent w-full lg:w-[65%]" />
-        <div className="absolute inset-0 bg-slate-950/20" />
+        {/* Readability Scrim Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 sm:via-slate-950/70 to-slate-950/20 w-full lg:w-[68%]" />
+        <div className="absolute inset-0 bg-slate-950/25" />
 
-        {/* Bottom Fade to Page Background (#F8FAFC) */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#F8FAFC] via-slate-950/20 to-transparent" />
+        {/* Bottom Fade to Main Page Background (#F8FAFC) */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] via-slate-950/30 to-transparent" />
       </div>
 
-      {/* 2. Main Hero Content Container with Animated Carousel Slide Content */}
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10 py-10 lg:py-0">
+      {/* 2. Bottom-Left Animated Glowing Particle Effect */}
+      <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 pointer-events-none">
+        <motion.div
+          animate={{
+            scale: [0.9, 1.15, 0.9],
+            opacity: [0.35, 0.65, 0.35],
+            rotate: [0, 45, 0]
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-tr from-[#38BDF8]/25 via-[#635BFF]/20 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 15, -15, 0],
+            y: [0, -15, 15, 0],
+            opacity: [0.4, 0.8, 0.4]
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-6 left-6 w-3 h-3 bg-[#38BDF8] rounded-full blur-xs shadow-lg shadow-[#38BDF8]/50"
+        />
+        <motion.div
+          animate={{
+            x: [0, -20, 20, 0],
+            y: [0, 20, -20, 0],
+            opacity: [0.3, 0.7, 0.3]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-12 left-14 w-2 h-2 bg-[#635BFF] rounded-full blur-xs shadow-lg shadow-[#635BFF]/50"
+        />
+      </div>
+
+      {/* 3. Bottom-Right Soft Cinematic Smoky Mist Effect */}
+      <div className="absolute bottom-0 right-0 z-10 pointer-events-none overflow-hidden w-72 h-72 sm:w-96 sm:h-96">
+        <motion.div
+          animate={{
+            x: [20, -20, 20],
+            y: [10, -15, 10],
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.55, 0.3]
+          }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 right-0 w-full h-full rounded-full blur-3xl bg-[radial-gradient(circle_at_90%_90%,rgba(255,255,255,0.12),rgba(99,91,255,0.08),transparent_70%)]"
+        />
+        <motion.div
+          animate={{
+            x: [-15, 15, -15],
+            y: [-10, 15, -10],
+            scale: [1.05, 0.95, 1.05],
+            opacity: [0.25, 0.45, 0.25]
+          }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-4 right-4 w-4/5 h-4/5 rounded-full blur-2xl bg-[radial-gradient(circle_at_80%_80%,rgba(56,189,248,0.1),rgba(10,37,64,0.15),transparent_65%)]"
+        />
+      </div>
+
+      {/* 4. Main Hero Content Container */}
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 relative z-20 py-12 sm:py-16 lg:py-0">
         <div className="max-w-2xl text-left space-y-6">
           
           <AnimatePresence mode="wait">
@@ -124,7 +162,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </p>
 
               {/* Primary CTA Button */}
-              <div className="pt-1 flex text-left">
+              <div className="pt-2 flex text-left">
                 <Button
                   variant="primary"
                   size="md"
@@ -138,50 +176,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </motion.div>
           </AnimatePresence>
 
-          {/* 3. Hero Carousel Linear Style Loaders (Progress Fill Indicators) */}
-          <div className="pt-4 flex items-center gap-3">
-            {HERO_SLIDES.map((slide, index) => {
-              const isActive = index === currentSlide;
-              return (
-                <button
-                  key={slide.id}
-                  onClick={() => setCurrentSlide(index)}
-                  className="group py-2 cursor-pointer flex flex-col gap-1.5 focus:outline-none"
-                  aria-label={`Go to slide ${index + 1}`}
-                >
-                  <div className="w-20 sm:w-28 h-1.5 bg-white/20 rounded-full overflow-hidden relative shadow-xs">
-                    {isActive ? (
-                      <motion.div
-                        key={`loader-${currentSlide}`}
-                        initial={{ width: "0%" }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
-                        className="h-full bg-gradient-to-r from-[#38BDF8] via-[#635BFF] to-[#C084FC] rounded-full"
-                      />
-                    ) : (
-                      <div className="w-0 h-full bg-white/40 group-hover:w-full transition-all duration-300 rounded-full" />
-                    )}
-                  </div>
-                  <span className={`text-[10px] font-poppins font-bold uppercase tracking-wider text-left ${isActive ? 'text-[#38BDF8]' : 'text-slate-400 group-hover:text-slate-200'}`}>
-                    0{index + 1} Slide
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
         </div>
       </div>
-
-      {/* 4. Small Play/Pause Button Only (Bottom Right Corner) */}
-      <button
-        onClick={togglePlay}
-        className="absolute bottom-6 right-6 z-20 p-2.5 bg-slate-950/80 hover:bg-slate-900 backdrop-blur-md rounded-full text-white shadow-xl transition-all cursor-pointer hover:scale-110"
-        title={isPlaying ? "Pause Video" : "Play Video"}
-        aria-label={isPlaying ? "Pause Video" : "Play Video"}
-      >
-        {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-      </button>
 
     </section>
   );
