@@ -6,6 +6,7 @@ interface BadgeProps {
   size?: 'sm' | 'md';
   icon?: React.ReactNode;
   pulse?: boolean;
+  className?: string;
 }
 
 export const Badge: React.FC<BadgeProps> = ({
@@ -13,7 +14,8 @@ export const Badge: React.FC<BadgeProps> = ({
   variant = 'primary',
   size = 'md',
   icon,
-  pulse = false
+  pulse = false,
+  className = ''
 }) => {
   const sizeStyles = {
     sm: 'text-[11px] px-2.5 py-0.5 gap-1',
@@ -30,7 +32,7 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   return (
-    <span className={`inline-flex items-center font-poppins font-semibold tracking-wide rounded-full whitespace-nowrap ${sizeStyles[size]} ${variantStyles[variant]}`}>
+    <span className={`inline-flex items-center font-poppins font-semibold tracking-wide rounded-full whitespace-nowrap ${sizeStyles[size]} ${variantStyles[variant]} ${className}`}>
       {pulse && (
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
