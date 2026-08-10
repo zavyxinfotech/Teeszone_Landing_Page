@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BRAND } from '../../data/brand';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, FileText } from 'lucide-react';
 
 export const ContactPreviewSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,9 +26,9 @@ export const ContactPreviewSection: React.FC = () => {
     <section className="py-12 lg:py-16 lg:min-h-screen lg:flex lg:flex-col lg:justify-center bg-transparent relative" aria-label="Contact & Prepress Consultation">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Contact Details */}
+          {/* Left Column: Contact Details & Official Locations */}
           <div className="lg:col-span-5 space-y-5">
             <div>
               <Badge variant="primary" size="md" className="mb-2">
@@ -38,42 +38,63 @@ export const ContactPreviewSection: React.FC = () => {
                 Speak With a Dedicated Apparel Specialist
               </h2>
               <p className="text-xs sm:text-sm text-[#425466] mt-2 leading-relaxed font-inter">
-                Custom embroidery specs, split-shipments, or swag boxes? Our team is available 24/7.
+                Custom embroidery specs, bulk uniform orders, or corporate swag boxes? Our team is available to assist you.
               </p>
             </div>
 
             <div className="space-y-3 font-inter">
+              {/* GSTIN & Legal Name */}
               <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xs flex items-center gap-3.5">
                 <div className="p-2.5 bg-[#635BFF]/10 text-[#635BFF] rounded-xl shrink-0">
-                  <Phone className="w-4 h-4" />
+                  <FileText className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">Phone Support</span>
-                  <a href={`tel:${BRAND.contact.phone}`} className="text-sm font-bold text-[#0A2540] hover:text-[#635BFF] transition-colors">
-                    {BRAND.contact.phone}
-                  </a>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">Legal Entity & GSTIN</span>
+                  <span className="text-xs font-bold text-[#0A2540] block font-poppins">{BRAND.legalName}</span>
+                  <span className="text-[11px] font-mono text-[#0284C7] font-semibold">GSTIN: {BRAND.gstin}</span>
                 </div>
               </div>
 
+              {/* Phone Numbers */}
+              <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xs flex items-center gap-3.5">
+                <div className="p-2.5 bg-emerald-100 text-emerald-700 rounded-xl shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">Direct Phone Line</span>
+                  <div className="flex items-center gap-2">
+                    <a href={`tel:${BRAND.contact.phonePrimary}`} className="text-xs sm:text-sm font-bold text-[#0A2540] hover:text-[#635BFF] transition-colors">
+                      {BRAND.contact.phonePrimary}
+                    </a>
+                    <span className="text-slate-400">|</span>
+                    <a href={`tel:${BRAND.contact.phoneSecondary}`} className="text-xs sm:text-sm font-bold text-[#0A2540] hover:text-[#635BFF] transition-colors">
+                      {BRAND.contact.phoneSecondary}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Official Email */}
               <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xs flex items-center gap-3.5">
                 <div className="p-2.5 bg-[#38BDF8]/15 text-[#0284C7] rounded-xl shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">Sales & Prepress Email</span>
-                  <a href={`mailto:${BRAND.contact.salesEmail}`} className="text-sm font-bold text-[#0A2540] hover:text-[#635BFF] transition-colors">
-                    {BRAND.contact.salesEmail}
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">Official Sales & Inquiry Email</span>
+                  <a href={`mailto:${BRAND.contact.email}`} className="text-xs sm:text-sm font-bold text-[#0A2540] hover:text-[#635BFF] transition-colors block">
+                    {BRAND.contact.email}
                   </a>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xs flex items-center gap-3.5">
-                <div className="p-2.5 bg-emerald-100 text-emerald-700 rounded-xl shrink-0">
+              {/* Head Office Location */}
+              <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xs flex items-start gap-3.5">
+                <div className="p-2.5 bg-[#635BFF]/10 text-[#635BFF] rounded-xl shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">Global Headquarters</span>
-                  <span className="text-xs font-bold text-[#0A2540] block">{BRAND.contact.headquarters}</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">{BRAND.contact.headOffice.title}</span>
+                  <span className="text-xs text-[#0A2540] block font-medium leading-normal">{BRAND.contact.headOffice.address}</span>
                 </div>
               </div>
             </div>
@@ -104,7 +125,7 @@ export const ContactPreviewSection: React.FC = () => {
                     <input
                       required
                       type="text"
-                      placeholder="e.g. Sarah Lin"
+                      placeholder="e.g. Rajesh Kumar"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl text-xs text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-2xs"
@@ -115,7 +136,7 @@ export const ContactPreviewSection: React.FC = () => {
                     <input
                       required
                       type="email"
-                      placeholder="sarah@company.com"
+                      placeholder="rajesh@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl text-xs text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-2xs"
@@ -128,7 +149,7 @@ export const ContactPreviewSection: React.FC = () => {
                   <input
                     required
                     type="tel"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+91 99446 87485"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl text-xs text-[#0A2540] font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF]/20 transition-all shadow-2xs"

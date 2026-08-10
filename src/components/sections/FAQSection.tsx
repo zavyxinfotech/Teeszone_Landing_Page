@@ -109,10 +109,10 @@ export const FAQSection: React.FC = () => {
             </div>
           </div>
           <a
-            href={`tel:${BRAND.contact.phone}`}
+            href={`tel:${BRAND.contact.phonePrimary}`}
             className="px-5 py-2.5 bg-[#0A2540] hover:bg-[#1E3A5F] text-white text-xs font-poppins font-bold rounded-xl transition-all whitespace-nowrap shadow-md"
           >
-            Call {BRAND.contact.phone}
+            Call {BRAND.contact.phonePrimary}
           </a>
         </div>
 
