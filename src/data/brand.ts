@@ -27,6 +27,7 @@ export const BRAND = {
     }
   },
   socials: {
+    facebook: "https://facebook.com/teeszone_official",
     linkedin: "https://linkedin.com/company/teeszone",
     instagram: "https://instagram.com/teeszone_official",
     twitter: "https://twitter.com/teeszone",

@@ -1,16 +1,75 @@
 import React from 'react';
 import { Badge } from '../common/Badge';
 import { 
+  Factory, 
+  Layers, 
   Printer, 
-  Zap, 
-  Palette, 
-  Box, 
-  Clock
+  RefreshCw, 
+  Users, 
+  Truck,
+  CheckCircle2
 } from 'lucide-react';
 
 export const WhyChooseSection: React.FC = () => {
+  const advantages = [
+    {
+      id: 'direct-manufacturer',
+      title: 'Direct Manufacturer',
+      description: 'Made in Tiruppur with quality-focused manufacturing.',
+      badge: 'Tiruppur Hub',
+      icon: Factory,
+      accent: 'bg-[#635BFF]/10 text-[#635BFF]',
+      cardSpan: 'md:col-span-2'
+    },
+    {
+      id: 'premium-fabrics',
+      title: 'Premium Fabrics',
+      description: 'Cotton, Polycotton, EcoBlend & Nano Poly options.',
+      badge: 'Zero-Lint Combed',
+      icon: Layers,
+      accent: 'bg-[#38BDF8]/15 text-[#0284C7]',
+      cardSpan: 'md:col-span-1'
+    },
+    {
+      id: 'custom-branding',
+      title: 'Custom Branding',
+      description: 'Professional high-density printing and precision embroidery.',
+      badge: '1200 DPI Precision',
+      icon: Printer,
+      accent: 'bg-emerald-100 text-emerald-700',
+      cardSpan: 'md:col-span-1'
+    },
+    {
+      id: 'end-to-end',
+      title: 'End-to-End Service',
+      description: 'From design and manufacturing to final doorstep delivery.',
+      badge: 'In-House Prepress',
+      icon: RefreshCw,
+      accent: 'bg-amber-100 text-amber-700',
+      cardSpan: 'md:col-span-1'
+    },
+    {
+      id: 'bulk-ready',
+      title: 'Bulk Order Ready',
+      description: 'Competitive solutions for businesses and organizations of all sizes.',
+      badge: 'Wholesale Pricing',
+      icon: Users,
+      accent: 'bg-purple-100 text-purple-700',
+      cardSpan: 'md:col-span-1'
+    },
+    {
+      id: 'pan-india',
+      title: 'Pan-India Delivery',
+      description: 'Reliable express delivery across India with live tracking.',
+      badge: 'Fast Logistics',
+      icon: Truck,
+      accent: 'bg-sky-100 text-sky-700',
+      cardSpan: 'md:col-span-2'
+    }
+  ];
+
   return (
-    <section id="why-us" className="py-12 lg:py-16 lg:min-h-screen lg:flex lg:flex-col lg:justify-center bg-transparent relative">
+    <section id="why-us" className="py-12 lg:py-16 lg:min-h-screen lg:flex lg:flex-col lg:justify-center bg-transparent relative" aria-label="Why Choose TeesZone">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -19,126 +78,46 @@ export const WhyChooseSection: React.FC = () => {
             THE TEESZONE ADVANTAGE
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
-            Why World-Class Brands Choose TeesZone
+            Why Choose TeesZone?
           </h2>
-          <p className="text-sm sm:text-base text-[#425466] font-inter leading-relaxed">
-            Japanese Tajima embroidery, M&R automatic screen printing, and OEKO-TEX organic yarns.
+          <p className="text-sm sm:text-base text-[#425466] font-inter font-semibold leading-relaxed">
+            Quality apparel. Custom solutions. Reliable service.
           </p>
         </div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          
-          {/* Card 1: Large Featured Card */}
-          <div className="md:col-span-2 stripe-card stripe-card-hover rounded-3xl p-6 sm:p-8 bg-white/90 backdrop-blur-xl shadow-lg relative overflow-hidden flex flex-col justify-between group">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center font-bold shadow-xs">
-                <Printer className="w-6 h-6" />
-              </div>
-              <div>
-                <Badge variant="primary" size="sm" className="mb-2">
-                  Japanese M&R Machinery
-                </Badge>
-                <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#0A2540]">
-                  Ultra-HD Screen & Digital Print Density
-                </h3>
-                <p className="text-xs sm:text-sm text-[#425466] mt-2 leading-relaxed font-inter">
-                  Our automatic 12-color screen presses push phthalate-free inks deep into cotton fibers, preventing cracking or peeling after 50+ industrial washes.
-                </p>
-              </div>
-            </div>
+          {advantages.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <div
+                key={item.id}
+                className={`${item.cardSpan} stripe-card stripe-card-hover rounded-3xl p-6 sm:p-7 bg-white/90 backdrop-blur-xl shadow-lg relative overflow-hidden flex flex-col justify-between group transition-all duration-300`}
+              >
+                <div className="space-y-3">
+                  <div className={`w-12 h-12 rounded-2xl ${item.accent} flex items-center justify-center font-bold shadow-xs`}>
+                    <IconComponent className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-poppins font-bold text-[#635BFF] uppercase tracking-wider block mb-1">
+                      {item.badge}
+                    </span>
+                    <h3 className="text-xl font-poppins font-extrabold text-[#0A2540]">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#425466] mt-2 leading-relaxed font-inter">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-100 grid grid-cols-2 gap-4 text-xs font-inter">
-              <div>
-                <span className="text-slate-500 block font-medium">Print Resolution:</span>
-                <span className="font-bold text-[#0A2540]">1,200 DPI Razor Sharp</span>
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-inter text-[#0A2540] font-semibold">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Guaranteed Specs</span>
+                </div>
               </div>
-              <div>
-                <span className="text-slate-500 block font-medium">Ink Formulation:</span>
-                <span className="font-bold text-emerald-600">Zero-Hand Soft Touch</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: 48hr Rush */}
-          <div className="stripe-card stripe-card-hover rounded-3xl p-6 bg-white/90 backdrop-blur-xl shadow-lg flex flex-col justify-between space-y-4">
-            <div>
-              <div className="w-11 h-11 rounded-2xl bg-amber-100/80 text-amber-700 flex items-center justify-center font-bold mb-3 shadow-xs">
-                <Clock className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-poppins font-bold text-[#0A2540]">
-                48-Hour Event Rush
-              </h3>
-              <p className="text-xs text-[#425466] mt-1.5 leading-relaxed font-inter">
-                24/7 rush production line guarantees doorstep delivery in under 48 hours for event activations.
-              </p>
-            </div>
-            <div className="bg-amber-50/90 p-2.5 rounded-xl text-xs font-bold text-amber-800 shadow-2xs">
-              ⚡ Guaranteed On-Time
-            </div>
-          </div>
-
-          {/* Card 3: Pantone Matching */}
-          <div className="stripe-card stripe-card-hover rounded-3xl p-6 bg-white/90 backdrop-blur-xl shadow-lg flex flex-col justify-between space-y-4">
-            <div>
-              <div className="w-11 h-11 rounded-2xl bg-[#38BDF8]/15 text-[#0284C7] flex items-center justify-center font-bold mb-3 shadow-xs">
-                <Palette className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-poppins font-bold text-[#0A2540]">
-                100% Pantone Precision
-              </h3>
-              <p className="text-xs text-[#425466] mt-1.5 leading-relaxed font-inter">
-                Spectrophotometer audits ensure exact corporate hex codes match solid coated PMS standards.
-              </p>
-            </div>
-            <div className="bg-[#38BDF8]/10 p-2.5 rounded-xl text-xs font-bold text-[#0284C7] shadow-2xs">
-              🎨 Zero Color Bleed
-            </div>
-          </div>
-
-          {/* Card 4: Low MOQ */}
-          <div className="stripe-card stripe-card-hover rounded-3xl p-6 bg-white/90 backdrop-blur-xl shadow-lg flex flex-col justify-between space-y-4">
-            <div>
-              <div className="w-11 h-11 rounded-2xl bg-emerald-100/80 text-emerald-700 flex items-center justify-center font-bold mb-3 shadow-xs">
-                <Zap className="w-5 h-5" />
-              </div>
-              <h3 className="text-lg font-poppins font-bold text-[#0A2540]">
-                Low 10 Pcs Minimum
-              </h3>
-              <p className="text-xs text-[#425466] mt-1.5 leading-relaxed font-inter">
-                Order low batch quantities for prototypes or 10,000+ units with full wholesale volume pricing.
-              </p>
-            </div>
-            <div className="bg-emerald-50/90 p-2.5 rounded-xl text-xs font-bold text-emerald-800 shadow-2xs">
-              🌱 From 10 to 10,000+ Pcs
-            </div>
-          </div>
-
-          {/* Card 5: Large Swag Box */}
-          <div className="md:col-span-2 stripe-card stripe-card-hover rounded-3xl p-6 sm:p-8 bg-white/90 backdrop-blur-xl shadow-lg relative overflow-hidden flex flex-col justify-between group">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-[#635BFF]/10 text-[#635BFF] flex items-center justify-center font-bold shadow-xs">
-                <Box className="w-6 h-6" />
-              </div>
-              <div>
-                <Badge variant="violet" size="sm" className="mb-2">
-                  HR & Remote Team Portal
-                </Badge>
-                <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#0A2540]">
-                  Global Individual Employee Drop-Shipping
-                </h3>
-                <p className="text-xs sm:text-sm text-[#425466] mt-2 leading-relaxed font-inter">
-                  Send custom onboarding welcome kits directly to remote employee homes worldwide in custom branded gift boxes.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-inter">
-              <span className="font-semibold text-[#0A2540]">Direct Home Delivery in 140+ Countries</span>
-              <span className="text-[#635BFF] font-bold">Learn Corporate Portal →</span>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
 
       </div>
