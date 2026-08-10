@@ -27,11 +27,8 @@ export const BRAND = {
     }
   },
   socials: {
-    facebook: "https://facebook.com/teeszone_official",
-    linkedin: "https://linkedin.com/company/teeszone",
-    instagram: "https://instagram.com/teeszone_official",
-    twitter: "https://twitter.com/teeszone",
-    youtube: "https://youtube.com/teeszone_apparel",
+    facebook: "https://www.facebook.com/teeszoneindia",
+    instagram: "https://www.instagram.com/teeszoneindia",
   },
   clientLogos: [
     { name: "Stripe", logoText: "STRIPE", industry: "Fintech" },

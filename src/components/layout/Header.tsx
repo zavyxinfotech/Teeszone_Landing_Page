@@ -27,14 +27,14 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 py-[18px] px-6 sm:px-10 lg:px-12 transition-all duration-200">
-      {/* Three-Zone Flex Container with justify-content: space-between */}
-      <div className="w-full flex items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 py-3 sm:py-[18px] px-3 sm:px-6 lg:px-12 transition-all duration-200 overflow-x-hidden">
+      {/* Three-Zone Flex Container with justify-between */}
+      <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 lg:gap-6">
         
         {/* Zone 1: Far Left - Logo */}
-        <div className="flex items-center flex-shrink-0">
+        <div className="flex items-center shrink-0">
           <a href="#" className="flex items-center">
-            <Logo showWordmark={true} />
+            <Logo size="sm" showWordmark={true} />
           </a>
         </div>
 
@@ -51,15 +51,15 @@ export const Header: React.FC<HeaderProps> = ({
           ))}
         </nav>
 
-        {/* Zone 3: Far Right - Only "Enquire Now" CTA Button */}
-        <div className="flex items-center gap-3 flex-shrink-0">
+        {/* Zone 3: Far Right - Only "Enquire Now" CTA Button & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Enquire Now CTA Button (Primary Action) */}
           <Button
             variant="primary"
             size="md"
             onClick={onOpenQuoteModal}
-            icon={<ArrowRight className="w-4 h-4" />}
-            className="shadow-md shadow-[#635BFF]/30 text-xs sm:text-sm font-poppins font-bold px-5 py-2.5 rounded-xl whitespace-nowrap"
+            icon={<ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
+            className="shadow-md shadow-[#635BFF]/30 text-[11px] sm:text-xs md:text-sm font-poppins font-bold px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl whitespace-nowrap shrink-0"
           >
             Enquire Now
           </Button>
@@ -67,10 +67,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Hamburger Menu Toggle (Visible below 1024px / lg) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer"
+            className="lg:hidden p-1.5 sm:p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer shrink-0"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6 stroke-[1.75]" /> : <Menu className="w-6 h-6 stroke-[1.75]" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.75]" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.75]" />}
           </button>
         </div>
 
@@ -78,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer (Below 1024px / lg) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-200 mt-4 px-4 pt-4 pb-6 space-y-4 animate-fadeIn shadow-xl rounded-2xl">
+        <div className="lg:hidden bg-white border-b border-gray-200 mt-3 px-4 pt-4 pb-6 space-y-4 animate-fadeIn shadow-xl rounded-2xl">
           <nav className="flex flex-col space-y-2 font-inter">
             {primaryNavLinks.map((link) => (
               <a
