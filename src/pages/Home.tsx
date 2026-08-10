@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
     setIsCustomizerOpen(true);
   };
 
-  const handleOpenSampleKit = (product?: Product) => {
+  const handleOpenSampleKit = () => {
     setIsSampleModalOpen(true);
   };
 
@@ -100,7 +100,7 @@ export const Home: React.FC = () => {
             <FeaturedProductsSection
               onQuickView={(p) => setQuickViewProduct(p)}
               onOpenCustomizer={(p) => handleOpenCustomizer(p)}
-              onOrderSample={(p) => handleOpenSampleKit(p)}
+              onOrderSample={() => handleOpenSampleKit()}
             />
           </SectionTransition>
 
@@ -149,7 +149,7 @@ export const Home: React.FC = () => {
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
           onOpenCustomizer={(p) => handleOpenCustomizer(p)}
-          onOrderSample={(p) => handleOpenSampleKit(p)}
+          onOrderSample={() => handleOpenSampleKit()}
         />
 
         {isCustomizerOpen && (
@@ -175,4 +175,3 @@ export const Home: React.FC = () => {
     </ReactLenis>
   );
 };
-
