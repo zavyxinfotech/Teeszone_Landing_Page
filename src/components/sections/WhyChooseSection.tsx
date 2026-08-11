@@ -103,62 +103,73 @@ export const WhyChooseSection: React.FC = () => {
       aria-label="Why Choose TeesZone"
     >
       
-      {/* 1. Cinematic Background Image Layer (`why_teeszone_bg.png`) */}
+      {/* 1. Cinematic Seamless Background Layer (Zero Vertical Line Split) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
           src={whyTeeszoneBg}
           alt="Why Choose TeesZone Background"
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover object-right filter brightness-90 contrast-105 transition-all duration-700"
+          className="w-full h-full object-cover object-center filter brightness-95 contrast-105 transition-all duration-700"
         />
 
-        {/* Cinematic Scrim: Shaded at Left, Transparent/Shown at Right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 sm:via-slate-950/70 to-slate-950/25 w-full h-full" />
+        {/* Seamless Continuous Soft Scrim Overlay (No Vertical Boundaries or Hard Stops) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/45 w-full h-full" />
         
-        {/* Subtle Ambient Radial Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(99,91,255,0.2),transparent_60%)]" />
+        {/* Subtle Radial Ambient Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,91,255,0.18),transparent_70%)]" />
 
-        {/* Edge Blending Gradients */}
-        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-slate-950 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-950 to-transparent" />
+        {/* Top & Bottom Seamless Edge Transitions */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-950 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
       </div>
 
-      {/* 2. Floating Atmospheric Motion Particles */}
+      {/* 2. Animated Ambient Smoky Motion Particles (Behind Text & Hub) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Animated Purple Smoky Glow Behind Header */}
         <motion.div
           animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/3 left-10 w-[450px] h-[450px] bg-[radial-gradient(circle_at_center,rgba(99,91,255,0.15),transparent_70%)] blur-3xl rounded-full"
-        />
-        <motion.div
-          animate={{
-            y: [-20, 20, -20],
+            x: [-40, 40, -40],
+            y: [-15, 15, -15],
+            scale: [1, 1.12, 1],
             opacity: [0.3, 0.6, 0.3],
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.15),transparent_70%)] blur-3xl rounded-full"
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(99,91,255,0.25),transparent_70%)] blur-3xl rounded-full"
+        />
+
+        {/* Floating Sky-Blue Ambient Particle Mist */}
+        <motion.div
+          animate={{
+            x: [30, -30, 30],
+            y: [20, -20, 20],
+            scale: [1.05, 0.95, 1.05],
+            opacity: [0.25, 0.5, 0.25],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.2),transparent_70%)] blur-3xl rounded-full"
         />
       </div>
 
       {/* Main Section Container */}
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <span className="inline-flex items-center gap-2 text-xs font-poppins font-bold uppercase tracking-widest text-[#38BDF8] drop-shadow-sm">
-            <Sparkles className="w-3.5 h-3.5" />
+        {/* Section Header with Animated Smoky Glow Backdrop */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 relative">
+          
+          <span className="inline-flex items-center gap-2 text-xs font-poppins font-bold uppercase tracking-widest text-[#38BDF8] drop-shadow-md">
+            <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
             THE TEESZONE ADVANTAGE
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight">
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
             Why Choose TeesZone?
           </h2>
-          <p className="text-sm sm:text-base text-slate-200 font-inter font-semibold leading-relaxed">
+
+          <p className="text-sm sm:text-base text-slate-200 font-inter font-semibold leading-relaxed drop-shadow-md">
             Quality apparel. Custom solutions. Reliable service.
           </p>
+
         </div>
 
         {/* 3. Infographic Radial Arc Node Layout */}
@@ -238,7 +249,7 @@ export const WhyChooseSection: React.FC = () => {
                 </AnimatePresence>
               </motion.div>
 
-              {/* 6 Circular Arc Node ICONS along the Circle Perimeter (Replacing Dots) */}
+              {/* 6 Circular Arc Node ICONS along the Circle Perimeter */}
               {PILLARS.map((p, idx) => {
                 const angle = (idx * (360 / PILLARS.length) - 90) * (Math.PI / 180);
                 const radius = 180; // Distance from center
@@ -286,7 +297,7 @@ export const WhyChooseSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Borderless Horizontal Pill Shapes (Guaranteed Specs Badge Removed) */}
+          {/* Right Column: Borderless Horizontal Pill Shapes */}
           <div 
             className="lg:col-span-7 space-y-3.5 flex flex-col justify-center"
             onMouseEnter={() => setIsPaused(true)}
