@@ -7,13 +7,12 @@ import { Skiper50ProductCard } from '../ui/skiper-ui/skiper50';
 interface FeaturedProductsSectionProps {
   onQuickView: (product: Product) => void;
   onOpenCustomizer: (product: Product) => void;
-  onOrderSample: (product: Product) => void;
 }
 
 export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = ({
   onQuickView,
   onOpenCustomizer,
-  onOrderSample
+  
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<'all' | ApparelCategory>('all');
   const [wishlist, setWishlist] = useState<string[]>([]);
@@ -81,7 +80,6 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
               onToggleWishlist={toggleWishlist}
               onQuickView={onQuickView}
               onOpenCustomizer={onOpenCustomizer}
-              onOrderSample={onOrderSample}
             />
           ))}
         </div>

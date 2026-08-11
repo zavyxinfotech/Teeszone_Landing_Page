@@ -15,7 +15,7 @@ export const StatisticsSection: React.FC = () => {
           {STATS.map((stat, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-8 rounded-3xl bg-white/5 backdrop-blur-xl hover:bg-white/10 transition-all text-center space-y-2 group shadow-xl"
+              className="p-6 sm:p-8 rounded-3xl hover:bg-white/10 transition-all text-center space-y-2 group shadow-xl"
             >
               <span className="text-4xl sm:text-5xl font-poppins font-black tracking-tight text-white group-hover:text-[#38BDF8] transition-colors block drop-shadow-md">
                 {stat.value}

@@ -20,7 +20,6 @@ import { FloatingWhatsApp } from '../components/common/FloatingWhatsApp';
 // Modals
 import { QuickViewModal } from '../components/common/QuickViewModal';
 import { CustomizerModal } from '../components/common/CustomizerModal';
-import { SampleKitModal } from '../components/common/SampleKitModal';
 import { InstantQuoteModal } from '../components/common/InstantQuoteModal';
 
 import { Product } from '../types';
@@ -101,7 +100,6 @@ export const Home: React.FC = () => {
             <FeaturedProductsSection
               onQuickView={(p) => setQuickViewProduct(p)}
               onOpenCustomizer={(p) => handleOpenCustomizer(p)}
-              onOrderSample={() => handleOpenSampleKit()}
             />
           </SectionTransition>
 
@@ -165,11 +163,6 @@ export const Home: React.FC = () => {
             }}
           />
         )}
-
-        <SampleKitModal
-          isOpen={isSampleModalOpen}
-          onClose={() => setIsSampleModalOpen(false)}
-        />
 
         <InstantQuoteModal
           isOpen={isQuoteModalOpen}

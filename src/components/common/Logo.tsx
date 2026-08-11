@@ -43,7 +43,7 @@ export const Logo: React.FC<LogoProps> = ({
               : 'text-[#0A2540] group-hover:text-[#635BFF]'
           }`}
         >
-          TEESZONE
+        TEESZONE
         </span>
       )}
     </div>

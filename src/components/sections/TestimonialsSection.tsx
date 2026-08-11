@@ -45,10 +45,7 @@ export const TestimonialsSection: React.FC = () => {
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full shadow-2xs">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Verified Order ({current.orderVolume})</span>
-              </span>
+             
             </div>
 
             {/* Quote Content */}

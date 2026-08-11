@@ -91,10 +91,10 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
             referrerPolicy="no-referrer"
           />
 
-          {/* Tag Badge */}
+          {/* Tag Text */}
           {product.tag && (
             <div className="absolute top-3 left-3 z-20">
-              <span className="px-2.5 py-1 text-[10px] font-poppins font-black uppercase tracking-wider text-white bg-[#0A2540]/90 backdrop-blur-md rounded-full shadow-xs">
+              <span className="text-[10px] font-poppins font-black uppercase tracking-wider text-[#0A2540] drop-shadow-xs">
                 {product.tag}
               </span>
             </div>
@@ -145,10 +145,10 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
         <div className="p-5 space-y-3">
           {/* GSM & Category Header Row */}
           <div className="flex items-center justify-between text-xs">
-            <span className="text-[#635BFF] font-poppins font-black text-[10px] uppercase tracking-wider bg-[#635BFF]/10 px-2.5 py-0.5 rounded-full">
+            <span className="text-[#635BFF] font-poppins font-black text-[10px] uppercase tracking-wider">
               {product.gsm} GSM • {product.category.replace("-", " ")}
             </span>
-            <div className="flex items-center gap-1 font-bold text-amber-600 bg-amber-50/90 px-2 py-0.5 rounded-md">
+            <div className="flex items-center gap-1 font-bold text-amber-600">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               <span className="text-xs">{product.rating}</span>
               <span className="text-[10px] text-slate-400">({product.reviewCount})</span>

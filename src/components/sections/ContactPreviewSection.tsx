@@ -88,7 +88,7 @@ export const ContactPreviewSection: React.FC = () => {
               </div>
 
               {/* Head Office Location */}
-              <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl flex items-start gap-3.5 border-b border-slate-200/80">
+              {/* <div className="p-3.5 bg-white/90 backdrop-blur-xl rounded-2xl flex items-start gap-3.5 border-b border-slate-200/80">
                 <div className="p-2.5 bg-[#635BFF]/10 text-[#635BFF] rounded-xl shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
@@ -96,7 +96,7 @@ export const ContactPreviewSection: React.FC = () => {
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">{BRAND.contact.headOffice.title}</span>
                   <span className="text-xs text-[#0A2540] block font-medium leading-normal">{BRAND.contact.headOffice.address}</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
