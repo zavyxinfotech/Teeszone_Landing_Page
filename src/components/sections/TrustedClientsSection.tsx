@@ -119,9 +119,9 @@ const CLIENT_LOGOS: ClientLogoItem[] = [
 
 export const TrustedClientsSection: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 bg-slate-950 text-white relative overflow-hidden select-none border-b border-white/10" aria-label="Trusted Clients">
+    <section className="py-12 sm:py-16 bg-white text-[#0A2540] relative overflow-hidden select-none border-b border-slate-200/80" aria-label="Trusted Clients">
       
-      {/* 1. Animated Smoky Background Motion Layers */}
+      {/* 1. Animated Light Smoky Background Motion Layers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Primary Drifting Purple Smoky Mist */}
         <motion.div
@@ -129,10 +129,10 @@ export const TrustedClientsSection: React.FC = () => {
             x: [-60, 60, -60],
             y: [-25, 25, -25],
             scale: [1, 1.15, 1],
-            opacity: [0.35, 0.65, 0.35],
+            opacity: [0.35, 0.7, 0.35],
           }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-1/2 left-1/4 w-[500px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(99,91,255,0.22),transparent_70%)] blur-3xl rounded-full"
+          className="absolute -top-1/2 left-1/4 w-[550px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(99,91,255,0.08),transparent_70%)] blur-3xl rounded-full"
         />
 
         {/* Secondary Drifting Sky Blue Smoky Mist */}
@@ -141,55 +141,52 @@ export const TrustedClientsSection: React.FC = () => {
             x: [50, -50, 50],
             y: [30, -30, 30],
             scale: [1.1, 0.9, 1.1],
-            opacity: [0.3, 0.6, 0.3],
+            opacity: [0.3, 0.65, 0.3],
           }}
           transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute -bottom-1/2 right-1/4 w-[500px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.2),transparent_70%)] blur-3xl rounded-full"
+          className="absolute -bottom-1/2 right-1/4 w-[550px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.09),transparent_70%)] blur-3xl rounded-full"
         />
 
-        {/* Ambient Center Smoke Puff */}
+        {/* Ambient Center Smoke Motion Glow */}
         <motion.div
           animate={{
             rotate: [0, 180, 360],
-            opacity: [0.2, 0.45, 0.2],
+            opacity: [0.2, 0.5, 0.2],
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[250px] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),transparent_70%)] blur-3xl"
+          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[250px] bg-[radial-gradient(ellipse_at_center,rgba(99,91,255,0.05),transparent_70%)] blur-3xl"
         />
       </div>
 
       <div className="w-full px-6 sm:px-10 lg:px-16 mb-8 text-center relative z-20">
-        <h2 className="text-xs sm:text-sm font-poppins font-bold uppercase tracking-widest text-slate-300 drop-shadow-md">
+        <h2 className="text-xs sm:text-sm font-poppins font-bold uppercase tracking-widest text-[#425466] drop-shadow-xs">
           Trusted by World-Class Brands & Creator Teams Globally
         </h2>
       </div>
 
-      {/* Infinite Logo Slider Marquee (Dark Seamless Blend & Zero White Box Artifacts) */}
+      {/* Infinite Logo Slider Marquee (100% White Background Seamless Blend & Zero Boxes) */}
       <div className="relative w-full overflow-hidden flex items-center z-20">
         {/* Subtle Edge Gradients for Smooth Seamless Marquee Fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-slate-950 via-slate-950/90 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-white via-white/90 to-transparent z-10 pointer-events-none" />
 
         <div className="flex gap-10 sm:gap-16 lg:gap-20 items-center animate-marquee whitespace-nowrap py-3">
           {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((client, idx) => (
             <div
               key={`${client.name}-${idx}`}
-              className="flex items-center justify-center shrink-0 w-36 sm:w-48 lg:w-56 h-14 sm:h-18 lg:h-20 transition-all duration-300 transform hover:scale-110 cursor-pointer px-2 bg-transparent border-0 outline-none group"
+              className="flex items-center justify-center shrink-0 w-36 sm:w-48 lg:w-56 h-14 sm:h-18 lg:h-20 transition-all duration-300 transform hover:scale-105 cursor-pointer px-2 bg-white border-0 outline-none group"
             >
               <img
                 src={client.logo}
                 alt={client.altText}
                 loading="lazy"
                 decoding="async"
-                className={`${client.scaleClass || 'h-9 sm:h-12 lg:h-14'} w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[260px] object-contain mix-blend-screen filter brightness-125 contrast-125 bg-transparent border-0 outline-none transition-all duration-300 opacity-90 group-hover:opacity-100`}
+                className={`${client.scaleClass || 'h-9 sm:h-12 lg:h-14'} w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[260px] object-contain filter contrast-105 saturate-105 bg-white border-0 outline-none transition-all duration-300 opacity-90 group-hover:opacity-100`}
               />
             </div>
           ))}
         </div>
       </div>
-
-      {/* Seamless Transition Gradient to Next Light Section (#F4F7FB) */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-[#F4F7FB]/10 pointer-events-none" />
 
     </section>
   );

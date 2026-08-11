@@ -72,14 +72,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <source src="/assets/videos/Hero_Section_Background_Video.mp4" type="video/mp4" />
         </video>
 
-        {/* Cohesive Full-Width Cinematic Scrim Gradient (No Harsh Vertical Half-Split) */}
+        {/* Cohesive Full-Width Cinematic Scrim Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/35 w-full h-full" />
         
         {/* Subtle Ambient Radial Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(99,91,255,0.15),transparent_60%)]" />
 
-        {/* Seamless Dark Blend Transition to Next Section (bg-slate-950) */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
+        {/* Smooth Transition Gradient to White Trusted Clients Section */}
+        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white via-slate-950/30 to-transparent" />
       </div>
 
       {/* 2. Bottom-Left Animated Glowing Particle Effect */}
