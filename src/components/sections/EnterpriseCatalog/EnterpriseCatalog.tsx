@@ -75,27 +75,20 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
                     transition={{ duration: 0.2, delay: index * 0.03 }}
                     onClick={() => setActiveId(item.id)}
                     onMouseEnter={() => setActiveId(item.id)}
-                    className={`group relative cursor-pointer overflow-hidden rounded-xl transition-all duration-300 p-3 ${
+                    className={`group relative cursor-pointer overflow-hidden rounded-xl transition-all duration-300 p-3.5 ${
                       isActive
                         ? 'bg-[#0A2540] text-white shadow-md scale-[1.01]'
                         : 'bg-white/90 backdrop-blur-md text-[#0A2540] hover:bg-[#635BFF]/10 shadow-2xs'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-6 h-6 rounded-lg flex items-center justify-center font-outfit text-xs font-bold ${
-                          isActive ? 'bg-[#635BFF] text-white' : 'bg-slate-100 text-[#0A2540]'
-                        }`}>
-                          0{index + 1}
-                        </div>
-                        <div>
-                          <h3 className={`text-xs sm:text-sm font-poppins font-bold ${isActive ? 'text-white' : 'text-[#0A2540]'}`}>
-                            {item.name}
-                          </h3>
-                          <span className={`text-[10px] font-inter ${isActive ? 'text-slate-300' : 'text-[#6B7C93]'}`}>
-                            {item.recommendedGsm} • {item.badge}
-                          </span>
-                        </div>
+                      <div>
+                        <h3 className={`text-xs sm:text-sm font-poppins font-bold ${isActive ? 'text-white' : 'text-[#0A2540]'}`}>
+                          {item.name}
+                        </h3>
+                        <span className={`text-[10px] font-inter ${isActive ? 'text-slate-300' : 'text-[#6B7C93]'}`}>
+                          {item.recommendedGsm} • {item.badge}
+                        </span>
                       </div>
                       <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${
                         isActive ? 'text-[#38BDF8] translate-x-1' : 'text-slate-400 group-hover:text-[#635BFF]'

@@ -49,24 +49,24 @@ export const TrustedClientsSection: React.FC = () => {
         </h2>
       </div>
 
-      {/* Infinite Logo Slider Marquee (Card-Free Clean Logo View) */}
+      {/* Infinite Logo Slider Marquee (Original Vibrant Colors, Constant Sizing, Generous Spacing, Borderless) */}
       <div className="relative w-full overflow-hidden flex items-center">
         {/* Left & Right Gradient Fades for Smooth Transition */}
         <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-12 sm:gap-16 items-center animate-marquee whitespace-nowrap py-2">
+        <div className="flex gap-16 sm:gap-20 lg:gap-24 items-center animate-marquee whitespace-nowrap py-2">
           {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((client, idx) => (
             <div
               key={`${client.name}-${idx}`}
-              className="flex items-center justify-center shrink-0 grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+              className="flex items-center justify-center shrink-0 w-32 sm:w-40 h-12 sm:h-14 transition-all duration-300 transform hover:scale-105 cursor-pointer"
             >
               <img
                 src={client.logo}
                 alt={client.altText}
                 loading="lazy"
                 decoding="async"
-                className="h-9 sm:h-12 max-w-[140px] sm:max-w-[170px] w-auto object-contain filter drop-shadow-xs"
+                className="max-h-10 sm:max-h-12 w-auto max-w-full object-contain filter contrast-105 saturate-105"
               />
             </div>
           ))}
