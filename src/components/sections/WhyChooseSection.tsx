@@ -7,7 +7,6 @@ import {
   RefreshCw, 
   Users, 
   Truck,
-  CheckCircle2,
   Sparkles
 } from 'lucide-react';
 import whyTeeszoneBg from '../../assets/backgrounds/why_teeszone_bg.png';
@@ -162,7 +161,7 @@ export const WhyChooseSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 3. Infographic Radial Arc Node Layout (Matching Reference Image) */}
+        {/* 3. Infographic Radial Arc Node Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Central Animated Circular Hub Node */}
@@ -201,7 +200,7 @@ export const WhyChooseSection: React.FC = () => {
                 />
               </svg>
 
-              {/* Central White Circular Node */}
+              {/* Central White Circular Node (Borderless) */}
               <motion.div
                 animate={{
                   boxShadow: [
@@ -211,7 +210,7 @@ export const WhyChooseSection: React.FC = () => {
                   ]
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-white/95 backdrop-blur-xl text-[#0A2540] flex flex-col items-center justify-center p-6 text-center border-4 border-[#635BFF]/40 shadow-2xl relative z-10 cursor-pointer group"
+                className="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-white/95 backdrop-blur-xl text-[#0A2540] flex flex-col items-center justify-center p-6 text-center border-0 shadow-2xl relative z-10 cursor-pointer group"
                 onClick={() => setActiveIdx((prev) => (prev + 1) % PILLARS.length)}
               >
                 <AnimatePresence mode="wait">
@@ -224,7 +223,7 @@ export const WhyChooseSection: React.FC = () => {
                     className="flex flex-col items-center justify-center space-y-2"
                   >
                     <div 
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white shadow-md mb-1"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white shadow-md mb-1 border-0"
                       style={{ backgroundColor: activePillar.color }}
                     >
                       <activePillar.icon className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -239,13 +238,14 @@ export const WhyChooseSection: React.FC = () => {
                 </AnimatePresence>
               </motion.div>
 
-              {/* 6 Circular Arc Node Dots along the Circle Perimeter */}
+              {/* 6 Circular Arc Node ICONS along the Circle Perimeter (Replacing Dots) */}
               {PILLARS.map((p, idx) => {
                 const angle = (idx * (360 / PILLARS.length) - 90) * (Math.PI / 180);
                 const radius = 180; // Distance from center
                 const x = 200 + radius * Math.cos(angle);
                 const y = 200 + radius * Math.sin(angle);
                 const isActive = idx === activeIdx;
+                const OrbitIcon = p.icon;
 
                 return (
                   <button
@@ -260,20 +260,23 @@ export const WhyChooseSection: React.FC = () => {
                     }}
                     onMouseLeave={() => setIsPaused(false)}
                     aria-label={`Highlight ${p.title}`}
-                    className="absolute w-7 h-7 sm:w-9 sm:h-9 -ml-3.5 -mt-3.5 sm:-ml-4.5 sm:-mt-4.5 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer z-20"
+                    className="absolute w-9 h-9 sm:w-11 sm:h-11 -ml-4.5 -mt-4.5 sm:-ml-5.5 sm:-mt-5.5 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer z-20"
                     style={{
                       left: `${(x / 400) * 100}%`,
                       top: `${(y / 400) * 100}%`,
                     }}
                   >
                     <span
-                      className={`w-full h-full rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
+                      className={`w-full h-full rounded-full flex items-center justify-center border-0 transition-all duration-300 shadow-lg ${
                         isActive
-                          ? 'scale-125 bg-[#38BDF8] border-white shadow-lg shadow-[#38BDF8]/60 ring-4 ring-[#38BDF8]/30'
-                          : 'bg-slate-900/80 border-[#635BFF] hover:bg-[#635BFF] text-white hover:scale-110'
+                          ? 'scale-125 text-white shadow-lg shadow-[#38BDF8]/60 ring-4 ring-[#38BDF8]/40'
+                          : 'bg-slate-900/90 text-slate-300 hover:bg-[#635BFF] hover:text-white hover:scale-110'
                       }`}
+                      style={{
+                        backgroundColor: isActive ? p.color : undefined
+                      }}
                     >
-                      <span className={`w-2 h-2 rounded-full ${isActive ? 'bg-white' : 'bg-[#38BDF8]'}`} />
+                      <OrbitIcon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.25]" />
                     </span>
                   </button>
                 );
@@ -283,7 +286,7 @@ export const WhyChooseSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: 6 Curved Connecting Lines & Horizontal Pill Shapes (No Bento Card Layouts) */}
+          {/* Right Column: Borderless Horizontal Pill Shapes (Guaranteed Specs Badge Removed) */}
           <div 
             className="lg:col-span-7 space-y-3.5 flex flex-col justify-center"
             onMouseEnter={() => setIsPaused(true)}
@@ -308,10 +311,10 @@ export const WhyChooseSection: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className={`relative cursor-pointer rounded-full transition-all duration-300 p-3 sm:p-4 px-5 sm:px-7 flex items-center justify-between border backdrop-blur-xl ${
+                  className={`relative cursor-pointer rounded-full transition-all duration-300 p-3 sm:p-4 px-5 sm:px-7 flex items-center justify-between border-0 backdrop-blur-xl ${
                     isActive
-                      ? 'bg-white/95 text-[#0A2540] border-white shadow-2xl scale-[1.02] translate-x-2'
-                      : 'bg-white/10 text-white border-white/15 hover:bg-white/20 hover:border-white/30'
+                      ? 'bg-white/95 text-[#0A2540] shadow-2xl scale-[1.02] translate-x-2'
+                      : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
                   style={{
                     boxShadow: isActive ? `0 10px 30px ${pillar.glowColor}` : 'none'
@@ -320,9 +323,9 @@ export const WhyChooseSection: React.FC = () => {
                   {/* Left Icon Badge & Text Content */}
                   <div className="flex items-center gap-4 sm:gap-5 min-w-0">
                     
-                    {/* Circle Icon Badge */}
+                    {/* Circle Icon Badge (Borderless) */}
                     <div 
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 border-0 ${
                         isActive ? 'scale-110 shadow-md text-white' : 'bg-white/15 text-white'
                       }`}
                       style={{
@@ -340,7 +343,7 @@ export const WhyChooseSection: React.FC = () => {
                         }`}>
                           {pillar.title}
                         </h3>
-                        <span className={`text-[10px] font-poppins font-bold uppercase tracking-wider px-2 py-0.5 rounded-full hidden sm:inline-block ${
+                        <span className={`text-[10px] font-poppins font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full hidden sm:inline-block border-0 ${
                           isActive ? 'bg-[#635BFF]/10 text-[#635BFF]' : 'bg-white/10 text-[#38BDF8]'
                         }`}>
                           {pillar.badge}
@@ -353,12 +356,6 @@ export const WhyChooseSection: React.FC = () => {
                       </p>
                     </div>
 
-                  </div>
-
-                  {/* Right Guaranteed Specs Check Indicator */}
-                  <div className="shrink-0 ml-3 flex items-center gap-1.5 text-xs font-inter font-semibold">
-                    <CheckCircle2 className={`w-4 h-4 ${isActive ? 'text-emerald-600' : 'text-[#38BDF8]'}`} />
-                    <span className="hidden md:inline text-[11px] opacity-80">Guaranteed Specs</span>
                   </div>
 
                   {/* Active Left Indicator Bar */}
