@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { Logo } from '../common/Logo';
-import { Menu, X, ArrowRight, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronRight, ShoppingCart } from 'lucide-react';
 import { Button } from '../common/Button';
 
 interface HeaderProps {
   onOpenQuoteModal?: () => void;
-  onOpenSampleModal?: () => void;
-  onOpenCustomizerModal?: () => void;
+  cartCount?: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  onOpenQuoteModal
+  onOpenQuoteModal,
+  cartCount = 0
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Nav links matching active sections
   const primaryNavLinks = [
+    { name: 'Catalogue', href: '#blank-catalogue' },
     { name: 'Categories', href: '#categories' },
     { name: 'Why Us', href: '#why-us' },
     { name: 'How It Works', href: '#process' },
-    { name: 'Products', href: '#products' },
+    { name: 'Ready Stock', href: '#products' },
     { name: 'Our Team', href: '#team' },
-    { name: 'Testimonials', href: '#testimonials' },
     { name: 'FAQs', href: '#faq' },
     { name: 'Contact', href: '#contact' }
   ];
@@ -51,9 +51,24 @@ export const Header: React.FC<HeaderProps> = ({
           ))}
         </nav>
 
-        {/* Zone 3: Far Right - Only "Enquire Now" CTA Button & Mobile Menu Toggle */}
+        {/* Zone 3: Far Right - Cart Icon Badge & CTA Button */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Enquire Now CTA Button (Primary Action) */}
+          
+          {/* Cart Icon Button with Item Count Badge */}
+          <button
+            onClick={onOpenQuoteModal}
+            aria-label="View Cart"
+            className="relative p-2 rounded-xl text-[#0A2540] hover:bg-slate-100 transition-colors cursor-pointer flex items-center justify-center"
+          >
+            <ShoppingCart className="w-5 h-5 text-[#0A2540]" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#635BFF] text-white text-[11px] font-poppins font-bold flex items-center justify-center shadow-md animate-scaleIn">
+                {cartCount}
+              </span>
+            )}
+          </button>
+
+          {/* Enquire Now CTA Button */}
           <Button
             variant="primary"
             size="md"
@@ -64,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
             Enquire Now
           </Button>
 
-          {/* Hamburger Menu Toggle (Visible below 1024px / lg) */}
+          {/* Hamburger Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-1.5 sm:p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer shrink-0"
@@ -76,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       </div>
 
-      {/* Mobile Drawer (Below 1024px / lg) */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-gray-200 mt-3 px-4 pt-4 pb-6 space-y-4 animate-fadeIn shadow-xl rounded-2xl">
           <nav className="flex flex-col space-y-2 font-inter">
