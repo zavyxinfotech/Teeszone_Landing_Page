@@ -20,24 +20,25 @@ interface ClientLogoItem {
   name: string;
   logo: string;
   altText: string;
+  scaleClass?: string;
 }
 
 const CLIENT_LOGOS: ClientLogoItem[] = [
-  { name: 'Accenture', logo: accentureLogo, altText: 'Accenture corporate uniform client logo' },
-  { name: 'Cognizant', logo: cognizantLogo, altText: 'Cognizant custom team polo shirts client logo' },
-  { name: 'Tata Electronics', logo: tataElectronicsLogo, altText: 'Tata Electronics workwear client logo' },
-  { name: 'Tech Mahindra', logo: techMahindraLogo, altText: 'Tech Mahindra corporate apparel client logo' },
-  { name: 'Zoho', logo: zohoLogo, altText: 'Zoho custom t-shirts client logo' },
-  { name: 'IIT Madras', logo: iitMadrasLogo, altText: 'IIT Madras campus hoodies client logo' },
-  { name: 'SRM Institute of Technology', logo: srmInstituteLogo, altText: 'SRM Institute college apparel client logo' },
-  { name: 'Wheels India', logo: wheelsIndiaLogo, altText: 'Wheels India industrial uniform client logo' },
-  { name: 'Address Developer', logo: addressDevLogo, altText: 'Address Developer corporate polos client logo' },
-  { name: 'EuroKids', logo: euroKidsLogo, altText: 'EuroKids custom t-shirts client logo' },
-  { name: 'Ampo', logo: ampoLogo, altText: 'Ampo enterprise apparel client logo' },
-  { name: 'Fortune City', logo: fortuneCityLogo, altText: 'Fortune City client logo' },
-  { name: 'GR Media', logo: grMediaLogo, altText: 'GR Media promotional apparel client logo' },
-  { name: 'Leo', logo: leoLogo, altText: 'Leo enterprise client logo' },
-  { name: 'Mahe Megalo Strikers', logo: maheStrikersLogo, altText: 'Mahe Megalo Strikers athletic jerseys client logo' },
+  { name: 'Accenture', logo: accentureLogo, altText: 'Accenture corporate uniform client logo', scaleClass: 'h-8 sm:h-10' },
+  { name: 'Cognizant', logo: cognizantLogo, altText: 'Cognizant custom team polo shirts client logo', scaleClass: 'h-10 sm:h-12 scale-110' },
+  { name: 'Tata Electronics', logo: tataElectronicsLogo, altText: 'Tata Electronics workwear client logo', scaleClass: 'h-8 sm:h-10' },
+  { name: 'Tech Mahindra', logo: techMahindraLogo, altText: 'Tech Mahindra corporate apparel client logo', scaleClass: 'h-8 sm:h-10' },
+  { name: 'Zoho', logo: zohoLogo, altText: 'Zoho custom t-shirts client logo', scaleClass: 'h-10 sm:h-12 scale-125' },
+  { name: 'IIT Madras', logo: iitMadrasLogo, altText: 'IIT Madras campus hoodies client logo', scaleClass: 'h-10 sm:h-12 scale-110' },
+  { name: 'SRM Institute of Technology', logo: srmInstituteLogo, altText: 'SRM Institute college apparel client logo', scaleClass: 'h-10 sm:h-12 scale-125' },
+  { name: 'Wheels India', logo: wheelsIndiaLogo, altText: 'Wheels India industrial uniform client logo', scaleClass: 'h-8 sm:h-10' },
+  { name: 'Address Developer', logo: addressDevLogo, altText: 'Address Developer corporate polos client logo', scaleClass: 'h-8 sm:h-10' },
+  { name: 'EuroKids', logo: euroKidsLogo, altText: 'EuroKids custom t-shirts client logo', scaleClass: 'h-9 sm:h-11' },
+  { name: 'Ampo', logo: ampoLogo, altText: 'Ampo enterprise apparel client logo', scaleClass: 'h-9 sm:h-11' },
+  { name: 'Fortune City', logo: fortuneCityLogo, altText: 'Fortune City client logo', scaleClass: 'h-9 sm:h-11' },
+  { name: 'GR Media', logo: grMediaLogo, altText: 'GR Media promotional apparel client logo', scaleClass: 'h-10 sm:h-12' },
+  { name: 'Leo', logo: leoLogo, altText: 'Leo enterprise client logo', scaleClass: 'h-9 sm:h-11' },
+  { name: 'Mahe Megalo Strikers', logo: maheStrikersLogo, altText: 'Mahe Megalo Strikers athletic jerseys client logo', scaleClass: 'h-10 sm:h-12' },
 ];
 
 export const TrustedClientsSection: React.FC = () => {
@@ -49,24 +50,24 @@ export const TrustedClientsSection: React.FC = () => {
         </h2>
       </div>
 
-      {/* Infinite Logo Slider Marquee (Original Vibrant Colors, Constant Sizing, Generous Spacing, Borderless) */}
+      {/* Infinite Logo Slider Marquee (Blended White Backgrounds, Optical Sizing, Full Visibility) */}
       <div className="relative w-full overflow-hidden flex items-center">
-        {/* Left & Right Gradient Fades for Smooth Transition */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10 pointer-events-none" />
+        {/* Subtle Edge Gradients for Smooth Seamless Marquee Fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#F8FAFC] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-16 sm:gap-20 lg:gap-24 items-center animate-marquee whitespace-nowrap py-2">
+        <div className="flex gap-14 sm:gap-20 items-center animate-marquee whitespace-nowrap py-3">
           {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((client, idx) => (
             <div
               key={`${client.name}-${idx}`}
-              className="flex items-center justify-center shrink-0 w-32 sm:w-40 h-12 sm:h-14 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+              className="flex items-center justify-center shrink-0 w-36 sm:w-44 h-14 sm:h-16 transition-transform duration-300 hover:scale-105 cursor-pointer"
             >
               <img
                 src={client.logo}
                 alt={client.altText}
                 loading="lazy"
                 decoding="async"
-                className="max-h-10 sm:max-h-12 w-auto max-w-full object-contain filter contrast-105 saturate-105"
+                className={`${client.scaleClass || 'h-8 sm:h-10'} w-auto max-w-[160px] object-contain mix-blend-multiply filter contrast-110 brightness-95`}
               />
             </div>
           ))}
