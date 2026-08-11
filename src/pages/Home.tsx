@@ -19,35 +19,12 @@ import { FloatingWhatsApp } from '../components/common/FloatingWhatsApp';
 
 // Modals
 import { QuickViewModal } from '../components/common/QuickViewModal';
-import { CustomizerModal } from '../components/common/CustomizerModal';
 import { InstantQuoteModal } from '../components/common/InstantQuoteModal';
-
-import { Product } from '../types';
-import { PRODUCTS } from '../data/products';
 
 export const Home: React.FC = () => {
   // Modal states
-  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
-  const [customizerProduct, setCustomizerProduct] = useState<Product | null>(null);
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
-  const [isSampleModalOpen, setIsSampleModalOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<any | null>(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-
-  const handleOpenCustomizer = (target?: Product | string | any) => {
-    if (typeof target === 'string') {
-      const match = PRODUCTS.find((p) => p.category === target || p.id === target);
-      setCustomizerProduct(match || PRODUCTS[0]);
-    } else if (target && typeof target === 'object' && 'id' in target && 'category' in target) {
-      setCustomizerProduct(target as Product);
-    } else {
-      setCustomizerProduct(PRODUCTS[0]);
-    }
-    setIsCustomizerOpen(true);
-  };
-
-  const handleOpenSampleKit = () => {
-    setIsSampleModalOpen(true);
-  };
 
   return (
     <ReactLenis root>
@@ -60,8 +37,6 @@ export const Home: React.FC = () => {
         {/* 1. Header Navbar */}
         <Header
           onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-          onOpenSampleModal={() => setIsSampleModalOpen(true)}
-          onOpenCustomizerModal={() => handleOpenCustomizer(PRODUCTS[0])}
         />
 
         {/* Main Single Page Sections */}
@@ -70,8 +45,6 @@ export const Home: React.FC = () => {
           <SectionTransition index={0}>
             <HeroSection
               onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-              onOpenSampleModal={() => setIsSampleModalOpen(true)}
-              onOpenCustomizerModal={() => handleOpenCustomizer(PRODUCTS[0])}
             />
           </SectionTransition>
 
@@ -80,9 +53,11 @@ export const Home: React.FC = () => {
             <TrustedClientsSection />
           </SectionTransition>
 
-          {/* 4. Product Categories */}
+          {/* 4. Enterprise Apparel (9 Custom/Bulk Categories) */}
           <SectionTransition index={2}>
-            <ProductCategoriesSection onOpenCustomizer={handleOpenCustomizer} />
+            <ProductCategoriesSection 
+              onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
+            />
           </SectionTransition>
 
           {/* 5. Why Choose TeesZone */}
@@ -90,16 +65,16 @@ export const Home: React.FC = () => {
             <WhyChooseSection />
           </SectionTransition>
 
-          {/* 6. Printing Process (5-Step Timeline) */}
+          {/* 6. Precision Manufacturing (4-Step Timeline) */}
           <SectionTransition index={4}>
             <PrintingProcessSection />
           </SectionTransition>
 
-          {/* 7. Featured Products Showcase */}
+          {/* 7. Ready Stock Products (3 E-commerce Products) */}
           <SectionTransition index={5}>
             <FeaturedProductsSection
               onQuickView={(p) => setQuickViewProduct(p)}
-              onOpenCustomizer={(p) => handleOpenCustomizer(p)}
+              onAddToCart={() => setIsQuoteModalOpen(true)}
             />
           </SectionTransition>
 
@@ -127,8 +102,6 @@ export const Home: React.FC = () => {
           <SectionTransition index={10}>
             <FinalCTASection
               onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-              onOpenSampleModal={() => setIsSampleModalOpen(true)}
-              onOpenCustomizerModal={() => handleOpenCustomizer(PRODUCTS[0])}
             />
           </SectionTransition>
 
@@ -150,19 +123,11 @@ export const Home: React.FC = () => {
         <QuickViewModal
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
-          onOpenCustomizer={(p) => handleOpenCustomizer(p)}
-          onOrderSample={() => handleOpenSampleKit()}
+          onRequestQuote={() => {
+            setQuickViewProduct(null);
+            setIsQuoteModalOpen(true);
+          }}
         />
-
-        {isCustomizerOpen && (
-          <CustomizerModal
-            product={customizerProduct}
-            onClose={() => setIsCustomizerOpen(false)}
-            onRequestQuote={(details) => {
-              console.log('Customizer quote submitted:', details);
-            }}
-          />
-        )}
 
         <InstantQuoteModal
           isOpen={isQuoteModalOpen}
