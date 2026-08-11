@@ -6,8 +6,7 @@ import {
   Printer, 
   RefreshCw, 
   Users, 
-  Truck,
-  Sparkles
+  Truck
 } from 'lucide-react';
 import whyTeeszoneBg from '../../assets/backgrounds/why_teeszone_bg.png';
 
@@ -113,7 +112,7 @@ export const WhyChooseSection: React.FC = () => {
           className="w-full h-full object-cover object-center filter brightness-95 contrast-105 transition-all duration-700"
         />
 
-        {/* Seamless Continuous Soft Scrim Overlay (No Vertical Boundaries or Hard Stops) */}
+        {/* Seamless Continuous Soft Scrim Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/45 w-full h-full" />
         
         {/* Subtle Radial Ambient Overlay */}
@@ -154,11 +153,10 @@ export const WhyChooseSection: React.FC = () => {
       {/* Main Section Container */}
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header with Animated Smoky Glow Backdrop */}
+        {/* Section Header with Animated Smoky Glow Backdrop (No Sparkle Icon) */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 relative">
           
-          <span className="inline-flex items-center gap-2 text-xs font-poppins font-bold uppercase tracking-widest text-[#38BDF8] drop-shadow-md">
-            <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
+          <span className="inline-block text-xs font-poppins font-bold uppercase tracking-widest text-[#38BDF8] drop-shadow-md">
             THE TEESZONE ADVANTAGE
           </span>
 

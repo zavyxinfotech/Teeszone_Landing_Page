@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Badge } from '../common/Badge';
-import { FileCheck, Scissors, Printer, Truck, Sparkles } from 'lucide-react';
+import { FileCheck, Scissors, Printer, Truck } from 'lucide-react';
 
 interface ProcessStepItem {
   number: string;
@@ -51,17 +51,15 @@ const AUTO_ROTATE_INTERVAL = 3600; // 3.6s per step on mobile
 
 export const PrintingProcessSection: React.FC = () => {
   const [activeMobileIdx, setActiveMobileIdx] = useState<number>(0);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   // Auto pop-up transition for mobile view
   useEffect(() => {
-    if (isPaused) return;
     const timer = setInterval(() => {
       setActiveMobileIdx((prev) => (prev + 1) % MANUFACTURING_STEPS.length);
     }, AUTO_ROTATE_INTERVAL);
 
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, []);
 
   const activeStep = MANUFACTURING_STEPS[activeMobileIdx];
   const ActiveIcon = activeStep.icon;
@@ -80,10 +78,9 @@ export const PrintingProcessSection: React.FC = () => {
 
       <div className="w-full px-5 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header (Mobile Compact Font Sizes) */}
+        {/* Section Header (No Sparkle Icon) */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16 space-y-2 sm:space-y-3">
           <Badge variant="sky" size="md">
-            <Sparkles className="w-3.5 h-3.5 mr-1 inline-block" />
             PRECISION MANUFACTURING
           </Badge>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight leading-tight">
@@ -95,43 +92,17 @@ export const PrintingProcessSection: React.FC = () => {
         </div>
 
         {/* -------------------------------------------------------------
-            MOBILE / TABLET VIEW (< 1024px): Single Row Compact Auto Pop-Up
+            MOBILE / TABLET VIEW (< 1024px): Compact Auto Pop-Up Card
            ------------------------------------------------------------- */}
-        <div 
-          className="block lg:hidden max-w-md mx-auto"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Step Selector Pills (01, 02, 03, 04) */}
-          <div className="flex justify-center gap-2 mb-6">
-            {MANUFACTURING_STEPS.map((step, idx) => {
-              const isActive = idx === activeMobileIdx;
-              return (
-                <button
-                  key={step.number}
-                  onClick={() => {
-                    setActiveMobileIdx(idx);
-                    setIsPaused(true);
-                  }}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-outfit font-extrabold transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#0A2540] text-white shadow-md scale-105 ring-2 ring-[#635BFF]'
-                      : 'bg-white text-slate-500 hover:bg-slate-200 border border-slate-200'
-                  }`}
-                >
-                  STEP {step.number}
-                </button>
-              );
-            })}
-          </div>
+        <div className="block lg:hidden max-w-md mx-auto">
 
           {/* Single Pop-Up Spotlight Card */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep.number}
-              initial={{ opacity: 0, y: 25, scale: 0.96 }}
+              initial={{ opacity: 0, y: 20, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -25, scale: 0.96 }}
+              exit={{ opacity: 0, y: -20, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
               className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-100 flex flex-col items-center text-center relative overflow-hidden"
             >
@@ -148,7 +119,7 @@ export const PrintingProcessSection: React.FC = () => {
                 {activeStep.title}
               </h3>
 
-              {/* Description (Compact size for mobile) */}
+              {/* Description */}
               <p className="text-xs text-[#425466] font-inter leading-relaxed mt-2 max-w-xs">
                 {activeStep.description}
               </p>
@@ -161,6 +132,18 @@ export const PrintingProcessSection: React.FC = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+
+          {/* Mobile Dot Indicators */}
+          <div className="flex justify-center gap-1.5 mt-4">
+            {MANUFACTURING_STEPS.map((step, idx) => (
+              <span
+                key={step.number}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === activeMobileIdx ? 'w-5 bg-[#635BFF]' : 'w-1.5 bg-slate-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* -------------------------------------------------------------
