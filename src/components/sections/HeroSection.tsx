@@ -78,8 +78,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Subtle Ambient Radial Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(99,91,255,0.15),transparent_60%)]" />
 
-        {/* Bottom Fade to Main Page Background (#F8FAFC) */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] via-slate-950/20 to-transparent" />
+        {/* Seamless Dark Blend Transition to Next Section (bg-slate-950) */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
       </div>
 
       {/* 2. Bottom-Left Animated Glowing Particle Effect */}
@@ -113,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         />
       </div>
 
-      {/* 3. Bottom-Right Soft Cinematic Smoky Mist Effect (Replacing AI/Gemini Visual) */}
+      {/* 3. Bottom-Right Soft Cinematic Smoky Mist Effect */}
       <div className="absolute bottom-0 right-0 z-10 pointer-events-none overflow-hidden w-72 h-72 sm:w-96 sm:h-96">
         <motion.div
           animate={{
