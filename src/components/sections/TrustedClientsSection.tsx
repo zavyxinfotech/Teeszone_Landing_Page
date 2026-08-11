@@ -34,13 +34,13 @@ const CLIENT_LOGOS: ClientLogoItem[] = [
     name: 'Cognizant', 
     logo: cognizantLogo, 
     altText: 'Cognizant custom team polo shirts client logo', 
-    scaleClass: 'h-11 sm:h-14 lg:h-16 scale-135' 
+    scaleClass: 'h-12 sm:h-15 lg:h-18 scale-150' 
   },
   { 
     name: 'Tata Electronics', 
     logo: tataElectronicsLogo, 
     altText: 'Tata Electronics workwear client logo', 
-    scaleClass: 'h-10 sm:h-13 lg:h-15 scale-125 min-w-[150px] sm:min-w-[190px]' 
+    scaleClass: 'h-8 sm:h-11 lg:h-13 min-w-[140px] sm:min-w-[170px]' 
   },
   { 
     name: 'Tech Mahindra', 
@@ -52,19 +52,19 @@ const CLIENT_LOGOS: ClientLogoItem[] = [
     name: 'Zoho', 
     logo: zohoLogo, 
     altText: 'Zoho custom t-shirts client logo', 
-    scaleClass: 'h-11 sm:h-14 lg:h-16 scale-135' 
+    scaleClass: 'h-8 sm:h-11 lg:h-13 max-w-[140px] sm:max-w-[170px]' 
   },
   { 
     name: 'IIT Madras', 
     logo: iitMadrasLogo, 
     altText: 'IIT Madras campus hoodies client logo', 
-    scaleClass: 'h-11 sm:h-14 lg:h-16 scale-120' 
+    scaleClass: 'h-12 sm:h-15 lg:h-18 scale-150' 
   },
   { 
     name: 'SRM Institute of Technology', 
     logo: srmInstituteLogo, 
     altText: 'SRM Institute college apparel client logo', 
-    scaleClass: 'h-11 sm:h-14 lg:h-16 scale-135' 
+    scaleClass: 'h-12 sm:h-15 lg:h-18 scale-150' 
   },
   { 
     name: 'Wheels India', 
@@ -88,7 +88,7 @@ const CLIENT_LOGOS: ClientLogoItem[] = [
     name: 'Ampo', 
     logo: ampoLogo, 
     altText: 'Ampo enterprise apparel client logo', 
-    scaleClass: 'h-10 sm:h-13 lg:h-15 scale-120' 
+    scaleClass: 'h-12 sm:h-15 lg:h-18 scale-150' 
   },
   { 
     name: 'Fortune City', 
@@ -125,7 +125,7 @@ export const TrustedClientsSection: React.FC = () => {
         </h2>
       </div>
 
-      {/* Infinite Logo Slider Marquee (Fully Responsive Mobile-First Scaling & High Contrast Clarity) */}
+      {/* Infinite Logo Slider Marquee */}
       <div className="relative w-full overflow-hidden flex items-center">
         {/* Subtle Edge Gradients for Smooth Seamless Marquee Fade */}
         <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10 pointer-events-none" />
@@ -135,14 +135,14 @@ export const TrustedClientsSection: React.FC = () => {
           {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((client, idx) => (
             <div
               key={`${client.name}-${idx}`}
-              className="flex items-center justify-center shrink-0 w-36 sm:w-48 lg:w-56 h-14 sm:h-18 lg:h-20 transition-transform duration-300 hover:scale-105 cursor-pointer px-2"
+              className="flex items-center justify-center shrink-0 w-36 sm:w-48 lg:w-56 h-14 sm:h-18 lg:h-20 transition-transform duration-300 hover:scale-105 cursor-pointer px-2 bg-transparent border-0 outline-none"
             >
               <img
                 src={client.logo}
                 alt={client.altText}
                 loading="lazy"
                 decoding="async"
-                className={`${client.scaleClass || 'h-9 sm:h-12 lg:h-14'} w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[260px] object-contain mix-blend-multiply filter contrast-115 brightness-95`}
+                className={`${client.scaleClass || 'h-9 sm:h-12 lg:h-14'} w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[260px] object-contain mix-blend-multiply filter contrast-125 brightness-95 bg-transparent border-0 outline-none`}
               />
             </div>
           ))}
