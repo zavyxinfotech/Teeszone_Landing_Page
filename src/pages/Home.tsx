@@ -51,65 +51,65 @@ export const Home: React.FC = () => {
             <TrustedClientsSection />
           </SectionTransition>
 
-          {/* 4. Blank Apparel 23-Product Catalogue Section */}
+          {/* 4. Enterprise Apparel (9 Custom/Bulk Categories) */}
           <SectionTransition index={2}>
-            <ProductCatalogueSection />
-          </SectionTransition>
-
-          {/* 5. Enterprise Apparel (9 Custom/Bulk Categories) */}
-          <SectionTransition index={3}>
             <ProductCategoriesSection 
               onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
             />
           </SectionTransition>
 
-          {/* 6. Why Choose TeesZone */}
-          <SectionTransition index={4}>
+          {/* 5. Why Choose TeesZone */}
+          <SectionTransition index={3}>
             <WhyChooseSection />
           </SectionTransition>
 
-          {/* 7. Precision Manufacturing (4-Step Timeline) */}
-          <SectionTransition index={5}>
+          {/* 6. Precision Manufacturing (4-Step Timeline) */}
+          <SectionTransition index={4}>
             <PrintingProcessSection />
           </SectionTransition>
 
+          {/* 7. Blank Apparel 23-Product Catalogue Section */}
+          <SectionTransition index={5}>
+            <ProductCatalogueSection 
+              onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
+            />
+          </SectionTransition>
 
-
-          {/* 9. Meet Our Team */}
-          <SectionTransition index={7}>
+          {/* 8. Meet Our Team */}
+          <SectionTransition index={6}>
             <MeetOurTeamSection />
           </SectionTransition>
 
-          {/* 10. Statistics */}
-          <SectionTransition index={8}>
+          {/* 9. Statistics */}
+          <SectionTransition index={7}>
             <StatisticsSection />
           </SectionTransition>
 
-          {/* 11. Testimonials */}
-          <SectionTransition index={9}>
+          {/* 10. Testimonials */}
+          <SectionTransition index={8}>
             <TestimonialsSection />
           </SectionTransition>
 
-          {/* 12. FAQ */}
-          <SectionTransition index={10}>
+          {/* 11. FAQ */}
+          <SectionTransition index={9}>
             <FAQSection />
           </SectionTransition>
 
-          {/* 13. Final CTA */}
-          <SectionTransition index={11}>
+          {/* 12. Final CTA */}
+          <SectionTransition index={10}>
             <FinalCTASection
               onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
             />
           </SectionTransition>
 
-          {/* 14. Contact Preview & Corporate Office Map */}
-          <SectionTransition index={12}>
+          {/* 13. Contact Preview & Corporate Office Map */}
+          <SectionTransition index={11}>
             <ContactPreviewSection />
           </SectionTransition>
         </main>
 
-        {/* 15. Footer */}
-        <SectionTransition index={13}>
+        {/* 14. Footer */}
+        <SectionTransition index={12}>
           <Footer />
         </SectionTransition>
 

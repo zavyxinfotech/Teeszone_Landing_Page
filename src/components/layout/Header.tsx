@@ -12,13 +12,11 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Nav links matching active sections
   const primaryNavLinks = [
     { name: 'Catalogue', href: '#blank-catalogue' },
     { name: 'Categories', href: '#categories' },
     { name: 'Why Us', href: '#why-us' },
     { name: 'How It Works', href: '#process' },
-    { name: 'Ready Stock', href: '#products' },
     { name: 'Our Team', href: '#team' },
     { name: 'FAQs', href: '#faq' },
     { name: 'Contact', href: '#contact' }

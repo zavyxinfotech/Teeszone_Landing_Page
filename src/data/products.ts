@@ -1,14 +1,17 @@
 import heroMockupImg from '../assets/images/teeszone_hero_mockup_1786102788341.jpg';
 import corporatePolosImg from '../assets/images/teeszone_corporate_polos_1786102801522.jpg';
-import oversizedTeesImg from '../assets/images/teeszone_oversized_tees_1786102813133.jpg';
 import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster.jpg';
-import catalogJerseyPoster from '../assets/images/catalog_jersey_poster.jpg';
-import catalogPoloPoster from '../assets/images/catalog_polo_poster.jpg';
-import catalogPremiumPoster from '../assets/images/catalog_premium_poster.jpg';
-import corporateAndOfficeUniformsImg from '../assets/categories/corporate_and_office_uniforms.png';
-import eventsAndPromotionalImg from '../assets/categories/Events_and_Promotional_Tshirts.png';
-import industrialFactoryUniformsImg from '../assets/categories/Industrial_Factory_Uniforms.png';
-import schoolUniformsImg from '../assets/categories/school_uniforms.png';
+import catCorporateTshirt from '../assets/images/cat_corporate_tshirt_1786521137829.jpg';
+import catIndustrialTshirt from '../assets/images/cat_industrial_tshirt_1786521333010.jpg';
+import catSchoolTshirt from '../assets/images/cat_school_tshirt_1786521465042.jpg';
+import catCollegeTshirt from '../assets/images/cat_college_tshirt_1786521482659.jpg';
+import catSportsJersey from '../assets/images/cat_sports_jersey_1786521568260.jpg';
+import catEventTshirt from '../assets/images/cat_event_tshirt_1786521633256.jpg';
+import catHospitalityTshirt from '../assets/images/cat_hospitality_tshirt_1786521661746.jpg';
+import catPoloTshirt from '../assets/images/cat_polo_tshirt_1786521728445.jpg';
+import catCrewneckTshirt from '../assets/images/cat_crewneck_tshirt_1786521897962.jpg';
+import catCustomHoodie from '../assets/images/cat_custom_hoodie_1786521924888.jpg';
+import catBlankTshirt from '../assets/images/cat_blank_tshirt_1786522045486.jpg';
 
 export interface CustomBulkCategory {
   id: string;
@@ -41,24 +44,24 @@ export interface ReadyStockProduct {
 export const CUSTOM_BULK_PRODUCTS: CustomBulkCategory[] = [
   {
     id: 'corporate-uniforms',
-    name: 'Corporate Uniforms',
+    name: 'Corporate & Office Uniforms',
     category: 'Corporate Uniforms',
     backdropTitle: 'CORPORATE',
-    description: 'Matching branded polo and T-shirt uniforms for tech teams, corporate employees, and executive events.',
-    image: corporateAndOfficeUniformsImg,
-    cta: 'Explore Corporate Uniforms',
-    customizationOptions: ['Chest Logo Embroidery', 'Collar Monogramming', 'Pantone Color Match'],
+    description: 'Corporate & Office Uniforms',
+    image: catCorporateTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   },
   {
-    id: 'office-uniforms',
-    name: 'Office Uniforms',
-    category: 'Office Uniforms',
-    backdropTitle: 'OFFICE',
-    description: 'Coordinated professional uniforms for front-desk staff, workplace teams, and corporate environments.',
-    image: corporatePolosImg,
-    cta: 'Explore Office Uniforms',
-    customizationOptions: ['Pocket Embroidery', 'Custom Neck Label', 'Wrinkle-Free Weave'],
+    id: 'industrial-uniforms',
+    name: 'Industrial & Factory Uniforms',
+    category: 'Industrial Uniforms',
+    backdropTitle: 'INDUSTRIAL',
+    description: 'Industrial & Factory Uniforms',
+    image: catIndustrialTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   },
   {
@@ -66,10 +69,10 @@ export const CUSTOM_BULK_PRODUCTS: CustomBulkCategory[] = [
     name: 'School Uniforms',
     category: 'School Uniforms',
     backdropTitle: 'SCHOOL',
-    description: 'Professionally designed school uniform T-shirts, polos, and campus wear tested for 100+ wash durability.',
-    image: schoolUniformsImg,
-    cta: 'Explore School Uniforms',
-    customizationOptions: ['School Crest Patch', 'Name Tag Labeling', 'Hypoallergenic Dye'],
+    description: 'School Uniforms',
+    image: catSchoolTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   },
   {
@@ -77,54 +80,32 @@ export const CUSTOM_BULK_PRODUCTS: CustomBulkCategory[] = [
     name: 'College Uniforms',
     category: 'College Uniforms',
     backdropTitle: 'COLLEGE',
-    description: 'Modern branded college uniforms, varsity hoodies, and campus store merch for university students.',
-    image: catalogPremiumPoster,
-    cta: 'Explore College Uniforms',
-    customizationOptions: ['3D Monogram Print', 'Custom Sleeve Stripe', 'Bio-Wash Softness'],
-    type: 'custom-bulk'
-  },
-  {
-    id: 'industrial-uniforms',
-    name: 'Industrial Uniforms',
-    category: 'Industrial Uniforms',
-    backdropTitle: 'INDUSTRIAL',
-    description: 'Heavy-duty industrial and factory workwear uniforms equipped with anti-shrink and stain-resistant finishes.',
-    image: industrialFactoryUniformsImg,
-    cta: 'Explore Industrial Uniforms',
-    customizationOptions: ['High-Vis Reflective Tape', 'Heavy Duty Stitching', 'Stain Guard Coating'],
+    description: 'College Uniforms',
+    image: catCollegeTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   },
   {
     id: 'sports-jerseys',
     name: 'Sports Jerseys',
     category: 'Sports Jerseys',
-    backdropTitle: 'JERSEY',
-    description: 'Customized athletic jerseys featuring full-bleed edge-to-edge moisture-wicking sublimation printing.',
-    image: catalogJerseyPoster,
-    cta: 'Explore Sports Jerseys',
-    customizationOptions: ['Edge-to-Edge Sublimation', 'Reflective Vinyl Numbers', 'Antimicrobial Mesh'],
+    backdropTitle: 'SPORTS',
+    description: 'Sports Jerseys',
+    image: catSportsJersey,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   },
   {
     id: 'event-tshirts',
-    name: 'Event T-Shirts',
+    name: 'Event & Promotional T-Shirts',
     category: 'Event T-Shirts',
     backdropTitle: 'EVENT',
-    description: 'High-impact branded event T-shirts for corporate summits, hackathons, conferences, and volunteer staff.',
-    image: eventsAndPromotionalImg,
-    cta: 'Explore Event T-Shirts',
-    customizationOptions: ['Ultra-HD Screen Print', 'Front & Back Logo', 'Express 48hr Dispatch'],
-    type: 'custom-bulk'
-  },
-  {
-    id: 'promotional-tshirts',
-    name: 'Promotional T-Shirts',
-    category: 'Promotional T-Shirts',
-    backdropTitle: 'PROMO',
-    description: 'Marketing campaign T-shirts designed for brand activations, product launches, and giveaway campaigns.',
-    image: oversizedTeesImg,
-    cta: 'Explore Promotional T-Shirts',
-    customizationOptions: ['Bulk Screen Printing', 'Custom Packaging', 'Wholesale Pricing'],
+    description: 'Event & Promotional T-Shirts',
+    image: catEventTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   },
   {
@@ -132,10 +113,54 @@ export const CUSTOM_BULK_PRODUCTS: CustomBulkCategory[] = [
     name: 'Hospitality Uniforms',
     category: 'Hospitality Uniforms',
     backdropTitle: 'HOSPITALITY',
-    description: 'Premium coordinated uniforms for hotel, restaurant, cafe, and luxury hospitality personnel.',
-    image: catalogPoloPoster,
-    cta: 'Explore Hospitality Uniforms',
-    customizationOptions: ['Chef & Server Monograms', 'Stain Shield Finish', 'Custom Aprons & Tees'],
+    description: 'Hospitality Uniforms',
+    image: catHospitalityTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
+    type: 'custom-bulk'
+  },
+  {
+    id: 'polo-tshirts',
+    name: 'Polo T-Shirts',
+    category: 'Polo T-Shirts',
+    backdropTitle: 'POLO',
+    description: 'Polo T-Shirts',
+    image: catPoloTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
+    type: 'custom-bulk'
+  },
+  {
+    id: 'crewneck-tshirts',
+    name: 'Crew Neck (Round Neck) T-Shirts',
+    category: 'Crew Neck',
+    backdropTitle: 'CREW',
+    description: 'Crew Neck (Round Neck) T-Shirts',
+    image: catCrewneckTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
+    type: 'custom-bulk'
+  },
+  {
+    id: 'custom-hoodies',
+    name: 'Customized Hoodies',
+    category: 'Hoodies',
+    backdropTitle: 'HOODIES',
+    description: 'Customized Hoodies',
+    image: catCustomHoodie,
+    cta: 'Enquire',
+    customizationOptions: [],
+    type: 'custom-bulk'
+  },
+  {
+    id: 'blank-apparel',
+    name: 'Blank Apparel for Custom Branding',
+    category: 'Blank Apparel',
+    backdropTitle: 'BLANK',
+    description: 'Blank Apparel for Custom Branding',
+    image: catBlankTshirt,
+    cta: 'Enquire',
+    customizationOptions: [],
     type: 'custom-bulk'
   }
 ];
