@@ -7,7 +7,6 @@ import { ProductCatalogueSection } from '../components/sections/ProductCatalogue
 import { ProductCategoriesSection } from '../components/sections/ProductCategoriesSection';
 import { WhyChooseSection } from '../components/sections/WhyChooseSection';
 import { PrintingProcessSection } from '../components/sections/PrintingProcessSection';
-import { FeaturedProductsSection } from '../components/sections/FeaturedProductsSection';
 import { MeetOurTeamSection } from '../components/sections/MeetOurTeamSection';
 import { StatisticsSection } from '../components/sections/StatisticsSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
@@ -19,18 +18,11 @@ import { SectionTransition } from '../components/common/SectionTransition';
 import { FloatingWhatsApp } from '../components/common/FloatingWhatsApp';
 
 // Modals
-import { QuickViewModal } from '../components/common/QuickViewModal';
 import { InstantQuoteModal } from '../components/common/InstantQuoteModal';
 
 export const Home: React.FC = () => {
   // Modal & Cart states
-  const [quickViewProduct, setQuickViewProduct] = useState<any | null>(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [cartCount, setCartCount] = useState<number>(0);
-
-  const handleAddToCart = () => {
-    setCartCount((prev) => prev + 1);
-  };
 
   return (
     <ReactLenis root>
@@ -43,7 +35,6 @@ export const Home: React.FC = () => {
         {/* 1. Header Navbar with Live Cart Counter */}
         <Header
           onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-          cartCount={cartCount}
         />
 
         {/* Main Single Page Sections */}
@@ -62,9 +53,7 @@ export const Home: React.FC = () => {
 
           {/* 4. Blank Apparel 23-Product Catalogue Section */}
           <SectionTransition index={2}>
-            <ProductCatalogueSection
-              onAddToCart={handleAddToCart}
-            />
+            <ProductCatalogueSection />
           </SectionTransition>
 
           {/* 5. Enterprise Apparel (9 Custom/Bulk Categories) */}
@@ -84,16 +73,7 @@ export const Home: React.FC = () => {
             <PrintingProcessSection />
           </SectionTransition>
 
-          {/* 8. Ready Stock Products (3 E-commerce Products) */}
-          <SectionTransition index={6}>
-            <FeaturedProductsSection
-              onQuickView={(p) => setQuickViewProduct(p)}
-              onAddToCart={() => {
-                handleAddToCart();
-                setIsQuoteModalOpen(true);
-              }}
-            />
-          </SectionTransition>
+
 
           {/* 9. Meet Our Team */}
           <SectionTransition index={7}>
@@ -136,15 +116,7 @@ export const Home: React.FC = () => {
         {/* Floating Clean Native WhatsApp Button */}
         <FloatingWhatsApp />
 
-        {/* Interactive Modals */}
-        <QuickViewModal
-          product={quickViewProduct}
-          onClose={() => setQuickViewProduct(null)}
-          onRequestQuote={() => {
-            setQuickViewProduct(null);
-            setIsQuoteModalOpen(true);
-          }}
-        />
+
 
         <InstantQuoteModal
           isOpen={isQuoteModalOpen}

@@ -5,12 +5,10 @@ import { Button } from '../common/Button';
 
 interface HeaderProps {
   onOpenQuoteModal?: () => void;
-  cartCount?: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  onOpenQuoteModal,
-  cartCount = 0
+  onOpenQuoteModal
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -54,19 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Zone 3: Far Right - Cart Icon Badge & CTA Button */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           
-          {/* Cart Icon Button with Item Count Badge */}
-          <button
-            onClick={onOpenQuoteModal}
-            aria-label="View Cart"
-            className="relative p-2 rounded-xl text-[#0A2540] hover:bg-slate-100 transition-colors cursor-pointer flex items-center justify-center"
-          >
-            <ShoppingCart className="w-5 h-5 text-[#0A2540]" />
-            {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#635BFF] text-white text-[11px] font-poppins font-bold flex items-center justify-center shadow-md animate-scaleIn">
-                {cartCount}
-              </span>
-            )}
-          </button>
+
 
           {/* Enquire Now CTA Button */}
           <Button

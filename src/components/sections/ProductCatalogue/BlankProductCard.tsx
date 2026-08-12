@@ -1,26 +1,16 @@
-import React, { useState } from 'react';
+
+
+import React from 'react';
 import { motion } from 'motion/react';
 import { BlankProduct } from '../../../data/blankCatalogue';
-import { Check, ShoppingBag } from 'lucide-react';
 
 interface BlankProductCardProps {
   product: BlankProduct;
-  onAddToCart: (product: BlankProduct) => void;
 }
 
 export const BlankProductCard: React.FC<BlankProductCardProps> = ({
-  product,
-  onAddToCart
+  product
 }) => {
-  const [isAdded, setIsAdded] = useState(false);
-
-  const handleCartClick = () => {
-    onAddToCart(product);
-    setIsAdded(true);
-    setTimeout(() => {
-      setIsAdded(false);
-    }, 1500);
-  };
 
   return (
     <motion.div
@@ -81,29 +71,7 @@ export const BlankProductCard: React.FC<BlankProductCardProps> = ({
         </div>
       </div>
 
-      {/* Bottom: Full-Width / Pill-Shaped "Add to Cart" Button (No Price Shown) */}
-      <div className="pt-2 border-t border-slate-100 mt-auto">
-        <button
-          onClick={handleCartClick}
-          className={`w-full py-2.5 sm:py-3 px-4 rounded-xl font-poppins font-bold text-xs sm:text-sm transition-all duration-300 shadow-sm flex items-center justify-center gap-2 cursor-pointer transform group-hover:shadow-md ${
-            isAdded
-              ? 'bg-emerald-600 text-white shadow-emerald-500/30'
-              : 'bg-[#0A2540] hover:bg-[#635BFF] text-white'
-          }`}
-        >
-          {isAdded ? (
-            <>
-              <Check className="w-4 h-4 text-white" />
-              <span>Added ✓</span>
-            </>
-          ) : (
-            <>
-              <ShoppingBag className="w-4 h-4 opacity-90" />
-              <span>Add to Cart</span>
-            </>
-          )}
-        </button>
-      </div>
+
 
     </motion.div>
   );

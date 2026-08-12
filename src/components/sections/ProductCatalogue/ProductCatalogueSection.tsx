@@ -2,22 +2,15 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BLANK_CATALOGUE_PRODUCTS, BlankProduct } from '../../../data/blankCatalogue';
 import { BlankProductCard } from './BlankProductCard';
-import { ChevronDown, Sparkles, CheckCircle2, Layers } from 'lucide-react';
-import catalogueBg from '../../../assets/images/catalog_polo_poster.jpg';
-
-interface ProductCatalogueSectionProps {
-  onAddToCart: (product: BlankProduct) => void;
-}
+import { ChevronDown, CheckCircle2, Layers } from 'lucide-react';
 
 const BATCH_SIZE = 8; // Sliced progressive loading
 
-export const ProductCatalogueSection: React.FC<ProductCatalogueSectionProps> = ({
-  onAddToCart
-}) => {
+export const ProductCatalogueSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(BATCH_SIZE);
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
 
   // Filter products by active category tab
   const filteredProducts = useMemo(() => {
@@ -45,13 +38,7 @@ export const ProductCatalogueSection: React.FC<ProductCatalogueSectionProps> = (
     setVisibleCount(BATCH_SIZE); // Reset pagination on filter change
   };
 
-  const handleAddToCartWithToast = (product: BlankProduct) => {
-    onAddToCart(product);
-    setToastMessage(`Added "${product.name}" to cart!`);
-    setTimeout(() => {
-      setToastMessage(null);
-    }, 2500);
-  };
+
 
   // Category Filter Chips
   const filterCategories = [
@@ -66,49 +53,11 @@ export const ProductCatalogueSection: React.FC<ProductCatalogueSectionProps> = (
   return (
     <section id="blank-catalogue" className="py-12 lg:py-20 bg-[#F7F4EF]/60 text-[#0A2540] relative overflow-hidden select-none" aria-label="Blank Apparel Catalogue">
       
-      {/* Toast Confirmation Notification */}
-      <AnimatePresence>
-        {toastMessage && (
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-50 bg-[#0A2540] text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700"
-          >
-            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-            <span className="text-xs sm:text-sm font-poppins font-bold">{toastMessage}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
-        {/* 1. Hero / Banner Strip: Tagline ("Premium Blanks. Built for Brands.") */}
-        <div className="relative rounded-3xl overflow-hidden mb-12 bg-[#0A2540] text-white p-8 sm:p-12 lg:p-14 shadow-2xl border border-slate-800">
-          <img
-            src={catalogueBg}
-            alt="Premium Folded Blank Apparel Banner"
-            className="absolute inset-0 w-full h-full object-cover object-center filter opacity-20 mix-blend-overlay pointer-events-none"
-          />
-          
-          <div className="relative z-10 max-w-2xl space-y-4">
-            <span className="inline-flex items-center gap-2 text-xs font-poppins font-bold uppercase tracking-widest text-[#38BDF8] bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
-              TEESZONE B2B CATALOGUE
-            </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold tracking-tight leading-tight drop-shadow-md">
-              Premium Blanks. <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-[#38BDF8] via-[#818CF8] to-[#C084FC] bg-clip-text text-transparent">
-                Built for Brands.
-              </span>
-            </h1>
-
-            <p className="text-xs sm:text-base text-slate-200 font-inter font-medium leading-relaxed max-w-xl">
-              Browse our complete range of 23 plain apparel options — Roundneck tees, Polos, Hoodies, and Oversized cuts engineered for B2B & bulk buyers.
-            </p>
-          </div>
-        </div>
 
         {/* 2. Category Filter Chips (Pill Buttons, Light Border, Active State Filled) */}
         <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
@@ -149,7 +98,6 @@ export const ProductCatalogueSection: React.FC<ProductCatalogueSectionProps> = (
               <BlankProductCard
                 key={product.id}
                 product={product}
-                onAddToCart={handleAddToCartWithToast}
               />
             ))}
           </AnimatePresence>
