@@ -1,186 +1,254 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '../common/Button';
-import { ArrowRight } from 'lucide-react';
-import heroBgVideo from '../../assets/videos/Hero_Section_Background_Video.mp4';
+import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShoppingCart } from 'lucide-react';
+
+// Background/Product images for the slides
+import customApparelBg from '../../assets/images/teeszone_hero_mockup_1786102788341.jpg';
+import corporateSolutionsBg from '../../assets/images/teeszone_corporate_polos_1786102801522.jpg';
+import readyStockBg from '../../assets/images/teeszone_hoodies_sweats_1786102824199.jpg';
 
 interface HeroSectionProps {
   onOpenQuoteModal: () => void;
-  onOpenSampleModal?: () => void;
-  onOpenCustomizerModal?: () => void;
 }
 
-// Hero Carousel Headline Messages (Auto-rotating silently)
 const HERO_SLIDES = [
   {
     id: 0,
-    headlinePrefix: "Precision Custom T-Shirts & ",
-    headlineGradient: "Corporate Apparel.",
-    subtitle: "Elevate your team identity with high-density embroidered polos, 240 GSM heavy cotton tees, and custom swag boxes. Engineered with zero-compromise fabric, 100% color accuracy, and express dispatch.",
-    ctaText: "Get Instant Quote"
+    headingPrefix: "Built for Your Brand. ",
+    headingAccent: "Made to Stand Out.",
+    subheading: "Premium custom apparel and uniforms crafted for businesses, institutions, teams, and events—with quality, precision, and professional branding.",
+    ctaText: "Explore Custom Apparel",
+    productImage: customApparelBg
   },
   {
     id: 1,
-    headlinePrefix: "1200 DPI High-Density ",
-    headlineGradient: "HD Print Quality.",
-    subtitle: "Vibrant automatic screen printing and precision DTF customization engineered for corporate uniforms, startup swag kits, and athletic wear that never cracks, peels, or fades.",
-    ctaText: "Explore Print Options"
+    headingPrefix: "Professional Uniforms. ",
+    headingAccent: "Powerful First Impressions.",
+    subheading: "From corporate and office wear to industrial, hospitality, school, and college uniforms—designed to strengthen your organization's identity.",
+    ctaText: "Explore Uniform Solutions",
+    productImage: corporateSolutionsBg
   },
   {
     id: 2,
-    headlinePrefix: "Express 48-Hour Dispatch & ",
-    headlineGradient: "Low 10 Pcs MOQ.",
-    subtitle: "Fastest turnaround time in the custom apparel industry with zero MOQ constraints. Order executive sample prototypes or 10,000 corporate polo units with live specs.",
-    ctaText: "Start Order Inquiry"
+    headingPrefix: "Premium Tees. ",
+    headingAccent: "Ready When You Are.",
+    subheading: "Discover quality ready-stock polos, crew necks, and hoodies—premium fabrics, modern styles, and reliable quality for everyday wear.",
+    ctaText: "Shop Ready Stock",
+    productImage: readyStockBg
   }
 ];
 
-const SLIDE_DURATION = 6000; // 6 seconds silent auto-transition
+const SLIDE_DURATION = 7000; // 7 seconds transition
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenQuoteModal
 }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
-  // Silent background headline rotation
+  // Auto-slide transition
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+      handleNext();
     }, SLIDE_DURATION);
-
     return () => clearInterval(timer);
   }, []);
 
-  const activeSlideData = HERO_SLIDES[currentSlide];
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  // Touch handlers for mobile swipe gesture
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      handleNext();
+    } else if (touchEndX - touchStartX > 50) {
+      handlePrev();
+    }
+  };
 
   return (
-    <section className="relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden bg-slate-950 -mt-[69px] pt-[69px]" aria-label="TeesZone Custom Apparel Hero">
-      
-      {/* 1. Full-Width Balanced Background Video Layer */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="w-full h-full object-cover object-center filter brightness-[1.05] contrast-[1.05] saturate-[1.05] transition-all duration-700"
-        >
-          <source src={heroBgVideo} type="video/mp4" />
-          <source src="/assets/videos/Hero_Section_Background_Video.mp4" type="video/mp4" />
-        </video>
-
-        {/* Cohesive Full-Width Cinematic Scrim Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/35 w-full h-full" />
-        
-        {/* Subtle Ambient Radial Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(99,91,255,0.15),transparent_60%)]" />
-
-        {/* Smooth Transition Gradient to White Trusted Clients Section */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white via-slate-950/30 to-transparent" />
+    <section 
+      className="relative h-[calc(100vh-69px)] lg:h-screen w-full flex items-center overflow-hidden bg-white pt-16 lg:pt-[69px] select-none" 
+      aria-label="TeesZone Custom Apparel Hero"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* 1. Diagonal Design Shapes (Split theme in background of right side) */}
+      <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden pointer-events-none hidden lg:block z-0">
+        {/* Background diagonal stripe structure (Inspired by reference layout, using brand colors) */}
+        <div className="absolute top-[-50%] right-[-10%] w-[120%] h-[200%] transform -rotate-12 bg-slate-50/80 -z-20" />
+        <div className="absolute top-[-20%] right-[32%] w-[12%] h-[150%] transform -rotate-12 bg-[#635BFF] opacity-90 -z-10" />
+        <div className="absolute top-[-20%] right-[12%] w-[22%] h-[150%] transform -rotate-12 bg-[#38BDF8] opacity-90 -z-10" />
       </div>
 
-      {/* 2. Bottom-Left Animated Glowing Particle Effect */}
-      <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [0.9, 1.15, 0.9],
-            opacity: [0.3, 0.6, 0.3],
-            rotate: [0, 45, 0]
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-tr from-[#38BDF8]/20 via-[#635BFF]/15 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, 15, -15, 0],
-            y: [0, -15, 15, 0],
-            opacity: [0.4, 0.8, 0.4]
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-6 left-6 w-3 h-3 bg-[#38BDF8] rounded-full blur-xs shadow-lg shadow-[#38BDF8]/50"
-        />
-        <motion.div
-          animate={{
-            x: [0, -20, 20, 0],
-            y: [0, 20, -20, 0],
-            opacity: [0.3, 0.7, 0.3]
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-12 left-14 w-2 h-2 bg-[#635BFF] rounded-full blur-xs shadow-lg shadow-[#635BFF]/50"
-        />
+      {/* Decorative Dot Grids (Inspired by reference top-right and bottom-left) */}
+      <div className="absolute top-24 right-10 opacity-30 pointer-events-none hidden lg:block z-0">
+        <div className="grid grid-cols-5 gap-2">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+          ))}
+        </div>
+      </div>
+      <div className="absolute bottom-10 left-10 opacity-30 pointer-events-none hidden lg:block z-0">
+        <div className="grid grid-cols-5 gap-2">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+          ))}
+        </div>
       </div>
 
-      {/* 3. Bottom-Right Soft Cinematic Smoky Mist Effect */}
-      <div className="absolute bottom-0 right-0 z-10 pointer-events-none overflow-hidden w-72 h-72 sm:w-96 sm:h-96">
-        <motion.div
-          animate={{
-            x: [20, -20, 20],
-            y: [10, -15, 10],
-            scale: [1, 1.1, 1],
-            opacity: [0.25, 0.5, 0.25]
-          }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 right-0 w-full h-full rounded-full blur-3xl bg-[radial-gradient(circle_at_90%_90%,rgba(255,255,255,0.1),rgba(99,91,255,0.08),transparent_70%)]"
-        />
-        <motion.div
-          animate={{
-            x: [-15, 15, -15],
-            y: [-10, 15, -10],
-            scale: [1.05, 0.95, 1.05],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-4 right-4 w-4/5 h-4/5 rounded-full blur-2xl bg-[radial-gradient(circle_at_80%_80%,rgba(56,189,248,0.1),rgba(10,37,64,0.15),transparent_65%)]"
-        />
-      </div>
+      {/* 2. Interactive Navigation Arrows (Hidden on small mobile screens) */}
+      <button
+        onClick={handlePrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer hidden md:flex items-center justify-center border border-slate-200"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer hidden md:flex items-center justify-center border border-slate-200"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
 
-      {/* 4. Main Hero Content Container */}
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 relative z-20 py-12 sm:py-16 lg:py-0">
-        <div className="max-w-2xl text-left space-y-6">
+      {/* 3. Main Split Content Grid */}
+      <div className="w-full px-4 sm:px-10 lg:px-16 xl:px-20 relative z-20 h-full flex items-center py-4 lg:py-0">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center max-w-7xl mx-auto">
           
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.45, ease: [0.215, 0.61, 0.355, 1] }}
-              className="space-y-6 text-left"
-            >
-              {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-[1.18] drop-shadow-md text-left">
-                {activeSlideData.headlinePrefix} <br className="hidden sm:inline" />
-                <span className="bg-gradient-to-r from-[#38BDF8] via-[#818CF8] to-[#C084FC] bg-clip-text text-transparent">
-                  {activeSlideData.headlineGradient}
-                </span>
-              </h1>
+          {/* Left Column: Headline, Mobile Image, Description, Supporting badging, CTA */}
+          <div className="lg:col-span-6 space-y-3.5 lg:space-y-5 text-left">
+            
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="space-y-3 lg:space-y-5 flex flex-col justify-center"
+              >
+                {/* Main Headline */}
+                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-poppins font-black text-[#0A2540] tracking-tight leading-[1.15]">
+                  {HERO_SLIDES[currentSlide].headingPrefix} <br className="hidden sm:inline" />
+                  <span className="text-[#635BFF]">
+                    {HERO_SLIDES[currentSlide].headingAccent}
+                  </span>
+                </h1>
 
-              {/* Sub-headline Body */}
-              <p className="text-sm sm:text-base lg:text-lg text-slate-200 font-inter font-medium leading-relaxed max-w-lg text-left drop-shadow-md">
-                {activeSlideData.subtitle}
-              </p>
+                {/* Mobile-only Image (Positioned directly under heading on mobile) */}
+                <div className="block lg:hidden relative w-full max-w-[280px] aspect-[16/10] rounded-xl overflow-hidden shadow-md border-2 border-white bg-white shrink-0 my-1">
+                  <img 
+                    src={HERO_SLIDES[currentSlide].productImage} 
+                    alt="TeesZone Custom Apparel Mobile" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-              {/* Primary CTA Button */}
-              <div className="pt-2 flex text-left">
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={onOpenQuoteModal}
-                  icon={<ArrowRight className="w-4 h-4" />}
-                  className="shadow-xl shadow-[#635BFF]/40 hover:shadow-[#635BFF]/60 transition-all duration-300 px-6 py-3.5 rounded-xl text-sm font-bold transform hover:-translate-y-0.5"
-                >
-                  {activeSlideData.ctaText}
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                {/* Subheading / Description */}
+                <p className="text-xs sm:text-base text-slate-600 font-inter font-semibold leading-relaxed max-w-xl">
+                  {HERO_SLIDES[currentSlide].subheading}
+                </p>
+
+                {/* Checklist Inline Badges (Hidden on mobile to fit the screen) */}
+                <div className="hidden sm:flex flex-wrap gap-x-4 gap-y-1.5 text-xs sm:text-sm text-slate-600 font-poppins font-bold items-center">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
+                    <span>Premium Quality</span>
+                  </div>
+                  <span className="text-slate-300">|</span>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
+                    <span>Bulk Orders</span>
+                  </div>
+                  <span className="text-slate-300">|</span>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
+                    <span>Fast Delivery</span>
+                  </div>
+                </div>
+
+                {/* Action CTA Button */}
+                <div className="pt-1 flex">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onClick={onOpenQuoteModal}
+                    icon={<ShoppingCart className="w-4 h-4 ml-1 shrink-0" />}
+                    className="shadow-xl shadow-[#635BFF]/35 hover:shadow-[#635BFF]/50 transition-all duration-300 px-6 py-2.5 rounded-full text-xs sm:text-sm font-poppins font-bold bg-[#635BFF] hover:bg-[#635BFF]/90 border-0 flex items-center justify-center gap-2"
+                  >
+                    {HERO_SLIDES[currentSlide].ctaText}
+                  </Button>
+                </div>
+
+              </motion.div>
+            </AnimatePresence>
+
+          </div>
+
+          {/* Right Column: Desktop-only floating product image overlaying diagonal graphics */}
+          <div className="lg:col-span-6 relative hidden lg:flex items-center justify-end">
+            
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="relative w-full max-w-sm sm:max-w-md lg:w-[85%] aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-[8px] lg:border-[12px] border-white bg-white"
+              >
+                <motion.img 
+                  src={HERO_SLIDES[currentSlide].productImage} 
+                  alt="TeesZone Custom Apparel" 
+                  className="w-full h-full object-cover"
+                  animate={{
+                    y: [0, -8, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+            
+          </div>
 
         </div>
       </div>
 
+      {/* 4. Slide indicators (dots) */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+        {HERO_SLIDES.map((slide, idx) => (
+          <button
+            key={slide.id}
+            onClick={() => setCurrentSlide(idx)}
+            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentSlide ? 'w-8 bg-[#635BFF]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
     </section>
   );
 };

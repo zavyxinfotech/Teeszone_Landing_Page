@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { BRAND } from "../../data/brand";
-import teeszoneLogo from "/assets/logo.png";
+import { Logo } from "../common/Logo";
 import {
-  ArrowRight,
-  Check,
   MapPin,
   Phone,
   Mail,
@@ -11,18 +9,6 @@ import {
 } from "lucide-react";
 
 export const Footer: React.FC = () => {
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
-
-  const handleNewsletter = (e: React.FormEvent) => {
-    e.preventDefault();
-    setNewsletterSuccess(true);
-    setTimeout(() => {
-      setNewsletterSuccess(false);
-      setNewsletterEmail("");
-    }, 3000);
-  };
-
   return (
     <footer
       className="bg-[#0A2540] text-white pt-16 pb-10 relative overflow-hidden font-inter border-t border-slate-800"
@@ -38,11 +24,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-5">
               {/* Logo + Brand Name */}
               <div className="flex items-center gap-3">
-                <img
-                  src={teeszoneLogo}
-                  alt="TeesZone"
-                  className="h-12 w-auto object-contain"
-                />
+                <Logo size="md" />
               </div>
             </div>
 
@@ -50,41 +32,41 @@ export const Footer: React.FC = () => {
               {BRAND.description}
             </p>
 
-            {/* Enquiry Now Phone & Contact Handles */}
-            <div className="p-3.5 rounded-2xl space-y-2 text-xs text-slate-200">
-              <span className="font-poppins font-bold text-[#38BDF8] uppercase tracking-wider text-[10px] flex items-center gap-1.5">
-                <MessageSquare className="w-3.5 h-3.5 text-[#635BFF]" />
-                Enquiry Now Phone Lines
-              </span>
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={`tel:${BRAND.contact.phonePrimary}`}
-                  className="flex items-center gap-1.5 hover:text-[#38BDF8] transition-colors font-bold text-white px-3 py-1.5 rounded-xl"
-                >
-                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>{BRAND.contact.phonePrimary}</span>
-                </a>
-                <a
-                  href={`tel:${BRAND.contact.phoneSecondary}`}
-                  className="flex items-center gap-1.5 hover:text-[#38BDF8] transition-colors font-bold text-white  px-3 py-1.5 rounded-xl"
-                >
-                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>{BRAND.contact.phoneSecondary}</span>
-                </a>
-              </div>
-              <div className="flex items-center gap-2 pt-1">
-                <Mail className="w-3.5 h-3.5 text-[#38BDF8]" />
-                <a
-                  href={`mailto:${BRAND.contact.email}`}
-                  className="hover:text-white transition-colors font-bold text-slate-200"
-                >
-                  {BRAND.contact.email}
-                </a>
-              </div>
+            {/* Contact Actions */}
+            <div className="flex flex-col gap-4">
+              <a
+                href={`tel:${BRAND.contact.phonePrimary}`}
+                className="w-fit bg-[#635BFF] hover:bg-[#524ae3] text-white font-poppins font-bold text-sm px-6 py-2.5 rounded-xl flex items-center gap-2 transition-all shadow-md hover:shadow-lg"
+              >
+                <Phone className="w-4 h-4" />
+                Call Now
+              </a>
             </div>
 
-            {/* Social Icons with Official SVGs for Facebook and Instagram ONLY */}
+            {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
+              {/* Email */}
+              <a
+                href={`mailto:${BRAND.contact.email}`}
+                aria-label="Email"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#38BDF8] flex items-center justify-center text-white transition-all shadow-xs group"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href={BRAND.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#0A66C2] flex items-center justify-center text-white transition-all shadow-xs group"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+
               {/* Facebook */}
               <a
                 href={BRAND.socials.facebook}
@@ -165,92 +147,36 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Newsletter */}
-          <div className="lg:col-span-3 space-y-3">
-            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#38BDF8]">
-              Corporate Swag Insights
+          {/* Column 3: Corporate Office & Map */}
+          <div className="lg:col-span-6 space-y-4">
+            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#38BDF8] flex items-center gap-1.5">
+              <MapPin className="w-4 h-4 text-[#635BFF]" />
+              <span>Corporate Office</span>
             </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Subscribe to receive quarterly fabric trend reports, new garment
-              additions, and enterprise volume discounts.
-            </p>
-
-            {newsletterSuccess ? (
-              <div className="p-3 bg-emerald-500/20 rounded-xl text-xs text-emerald-300 flex items-center gap-2">
-                <Check className="w-4 h-4" />
-                <span>Subscribed successfully!</span>
+            
+            <div className="p-4 rounded-2xl bg-white/5 border border-slate-800/80 space-y-4">
+              <div>
+                <span className="font-bold font-poppins text-white block text-sm mb-1">
+                  {BRAND.contact.headOffice.title}
+                </span>
+                <p className="text-slate-300 text-xs leading-relaxed">
+                  {BRAND.contact.headOffice.address}
+                </p>
               </div>
-            ) : (
-              <form
-                onSubmit={handleNewsletter}
-                className="flex gap-2 pt-1 font-inter"
-              >
-                <input
-                  required
-                  type="email"
-                  placeholder="Enter work email..."
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="flex-1 px-3.5 py-2.5 rounded-xl bg-white/10 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#635BFF]/30 transition-all"
-                />
-                <button
-                  type="submit"
-                  className="px-3.5 py-2.5 bg-[#635BFF] hover:bg-[#574BFF] text-white rounded-xl transition-colors cursor-pointer"
-                  aria-label="Subscribe to newsletter"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
 
-        {/* Official Physical Locations Grid */}
-        <div className="space-y-4 pb-8 border-b border-slate-800/80">
-          <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#38BDF8] flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-[#635BFF]" />
-            <span>Our Offices & Manufacturing Facilities</span>
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-inter">
-            {/* Head Office */}
-            <div className="p-3.5 rounded-2xl space-y-1">
-              <span className="font-bold font-poppins text-white block text-xs">
-                {BRAND.contact.headOffice.title}
-              </span>
-              <p className="text-slate-300 text-[11px] leading-relaxed">
-                {BRAND.contact.headOffice.address}
-              </p>
-            </div>
-
-            {/* Factory */}
-            <div className="p-3.5 rounded-2xl space-y-1">
-              <span className="font-bold font-poppins text-white block text-xs">
-                {BRAND.contact.factory.title}
-              </span>
-              <p className="text-slate-300 text-[11px] leading-relaxed">
-                {BRAND.contact.factory.address}
-              </p>
-            </div>
-
-            {/* Chennai */}
-            <div className="p-3.5 rounded-2xlspace-y-1">
-              <span className="font-bold font-poppins text-white block text-xs">
-                {BRAND.contact.chennai.title}
-              </span>
-              <p className="text-slate-300 text-[11px] leading-relaxed">
-                {BRAND.contact.chennai.address}
-              </p>
-            </div>
-
-            {/* Bengaluru */}
-            <div className="p-3.5 rounded-2xl  space-y-1">
-              <span className="font-bold font-poppins text-white block text-xs">
-                {BRAND.contact.bengaluru.title}
-              </span>
-              <p className="text-slate-300 text-[11px] leading-relaxed">
-                {BRAND.contact.bengaluru.address}
-              </p>
+              <div className="w-full h-48 rounded-xl overflow-hidden bg-slate-800/50 relative border border-slate-700/50">
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(BRAND.contact.headOffice.title + " " + BRAND.contact.headOffice.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                  title="Corporate Office Location"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>

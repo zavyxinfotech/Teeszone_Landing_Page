@@ -160,7 +160,7 @@ export const WhyChooseSection: React.FC = () => {
             THE TEESZONE ADVANTAGE
           </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
             Why Choose TeesZone?
           </h2>
 

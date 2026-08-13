@@ -3,18 +3,15 @@ import ReactLenis from 'lenis/react';
 import { Header } from '../components/layout/Header';
 import { HeroSection } from '../components/sections/HeroSection';
 import { TrustedClientsSection } from '../components/sections/TrustedClientsSection';
-import { ProductCatalogueSection } from '../components/sections/ProductCatalogue/ProductCatalogueSection';
+import { AboutTeesZoneSection } from '../components/sections/AboutTeesZoneSection';
 import { ProductCategoriesSection } from '../components/sections/ProductCategoriesSection';
 import { WhyChooseSection } from '../components/sections/WhyChooseSection';
-import { PrintingProcessSection } from '../components/sections/PrintingProcessSection';
+import { ApparelManufacturingSection } from '../components/sections/ApparelManufacturingSection';
 import { MeetOurTeamSection } from '../components/sections/MeetOurTeamSection';
-import { StatisticsSection } from '../components/sections/StatisticsSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
 import { FAQSection } from '../components/sections/FAQSection';
-import { FinalCTASection } from '../components/sections/FinalCTASection';
 import { ContactPreviewSection } from '../components/sections/ContactPreviewSection';
 import { Footer } from '../components/layout/Footer';
-import { SectionTransition } from '../components/common/SectionTransition';
 import { FloatingWhatsApp } from '../components/common/FloatingWhatsApp';
 
 // Modals
@@ -40,83 +37,49 @@ export const Home: React.FC = () => {
         {/* Main Single Page Sections */}
         <main className="flex-1 relative z-10">
           {/* 2. Hero Section */}
-          <SectionTransition index={0}>
-            <HeroSection
-              onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-            />
-          </SectionTransition>
+          <HeroSection
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
+          />
 
           {/* 3. Trusted Clients Marquee */}
-          <SectionTransition index={1}>
-            <TrustedClientsSection />
-          </SectionTransition>
+          <TrustedClientsSection />
 
-          {/* 4. Enterprise Apparel (9 Custom/Bulk Categories) */}
-          <SectionTransition index={2}>
-            <ProductCategoriesSection 
-              onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
-            />
-          </SectionTransition>
+          {/* 4. About TeesZone */}
+          <AboutTeesZoneSection 
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
+          />
 
-          {/* 5. Why Choose TeesZone */}
-          <SectionTransition index={3}>
-            <WhyChooseSection />
-          </SectionTransition>
+          {/* 5. Products Lookbook */}
+          <ProductCategoriesSection 
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
+          />
 
-          {/* 6. Precision Manufacturing (4-Step Timeline) */}
-          <SectionTransition index={4}>
-            <PrintingProcessSection />
-          </SectionTransition>
+          {/* 6. Why Choose TeesZone */}
+          <WhyChooseSection />
 
-          {/* 7. Blank Apparel 23-Product Catalogue Section */}
-          <SectionTransition index={5}>
-            <ProductCatalogueSection 
-              onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-            />
-          </SectionTransition>
+          {/* 7. Apparel Manufacturing */}
+          <ApparelManufacturingSection 
+            onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
+          />
 
           {/* 8. Meet Our Team */}
-          <SectionTransition index={6}>
-            <MeetOurTeamSection />
-          </SectionTransition>
+          <MeetOurTeamSection />
 
-          {/* 9. Statistics */}
-          <SectionTransition index={7}>
-            <StatisticsSection />
-          </SectionTransition>
+          {/* 9. Testimonials */}
+          <TestimonialsSection />
 
-          {/* 10. Testimonials */}
-          <SectionTransition index={8}>
-            <TestimonialsSection />
-          </SectionTransition>
+          {/* 10. FAQ */}
+          <FAQSection />
 
-          {/* 11. FAQ */}
-          <SectionTransition index={9}>
-            <FAQSection />
-          </SectionTransition>
-
-          {/* 12. Final CTA */}
-          <SectionTransition index={10}>
-            <FinalCTASection
-              onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
-            />
-          </SectionTransition>
-
-          {/* 13. Contact Preview & Corporate Office Map */}
-          <SectionTransition index={11}>
-            <ContactPreviewSection />
-          </SectionTransition>
+          {/* 11. Contact Preview & Corporate Office Map */}
+          <ContactPreviewSection />
         </main>
 
         {/* 14. Footer */}
-        <SectionTransition index={12}>
-          <Footer />
-        </SectionTransition>
+        <Footer />
 
         {/* Floating Clean Native WhatsApp Button */}
         <FloatingWhatsApp />
-
-
 
         <InstantQuoteModal
           isOpen={isQuoteModalOpen}

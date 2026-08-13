@@ -27,7 +27,7 @@ export const ContactPreviewSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-12 lg:py-16 bg-transparent relative" aria-label="Corporate Office & Prepress Consultation">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] relative" aria-label="Corporate Office & Prepress Consultation">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto space-y-12">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -38,7 +38,7 @@ export const ContactPreviewSection: React.FC = () => {
               <Badge variant="primary" size="md" className="mb-2">
                 CORPORATE OFFICE & CONTACT
               </Badge>
-              <h2 className="text-3xl sm:text-4xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
                 Speak With a Dedicated Apparel Specialist
               </h2>
               <p className="text-xs sm:text-sm text-[#425466] mt-2 leading-relaxed font-inter">
@@ -180,153 +180,7 @@ export const ContactPreviewSection: React.FC = () => {
 
         </div>
 
-        {/* Our Locations Section (Dark Theme 2D Map Redesign) */}
-        <div className="py-16 lg:py-24 border-t border-slate-200/80 relative overflow-hidden bg-transparent">
-          <div className="w-full max-w-7xl mx-auto px-4 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              
-              {/* Left Column: Text */}
-              <div className="text-center lg:text-left z-20">
-                <span className="uppercase text-xs font-poppins font-bold tracking-[0.2em] text-[#635BFF] block mb-3">
-                  Our Network
-                </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-poppins font-black text-[#0A2540] leading-[1.15] mb-6">
-                  Find Us Across South India
-                </h2>
-                <div className="flex gap-2 justify-center lg:justify-start mb-8">
-                  <div className="h-1.5 w-12 bg-[#FF5A36] rounded-full"></div>
-                  <div className="h-1.5 w-4 bg-[#635BFF] rounded-full"></div>
-                </div>
-                <p className="text-slate-600 font-inter text-base lg:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
-                  From our origins in Erode to manufacturing in Tiruppur, and expanding reach through Chennai and Bengaluru. Hover over any location to view full details.
-                </p>
-              </div>
 
-              {/* Right Column: Map Container Wrapper */}
-              <div className="w-full max-w-[400px] mx-auto lg:max-w-none lg:w-auto h-auto lg:h-[600px] aspect-square lg:aspect-auto relative flex justify-center z-10 lg:ml-auto">
-                {/* Aspect Square wrapper */}
-                <div className="relative w-full h-full lg:h-full aspect-square bg-transparent">
-                  
-                  {/* Background & SVG (Overflow Hidden) */}
-                  <div className="absolute inset-0 overflow-visible pointer-events-none">
-                    {/* Map SVG background (Google Maps Default Theme) */}
-                    <IndiaMapSVG 
-                      className="absolute inset-0 w-full h-full drop-shadow-sm text-[#e5e3df]"
-                      fill="currentColor"
-                      stroke="#d5d3cf"
-                      strokeWidth={1}
-                    />
-
-                    {/* Curved Connecting Lines (Google Maps Blue) */}
-                    <svg className="absolute inset-0 w-full h-full overflow-visible">
-                      <path 
-                        d={`M ${locations[0].coordinates.left}% ${locations[0].coordinates.top}% 
-                            Q ${(locations[0].coordinates.left + locations[1].coordinates.left) / 2}% ${(locations[0].coordinates.top + locations[1].coordinates.top) / 2 + 5}% 
-                              ${locations[1].coordinates.left}% ${locations[1].coordinates.top}%
-                            Q ${(locations[1].coordinates.left + locations[3].coordinates.left) / 2 - 5}% ${(locations[1].coordinates.top + locations[3].coordinates.top) / 2}% 
-                              ${locations[3].coordinates.left}% ${locations[3].coordinates.top}%
-                            Q ${(locations[3].coordinates.left + locations[2].coordinates.left) / 2}% ${(locations[3].coordinates.top + locations[2].coordinates.top) / 2 - 10}% 
-                              ${locations[2].coordinates.left}% ${locations[2].coordinates.top}%`}
-                        fill="none" 
-                        stroke="#4285F4" 
-                        strokeWidth="2.5" 
-                        strokeDasharray="4 6"
-                        className="opacity-70"
-                      />
-                    </svg>
-                  </div>
-                  
-                  {/* Location Markers */}
-                  <div className="absolute inset-0 pointer-events-none z-20">
-                    {locations.map((loc) => {
-                      const isActive = activeLocation === loc.id;
-                      
-                      // Precise label positioning to avoid overlaps
-                      let labelPosClass = 'top-full mt-3 left-1/2 -translate-x-1/2'; // Default
-                      if (loc.id.includes('bengaluru')) labelPosClass = 'bottom-full mb-3 left-1/2 -translate-x-1/2';
-                      if (loc.id.includes('erode')) labelPosClass = 'left-full ml-3 top-1/2 -translate-y-1/2';
-                      if (loc.id.includes('tiruppur')) labelPosClass = 'right-full mr-3 top-1/2 -translate-y-1/2';
-                      
-                      return (
-                        <div 
-                          key={`map-marker-${loc.id}`}
-                          className={`absolute transition-all duration-300 pointer-events-auto ${isActive ? 'z-[60]' : 'z-10'}`}
-                          style={{ 
-                            top: `${loc.coordinates.top}%`, 
-                            left: `${loc.coordinates.left}%`,
-                            transform: 'translate(-50%, -50%)'
-                          }}
-                          onMouseEnter={() => setActiveLocation(loc.id)}
-                          onClick={() => setActiveLocation(loc.id)}
-                        >
-                          <div className="relative group flex flex-col items-center cursor-pointer">
-                            
-                            {/* Active/Hover Expanded Card */}
-                            <div className={`absolute bottom-full mb-6 bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] border border-slate-100 p-5 flex items-start gap-4 w-[280px] transition-all duration-300 origin-bottom ${isActive ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-4 pointer-events-none'}`}>
-                              <div className="absolute top-0 left-0 w-1.5 h-full bg-[#4285F4] rounded-l-2xl"></div>
-                              
-                              <div className="w-10 h-10 bg-[#4285F4]/10 rounded-full flex items-center justify-center shrink-0">
-                                <MapPin className="w-5 h-5 text-[#4285F4]" fill="currentColor" />
-                              </div>
-                              
-                              <div>
-                                <h4 className="text-[#4285F4] font-poppins font-bold text-[10px] uppercase tracking-wider mb-1">
-                                  {loc.type}
-                                </h4>
-                                <h5 className="text-sm font-black text-[#0A2540] mb-2 font-poppins">{loc.city}</h5>
-                                <p className="text-xs text-slate-500 font-medium font-inter leading-relaxed mb-3 line-clamp-2">
-                                  {loc.address}
-                                </p>
-                                
-                                <a
-                                  href={loc.mapsUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1.5 text-[#0A2540] hover:text-[#4285F4] font-poppins font-bold text-[10px] uppercase tracking-wide transition-colors"
-                                >
-                                  <Navigation className="w-3 h-3" />
-                                  View on Map
-                                </a>
-                              </div>
-                               {/* Card Arrow pointing down */}
-                               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-r border-b border-slate-100"></div>
-                            </div>
-
-                            {/* Google Maps Markers */}
-                            <div className={`relative flex items-center justify-center z-10 transition-transform duration-300 ${isActive ? 'scale-125' : 'hover:scale-110'}`}>
-                              {isActive ? (
-                                /* Google Maps Dropped Pin (Blue Dot with shadow) */
-                                <div className="relative flex items-center justify-center w-8 h-8">
-                                  <div className="absolute inset-0 bg-[#4285F4]/40 rounded-full blur-[4px] scale-150 animate-pulse"></div>
-                                  <div className="relative w-4 h-4 rounded-full bg-[#4285F4] border-2 border-white shadow-sm z-20"></div>
-                                </div>
-                              ) : (
-                                /* Google Maps Place Icon (Yellow/Orange) */
-                                <div className="relative flex items-center justify-center w-6 h-8">
-                                  <svg viewBox="0 0 24 34" fill="none" className="w-full h-full drop-shadow-sm">
-                                    <path d="M12 0C5.372 0 0 5.373 0 12C0 20.354 12 34 12 34C12 34 24 20.354 24 12C24 5.373 18.628 0 12 0Z" fill="#F4B400"/>
-                                    <circle cx="12" cy="12" r="5" fill="white"/>
-                                  </svg>
-                                </div>
-                              )}
-                            </div>
-                            
-                            {/* Name Label (Google Maps Style) */}
-                            <div className={`absolute ${labelPosClass} bg-white/95 backdrop-blur-sm px-2 py-1 rounded shadow-sm border border-slate-200 whitespace-nowrap transition-all duration-300 ${isActive ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}>
-                              <span className="text-[10px] font-bold text-[#3c4043] font-inter tracking-wide">{loc.name}</span>
-                            </div>
-
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
 
       </div>
     </section>

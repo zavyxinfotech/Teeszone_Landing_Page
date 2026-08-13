@@ -29,6 +29,7 @@ export const BRAND = {
   socials: {
     facebook: "https://www.facebook.com/teeszoneindia",
     instagram: "https://www.instagram.com/teeszoneindia",
+    linkedin: "https://www.linkedin.com/company/teeszone/",
   },
   clientLogos: [
     { name: "Stripe", logoText: "STRIPE", industry: "Fintech" },
