@@ -13,16 +13,16 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
   return (
     <section 
       id="about" 
-      className="py-20 lg:py-28 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
+      className="py-20 lg:py-24 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
       aria-label="About TeesZone"
     >
       {/* Decorative background grid pattern for texture */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
       
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 space-y-16 lg:space-y-24">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 space-y-12">
         
         {/* Intro Top Block */}
-        <div className="max-w-3xl text-left space-y-4">
+        <div className="max-w-3xl text-left space-y-3">
           <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             ABOUT TEESZONE
           </span>
@@ -34,72 +34,95 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
           </p>
         </div>
 
-        {/* Row 1: Our Vision (Text Left, Image Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-6 space-y-4 text-left"
-          >
-            <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
-              OUR VISION
-            </span>
-            <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed">
-              To become a trusted apparel partner for businesses and organizations across India through quality, innovation, and reliable manufacturing.
-            </p>
-          </motion.div>
+        {/* Vision & Mission staggered collage container (aligned close together like reference design) */}
+        <div className="space-y-12 md:space-y-2 lg:space-y-0 mt-8">
           
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-6 w-full"
-          >
-            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white">
-              <img 
-                src={corporateImage} 
-                alt="Corporate apparel vision" 
-                className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
-              />
-            </div>
-          </motion.div>
-        </div>
+          {/* Row 1: Our Vision (Image Left, Text Right) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 lg:gap-16 items-center relative py-6">
+            
+            {/* Background block behind image on the left side */}
+            <div className="absolute left-[-2.5rem] top-[15%] bottom-[15%] w-[45%] bg-[#80011F]/10 rounded-r-[2.5rem] pointer-events-none hidden md:block" />
 
-        {/* Row 2: Our Mission (Image Left, Text Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-6 order-2 lg:order-1 w-full"
-          >
-            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white">
-              <img 
-                src={manufacturingImage} 
-                alt="Apparel manufacturing mission" 
-                className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
-              />
-            </div>
-          </motion.div>
+            {/* Left: Image with custom organic blob shape */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="md:col-span-5 relative z-10 flex justify-center md:justify-start"
+            >
+              <div 
+                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#38BDF8]/60 shadow-xl bg-slate-900"
+                style={{ borderRadius: '42% 58% 50% 50% / 55% 45% 55% 45%' }}
+              >
+                <img 
+                  src={corporateImage} 
+                  alt="Our Vision" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-6 order-1 lg:order-2 space-y-4 text-left"
-          >
-            <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
-              OUR MISSION
-            </span>
-            <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed">
-              To deliver high-quality customized apparel through premium fabrics, precise manufacturing, professional branding, and timely delivery.
-            </p>
-          </motion.div>
+            {/* Right: Text Content */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="md:col-span-7 space-y-3 text-left pl-0 md:pl-6"
+            >
+              <h3 className="text-2xl sm:text-3xl font-poppins font-black uppercase text-[#241A1D] tracking-tight">
+                OUR VISION
+              </h3>
+              <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-medium leading-relaxed max-w-xl">
+                To become a trusted apparel partner for businesses and organizations across India through quality, innovation, and reliable manufacturing.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Row 2: Our Mission (Text Left, Image Right) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 lg:gap-16 items-center relative py-6">
+            
+            {/* Background block behind image on the right side */}
+            <div className="absolute right-[-2.5rem] top-[15%] bottom-[15%] w-[45%] bg-[#38BDF8]/10 rounded-l-[2.5rem] pointer-events-none hidden md:block" />
+
+            {/* Left: Text Content */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="md:col-span-7 order-2 md:order-1 space-y-3 text-left pr-0 md:pr-6"
+            >
+              <h3 className="text-2xl sm:text-3xl font-poppins font-black uppercase text-[#241A1D] tracking-tight">
+                Our Mission
+              </h3>
+              <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-medium leading-relaxed max-w-xl">
+                To deliver high-quality customized apparel through premium fabrics, precise manufacturing, professional branding, and timely delivery.
+              </p>
+            </motion.div>
+
+            {/* Right: Image with custom organic blob shape */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="md:col-span-5 order-1 md:order-2 relative z-10 flex justify-center md:justify-end"
+            >
+              <div 
+                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#80011F]/60 shadow-xl bg-slate-900"
+                style={{ borderRadius: '55% 45% 45% 55% / 45% 55% 45% 55%' }}
+              >
+                <img 
+                  src={manufacturingImage} 
+                  alt="Our Mission" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </motion.div>
+          </div>
+
         </div>
 
       </div>
