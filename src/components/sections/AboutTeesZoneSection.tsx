@@ -52,13 +52,13 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               className="md:col-span-5 relative z-10 flex justify-center md:justify-start"
             >
               <div 
-                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#38BDF8]/60 shadow-xl bg-slate-900"
+                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#38BDF8]/60 shadow-xl bg-transparent"
                 style={{ borderRadius: '42% 58% 50% 50% / 55% 45% 55% 45%' }}
               >
                 <img 
                   src={corporateImage} 
                   alt="Our Vision" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </motion.div>
@@ -111,13 +111,13 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               className="md:col-span-5 order-1 md:order-2 relative z-10 flex justify-center md:justify-end"
             >
               <div 
-                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#80011F]/60 shadow-xl bg-slate-900"
+                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#80011F]/60 shadow-xl bg-transparent"
                 style={{ borderRadius: '55% 45% 45% 55% / 45% 55% 45% 55%' }}
               >
                 <img 
                   src={manufacturingImage} 
                   alt="Our Mission" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </motion.div>
