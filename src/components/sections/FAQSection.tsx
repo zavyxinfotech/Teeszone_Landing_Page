@@ -13,7 +13,7 @@ export const FAQSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
-          <Badge variant="primary" size="md" className="bg-[#635BFF]/20 border border-[#635BFF]/30 text-[#38BDF8]">
+          <Badge size="md" className="text-[#38BDF8] mb-2">
             FREQUENTLY ASKED QUESTIONS
           </Badge>
           <h2 className="text-2xl sm:text-4xl font-poppins font-extrabold text-white tracking-tight">

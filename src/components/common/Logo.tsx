@@ -13,10 +13,10 @@ export const Logo: React.FC<LogoProps> = ({
   size = 'md'
 }) => {
   const imgSizeClass = size === 'sm'
-    ? 'h-10 sm:h-12'
+    ? 'h-8 sm:h-12'
     : size === 'lg'
-    ? 'h-18 sm:h-20'
-    : 'h-14 sm:h-16';
+    ? 'h-12 sm:h-20'
+    : 'h-10 sm:h-16';
 
 
   return (
@@ -24,7 +24,7 @@ export const Logo: React.FC<LogoProps> = ({
       <img
         src={logoPng}
         alt="TeesZone Logo"
-        className={`${imgSizeClass} w-auto object-contain flex-shrink-0 transition-transform duration-200 group-hover:scale-102`}
+        className={`${imgSizeClass} w-auto object-contain flex-shrink-0 transition-all duration-300 group-hover:scale-102`}
       />
     </div>
   );

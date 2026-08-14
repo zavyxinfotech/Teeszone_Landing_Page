@@ -4,7 +4,7 @@ import { Button } from '../common/Button';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 // Import images from assets
-import corporateImage from '../../assets/images/teeszone_corporate_polos_1786102801522.jpg';
+import corporateImage from '../../assets/images/corporate.png';
 import manufacturingImage from '../../assets/categories/Industrial_Factory_Uniforms.png';
 
 interface AboutTeesZoneSectionProps {
@@ -35,7 +35,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
             className="lg:col-span-5 space-y-6 text-left"
           >
             {/* Small Label */}
-            <span className="inline-block py-1.5 px-3 rounded-full bg-[#635BFF]/20 border border-[#635BFF]/30 text-[#38BDF8] text-[10px] font-poppins font-black uppercase tracking-wider shadow-sm">
+            <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#38BDF8] block">
               ABOUT TEESZONE
             </span>
             

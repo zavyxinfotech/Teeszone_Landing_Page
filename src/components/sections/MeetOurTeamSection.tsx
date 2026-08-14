@@ -7,6 +7,7 @@ import hrImg from '../../assets/images/team/HR.jpeg';
 import ecommerceImg from '../../assets/images/team/E-commerce_Executive.jpeg';
 import juniorDevImg from '../../assets/images/team/Junior_developer_developer.jpeg';
 import businessDevImg from '../../assets/images/team/Business_development_managerjpeg.jpeg';
+import corporateRelationsImg from '../../assets/images/team/Corporate_Relation_&_MIS_Executive.jpeg';
 import teamBgImg from '../../assets/images/meet_our_team_background.png';
 
 export interface TeamMember {
@@ -51,7 +52,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     name: 'NithyaSri S',
     role: 'Corporate Relations & MIS Executive',
     bio: 'Manages corporate communications, client coordination, reports, MIS data, and internal documentation to support smooth business operations.',
-    image: ''
+    image: corporateRelationsImg
   },
   {
     name: 'Vasuki Thangaraj',

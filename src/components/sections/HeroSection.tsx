@@ -4,9 +4,10 @@ import { Button } from '../common/Button';
 import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShoppingCart } from 'lucide-react';
 
 // Background/Product images for the slides
-import customApparelBg from '../../assets/images/hero01.png';
-import corporateSolutionsBg from '../../assets/images/teeszone_corporate_polos_1786102801522.jpg';
-import readyStockBg from '../../assets/images/teeszone_hoodies_sweats_1786102824199.jpg';
+import customApparelBg from '../../assets/images/Hero_01.png';
+import hero2A from '../../assets/images/Hero_02A.png';
+import hero2B from '../../assets/images/Hero_02B.png';
+import readyStockBg from '../../assets/images/hero_03.png';
 
 interface HeroSectionProps {
   onOpenQuoteModal: () => void;
@@ -27,7 +28,7 @@ const HERO_SLIDES = [
     headingAccent: "Powerful First Impressions.",
     subheading: "From corporate and office wear to industrial, hospitality, school, and college uniforms—designed to strengthen your organization's identity.",
     ctaText: "Explore Uniform Solutions",
-    productImage: corporateSolutionsBg
+    productImage: hero2A
   },
   {
     id: 2,
@@ -45,6 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenQuoteModal
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHoveredSlide2, setIsHoveredSlide2] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
 
@@ -83,7 +85,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <section 
-      className="relative h-[calc(100vh-69px)] lg:h-screen w-full flex items-center overflow-hidden bg-white pt-16 lg:pt-[69px] select-none" 
+      className="relative h-screen w-full flex items-center overflow-hidden bg-white pt-[72px] sm:pt-[88px] lg:pt-[69px] select-none" 
       aria-label="TeesZone Custom Apparel Hero"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -154,7 +156,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </h1>
 
                 {/* Mobile-only Image (Positioned directly under heading on mobile, using 3D rotating cylinder) */}
-                <div className="block lg:hidden relative w-full max-w-[280px] sm:max-w-[340px] aspect-[16/10] shrink-0 my-1 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible">
+                <div className="block lg:hidden relative w-[80%] max-w-[250px] sm:max-w-[320px] aspect-[16/10] shrink-0 my-1 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible">
                   <motion.div
                     className="relative w-full h-full [transform-style:preserve-3d]"
                     animate={{
@@ -179,9 +181,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           }}
                         >
                           <motion.img 
-                            src={slide.productImage} 
+                            src={idx === 1 && isHoveredSlide2 ? hero2B : slide.productImage} 
                             alt="TeesZone Custom Apparel Mobile" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain pointer-events-auto"
+                            onMouseEnter={() => idx === 1 && setIsHoveredSlide2(true)}
+                            onMouseLeave={() => idx === 1 && setIsHoveredSlide2(false)}
+                            onTouchStart={() => idx === 1 && setIsHoveredSlide2(true)}
+                            onTouchEnd={() => idx === 1 && setIsHoveredSlide2(false)}
                             animate={{
                               y: [0, -4, 0],
                               rotateX: [idx === currentSlide ? -1.5 : 0, idx === currentSlide ? 1.5 : 0, idx === currentSlide ? -1.5 : 0]
@@ -267,9 +273,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     }}
                   >
                     <motion.img 
-                      src={slide.productImage} 
+                      src={idx === 1 && isHoveredSlide2 ? hero2B : slide.productImage} 
                       alt="TeesZone Custom Apparel" 
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain pointer-events-auto cursor-pointer"
+                      onMouseEnter={() => idx === 1 && setIsHoveredSlide2(true)}
+                      onMouseLeave={() => idx === 1 && setIsHoveredSlide2(false)}
                       animate={{
                         y: [0, -8, 0],
                         rotateX: [idx === currentSlide ? -2 : 0, idx === currentSlide ? 2 : 0, idx === currentSlide ? -2 : 0]

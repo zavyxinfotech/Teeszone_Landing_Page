@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Logo } from '../common/Logo';
 import { Menu, X, ArrowRight, ChevronRight, ShoppingCart } from 'lucide-react';
 import { Button } from '../common/Button';
@@ -11,6 +11,19 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenQuoteModal
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const primaryNavLinks = [
     { name: 'About Us', href: '#about' },
@@ -23,14 +36,18 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white border-b border-gray-200 py-3 sm:py-[18px] px-3 sm:px-6 lg:px-12 transition-all duration-200 overflow-x-hidden">
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full px-3 sm:px-6 lg:px-12 transition-all duration-300 overflow-x-hidden ${
+      isScrolled || mobileMenuOpen
+        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200/50 py-2 sm:py-3 shadow-sm' 
+        : 'bg-transparent border-b-0 py-3 sm:py-[22px]'
+    }`}>
       {/* Three-Zone Flex Container with justify-between */}
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 lg:gap-6">
         
         {/* Zone 1: Far Left - Logo */}
         <div className="flex items-center shrink-0">
           <a href="#" className="flex items-center">
-            <Logo size="md" />
+            <Logo size={isScrolled ? "md" : "lg"} />
           </a>
         </div>
 
@@ -54,11 +71,14 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Enquire Now CTA Button */}
           <Button
-            variant="primary"
-            size="md"
+            variant="black"
+            size="none"
             onClick={onOpenQuoteModal}
-            icon={<ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
-            className="shadow-md shadow-[#635BFF]/30 text-[11px] sm:text-xs md:text-sm font-poppins font-bold px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl whitespace-nowrap shrink-0"
+            icon={<ArrowRight className="w-3 h-3 md:w-4.5 md:h-4.5 group-hover:translate-x-1 transition-transform" />}
+            className="shadow-sm font-poppins font-bold whitespace-nowrap shrink-0 transition-all duration-300 flex items-center justify-center gap-1.5
+              px-2.5 py-1 text-[9px] rounded-lg
+              sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:rounded-lg
+              md:px-6 md:py-3 md:text-base md:rounded-xl md:gap-2.5"
           >
             Enquire Now
           </Button>
@@ -93,14 +113,14 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
           <div className="pt-3 border-t border-gray-100">
             <Button
-              variant="primary"
-              size="md"
+              variant="black"
+              size="none"
               onClick={() => {
                 setMobileMenuOpen(false);
                 if (onOpenQuoteModal) onOpenQuoteModal();
               }}
-              className="w-full justify-center text-sm font-poppins font-bold"
-              icon={<ArrowRight className="w-4 h-4" />}
+              className="w-full justify-center font-poppins font-bold px-4 py-2 text-xs rounded-lg gap-1.5"
+              icon={<ArrowRight className="w-3.5 h-3.5" />}
             >
               Enquire Now
             </Button>
