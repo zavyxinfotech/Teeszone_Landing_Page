@@ -153,13 +153,50 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </span>
                 </h1>
 
-                {/* Mobile-only Image (Positioned directly under heading on mobile) */}
-                <div className="block lg:hidden relative w-full max-w-[340px] sm:max-w-[420px] aspect-[4/3] shrink-0 my-2">
-                  <img 
-                    src={HERO_SLIDES[currentSlide].productImage} 
-                    alt="TeesZone Custom Apparel Mobile" 
-                    className="w-full h-full object-contain"
-                  />
+                {/* Mobile-only Image (Positioned directly under heading on mobile, using 3D rotating cylinder) */}
+                <div className="block lg:hidden relative w-full max-w-[280px] sm:max-w-[340px] aspect-[16/10] shrink-0 my-1 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible">
+                  <motion.div
+                    className="relative w-full h-full [transform-style:preserve-3d]"
+                    animate={{
+                      rotateX: -currentSlide * 120
+                    }}
+                    transition={{
+                      duration: 0.8,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                  >
+                    {HERO_SLIDES.map((slide, idx) => {
+                      const angle = idx * 120;
+                      const zOffset = 90;
+                      return (
+                        <div
+                          key={`mobile-${slide.id}`}
+                          className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
+                          style={{
+                            transform: `rotateX(${angle}deg) translateZ(${zOffset}px)`,
+                            backfaceVisibility: 'hidden',
+                            WebkitBackfaceVisibility: 'hidden'
+                          }}
+                        >
+                          <motion.img 
+                            src={slide.productImage} 
+                            alt="TeesZone Custom Apparel Mobile" 
+                            className="w-full h-full object-contain"
+                            animate={{
+                              y: [0, -4, 0],
+                              rotateX: [idx === currentSlide ? -1.5 : 0, idx === currentSlide ? 1.5 : 0, idx === currentSlide ? -1.5 : 0]
+                            }}
+                            transition={{
+                              duration: 5,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: idx * 0.5
+                            }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </motion.div>
                 </div>
 
                 {/* Subheading / Description */}
@@ -203,33 +240,51 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           </div>
 
-          {/* Right Column: Desktop-only floating product image overlaying diagonal graphics */}
-          <div className="lg:col-span-6 relative hidden lg:flex items-center justify-end">
+          {/* Right Column: Desktop-only floating product image overlaying diagonal graphics with 3D rotating cylinder */}
+          <div className="lg:col-span-6 relative hidden lg:flex items-center justify-end h-[400px] lg:h-[450px] [perspective:1500px] [transform-style:preserve-3d] overflow-visible">
             
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, scale: 0.9, rotate: -2 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="relative w-full max-w-xl lg:max-w-[100%] aspect-[4/3] flex items-center justify-center"
-              >
-                <motion.img 
-                  src={HERO_SLIDES[currentSlide].productImage} 
-                  alt="TeesZone Custom Apparel" 
-                  className="w-full h-full object-contain"
-                  animate={{
-                    y: [0, -8, 0]
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </motion.div>
-            </AnimatePresence>
+            <motion.div
+              className="relative w-[95%] h-[95%] [transform-style:preserve-3d]"
+              animate={{
+                rotateX: -currentSlide * 120
+              }}
+              transition={{
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+            >
+              {HERO_SLIDES.map((slide, idx) => {
+                const angle = idx * 120;
+                const zOffset = 200;
+                return (
+                  <div
+                    key={`desktop-${slide.id}`}
+                    className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
+                    style={{
+                      transform: `rotateX(${angle}deg) translateZ(${zOffset}px)`,
+                      backfaceVisibility: 'hidden',
+                      WebkitBackfaceVisibility: 'hidden'
+                    }}
+                  >
+                    <motion.img 
+                      src={slide.productImage} 
+                      alt="TeesZone Custom Apparel" 
+                      className="w-full h-full object-contain"
+                      animate={{
+                        y: [0, -8, 0],
+                        rotateX: [idx === currentSlide ? -2 : 0, idx === currentSlide ? 2 : 0, idx === currentSlide ? -2 : 0]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: idx * 0.5
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </motion.div>
             
           </div>
 
