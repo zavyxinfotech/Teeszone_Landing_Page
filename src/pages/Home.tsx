@@ -49,16 +49,16 @@ export const Home: React.FC = () => {
             onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
           />
 
-          {/* 5. Products Lookbook */}
+          {/* 5. Why Choose TeesZone */}
+          <WhyChooseSection />
+
+          {/* 6. Meet Our Team */}
+          <MeetOurTeamSection />
+
+          {/* 7. Products Lookbook (Our Apparel) */}
           <ProductCategoriesSection 
             onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
           />
-
-          {/* 6. Why Choose TeesZone */}
-          <WhyChooseSection />
-
-          {/* 7. Meet Our Team */}
-          <MeetOurTeamSection />
 
           {/* 8. Apparel Manufacturing */}
           <ApparelManufacturingSection 

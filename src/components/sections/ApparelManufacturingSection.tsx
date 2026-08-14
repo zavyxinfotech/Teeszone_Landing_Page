@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '../common/Button';
-import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 // Import existing images to serve as placeholders for the custom uploaded images
 import mainMfgImage from '../../assets/categories/Industrial_Factory_Uniforms.png';
@@ -58,23 +58,23 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
   return (
     <section 
       id="manufacturing" 
-      className="py-16 sm:py-20 lg:py-28 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
+      className="py-16 sm:py-20 lg:py-28 bg-[#0A2540] text-white relative overflow-hidden select-none"
       aria-label="Apparel Manufacturing Process"
     >
       {/* Decorative ambient bubble */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#80011F]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#38BDF8]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-          <span className="inline-block py-1.5 px-3 rounded-full bg-sky-100 text-sky-700 text-[10px] font-poppins font-black uppercase tracking-wider shadow-sm">
+          <span className="inline-block py-1.5 px-3 rounded-full bg-[#38BDF8]/10 text-[#38BDF8] text-[10px] font-poppins font-black uppercase tracking-wider border border-[#38BDF8]/20 shadow-sm">
             PRECISION MANUFACTURING
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight">
             From Fabric to Finished Apparel.
           </h2>
-          <p className="text-sm sm:text-base text-[#425466] font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-300 font-inter leading-relaxed max-w-2xl mx-auto">
             End-to-end apparel manufacturing powered by premium fabrics, modern production, precise sizing, and professional quality inspection.
           </p>
         </div>
@@ -84,11 +84,11 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
           
           {/* Left Column: Typography copy & interactive selector list */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+            <div className="space-y-4 text-left">
+              <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-white tracking-tight">
                 Our Production Stages
               </h3>
-              <p className="text-sm text-[#425466] font-inter font-medium leading-relaxed">
+              <p className="text-sm text-slate-300 font-inter leading-relaxed">
                 Click on the stages below to explore our detailed manufacturing steps and inspect the close-up visuals.
               </p>
             </div>
@@ -104,17 +104,17 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex gap-4 border cursor-pointer ${
                       isActive 
                         ? 'bg-white border-[#80011F] shadow-lg shadow-[#80011F]/5 translate-x-1.5' 
-                        : 'bg-white/50 border-slate-200 hover:bg-white hover:border-slate-300'
+                        : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                     }`}
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-poppins font-black text-xs shrink-0 ${
-                      isActive ? 'bg-[#80011F] text-white' : 'bg-slate-100 text-[#425466]'
+                      isActive ? 'bg-[#80011F] text-white' : 'bg-white/10 text-slate-300'
                     }`}>
                       0{idx + 1}
                     </div>
                     <div className="space-y-0.5 min-w-0">
                       <h4 className={`text-sm sm:text-base font-poppins font-extrabold ${
-                        isActive ? 'text-[#241A1D]' : 'text-slate-700'
+                        isActive ? 'text-[#0A2540]' : 'text-slate-200'
                       }`}>
                         {cat.label}
                       </h4>
@@ -122,7 +122,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                         <motion.p 
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
-                          className="text-xs sm:text-sm text-[#425466] font-inter leading-relaxed mt-1"
+                          className="text-xs sm:text-sm text-slate-600 font-inter leading-relaxed mt-1"
                         >
                           {cat.description}
                         </motion.p>
@@ -146,11 +146,11 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
             </div>
           </div>
 
-          {/* Right Column: Visual demonstration (Large + small close-ups) */}
+          {/* Right Column: Visual demonstration */}
           <div className="lg:col-span-7 space-y-6">
             
             {/* Large main manufacturing photograph container */}
-            <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-200">
+            <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden shadow-2xl bg-[#0B1E33] border border-white/10">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory}
@@ -165,7 +165,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     alt={currentCategoryData.label} 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#241A1D]/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
                   
                   {/* Category Name overlay */}
                   <div className="absolute bottom-5 left-5 right-5 text-left text-white z-10">
@@ -191,7 +191,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     className={`relative rounded-xl overflow-hidden aspect-[4/3] group transition-all duration-300 border-2 cursor-pointer ${
                       isActive 
                         ? 'border-[#80011F] scale-[1.02] shadow-md shadow-[#80011F]/10' 
-                        : 'border-transparent hover:border-slate-300'
+                        : 'border-transparent hover:border-white/30'
                     }`}
                   >
                     <img 

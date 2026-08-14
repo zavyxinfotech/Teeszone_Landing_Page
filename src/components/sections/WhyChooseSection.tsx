@@ -30,7 +30,7 @@ export const WhyChooseSection: React.FC = () => {
   return (
     <section 
       id="why-us" 
-      className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden select-none"
+      className="py-20 lg:py-28 bg-slate-50 text-[#0A2540] relative overflow-hidden select-none"
       aria-label="Why Choose TeesZone"
     >
       {/* Decorative ambient background lights */}
@@ -43,10 +43,10 @@ export const WhyChooseSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#38BDF8] block">
+          <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             THE TEESZONE ADVANTAGE
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight leading-tight">
             Why Choose TeesZone?
           </h2>
         </div>
@@ -65,15 +65,15 @@ export const WhyChooseSection: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, ease: "easeOut", delay: idx * 0.1 }}
-                  className="flex flex-col items-start text-left p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                  className="flex flex-col items-start text-left p-6 rounded-2xl bg-white border border-slate-200/80 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all duration-300 group shadow-xs"
                 >
-                  <div className="p-3 bg-[#38BDF8]/10 text-[#38BDF8] rounded-xl group-hover:bg-[#38BDF8]/20 group-hover:text-white transition-all duration-300 mb-4">
+                  <div className="p-3 bg-[#80011F]/10 text-[#80011F] rounded-xl group-hover:bg-[#80011F] group-hover:text-white transition-all duration-300 mb-4">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-poppins font-bold text-white mb-2">
+                  <h3 className="text-lg font-poppins font-bold text-[#0A2540] mb-2">
                     {point.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 font-inter leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 font-inter leading-relaxed">
                     {point.description}
                   </p>
                 </motion.div>
@@ -89,14 +89,14 @@ export const WhyChooseSection: React.FC = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-6 w-full"
           >
-            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900/40">
+            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
               <img 
                 src={whyTeeszoneBg} 
                 alt="Apparel manufacturing team inspecting premium shirts" 
                 className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
               />
               {/* Subtle visual gradient scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-100/10 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
