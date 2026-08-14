@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-5">
               {/* Logo + Brand Name */}
               <div className="flex items-center gap-3">
-                <Logo size="md" />
+                <Logo size="md" variant="dark" />
               </div>
             </div>
 

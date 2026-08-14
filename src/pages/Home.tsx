@@ -57,13 +57,13 @@ export const Home: React.FC = () => {
           {/* 6. Why Choose TeesZone */}
           <WhyChooseSection />
 
-          {/* 7. Apparel Manufacturing */}
+          {/* 7. Meet Our Team */}
+          <MeetOurTeamSection />
+
+          {/* 8. Apparel Manufacturing */}
           <ApparelManufacturingSection 
             onOpenQuoteModal={() => setIsQuoteModalOpen(true)} 
           />
-
-          {/* 8. Meet Our Team */}
-          <MeetOurTeamSection />
 
           {/* 9. Testimonials */}
           <TestimonialsSection />
