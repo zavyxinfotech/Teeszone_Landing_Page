@@ -57,52 +57,52 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
   return (
     <section 
       id="manufacturing" 
-      className="py-16 sm:py-20 lg:py-28 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
+      className="py-12 sm:py-16 lg:py-6 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[680px] lg:max-h-[850px] lg:flex lg:flex-col lg:justify-center"
       aria-label="Apparel Manufacturing Process"
     >
       {/* Decorative ambient bubble */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#80011F]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 lg:flex lg:flex-col lg:justify-between lg:h-full lg:py-4">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-4 sm:mb-12 space-y-2 shrink-0">
           <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             PRECISION MANUFACTURING
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             From Fabric to Finished Apparel.
           </h2>
-          <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-sm text-[#6B5B60] font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
             End-to-end apparel manufacturing powered by premium fabrics, modern production, precise sizing, and professional quality inspection.
           </p>
         </div>
 
         {/* Layout: Asymmetric split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Typography copy & interactive selector list */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-4 text-left">
-              <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <div className="lg:col-span-5 space-y-6 lg:space-y-4">
+            <div className="space-y-4 lg:space-y-1.5 text-left">
+              <h3 className="text-xl sm:text-2xl lg:text-lg xl:text-xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
                 Our Production Stages
               </h3>
-              <p className="text-sm text-[#6B5B60] font-inter font-medium leading-relaxed">
+              <p className="text-sm lg:text-xs text-[#6B5B60] font-inter font-medium leading-relaxed">
                 Click on the stages below to explore our detailed manufacturing steps and inspect the close-up visuals.
               </p>
             </div>
 
             {/* Interactive Selector List (Vertical Timeline Style) */}
-            <div className="space-y-3.5 pt-2">
+            <div className="space-y-3.5 lg:space-y-2.5 pt-2 lg:pt-0">
               {categories.map((cat, idx) => {
                 const isActive = cat.id === activeCategory;
                 return (
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
-                    className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex gap-4 border cursor-pointer ${
+                    className={`w-full text-left p-4 lg:p-3 rounded-2xl transition-all duration-300 flex gap-4 border cursor-pointer ${
                       isActive 
-                        ? 'bg-white border-[#80011F] shadow-lg shadow-[#80011F]/5 translate-x-1.5' 
+                        ? 'bg-white border-[#80011F] shadow-lg shadow-[#80011F]/5 lg:translate-x-1' 
                         : 'bg-white/60 border-slate-200/80 hover:bg-white hover:border-[#80011F]/30'
                     }`}
                   >
@@ -112,7 +112,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                       0{idx + 1}
                     </div>
                     <div className="space-y-0.5 min-w-0">
-                      <h4 className={`text-sm sm:text-base font-poppins font-extrabold ${
+                      <h4 className={`text-sm lg:text-xs xl:text-sm font-poppins font-extrabold ${
                         isActive ? 'text-[#241A1D]' : 'text-slate-600'
                       }`}>
                         {cat.label}
@@ -121,7 +121,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                         <motion.p 
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
-                          className="text-xs sm:text-sm text-[#6B5B60] font-inter leading-relaxed mt-1"
+                          className="text-xs lg:text-[11px] xl:text-xs text-[#6B5B60] font-inter leading-relaxed mt-1"
                         >
                           {cat.description}
                         </motion.p>
@@ -132,13 +132,13 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
               })}
             </div>
 
-            <div className="pt-4 flex">
+            <div className="pt-4 lg:pt-2 flex">
               <Button
                 variant="primary"
                 size="md"
                 onClick={onOpenQuoteModal}
                 icon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-lg shadow-[#80011F]/20 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold w-full sm:w-auto justify-center"
+                className="shadow-lg shadow-[#80011F]/20 px-6 py-3.5 lg:px-5 lg:py-2.5 rounded-xl text-xs font-bold w-full sm:w-auto justify-center"
               >
                 Explore Our Manufacturing
               </Button>
@@ -146,10 +146,10 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
           </div>
 
           {/* Right Column: Visual demonstration */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-6 lg:space-y-3">
             
             {/* Large main manufacturing photograph container */}
-            <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-200/80">
+            <div className="relative aspect-[16/9] lg:aspect-[16/8.5] w-full rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-200/80">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory}
@@ -171,7 +171,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F]">
                       Active Preview
                     </span>
-                    <h3 className="text-lg sm:text-xl font-poppins font-extrabold">
+                    <h3 className="text-lg lg:text-base xl:text-lg font-poppins font-extrabold">
                       {currentCategoryData.label} Production Close-up
                     </h3>
                   </div>
@@ -180,7 +180,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
             </div>
 
             {/* Grid of 4 smaller close-up visual labels */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-3">
               {categories.map((cat) => {
                 const isActive = cat.id === activeCategory;
                 return (
@@ -198,8 +198,8 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                       alt={cat.label} 
                       className="w-full h-full object-cover filter brightness-[0.7] group-hover:brightness-[0.85] transition-all duration-300"
                     />
-                    <div className="absolute inset-0 flex flex-col justify-end p-2.5 text-left bg-gradient-to-t from-black/85 via-black/35 to-transparent">
-                      <span className="text-[9px] sm:text-[10px] font-poppins font-extrabold text-white leading-tight">
+                    <div className="absolute inset-0 flex flex-col justify-end p-2.5 lg:p-1.5 text-left bg-gradient-to-t from-black/85 via-black/35 to-transparent">
+                      <span className="text-[9px] lg:text-[8px] xl:text-[9px] sm:text-[10px] font-poppins font-extrabold text-white leading-tight">
                         {cat.label}
                       </span>
                     </div>

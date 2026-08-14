@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from '../common/Logo';
-import { Menu, X, ArrowRight, ChevronRight, ShoppingCart } from 'lucide-react';
-import { Button } from '../common/Button';
+import { Menu, X, ChevronRight } from 'lucide-react';
 
 interface HeaderProps {
   onOpenQuoteModal?: () => void;
@@ -66,19 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
           
 
 
-          {/* Enquire Now CTA Button */}
-          <Button
-            variant="black"
-            size="none"
-            onClick={onOpenQuoteModal}
-            icon={<ArrowRight className="w-3 h-3 md:w-4.5 md:h-4.5 group-hover:translate-x-1 transition-transform" />}
-            className="shadow-sm font-poppins font-bold whitespace-nowrap shrink-0 transition-all duration-300 flex items-center justify-center gap-1.5
-              px-2.5 py-1 text-[9px] rounded-lg
-              sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:rounded-lg
-              md:px-6 md:py-3 md:text-base md:rounded-xl md:gap-2.5"
-          >
-            Enquire Now
-          </Button>
+
 
           {/* Hamburger Menu Toggle */}
           <button
@@ -108,20 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
               </a>
             ))}
           </nav>
-          <div className="pt-3 border-t border-cream-light">
-            <Button
-              variant="black"
-              size="none"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenQuoteModal) onOpenQuoteModal();
-              }}
-              className="w-full justify-center font-poppins font-bold px-4 py-2 text-xs rounded-lg gap-1.5"
-              icon={<ArrowRight className="w-3.5 h-3.5" />}
-            >
-              Enquire Now
-            </Button>
-          </div>
+
         </div>
       )}
     </header>
