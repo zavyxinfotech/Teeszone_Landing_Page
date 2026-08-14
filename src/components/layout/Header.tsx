@@ -26,13 +26,10 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const primaryNavLinks = [
-    { name: 'About Us', href: '#about' },
-    { name: 'Manufacturing', href: '#manufacturing' },
-    { name: 'Products', href: '#products' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Our Team', href: '#team' },
-    { name: 'FAQs', href: '#faq' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '#' },
+    { name: 'About us', href: '#about' },
+    { name: 'Services', href: '#products' },
+    { name: 'Contact Us', href: '#contact' }
   ];
 
   return (
@@ -57,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               key={link.name}
               href={link.href}
-              className="text-[15px] font-medium text-gray-900 hover:text-[#635BFF] transition-colors no-underline whitespace-nowrap"
+              className="text-[15px] font-medium text-[#241A1D] hover:text-[#80011F] transition-colors no-underline whitespace-nowrap"
             >
               {link.name}
             </a>
@@ -86,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Hamburger Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-1.5 sm:p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer shrink-0"
+            className="lg:hidden p-1.5 sm:p-2 rounded-lg text-[#241A1D] hover:bg-cream-light transition-colors cursor-pointer shrink-0"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.75]" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.75]" />}
@@ -104,14 +101,14 @@ export const Header: React.FC<HeaderProps> = ({
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between text-base font-medium text-gray-900 py-2.5 px-3 rounded-xl hover:bg-gray-50 transition-colors"
+                className="flex items-center justify-between text-base font-medium text-[#241A1D] py-2.5 px-3 rounded-xl hover:bg-cream-light transition-colors"
               >
                 <span>{link.name}</span>
-                <ChevronRight className="w-4 h-4 text-gray-400" />
+                <ChevronRight className="w-4 h-4 text-[#6B5B60]" />
               </a>
             ))}
           </nav>
-          <div className="pt-3 border-t border-gray-100">
+          <div className="pt-3 border-t border-cream-light">
             <Button
               variant="black"
               size="none"

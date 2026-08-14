@@ -34,7 +34,7 @@ const MANUFACTURING_STEPS: ProcessStepItem[] = [
     title: 'Precision Printing & Stitching',
     description: 'Automatic screen printing and 15-needle Tajima embroidery with micro-precision ink density & zero tactile feel.',
     icon: Printer,
-    numColor: 'text-[#38BDF8]', // Sky Blue
+    numColor: 'text-[#80011F]', // Sky Blue
     numLightColor: 'bg-sky-500/10 text-sky-600',
   },
   {
@@ -67,7 +67,7 @@ export const PrintingProcessSection: React.FC = () => {
   return (
     <section 
       id="process" 
-      className="py-12 sm:py-16 lg:py-24 bg-slate-50 text-[#0A2540] relative overflow-hidden select-none" 
+      className="py-12 sm:py-16 lg:py-24 bg-slate-50 text-[#241A1D] relative overflow-hidden select-none" 
       aria-label="Precision Manufacturing Process"
     >
       
@@ -83,7 +83,7 @@ export const PrintingProcessSection: React.FC = () => {
           <Badge variant="sky" size="md">
             PRECISION MANUFACTURING
           </Badge>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight leading-tight">
             Our 4-Step Enterprise Process
           </h2>
           <p className="text-xs sm:text-base text-[#425466] font-inter font-medium leading-relaxed max-w-2xl mx-auto">
@@ -115,7 +115,7 @@ export const PrintingProcessSection: React.FC = () => {
               </span>
 
               {/* Title */}
-              <h3 className="text-sm sm:text-base font-poppins font-extrabold text-[#0A2540] uppercase tracking-wide leading-snug mt-1">
+              <h3 className="text-sm sm:text-base font-poppins font-extrabold text-[#241A1D] uppercase tracking-wide leading-snug mt-1">
                 {activeStep.title}
               </h3>
 
@@ -126,7 +126,7 @@ export const PrintingProcessSection: React.FC = () => {
 
               {/* Bottom Centered Icon Badge */}
               <div className="pt-4 mt-4 border-t border-slate-100 w-full flex justify-center">
-                <div className="w-10 h-10 rounded-full bg-[#635BFF] text-white flex items-center justify-center shadow-md">
+                <div className="w-10 h-10 rounded-full bg-[#80011F] text-white flex items-center justify-center shadow-md">
                   <ActiveIcon className="w-4 h-4 stroke-[2.2]" />
                 </div>
               </div>
@@ -139,7 +139,7 @@ export const PrintingProcessSection: React.FC = () => {
               <span
                 key={step.number}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === activeMobileIdx ? 'w-5 bg-[#635BFF]' : 'w-1.5 bg-slate-300'
+                  idx === activeMobileIdx ? 'w-5 bg-[#80011F]' : 'w-1.5 bg-slate-300'
                 }`}
               />
             ))}
@@ -181,7 +181,7 @@ export const PrintingProcessSection: React.FC = () => {
 
                 {/* Middle: Title & Description */}
                 <div className="text-center space-y-3 my-2 flex-grow flex flex-col items-center justify-center">
-                  <h3 className="text-base font-poppins font-extrabold text-[#0A2540] tracking-wide uppercase leading-snug">
+                  <h3 className="text-base font-poppins font-extrabold text-[#241A1D] tracking-wide uppercase leading-snug">
                     {step.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#425466] font-inter leading-relaxed max-w-xs">
@@ -191,7 +191,7 @@ export const PrintingProcessSection: React.FC = () => {
 
                 {/* Bottom: Minimalist Centered Icon Badge */}
                 <div className="pt-6 border-t border-slate-100 flex items-center justify-center mt-auto">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 group-hover:bg-[#635BFF] group-hover:text-white text-[#0A2540] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:scale-110">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 group-hover:bg-[#80011F] group-hover:text-white text-[#241A1D] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:scale-110">
                     <StepIcon className="w-5 h-5 stroke-[2.2]" />
                   </div>
                 </div>

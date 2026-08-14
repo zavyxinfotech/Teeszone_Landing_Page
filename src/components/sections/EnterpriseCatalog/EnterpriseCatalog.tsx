@@ -46,7 +46,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
           <span className="inline-block py-1.5 px-3 rounded-full bg-sky-100 text-sky-700 text-[10px] font-poppins font-bold uppercase tracking-wider mb-2 shadow-sm">
             ENTERPRISE APPAREL
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Custom & Bulk Apparel
           </h2>
           <p className="text-sm sm:text-base text-[#425466] font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
@@ -142,7 +142,7 @@ export const EnterpriseCatalog: React.FC<EnterpriseCatalogProps> = () => {
 
                   {/* Transparent Background Badge */}
                   <motion.div 
-                    className="px-6 py-2.5 bg-[#0A2540]/5 backdrop-blur-[6px] text-[#0A2540] font-poppins font-extrabold text-sm sm:text-base rounded-full border border-[#0A2540]/10 whitespace-nowrap z-20 shadow-sm"
+                    className="px-6 py-2.5 bg-[#241A1D]/5 backdrop-blur-[6px] text-[#241A1D] font-poppins font-extrabold text-sm sm:text-base rounded-full border border-[#241A1D]/10 whitespace-nowrap z-20 shadow-sm"
                     animate={
                       isHovered 
                         ? { scale: 1.08, backgroundColor: "rgba(10, 37, 64, 0.1)", borderColor: "rgba(10, 37, 64, 0.2)" }

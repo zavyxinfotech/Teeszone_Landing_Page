@@ -21,12 +21,12 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || 'M');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A2540]/60 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 md:p-8 text-[#0A2540]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#241A1D]/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 md:p-8 text-[#241A1D]">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-[#0A2540] hover:bg-slate-100 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-[#241A1D] hover:bg-slate-100 transition-colors cursor-pointer"
         >
           <X className="w-6 h-6" />
         </button>
@@ -43,7 +43,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
               
               {/* Selected Color indicator */}
               {selectedColor && (
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-2 text-xs font-semibold text-[#0A2540]">
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-2 text-xs font-semibold text-[#241A1D]">
                   <span className={`w-3.5 h-3.5 rounded-full ${selectedColor.bgClass}`} />
                   <span>{selectedColor.name}</span>
                 </div>
@@ -55,7 +55,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
           <div className="space-y-5">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold text-[#635BFF] uppercase tracking-widest">{product.category}</span>
+                <span className="text-xs font-bold text-[#80011F] uppercase tracking-widest">{product.category}</span>
                 {product.rating && (
                   <>
                     <span className="text-slate-300">•</span>
@@ -66,7 +66,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   </>
                 )}
               </div>
-              <h2 className="text-2xl font-poppins font-bold text-[#0A2540]">{product.name}</h2>
+              <h2 className="text-2xl font-poppins font-bold text-[#241A1D]">{product.name}</h2>
               <p className="text-sm text-[#425466] mt-2 leading-relaxed">{product.description}</p>
             </div>
 
@@ -74,13 +74,13 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             {product.fabric && (
               <div className="p-3.5 bg-[#F8FAFC] rounded-xl border border-slate-200 text-xs">
                 <span className="text-[#6B7C93] block font-medium">Fabric Composition:</span>
-                <span className="font-bold text-[#0A2540]">{product.fabric}</span>
+                <span className="font-bold text-[#241A1D]">{product.fabric}</span>
               </div>
             )}
 
             {/* Price (if applicable) */}
             {product.price && (
-              <div className="text-xl font-poppins font-black text-[#0A2540]">
+              <div className="text-xl font-poppins font-black text-[#241A1D]">
                 ₹{product.price.toLocaleString('en-IN')}
               </div>
             )}
@@ -88,7 +88,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             {/* Color Swatches */}
             {product.colors && product.colors.length > 0 && (
               <div>
-                <label className="block text-xs font-bold text-[#0A2540] mb-2 uppercase tracking-wide">
+                <label className="block text-xs font-bold text-[#241A1D] mb-2 uppercase tracking-wide">
                   Select Colorway
                 </label>
                 <div className="flex flex-wrap gap-2.5">
@@ -98,7 +98,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       onClick={() => setSelectedColor(color)}
                       className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
                         selectedColor.name === color.name
-                          ? 'border-[#635BFF] bg-[#635BFF]/5 text-[#635BFF] ring-2 ring-[#635BFF]/20'
+                          ? 'border-[#80011F] bg-[#80011F]/5 text-[#80011F] ring-2 ring-[#80011F]/20'
                           : 'border-slate-200 hover:border-slate-300 text-[#425466]'
                       }`}
                     >
@@ -113,7 +113,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             {/* Size Selector */}
             {product.sizes && product.sizes.length > 0 && (
               <div>
-                <label className="block text-xs font-bold text-[#0A2540] mb-2 uppercase tracking-wide">
+                <label className="block text-xs font-bold text-[#241A1D] mb-2 uppercase tracking-wide">
                   Select Size
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -123,7 +123,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       onClick={() => setSelectedSize(size)}
                       className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         selectedSize === size
-                          ? 'bg-[#0A2540] text-white'
+                          ? 'bg-[#241A1D] text-white'
                           : 'bg-slate-100 text-[#425466] hover:bg-slate-200'
                       }`}
                     >

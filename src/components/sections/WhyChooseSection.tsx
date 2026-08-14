@@ -27,7 +27,7 @@ const PILLARS: ValuePillar[] = [
     description: 'Made in Tiruppur with quality-focused manufacturing.',
     badge: 'Tiruppur Manufacturing Hub',
     icon: Factory,
-    color: '#635BFF',
+    color: '#80011F',
     glowColor: 'rgba(99,91,255,0.4)',
   },
   {
@@ -36,7 +36,7 @@ const PILLARS: ValuePillar[] = [
     description: 'Cotton, Polycotton, EcoBlend & Nano Poly options.',
     badge: '240 GSM Bio-Washed',
     icon: Layers,
-    color: '#38BDF8',
+    color: '#80011F',
     glowColor: 'rgba(56,189,248,0.4)',
   },
   {
@@ -98,7 +98,7 @@ export const WhyChooseSection: React.FC = () => {
   return (
     <section 
       id="why-us" 
-      className="relative min-h-[90vh] lg:min-h-screen py-16 lg:py-24 flex items-center overflow-hidden bg-slate-950 text-white select-none"
+      className="relative min-h-[90vh] lg:min-h-screen py-16 lg:py-24 flex items-center overflow-hidden bg-[#241A1D] text-white select-none"
       aria-label="Why Choose TeesZone"
     >
       
@@ -113,14 +113,14 @@ export const WhyChooseSection: React.FC = () => {
         />
 
         {/* Seamless Continuous Soft Scrim Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/45 w-full h-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241A1D]/90 via-[#241A1D]/75 to-[#241A1D]/45 w-full h-full" />
         
         {/* Subtle Radial Ambient Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,91,255,0.18),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(128,1,31,0.18),transparent_70%)]" />
 
         {/* Top & Bottom Seamless Edge Transitions */}
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-950 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#241A1D] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#241A1D] to-transparent" />
       </div>
 
       {/* 2. Animated Ambient Smoky Motion Particles (Behind Text & Hub) */}
@@ -134,7 +134,7 @@ export const WhyChooseSection: React.FC = () => {
             opacity: [0.3, 0.6, 0.3],
           }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(99,91,255,0.25),transparent_70%)] blur-3xl rounded-full"
+          className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(128,1,31,0.25),transparent_70%)] blur-3xl rounded-full"
         />
 
         {/* Floating Sky-Blue Ambient Particle Mist */}
@@ -146,7 +146,7 @@ export const WhyChooseSection: React.FC = () => {
             opacity: [0.25, 0.5, 0.25],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.2),transparent_70%)] blur-3xl rounded-full"
+          className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(247,231,206,0.2),transparent_70%)] blur-3xl rounded-full"
         />
       </div>
 
@@ -156,7 +156,7 @@ export const WhyChooseSection: React.FC = () => {
         {/* Section Header with Animated Smoky Glow Backdrop (No Sparkle Icon) */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3 relative">
           
-          <span className="inline-block text-xs font-poppins font-bold uppercase tracking-widest text-[#38BDF8] drop-shadow-md">
+          <span className="inline-block text-xs font-poppins font-bold uppercase tracking-widest text-[#F7E7CE] drop-shadow-md">
             THE TEESZONE ADVANTAGE
           </span>
 
@@ -183,7 +183,7 @@ export const WhyChooseSection: React.FC = () => {
               <motion.svg
                 animate={{ rotate: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 w-full h-full text-[#635BFF]/30 pointer-events-none"
+                className="absolute inset-0 w-full h-full text-[#80011F]/30 pointer-events-none"
                 viewBox="0 0 400 400"
               >
                 <circle
@@ -219,7 +219,7 @@ export const WhyChooseSection: React.FC = () => {
                   ]
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-white/95 backdrop-blur-xl text-[#0A2540] flex flex-col items-center justify-center p-6 text-center border-0 shadow-2xl relative z-10 cursor-pointer group"
+                className="w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full bg-white/95 backdrop-blur-xl text-[#241A1D] flex flex-col items-center justify-center p-6 text-center border-0 shadow-2xl relative z-10 cursor-pointer group"
                 onClick={() => setActiveIdx((prev) => (prev + 1) % PILLARS.length)}
               >
                 <AnimatePresence mode="wait">
@@ -237,10 +237,10 @@ export const WhyChooseSection: React.FC = () => {
                     >
                       <activePillar.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-wider text-[#635BFF]">
+                    <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-wider text-[#80011F]">
                       Pillar 0{activeIdx + 1} of 06
                     </span>
-                    <h3 className="text-base sm:text-xl font-poppins font-extrabold text-[#0A2540] leading-tight">
+                    <h3 className="text-base sm:text-xl font-poppins font-extrabold text-[#241A1D] leading-tight">
                       {activePillar.title}
                     </h3>
                   </motion.div>
@@ -278,8 +278,8 @@ export const WhyChooseSection: React.FC = () => {
                     <span
                       className={`w-full h-full rounded-full flex items-center justify-center border-0 transition-all duration-300 shadow-lg ${
                         isActive
-                          ? 'scale-125 text-white shadow-lg shadow-[#38BDF8]/60 ring-4 ring-[#38BDF8]/40'
-                          : 'bg-slate-900/90 text-slate-300 hover:bg-[#635BFF] hover:text-white hover:scale-110'
+                          ? 'scale-125 text-white shadow-lg shadow-[#80011F]/60 ring-4 ring-[#80011F]/40'
+                          : 'bg-slate-900/90 text-slate-300 hover:bg-[#80011F] hover:text-white hover:scale-110'
                       }`}
                       style={{
                         backgroundColor: isActive ? p.color : undefined
@@ -322,7 +322,7 @@ export const WhyChooseSection: React.FC = () => {
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className={`relative cursor-pointer rounded-full transition-all duration-300 p-3 sm:p-4 px-5 sm:px-7 flex items-center justify-between border-0 backdrop-blur-xl ${
                     isActive
-                      ? 'bg-white/95 text-[#0A2540] shadow-2xl scale-[1.02] translate-x-2'
+                      ? 'bg-white/95 text-[#241A1D] shadow-2xl scale-[1.02] translate-x-2'
                       : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
                   style={{
@@ -348,12 +348,12 @@ export const WhyChooseSection: React.FC = () => {
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
                         <h3 className={`text-sm sm:text-base font-poppins font-extrabold truncate ${
-                          isActive ? 'text-[#0A2540]' : 'text-white'
+                          isActive ? 'text-[#241A1D]' : 'text-white'
                         }`}>
                           {pillar.title}
                         </h3>
                         <span className={`text-[10px] font-poppins font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full hidden sm:inline-block border-0 ${
-                          isActive ? 'bg-[#635BFF]/10 text-[#635BFF]' : 'bg-white/10 text-[#38BDF8]'
+                          isActive ? 'bg-[#80011F]/10 text-[#80011F]' : 'bg-white/10 text-[#F7E7CE]'
                         }`}>
                           {pillar.badge}
                         </span>

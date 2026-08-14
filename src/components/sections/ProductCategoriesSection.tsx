@@ -127,21 +127,21 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
   return (
     <section
       id="products"
-      className="py-12 sm:py-16 lg:py-12 bg-slate-50 text-[#0A2540] relative overflow-hidden select-none lg:h-screen lg:min-h-[720px] lg:max-h-[900px] lg:flex lg:flex-col lg:justify-center"
+      className="py-12 sm:py-16 lg:py-12 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[720px] lg:max-h-[900px] lg:flex lg:flex-col lg:justify-center"
       aria-label="Apparel Product Categories Catalog"
     >
       {/* Decorative ambient background lights */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#635BFF] opacity-[0.03] blur-[150px] rounded-full pointer-events-none z-0" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#38BDF8] opacity-[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.03] blur-[150px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
 
       <div className="w-full px-4 sm:px-8 lg:px-12 relative z-10 lg:h-full lg:max-h-[820px] lg:flex lg:flex-col lg:justify-between">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-4 space-y-2 shrink-0">
-          <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#635BFF] block">
+          <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             OUR APPAREL
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Apparel for Every Purpose.
           </h2>
           <p className="text-sm sm:text-base text-slate-600 font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
@@ -183,10 +183,10 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3 }}
               >
-                <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-widest text-[#635BFF]">
+                <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-widest text-[#80011F]">
                   Our Premium Collection of
                 </span>
-                <h3 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#0A2540] mt-1 sm:mt-2 uppercase tracking-tight">
+                <h3 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] mt-1 sm:mt-2 uppercase tracking-tight">
                   {activeTab.heading}
                 </h3>
               </motion.div>
@@ -237,8 +237,8 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
               transition={{ duration: 0.35 }}
               className="absolute left-4 sm:left-8 md:left-12 lg:left-20 top-[45%] -translate-y-1/2 max-w-[80px] sm:max-w-[150px] md:max-w-[200px] text-left z-20 space-y-0.5 sm:space-y-1"
             >
-              <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#635BFF] uppercase tracking-wider block">Featured Spec</span>
-              <h4 className="text-xs sm:text-base md:text-xl font-poppins font-black text-[#0A2540] leading-tight break-words">
+              <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">Featured Spec</span>
+              <h4 className="text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
                 {activeTab.productsList[0]}
               </h4>
               <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-400 font-inter">Premium custom build.</p>
@@ -255,8 +255,8 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
               transition={{ duration: 0.35 }}
               className="absolute right-4 sm:right-8 md:left-auto md:right-12 lg:right-20 top-[45%] -translate-y-1/2 max-w-[80px] sm:max-w-[150px] md:max-w-[200px] text-right z-20 space-y-0.5 sm:space-y-1"
             >
-              <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#38BDF8] uppercase tracking-wider block">Material standard</span>
-              <h4 className="text-xs sm:text-base md:text-xl font-poppins font-black text-[#0A2540] leading-tight break-words">
+              <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">Material standard</span>
+              <h4 className="text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
                 {activeTab.productsList[1] || "Custom Fit"}
               </h4>
               <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-400 font-inter">Zero compromise fabric.</p>
@@ -275,7 +275,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 className="absolute bottom-28 sm:bottom-32 left-1/2 -translate-x-1/2 z-20 text-center"
               >
                 <span className="text-[8px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Also Available</span>
-                <p className="text-xs sm:text-sm font-poppins font-black text-[#0A2540]">{activeTab.productsList[2]}</p>
+                <p className="text-xs sm:text-sm font-poppins font-black text-[#241A1D]">{activeTab.productsList[2]}</p>
               </motion.div>
             </AnimatePresence>
           )}
@@ -289,7 +289,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
         <div className="mt-6 lg:mt-4 pt-4 border-t border-slate-200/80 flex items-center justify-between gap-4 shrink-0">
           <button
             onClick={handlePrevTab}
-            className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 transition-all cursor-pointer hidden sm:flex shrink-0 border border-slate-200/60"
+            className="p-2.5 rounded-xl bg-white hover:bg-cream-light text-[#6B5B60] transition-all cursor-pointer hidden sm:flex shrink-0 border border-slate-200/60"
             aria-label="Previous category"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -306,14 +306,14 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                   key={tab.id}
                   onClick={() => setActiveTabIdx(idx)}
                   className={`relative py-2 px-3 text-xs sm:text-sm font-poppins font-black uppercase tracking-wider transition-all duration-300 shrink-0 cursor-pointer ${
-                    isActive ? 'text-[#635BFF] scale-105' : 'text-slate-400 hover:text-slate-600'
+                    isActive ? 'text-[#80011F] scale-105' : 'text-slate-400 hover:text-slate-600'
                   }`}
                 >
                   {tab.menuLabel}
                   {isActive && (
                     <motion.div
                       layoutId="activeTabUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#635BFF]"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#80011F]"
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -324,7 +324,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
 
           <button
             onClick={handleNextTab}
-            className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 transition-all cursor-pointer hidden sm:flex shrink-0 border border-slate-200/60"
+            className="p-2.5 rounded-xl bg-white hover:bg-cream-light text-[#6B5B60] transition-all cursor-pointer hidden sm:flex shrink-0 border border-slate-200/60"
             aria-label="Next category"
           >
             <ChevronRight className="w-5 h-5" />

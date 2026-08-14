@@ -1,10 +1,20 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #80011F;
+  --color-primary-dark: #600018;
+  --color-primary-light: #A51F3D;
+  --color-cream: #F7E7CE;
+  --color-cream-light: #FCF5EA;
+  --color-text-dark: #241A1D;
+  --color-text-secondary: #6B5B60;
+}
+
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    color: #0A2540;
-    background-color: #F8FAFC;
+    color: #241A1D;
+    background-color: #FFFFFF;
     overflow-x: hidden;
   }
 
@@ -27,11 +37,11 @@
 
 /* Custom stripe subtle gradient glow */
 .stripe-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(99, 91, 255, 0.08) 0%, rgba(56, 189, 248, 0.05) 35%, rgba(248, 250, 252, 0) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(128, 1, 31, 0.08) 0%, rgba(247, 231, 206, 0.05) 35%, rgba(248, 250, 252, 0) 70%);
 }
 
 .stripe-accent-glow {
-  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 91, 255, 0.06), transparent 40%);
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(128, 1, 31, 0.06), transparent 40%);
 }
 
 /* Glassmorphism cards - Frosted Glass Theme */
@@ -40,7 +50,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 32px 0 rgba(10, 37, 64, 0.04), 0 1px 2px 0 rgba(255, 255, 255, 0.8) inset;
+  box-shadow: 0 8px 32px 0 rgba(36, 26, 29, 0.04), 0 1px 2px 0 rgba(255, 255, 255, 0.8) inset;
 }
 
 .stripe-card-hover {
@@ -50,8 +60,8 @@
 .stripe-card-hover:hover {
   transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(99, 91, 255, 0.3);
-  box-shadow: 0 20px 40px -10px rgba(10, 37, 64, 0.08), 0 0 0 1px rgba(99, 91, 255, 0.2), 0 2px 4px 0 rgba(255, 255, 255, 0.9) inset;
+  border-color: rgba(128, 1, 31, 0.3);
+  box-shadow: 0 20px 40px -10px rgba(36, 26, 29, 0.08), 0 0 0 1px rgba(128, 1, 31, 0.2), 0 2px 4px 0 rgba(255, 255, 255, 0.9) inset;
 }
 
 .frosted-glass-pill {
@@ -59,7 +69,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 2px 10px rgba(10, 37, 64, 0.03);
+  box-shadow: 0 2px 10px rgba(36, 26, 29, 0.03);
 }
 
 .frosted-glass-panel {
@@ -67,7 +77,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 30px rgba(10, 37, 64, 0.04);
+  box-shadow: 0 10px 30px rgba(36, 26, 29, 0.04);
 }
 
 /* Custom Infinite Marquee Animation */
@@ -88,8 +98,8 @@
 
 /* Shimmer Border */
 @keyframes border-glow {
-  0%, 100% { border-color: rgba(99, 91, 255, 0.2); }
-  50% { border-color: rgba(56, 189, 248, 0.6); }
+  0%, 100% { border-color: rgba(128, 1, 31, 0.2); }
+  50% { border-color: rgba(247, 231, 206, 0.6); }
 }
 
 .animate-border-glow {
@@ -108,7 +118,7 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #635BFF;
+  background: #80011F;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

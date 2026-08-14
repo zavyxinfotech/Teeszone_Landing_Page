@@ -22,10 +22,10 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
   onRequestQuote
 }) => {
   const availableColors = product?.colors && product.colors.length > 0 ? product.colors : [
-    { name: 'Midnight Navy', hex: '#0A2540', bgClass: 'bg-[#0A2540]' },
+    { name: 'Midnight Navy', hex: '#241A1D', bgClass: 'bg-[#241A1D]' },
     { name: 'Pure White', hex: '#FFFFFF', bgClass: 'bg-white' },
     { name: 'Jet Black', hex: '#111827', bgClass: 'bg-gray-900' },
-    { name: 'Electric Blue', hex: '#635BFF', bgClass: 'bg-[#635BFF]' },
+    { name: 'Electric Blue', hex: '#80011F', bgClass: 'bg-[#80011F]' },
     { name: 'Charcoal Grey', hex: '#374151', bgClass: 'bg-slate-700' }
   ];
 
@@ -76,22 +76,22 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-[#0A2540]/70 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 md:p-8 text-[#0A2540]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-[#241A1D]/70 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 md:p-8 text-[#241A1D]">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-[#0A2540] hover:bg-slate-100 transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-[#241A1D] hover:bg-slate-100 transition-colors"
         >
           <X className="w-6 h-6" />
         </button>
 
         <div className="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
-          <div className="p-2 bg-[#635BFF]/10 text-[#635BFF] rounded-xl">
+          <div className="p-2 bg-[#80011F]/10 text-[#80011F] rounded-xl">
             <Layers className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-poppins font-bold text-[#0A2540]">
+            <h2 className="text-xl md:text-2xl font-poppins font-bold text-[#241A1D]">
               TeesZone Real-Time Apparel Customizer
             </h2>
             <p className="text-xs text-[#6B7C93]">
@@ -105,7 +105,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
             <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-[#0A2540]">Customization Proof Saved!</h3>
+            <h3 className="text-2xl font-bold text-[#241A1D]">Customization Proof Saved!</h3>
             <p className="text-sm text-[#6B7C93] max-w-md mx-auto">
               Our prepress team is generating your vector Pantone proof. A dedicated account representative will contact you within 2 hours.
             </p>
@@ -140,7 +140,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
 
                 {/* Print Placement Positioning */}
                 <div
-                  className={`absolute transition-all duration-300 flex flex-col items-center justify-center p-3 rounded-xl border-2 border-dashed border-[#38BDF8]/80 bg-black/20 backdrop-blur-xs text-white ${
+                  className={`absolute transition-all duration-300 flex flex-col items-center justify-center p-3 rounded-xl border-2 border-dashed border-[#80011F]/80 bg-black/20 backdrop-blur-xs text-white ${
                     printPosition === 'Front Left Chest'
                       ? 'top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 scale-75'
                       : printPosition === 'Center Chest'
@@ -153,17 +153,17 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                   {uploadedLogo ? (
                     <img src={uploadedLogo} alt="Uploaded logo" className="max-h-12 max-w-24 object-contain" />
                   ) : (
-                    <span className="font-poppins font-black text-sm tracking-wider uppercase drop-shadow-md text-[#38BDF8]">
+                    <span className="font-poppins font-black text-sm tracking-wider uppercase drop-shadow-md text-[#80011F]">
                       {selectedLogo}
                     </span>
                   )}
-                  <span className="text-[10px] font-semibold mt-1 bg-[#635BFF] px-2 py-0.5 rounded-full shadow-xs">
+                  <span className="text-[10px] font-semibold mt-1 bg-[#80011F] px-2 py-0.5 rounded-full shadow-xs">
                     {printTechnique}
                   </span>
                 </div>
 
                 {/* Live Badge */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-2 text-xs font-bold text-[#0A2540]">
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-2 text-xs font-bold text-[#241A1D]">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                   <span>Position: {printPosition}</span>
                 </div>
@@ -179,10 +179,10 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
               {/* Garment Color Swatches */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-xs font-bold text-[#0A2540] uppercase tracking-wide">
+                  <label className="text-xs font-bold text-[#241A1D] uppercase tracking-wide">
                     Garment Colorway
                   </label>
-                  <span className="text-xs font-semibold text-[#635BFF]">{shirtColorName}</span>
+                  <span className="text-xs font-semibold text-[#80011F]">{shirtColorName}</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {availableColors.map((col) => (
@@ -195,12 +195,12 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                       }}
                       className={`h-10 px-3 rounded-xl border flex items-center gap-2 transition-all cursor-pointer ${
                         shirtColor === col.hex
-                          ? 'border-[#635BFF] ring-2 ring-[#635BFF]/30 scale-102 bg-[#635BFF]/5'
+                          ? 'border-[#80011F] ring-2 ring-[#80011F]/30 scale-102 bg-[#80011F]/5'
                           : 'border-slate-200 hover:border-slate-300 bg-white'
                       }`}
                     >
                       <span className={`w-4 h-4 rounded-full ${col.bgClass || ''} shadow-xs border border-slate-300`} style={{ backgroundColor: col.hex }} />
-                      <span className="text-xs font-medium text-[#0A2540]">{col.name}</span>
+                      <span className="text-xs font-medium text-[#241A1D]">{col.name}</span>
                     </button>
                   ))}
                 </div>
@@ -208,7 +208,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
 
               {/* Print Technique Picker */}
               <div>
-                <label className="block text-xs font-bold text-[#0A2540] uppercase tracking-wide mb-2">
+                <label className="block text-xs font-bold text-[#241A1D] uppercase tracking-wide mb-2">
                   Select Customization Technique
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -219,7 +219,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                       onClick={() => setPrintTechnique(tech as PrintTechnique)}
                       className={`p-2.5 rounded-xl text-xs font-semibold text-left border transition-all cursor-pointer ${
                         printTechnique === tech
-                          ? 'border-[#635BFF] bg-[#635BFF]/10 text-[#635BFF]'
+                          ? 'border-[#80011F] bg-[#80011F]/10 text-[#80011F]'
                           : 'border-slate-200 text-[#425466] hover:bg-slate-50'
                       }`}
                     >
@@ -231,7 +231,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
 
               {/* Placement Position */}
               <div>
-                <label className="block text-xs font-bold text-[#0A2540] uppercase tracking-wide mb-2">
+                <label className="block text-xs font-bold text-[#241A1D] uppercase tracking-wide mb-2">
                   Artwork Placement Position
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -242,7 +242,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                       onClick={() => setPrintPosition(pos as any)}
                       className={`p-2 rounded-xl text-xs font-medium border transition-all cursor-pointer ${
                         printPosition === pos
-                          ? 'border-[#0A2540] bg-[#0A2540] text-white'
+                          ? 'border-[#241A1D] bg-[#241A1D] text-white'
                           : 'border-slate-200 text-[#425466] hover:bg-slate-50'
                       }`}
                     >
@@ -254,13 +254,13 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
 
               {/* Logo Upload or Sample Preset */}
               <div>
-                <label className="block text-xs font-bold text-[#0A2540] uppercase tracking-wide mb-2">
+                <label className="block text-xs font-bold text-[#241A1D] uppercase tracking-wide mb-2">
                   Upload Logo or Select Sample Vector
                 </label>
                 <div className="flex gap-2 mb-2">
-                  <label className="flex-1 border-2 border-dashed border-slate-300 rounded-xl p-3 text-center cursor-pointer hover:border-[#635BFF] hover:bg-[#635BFF]/5 transition-all">
-                    <Upload className="w-5 h-5 mx-auto text-[#635BFF] mb-1" />
-                    <span className="text-xs font-semibold text-[#0A2540] block">Upload Vector Artwork</span>
+                  <label className="flex-1 border-2 border-dashed border-slate-300 rounded-xl p-3 text-center cursor-pointer hover:border-[#80011F] hover:bg-[#80011F]/5 transition-all">
+                    <Upload className="w-5 h-5 mx-auto text-[#80011F] mb-1" />
+                    <span className="text-xs font-semibold text-[#241A1D] block">Upload Vector Artwork</span>
                     <span className="text-[10px] text-[#6B7C93]">SVG, AI, PNG or High-Res JPG</span>
                     <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                   </label>
@@ -275,7 +275,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                         setUploadedLogo(null);
                         setSelectedLogo(sample.svg);
                       }}
-                      className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-[#0A2540] whitespace-nowrap cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-[#241A1D] whitespace-nowrap cursor-pointer"
                     >
                       {sample.name}
                     </button>
@@ -286,7 +286,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
               {/* Bulk Quantity Slider */}
               <div className="p-4 bg-[#F8FAFC] rounded-2xl border border-slate-200 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#0A2540] uppercase">Estimated Bulk Quantity ({quantity} Pcs)</span>
+                  <span className="text-xs font-bold text-[#241A1D] uppercase">Estimated Bulk Quantity ({quantity} Pcs)</span>
                   <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                     Bulk Production Ready
                   </span>
@@ -298,7 +298,7 @@ export const CustomizerModal: React.FC<CustomizerModalProps> = ({
                   step={10}
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value))}
-                  className="w-full accent-[#635BFF] cursor-pointer"
+                  className="w-full accent-[#80011F] cursor-pointer"
                 />
               </div>
 

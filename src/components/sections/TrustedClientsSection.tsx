@@ -119,7 +119,7 @@ const CLIENT_LOGOS: ClientLogoItem[] = [
 
 export const TrustedClientsSection: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 bg-white text-[#0A2540] relative overflow-hidden select-none border-b border-slate-200/80" aria-label="Trusted Clients">
+    <section className="py-12 sm:py-16 bg-white text-[#241A1D] relative overflow-hidden select-none border-b border-slate-200/80" aria-label="Trusted Clients">
       
       {/* 1. Animated Light Smoky Background Motion Layers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

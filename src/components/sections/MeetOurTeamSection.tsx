@@ -66,14 +66,14 @@ export const MeetOurTeamSection: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   return (
-    <section id="team" className="py-20 lg:py-24 bg-[#0A2540] relative overflow-hidden select-none w-full" aria-label="Meet Our Team">
+    <section id="team" className="py-20 lg:py-24 bg-[#600018] relative overflow-hidden select-none w-full" aria-label="Meet Our Team">
       
       {/* Global Split Background */}
       <div 
         className="absolute top-0 left-0 right-0 h-[40%] lg:h-[55%] z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${teamBgImg})` }}
       >
-        <div className="absolute inset-0 bg-[#0A2540]/75"></div>
+        <div className="absolute inset-0 bg-[#600018]/75"></div>
       </div>
 
       {/* Section Header */}
@@ -117,7 +117,7 @@ export const MeetOurTeamSection: React.FC = () => {
                     <h3 className="text-lg font-poppins font-bold text-white">
                       {member.name}
                     </h3>
-                    <p className="text-[11px] text-[#38BDF8] mt-1 font-bold">
+                    <p className="text-[11px] text-[#F7E7CE] mt-1 font-bold">
                       {member.role}
                     </p>
                   </div>
@@ -168,7 +168,7 @@ export const MeetOurTeamSection: React.FC = () => {
                     className="absolute top-0 left-0 right-0 h-40 z-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${teamBgImg})` }}
                   >
-                    <div className="absolute inset-0 bg-[#0A2540]/60"></div>
+                    <div className="absolute inset-0 bg-[#600018]/60"></div>
                   </div>
                   
                   {/* Avatar */}
@@ -203,9 +203,9 @@ export const MeetOurTeamSection: React.FC = () => {
                   </div>
                   
                   {/* Page turning hint */}
-                  <div className="mt-auto pt-4 pb-6 px-6 flex justify-between items-center text-[#635BFF]">
+                  <div className="mt-auto pt-4 pb-6 px-6 flex justify-between items-center text-[#80011F]">
                     <span className="text-[10px] font-bold opacity-50">Page {idx + 1} of {TEAM_MEMBERS.length}</span>
-                    <span className="text-[10px] uppercase tracking-widest font-bold flex items-center gap-1 bg-[#635BFF]/10 px-3 py-1.5 rounded-full">
+                    <span className="text-[10px] uppercase tracking-widest font-bold flex items-center gap-1 bg-[#80011F]/10 px-3 py-1.5 rounded-full">
                       {idx === TEAM_MEMBERS.length - 1 ? 'Start Over ↺' : 'Turn Page →'}
                     </span>
                   </div>

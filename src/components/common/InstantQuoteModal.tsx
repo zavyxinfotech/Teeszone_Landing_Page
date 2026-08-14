@@ -26,22 +26,22 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A2540]/65 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 md:p-8 text-[#0A2540]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#241A1D]/65 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 md:p-8 text-[#241A1D]">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-[#0A2540] hover:bg-slate-100 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-[#241A1D] hover:bg-slate-100 transition-colors cursor-pointer"
         >
           <X className="w-6 h-6" />
         </button>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 bg-[#635BFF]/10 text-[#635BFF] rounded-2xl">
+          <div className="p-3 bg-[#80011F]/10 text-[#80011F] rounded-2xl">
             <Calculator className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-poppins font-bold text-[#0A2540]">
+            <h2 className="text-xl md:text-2xl font-poppins font-bold text-[#241A1D]">
               Instant Bulk Wholesale Inquiry
             </h2>
             <p className="text-xs text-[#6B7C93]">
@@ -55,7 +55,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
             <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-[#0A2540]">Inquiry Submitted!</h3>
+            <h3 className="text-2xl font-bold text-[#241A1D]">Inquiry Submitted!</h3>
             <p className="text-sm text-[#6B7C93]">
               We sent your line-item spec overview to <strong>{email}</strong>. Our prepress team will contact you shortly.
             </p>
@@ -64,7 +64,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
           <form onSubmit={handleSendQuote} className="space-y-5">
             {/* Apparel Category Selector */}
             <div>
-              <label className="block text-xs font-bold text-[#0A2540] uppercase tracking-wide mb-2">
+              <label className="block text-xs font-bold text-[#241A1D] uppercase tracking-wide mb-2">
                 1. Select Apparel Category
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -82,7 +82,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
                     onClick={() => setApparelType(item.name)}
                     className={`p-2.5 rounded-xl text-xs font-semibold text-left border transition-all cursor-pointer ${
                       apparelType === item.name
-                        ? 'border-[#635BFF] bg-[#635BFF]/10 text-[#635BFF]'
+                        ? 'border-[#80011F] bg-[#80011F]/10 text-[#80011F]'
                         : 'border-slate-200 text-[#425466] hover:bg-slate-50'
                     }`}
                   >
@@ -94,7 +94,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
 
             {/* Print Locations */}
             <div>
-              <label className="block text-xs font-bold text-[#0A2540] uppercase tracking-wide mb-2">
+              <label className="block text-xs font-bold text-[#241A1D] uppercase tracking-wide mb-2">
                 2. Number of Customization Locations
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -109,7 +109,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
                     onClick={() => setNumLocations(loc.num)}
                     className={`p-2.5 rounded-xl text-xs font-semibold text-center border transition-all cursor-pointer ${
                       numLocations === loc.num
-                        ? 'border-[#0A2540] bg-[#0A2540] text-white'
+                        ? 'border-[#241A1D] bg-[#241A1D] text-white'
                         : 'border-slate-200 text-[#425466] hover:bg-slate-50'
                     }`}
                   >
@@ -122,8 +122,8 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
             {/* Quantity Slider */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-bold text-[#0A2540] uppercase tracking-wide">
-                  3. Order Quantity: <span className="text-[#635BFF] font-extrabold text-sm">{quantity} Units</span>
+                <label className="text-xs font-bold text-[#241A1D] uppercase tracking-wide">
+                  3. Order Quantity: <span className="text-[#80011F] font-extrabold text-sm">{quantity} Units</span>
                 </label>
                 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                   Bulk Tier Wholesale
@@ -136,7 +136,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
                 step={25}
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full accent-[#635BFF] cursor-pointer"
+                className="w-full accent-[#80011F] cursor-pointer"
               />
               <div className="flex justify-between text-[11px] text-[#6B7C93] mt-1 font-medium">
                 <span>25 pcs (Starter)</span>
@@ -154,7 +154,7 @@ export const InstantQuoteModal: React.FC<InstantQuoteModalProps> = ({ isOpen, on
                 placeholder="Enter work email for custom bulk quote..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-xl border border-slate-200 text-xs text-[#0A2540] focus:outline-none focus:border-[#635BFF]"
+                className="flex-1 px-4 py-3 rounded-xl border border-slate-200 text-xs text-[#241A1D] focus:outline-none focus:border-[#80011F]"
               />
               <Button type="submit" variant="primary" size="md" icon={<Send className="w-4 h-4" />}>
                 Submit Inquiry

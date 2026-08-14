@@ -94,7 +94,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           {/* Tag Text */}
           {product.tag && (
             <div className="absolute top-3 left-3 z-20">
-              <span className="text-[10px] font-poppins font-black uppercase tracking-wider text-[#0A2540] drop-shadow-xs">
+              <span className="text-[10px] font-poppins font-black uppercase tracking-wider text-[#241A1D] drop-shadow-xs">
                 {product.tag}
               </span>
             </div>
@@ -105,7 +105,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
             {onQuickView && (
               <button
                 onClick={() => onQuickView(product)}
-                className="p-2 rounded-full bg-white/80 backdrop-blur-md text-[#0A2540] hover:text-[#635BFF] hover:bg-white transition-all transform active:scale-90 shadow-sm cursor-pointer"
+                className="p-2 rounded-full bg-white/80 backdrop-blur-md text-[#241A1D] hover:text-[#80011F] hover:bg-white transition-all transform active:scale-90 shadow-sm cursor-pointer"
                 title="Quick View Specs"
                 aria-label={`Quick View ${product.name}`}
               >
@@ -132,7 +132,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
             {onOpenCustomizer && (
               <button
                 onClick={() => onOpenCustomizer(product)}
-                className="flex-1 py-2.5 px-3 bg-[#635BFF] hover:bg-[#5248FF] text-white text-xs font-poppins font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer transform active:scale-95"
+                className="flex-1 py-2.5 px-3 bg-[#80011F] hover:bg-[#5248FF] text-white text-xs font-poppins font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer transform active:scale-95"
               >
                 <Sliders className="w-3.5 h-3.5" />
                 <span>Customize in Studio</span>
@@ -145,7 +145,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
         <div className="p-5 space-y-3">
           {/* GSM & Category Header Row */}
           <div className="flex items-center justify-between text-xs">
-            <span className="text-[#635BFF] font-poppins font-black text-[10px] uppercase tracking-wider">
+            <span className="text-[#80011F] font-poppins font-black text-[10px] uppercase tracking-wider">
               {product.gsm} GSM • {product.category.replace("-", " ")}
             </span>
             <div className="flex items-center gap-1 font-bold text-amber-600">
@@ -156,7 +156,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           </div>
 
           {/* Product Title */}
-          <h3 className="text-base font-poppins font-bold text-[#0A2540] group-hover:text-[#635BFF] transition-colors leading-snug line-clamp-1">
+          <h3 className="text-base font-poppins font-bold text-[#241A1D] group-hover:text-[#80011F] transition-colors leading-snug line-clamp-1">
             {product.name}
           </h3>
 
@@ -206,7 +206,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">
             Bulk Order MOQ
           </span>
-          <span className="text-sm font-poppins font-bold text-[#0A2540]">
+          <span className="text-sm font-poppins font-bold text-[#241A1D]">
             {product.minQuantity} units min
           </span>
         </div>
@@ -215,7 +215,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           {onOrderSample && (
             <button
               onClick={() => onOrderSample(product)}
-              className="px-3.5 py-2.5 bg-white hover:bg-[#0A2540] hover:text-white text-[#0A2540] text-xs font-poppins font-bold rounded-xl shadow-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer transform active:scale-95 border border-slate-200"
+              className="px-3.5 py-2.5 bg-white hover:bg-[#241A1D] hover:text-white text-[#241A1D] text-xs font-poppins font-bold rounded-xl shadow-xs transition-all duration-200 flex items-center gap-1.5 cursor-pointer transform active:scale-95 border border-slate-200"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>Sample Kit</span>
@@ -225,7 +225,7 @@ export const Skiper50ProductCard: React.FC<Skiper50ProductCardProps> = ({
           {onOpenCustomizer && (
             <button
               onClick={() => onOpenCustomizer(product)}
-              className="p-2.5 bg-[#0A2540] hover:bg-[#635BFF] text-white rounded-xl shadow-xs transition-all duration-200 cursor-pointer transform active:scale-95 sm:hidden"
+              className="p-2.5 bg-[#241A1D] hover:bg-[#80011F] text-white rounded-xl shadow-xs transition-all duration-200 cursor-pointer transform active:scale-95 sm:hidden"
               title="Customize"
             >
               <Sliders className="w-4 h-4" />

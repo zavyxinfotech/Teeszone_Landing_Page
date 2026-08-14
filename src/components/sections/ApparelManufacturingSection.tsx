@@ -58,11 +58,11 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
   return (
     <section 
       id="manufacturing" 
-      className="py-16 sm:py-20 lg:py-28 bg-slate-50 text-[#0A2540] relative overflow-hidden select-none"
+      className="py-16 sm:py-20 lg:py-28 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
       aria-label="Apparel Manufacturing Process"
     >
       {/* Decorative ambient bubble */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#635BFF]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#80011F]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
@@ -71,7 +71,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
           <span className="inline-block py-1.5 px-3 rounded-full bg-sky-100 text-sky-700 text-[10px] font-poppins font-black uppercase tracking-wider shadow-sm">
             PRECISION MANUFACTURING
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             From Fabric to Finished Apparel.
           </h2>
           <p className="text-sm sm:text-base text-[#425466] font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
@@ -85,7 +85,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
           {/* Left Column: Typography copy & interactive selector list */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-4">
-              <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#0A2540] tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
                 Our Production Stages
               </h3>
               <p className="text-sm text-[#425466] font-inter font-medium leading-relaxed">
@@ -103,18 +103,18 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     onClick={() => setActiveCategory(cat.id)}
                     className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex gap-4 border cursor-pointer ${
                       isActive 
-                        ? 'bg-white border-[#635BFF] shadow-lg shadow-[#635BFF]/5 translate-x-1.5' 
+                        ? 'bg-white border-[#80011F] shadow-lg shadow-[#80011F]/5 translate-x-1.5' 
                         : 'bg-white/50 border-slate-200 hover:bg-white hover:border-slate-300'
                     }`}
                   >
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-poppins font-black text-xs shrink-0 ${
-                      isActive ? 'bg-[#635BFF] text-white' : 'bg-slate-100 text-[#425466]'
+                      isActive ? 'bg-[#80011F] text-white' : 'bg-slate-100 text-[#425466]'
                     }`}>
                       0{idx + 1}
                     </div>
                     <div className="space-y-0.5 min-w-0">
                       <h4 className={`text-sm sm:text-base font-poppins font-extrabold ${
-                        isActive ? 'text-[#0A2540]' : 'text-slate-700'
+                        isActive ? 'text-[#241A1D]' : 'text-slate-700'
                       }`}>
                         {cat.label}
                       </h4>
@@ -139,7 +139,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                 size="md"
                 onClick={onOpenQuoteModal}
                 icon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-lg shadow-[#635BFF]/20 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold w-full sm:w-auto justify-center"
+                className="shadow-lg shadow-[#80011F]/20 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold w-full sm:w-auto justify-center"
               >
                 Explore Our Manufacturing
               </Button>
@@ -165,11 +165,11 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     alt={currentCategoryData.label} 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#241A1D]/60 via-transparent to-transparent pointer-events-none" />
                   
                   {/* Category Name overlay */}
                   <div className="absolute bottom-5 left-5 right-5 text-left text-white z-10">
-                    <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#38BDF8]">
+                    <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F]">
                       Active Preview
                     </span>
                     <h3 className="text-lg sm:text-xl font-poppins font-extrabold">
@@ -190,7 +190,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
                     onClick={() => setActiveCategory(cat.id)}
                     className={`relative rounded-xl overflow-hidden aspect-[4/3] group transition-all duration-300 border-2 cursor-pointer ${
                       isActive 
-                        ? 'border-[#635BFF] scale-[1.02] shadow-md shadow-[#635BFF]/10' 
+                        ? 'border-[#80011F] scale-[1.02] shadow-md shadow-[#80011F]/10' 
                         : 'border-transparent hover:border-slate-300'
                     }`}
                   >

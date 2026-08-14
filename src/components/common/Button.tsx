@@ -31,11 +31,11 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: 'bg-[#635BFF] text-white hover:bg-[#574BFF] active:bg-[#4B3FFF] shadow-[#635BFF]/25 hover:shadow-[#635BFF]/35 hover:-translate-y-0.5',
-    secondary: 'bg-white text-[#0A2540] border border-[#0A2540]/20 hover:border-[#0A2540] hover:bg-[#F8FAFC] active:bg-[#EDF2F7] hover:-translate-y-0.5',
-    outline: 'bg-transparent text-[#0A2540] border border-[#635BFF]/30 hover:border-[#635BFF] hover:bg-[#635BFF]/5 text-[#635BFF]',
-    ghost: 'bg-transparent text-[#425466] hover:text-[#0A2540] hover:bg-slate-100',
-    black: 'bg-black text-white hover:bg-neutral-900 active:bg-neutral-800 shadow-md shadow-black/10 hover:shadow-black/20 hover:-translate-y-0.5 border border-transparent'
+    primary: 'bg-primary text-cream hover:bg-primary-dark active:bg-primary-dark shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/35 hover:-translate-y-0.5',
+    secondary: 'bg-white text-primary border border-primary hover:bg-cream-light active:bg-cream-light hover:-translate-y-0.5',
+    outline: 'bg-transparent text-primary border border-primary/30 hover:border-primary hover:bg-cream-light active:bg-cream-light text-primary',
+    ghost: 'bg-transparent text-primary hover:text-primary-dark hover:bg-cream-light',
+    black: 'bg-primary text-cream hover:bg-primary-dark active:bg-primary-dark shadow-md shadow-primary/20 hover:shadow-md hover:-translate-y-0.5 border border-transparent'
   };
 
   return (

@@ -17,11 +17,11 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
   return (
     <section 
       id="about" 
-      className="py-16 sm:py-20 lg:py-28 bg-[#0A2540] text-white relative overflow-hidden select-none"
+      className="py-16 sm:py-20 lg:py-28 bg-white text-[#241A1D] relative overflow-hidden select-none"
       aria-label="About TeesZone"
     >
       {/* Decorative background grid pattern for texture */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#635BFF_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
       
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -35,33 +35,33 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
             className="lg:col-span-5 space-y-6 text-left"
           >
             {/* Small Label */}
-            <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#38BDF8] block">
+            <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F] block">
               ABOUT TEESZONE
             </span>
             
             {/* Heading */}
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight leading-tight">
               Apparel Made for Brands That Mean Business.
             </h2>
             
             {/* Short Text */}
-            <p className="text-sm sm:text-base text-slate-300 font-inter font-semibold leading-relaxed">
+            <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed">
               From Tiruppur to businesses across India, TeesZone delivers premium customized apparel and uniform solutions with quality, precision, and reliable service.
             </p>
             
             {/* Highlights */}
             <div className="pt-2 pb-1">
-              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-poppins font-bold text-xs sm:text-sm text-slate-100">
+              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-poppins font-bold text-xs sm:text-sm text-[#241A1D]">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#80011F] shrink-0" />
                   <span>Premium Quality</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#80011F] shrink-0" />
                   <span>Custom Manufacturing</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#80011F] shrink-0" />
                   <span>Pan-India Delivery</span>
                 </li>
               </ul>
@@ -81,7 +81,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
                   }
                 }}
                 icon={<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
-                className="shadow-lg shadow-[#635BFF]/20 hover:shadow-[#635BFF]/35 transition-all duration-300 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold group"
+                className="shadow-lg shadow-[#80011F]/20 hover:shadow-[#80011F]/35 transition-all duration-300 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold group"
               >
                 Discover TeesZone
               </Button>
@@ -97,20 +97,20 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
             className="lg:col-span-7 relative flex justify-center lg:justify-end py-10"
           >
             {/* Large background Image (Corporate environment) */}
-            <div className="relative w-[85%] sm:w-[75%] lg:w-[80%] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl z-10 border border-white/10">
+            <div className="relative w-[85%] sm:w-[75%] lg:w-[80%] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl z-10 border border-slate-200">
               <img 
                 src={corporateImage} 
                 alt="Corporate apparel in business environment" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-103"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
 
             {/* Smaller foreground overlapping Image (Manufacturing) */}
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute bottom-0 left-4 sm:left-12 lg:left-0 w-[45%] sm:w-[38%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl z-20 border border-white/10"
+              className="absolute bottom-0 left-4 sm:left-12 lg:left-0 w-[45%] sm:w-[38%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl z-20 border border-slate-200"
             >
               <img 
                 src={manufacturingImage} 
@@ -120,8 +120,8 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
             </motion.div>
 
             {/* Decorative colored glow bubble */}
-            <div className="absolute -top-4 -right-4 w-48 h-48 bg-[#635BFF]/5 rounded-full blur-3xl -z-10" />
-            <div className="absolute -bottom-8 -left-4 w-56 h-56 bg-[#38BDF8]/5 rounded-full blur-3xl -z-10" />
+            <div className="absolute -top-4 -right-4 w-48 h-48 bg-[#80011F]/5 rounded-full blur-3xl -z-10" />
+            <div className="absolute -bottom-8 -left-4 w-56 h-56 bg-[#F7E7CE]/5 rounded-full blur-3xl -z-10" />
           </motion.div>
           
         </div>

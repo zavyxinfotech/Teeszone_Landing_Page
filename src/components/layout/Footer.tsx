@@ -11,12 +11,12 @@ import {
 export const Footer: React.FC = () => {
   return (
     <footer
-      className="bg-[#0A2540] text-white pt-16 pb-10 relative overflow-hidden font-inter border-t border-slate-800"
+      className="bg-[#600018] text-white pt-16 pb-10 relative overflow-hidden font-inter border-t border-[#A51F3D]/30"
       aria-label="Footer"
     >
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto space-y-12">
         {/* Main Multi-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-[#A51F3D]/20">
           {/* Company Brand */}
           <div className="lg:col-span-4 space-y-4">
             {/* Logo + Brand Name */}
@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-[#E8D6C0] leading-relaxed">
               {BRAND.description}
             </p>
 
@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
             <div className="flex flex-col gap-4">
               <a
                 href={`tel:${BRAND.contact.phonePrimary}`}
-                className="w-fit bg-[#635BFF] hover:bg-[#524ae3] text-white font-poppins font-bold text-sm px-6 py-2.5 rounded-xl flex items-center gap-2 transition-all shadow-md hover:shadow-lg"
+                className="w-fit bg-[#80011F] hover:bg-[#600018] text-white font-poppins font-bold text-sm px-6 py-2.5 rounded-xl flex items-center gap-2 transition-all shadow-md hover:shadow-lg"
               >
                 <Phone className="w-4 h-4" />
                 Call Now
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
               <a
                 href={`mailto:${BRAND.contact.email}`}
                 aria-label="Email"
-                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#38BDF8] flex items-center justify-center text-white transition-all shadow-xs group"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#F7E7CE] flex items-center justify-center text-white transition-all shadow-xs group"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -97,10 +97,10 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#38BDF8]">
+            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#F7E7CE]">
               Quick Links
             </h3>
-            <ul className="space-y-2 text-xs text-slate-300 font-medium">
+            <ul className="space-y-2 text-xs text-[#E8D6C0] font-medium">
               <li>
                 <a
                   href="#categories"
@@ -149,17 +149,17 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Corporate Office & Map */}
           <div className="lg:col-span-6 space-y-4">
-            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#38BDF8] flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[#635BFF]" />
+            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#F7E7CE] flex items-center gap-1.5">
+              <MapPin className="w-4 h-4 text-[#80011F]" />
               <span>Corporate Office</span>
             </h3>
             
-            <div className="p-4 rounded-2xl bg-white/5 border border-slate-800/80 space-y-4">
+            <div className="p-4 rounded-2xl bg-white/5 border border-[#A51F3D]/30 space-y-4">
               <div>
                 <span className="font-bold font-poppins text-white block text-sm mb-1">
                   {BRAND.contact.headOffice.title}
                 </span>
-                <p className="text-slate-300 text-xs leading-relaxed">
+                <p className="text-[#E8D6C0] text-xs leading-relaxed">
                   {BRAND.contact.headOffice.address}
                 </p>
               </div>
@@ -182,7 +182,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright & Compliance */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300 font-inter">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E8D6C0] font-inter">
           <div className="flex flex-wrap items-center gap-3">
             <div>
               © {new Date().getFullYear()} {BRAND.legalName} . Developed with ❤️
@@ -198,7 +198,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs text-slate-300">
+          <div className="flex flex-wrap items-center gap-6 text-xs text-[#E8D6C0]">
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy
             </a>

@@ -95,8 +95,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden pointer-events-none hidden lg:block z-0">
         {/* Background diagonal stripe structure (Inspired by reference layout, using brand colors) */}
         <div className="absolute top-[-50%] right-[-10%] w-[120%] h-[200%] transform -rotate-12 bg-slate-50/80 -z-20" />
-        <div className="absolute top-[-20%] right-[32%] w-[12%] h-[150%] transform -rotate-12 bg-[#635BFF] opacity-90 -z-10" />
-        <div className="absolute top-[-20%] right-[12%] w-[22%] h-[150%] transform -rotate-12 bg-[#38BDF8] opacity-90 -z-10" />
+        <div className="absolute top-[-20%] right-[32%] w-[12%] h-[150%] transform -rotate-12 bg-[#80011F] opacity-90 -z-10" />
+        <div className="absolute top-[-20%] right-[12%] w-[22%] h-[150%] transform -rotate-12 bg-[#A51F3D] opacity-90 -z-10" />
       </div>
 
       {/* Decorative Dot Grids (Inspired by reference top-right and bottom-left) */}
@@ -118,14 +118,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* 2. Interactive Navigation Arrows (Hidden on small mobile screens) */}
       <button
         onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer hidden md:flex items-center justify-center border border-slate-200"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-white hover:bg-cream-light text-[#6B5B60] transition-all cursor-pointer hidden md:flex items-center justify-center border border-slate-200"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer hidden md:flex items-center justify-center border border-slate-200"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-white hover:bg-cream-light text-[#6B5B60] transition-all cursor-pointer hidden md:flex items-center justify-center border border-slate-200"
         aria-label="Next slide"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -135,8 +135,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="w-full px-4 sm:px-10 lg:px-16 xl:px-20 relative z-20 h-full flex items-center py-4 lg:py-0">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center max-w-7xl mx-auto">
           
-          {/* Left Column: Headline, Mobile Image, Description, Supporting badging, CTA */}
-          <div className="lg:col-span-6 space-y-3.5 lg:space-y-5 text-left">
+          {/* Left Column: Headline, Mobile Image, Trust Indicators, CTA */}
+          <div className="lg:col-span-6 text-left flex flex-col justify-center">
             
             <AnimatePresence mode="wait">
               <motion.div
@@ -145,18 +145,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 30 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="space-y-3 lg:space-y-5 flex flex-col justify-center"
+                className="flex flex-col justify-center"
               >
-                {/* Main Headline */}
-                <h1 className="text-xl sm:text-4xl lg:text-5xl font-poppins font-black text-[#0A2540] tracking-tight leading-[1.15]">
+                {/* 1. Small trust eyebrow indicator */}
+                <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
+                  MADE IN TIRUPPUR • PAN-INDIA DELIVERY
+                </span>
+
+                {/* 2. Main Headline */}
+                <h1 className="text-[32px] sm:text-[38px] md:text-[48px] lg:text-[56px] xl:text-[68px] font-poppins font-black text-[#0A2540] tracking-[-0.02em] md:tracking-[-0.03em] lg:tracking-[-0.03em] xl:tracking-[-0.04em] leading-[1.1] sm:leading-[1.08] md:leading-[1.08] lg:leading-[1.05] xl:leading-[1.05] max-w-full md:max-w-[560px] lg:max-w-[640px] xl:max-w-[740px] mt-4 sm:mt-6 lg:mt-8">
                   {HERO_SLIDES[currentSlide].headingPrefix} <br className="hidden sm:inline" />
-                  <span className="text-[#635BFF]">
+                  <span className="text-[#80011F]">
                     {HERO_SLIDES[currentSlide].headingAccent}
                   </span>
                 </h1>
 
-                {/* Mobile-only Image (Positioned directly under heading on mobile, using 3D rotating cylinder) */}
-                <div className="block lg:hidden relative w-[80%] max-w-[250px] sm:max-w-[320px] aspect-[16/10] shrink-0 my-1 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible">
+                {/* 3. Mobile-only Image (Positioned directly under heading on mobile, using 3D rotating cylinder) */}
+                <div className="block lg:hidden relative w-[80%] max-w-[250px] sm:max-w-[320px] aspect-[16/10] shrink-0 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible mt-4">
                   <motion.div
                     className="relative w-full h-full [transform-style:preserve-3d]"
                     animate={{
@@ -205,40 +210,32 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </motion.div>
                 </div>
 
-                {/* Subheading / Description */}
-                <p className="text-xs sm:text-base text-slate-600 font-inter font-semibold leading-relaxed max-w-xl">
-                  {HERO_SLIDES[currentSlide].subheading}
-                </p>
-
-                {/* Checklist Inline Badges (Hidden on mobile to fit the screen) */}
-                <div className="hidden sm:flex flex-wrap gap-x-4 gap-y-1.5 text-xs sm:text-sm text-slate-600 font-poppins font-bold items-center">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
-                    <span>Premium Quality</span>
-                  </div>
-                  <span className="text-slate-300">|</span>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
-                    <span>Bulk Orders</span>
-                  </div>
-                  <span className="text-slate-300">|</span>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#635BFF]" />
-                    <span>Fast Delivery</span>
-                  </div>
+                {/* 4. Supporting value/trust points */}
+                <div className="flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-4 gap-y-1.5 font-poppins font-semibold text-xs md:text-sm xl:text-[15px] tracking-[0.01em] text-[#6B5B60] mt-[20px] md:mt-[22px] lg:mt-[24px]">
+                  <span>BULK ORDERS</span>
+                  <span className="text-[#80011F]/30 font-light">•</span>
+                  <span>FAST DELIVERY</span>
+                  <span className="text-[#80011F]/30 font-light">•</span>
+                  <span>PREMIUM QUALITY</span>
                 </div>
 
-                {/* Action CTA Button */}
-                <div className="pt-1 flex">
-                  <Button
-                    variant="primary"
-                    size="md"
+                {/* 5. Primary and Secondary CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-stretch sm:items-center mt-[24px] lg:mt-[30px] w-full sm:w-auto">
+                  {/* Primary CTA (Burgundy) */}
+                  <button
                     onClick={onOpenQuoteModal}
-                    icon={<ShoppingCart className="w-4 h-4 ml-1 shrink-0" />}
-                    className="shadow-xl shadow-[#635BFF]/35 hover:shadow-[#635BFF]/50 transition-all duration-300 px-6 py-2.5 rounded-full text-xs sm:text-sm font-poppins font-bold bg-[#635BFF] hover:bg-[#635BFF]/90 border-0 flex items-center justify-center gap-2"
+                    className="h-[46px] sm:h-[48px] md:h-[50px] xl:h-[52px] px-5 sm:px-6 md:px-[24px] xl:px-[28px] rounded-[10px] sm:rounded-xl font-poppins font-semibold text-sm md:text-[15px] xl:text-[16px] tracking-wide bg-[#80011F] text-[#F7E7CE] hover:bg-[#600018] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-0 shadow-xs"
                   >
                     {HERO_SLIDES[currentSlide].ctaText}
-                  </Button>
+                  </button>
+
+                  {/* Secondary CTA (White with Burgundy Border) */}
+                  <button
+                    onClick={onOpenQuoteModal}
+                    className="h-[46px] sm:h-[48px] md:h-[50px] xl:h-[52px] px-5 sm:px-6 md:px-[24px] xl:px-[28px] rounded-[10px] sm:rounded-xl font-poppins font-semibold text-sm md:text-[15px] xl:text-[16px] tracking-wide bg-white text-[#80011F] border-2 border-[#80011F] hover:bg-[#FFF8F9] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs animate-none"
+                  >
+                    {currentSlide === 2 ? "Explore Custom Apparel" : "Shop Ready Stock"}
+                  </button>
                 </div>
 
               </motion.div>
@@ -306,7 +303,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             key={slide.id}
             onClick={() => setCurrentSlide(idx)}
             className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? 'w-8 bg-[#635BFF]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+              idx === currentSlide ? 'w-8 bg-[#80011F]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

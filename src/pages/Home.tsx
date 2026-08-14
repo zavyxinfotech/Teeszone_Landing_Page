@@ -23,11 +23,11 @@ export const Home: React.FC = () => {
 
   return (
     <ReactLenis root>
-      <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0A2540] font-sans antialiased selection:bg-[#635BFF]/20 selection:text-[#635BFF] relative overflow-x-hidden">
+      <div className="min-h-screen flex flex-col bg-white text-[#241A1D] font-sans antialiased selection:bg-[#80011F]/20 selection:text-[#80011F] relative overflow-x-hidden">
         {/* Global Decorative Frosted Glass Mesh Gradients */}
-        <div className="fixed top-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#635BFF] opacity-[0.06] blur-[100px] rounded-full pointer-events-none z-0" />
-        <div className="fixed bottom-[-150px] left-[-150px] w-[600px] h-[600px] bg-[#38BDF8] opacity-[0.07] blur-[120px] rounded-full pointer-events-none z-0" />
-        <div className="fixed top-[45%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] bg-[#635BFF] opacity-[0.035] blur-[150px] rounded-full pointer-events-none z-0" />
+        <div className="fixed top-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#80011F] opacity-[0.06] blur-[100px] rounded-full pointer-events-none z-0" />
+        <div className="fixed bottom-[-150px] left-[-150px] w-[600px] h-[600px] bg-[#A51F3D] opacity-[0.07] blur-[120px] rounded-full pointer-events-none z-0" />
+        <div className="fixed top-[45%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] bg-[#80011F] opacity-[0.035] blur-[150px] rounded-full pointer-events-none z-0" />
 
         {/* 1. Header Navbar with Live Cart Counter */}
         <Header

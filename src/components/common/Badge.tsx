@@ -23,7 +23,7 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const colorStyles = {
-    primary: 'text-[#635BFF]',
+    primary: 'text-[#80011F]',
     sky: 'text-[#0284C7]',
     emerald: 'text-emerald-600',
     amber: 'text-amber-600',
