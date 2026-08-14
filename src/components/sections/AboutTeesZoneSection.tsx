@@ -13,23 +13,23 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
   return (
     <section 
       id="about" 
-      className="py-20 lg:py-28 bg-[#0A2540] text-white relative overflow-hidden select-none"
+      className="py-20 lg:py-28 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
       aria-label="About TeesZone"
     >
       {/* Decorative background grid pattern for texture */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#38BDF8_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
       
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 space-y-16 lg:space-y-24">
         
         {/* Intro Top Block */}
         <div className="max-w-3xl text-left space-y-4">
-          <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#38BDF8] block">
+          <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             ABOUT TEESZONE
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight leading-tight">
             Built to Represent Your Brand.
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 font-inter leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed max-w-2xl">
             Premium apparel manufacturing and uniform solutions, crafted with quality, precision, and reliable service.
           </p>
         </div>
@@ -43,10 +43,10 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-6 space-y-4 text-left"
           >
-            <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#38BDF8] block">
+            <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
               OUR VISION
             </span>
-            <p className="text-sm sm:text-base text-slate-300 font-inter leading-relaxed">
+            <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed">
               To become a trusted apparel partner for businesses and organizations across India through quality, innovation, and reliable manufacturing.
             </p>
           </motion.div>
@@ -58,7 +58,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-6 w-full"
           >
-            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900/40">
+            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white">
               <img 
                 src={corporateImage} 
                 alt="Corporate apparel vision" 
@@ -77,7 +77,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-6 order-2 lg:order-1 w-full"
           >
-            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900/40">
+            <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white">
               <img 
                 src={manufacturingImage} 
                 alt="Apparel manufacturing mission" 
@@ -93,10 +93,10 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-6 order-1 lg:order-2 space-y-4 text-left"
           >
-            <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#38BDF8] block">
+            <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
               OUR MISSION
             </span>
-            <p className="text-sm sm:text-base text-slate-300 font-inter leading-relaxed">
+            <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed">
               To deliver high-quality customized apparel through premium fabrics, precise manufacturing, professional branding, and timely delivery.
             </p>
           </motion.div>

@@ -139,7 +139,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-4 space-y-2 shrink-0">
           <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F] block">
-            OUR APPAREL
+            OUR SERVICES
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Apparel for Every Purpose.
