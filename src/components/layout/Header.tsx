@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Zone 1: Far Left - Logo */}
         <div className="flex items-center shrink-0">
           <a href="#" className="flex items-center">
-            <Logo size="sm" />
+            <Logo size="md" />
           </a>
         </div>
 

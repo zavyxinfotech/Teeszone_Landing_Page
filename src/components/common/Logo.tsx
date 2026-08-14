@@ -15,8 +15,9 @@ export const Logo: React.FC<LogoProps> = ({
   const imgSizeClass = size === 'sm'
     ? 'h-10 sm:h-12'
     : size === 'lg'
-    ? 'h-16 sm:h-18'
-    : 'h-12 sm:h-14';
+    ? 'h-18 sm:h-20'
+    : 'h-14 sm:h-16';
+
 
   return (
     <div className="flex items-center gap-2 group cursor-pointer select-none shrink-0">

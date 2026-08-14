@@ -4,7 +4,7 @@ import { Button } from '../common/Button';
 import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShoppingCart } from 'lucide-react';
 
 // Background/Product images for the slides
-import customApparelBg from '../../assets/images/teeszone_hero_mockup_1786102788341.jpg';
+import customApparelBg from '../../assets/images/hero01.png';
 import corporateSolutionsBg from '../../assets/images/teeszone_corporate_polos_1786102801522.jpg';
 import readyStockBg from '../../assets/images/teeszone_hoodies_sweats_1786102824199.jpg';
 
@@ -146,7 +146,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="space-y-3 lg:space-y-5 flex flex-col justify-center"
               >
                 {/* Main Headline */}
-                <h1 className="text-2xl sm:text-5xl lg:text-6xl font-poppins font-black text-[#0A2540] tracking-tight leading-[1.15]">
+                <h1 className="text-xl sm:text-4xl lg:text-5xl font-poppins font-black text-[#0A2540] tracking-tight leading-[1.15]">
                   {HERO_SLIDES[currentSlide].headingPrefix} <br className="hidden sm:inline" />
                   <span className="text-[#635BFF]">
                     {HERO_SLIDES[currentSlide].headingAccent}
@@ -154,11 +154,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </h1>
 
                 {/* Mobile-only Image (Positioned directly under heading on mobile) */}
-                <div className="block lg:hidden relative w-full max-w-[280px] aspect-[16/10] rounded-xl overflow-hidden shadow-md border-2 border-white bg-white shrink-0 my-1">
+                <div className="block lg:hidden relative w-full max-w-[340px] sm:max-w-[420px] aspect-[4/3] shrink-0 my-2">
                   <img 
                     src={HERO_SLIDES[currentSlide].productImage} 
                     alt="TeesZone Custom Apparel Mobile" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
@@ -213,12 +213,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 exit={{ opacity: 0, scale: 0.9, rotate: -2 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="relative w-full max-w-sm sm:max-w-md lg:w-[85%] aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-[8px] lg:border-[12px] border-white bg-white"
+                className="relative w-full max-w-xl lg:max-w-[100%] aspect-[4/3] flex items-center justify-center"
               >
                 <motion.img 
                   src={HERO_SLIDES[currentSlide].productImage} 
                   alt="TeesZone Custom Apparel" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   animate={{
                     y: [0, -8, 0]
                   }}

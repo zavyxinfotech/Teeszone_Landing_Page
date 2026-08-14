@@ -110,7 +110,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = ({
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute bottom-0 left-4 sm:left-12 lg:left-0 w-[45%] sm:w-[38%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl z-20 border-4 sm:border-8 border-white bg-white"
+              className="absolute bottom-0 left-4 sm:left-12 lg:left-0 w-[45%] sm:w-[38%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl z-20 border border-white/10"
             >
               <img 
                 src={manufacturingImage} 
