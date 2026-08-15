@@ -13,12 +13,12 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
   return (
     <section 
       id="about" 
-      className="py-20 lg:py-24 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
+      className="py-10 sm:py-16 lg:py-24 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
       aria-label="About TeesZone"
     >
       {/* Decorative background grid pattern for texture */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
-      
+
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 space-y-12">
         
         {/* Intro Top Block */}
@@ -40,9 +40,6 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
           {/* Row 1: Our Vision (Image Left, Text Right) */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 lg:gap-16 items-center relative py-6">
             
-            {/* Background block behind image on the left side */}
-            <div className="absolute left-[-2.5rem] top-[15%] bottom-[15%] w-[45%] bg-[#80011F]/10 rounded-r-[2.5rem] pointer-events-none hidden md:block" />
-
             {/* Left: Image with custom organic blob shape */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -51,8 +48,11 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="md:col-span-5 relative z-10 flex justify-center md:justify-start"
             >
+              {/* Decorative background bar closely fitting the image height */}
+              <div className="absolute left-[-100vw] right-[15%] lg:right-[20%] top-4 bottom-4 bg-[#80011F]/10 rounded-r-[2.5rem] pointer-events-none hidden md:block z-0" />
+
               <div 
-                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#38BDF8]/60 shadow-xl bg-transparent"
+                className="w-44 h-44 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#38BDF8]/60 shadow-xl bg-transparent relative z-10"
                 style={{ borderRadius: '42% 58% 50% 50% / 55% 45% 55% 45%' }}
               >
                 <img 
@@ -83,9 +83,6 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
           {/* Row 2: Our Mission (Text Left, Image Right) */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 lg:gap-16 items-center relative py-6">
             
-            {/* Background block behind image on the right side */}
-            <div className="absolute right-[-2.5rem] top-[15%] bottom-[15%] w-[45%] bg-[#38BDF8]/10 rounded-l-[2.5rem] pointer-events-none hidden md:block" />
-
             {/* Left: Text Content */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -110,8 +107,11 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="md:col-span-5 order-1 md:order-2 relative z-10 flex justify-center md:justify-end"
             >
+              {/* Decorative background bar closely fitting the image height */}
+              <div className="absolute right-[-100vw] left-[15%] lg:left-[20%] top-4 bottom-4 bg-[#38BDF8]/10 rounded-l-[2.5rem] pointer-events-none hidden md:block z-0" />
+
               <div 
-                className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#80011F]/60 shadow-xl bg-transparent"
+                className="w-44 h-44 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-72 lg:h-72 overflow-hidden border-[4px] border-[#80011F]/60 shadow-xl bg-transparent relative z-10"
                 style={{ borderRadius: '55% 45% 45% 55% / 45% 55% 45% 55%' }}
               >
                 <img 

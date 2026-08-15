@@ -18,19 +18,20 @@ export const Footer: React.FC = () => {
         {/* Main Multi-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-[#A51F3D]/20">
           {/* Company Brand */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-6 space-y-4">
             {/* Logo + Brand Name */}
-            {/* TeesZone Footer Brand */}
             <div className="space-y-5">
-              {/* Logo + Brand Name */}
               <div className="flex items-center gap-3">
                 <Logo size="md" variant="dark" />
               </div>
             </div>
 
-            <p className="text-xs text-[#E8D6C0] leading-relaxed">
+            <p className="text-sm text-[#E8D6C0] leading-relaxed">
               {BRAND.description}
             </p>
+            <div className="text-xs font-mono text-[#F7E7CE] mt-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg w-fit">
+              GSTIN: {BRAND.gstin}
+            </div>
 
             {/* Contact Actions */}
             <div className="flex flex-col gap-4">
@@ -96,88 +97,69 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#F7E7CE]">
+          <div className="lg:col-span-3 space-y-3 font-poppins">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
               Quick Links
             </h3>
-            <ul className="space-y-2 text-xs text-[#E8D6C0] font-medium">
+            <ul className="space-y-2.5 text-sm text-[#E8D6C0] font-semibold">
               <li>
-                <a
-                  href="#categories"
-                  className="hover:text-white transition-colors"
-                >
-                  Categories
+                <a href="#" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>Home</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Why Us
+                <a href="#about" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>About us</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  How It Works
+                <a href="#services" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>Services</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Our Team
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Contact
+                <a href="#contact" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>Contact Us</span>
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Corporate Office & Map */}
-          <div className="lg:col-span-6 space-y-4">
-            <h3 className="text-xs font-poppins font-bold uppercase tracking-wider text-[#F7E7CE] flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[#80011F]" />
-              <span>Corporate Office</span>
+          {/* Column 3: Explore Links */}
+          <div className="lg:col-span-3 space-y-3 font-poppins">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
+              Explore
             </h3>
-            
-            <div className="p-4 rounded-2xl bg-white/5 border border-[#A51F3D]/30 space-y-4">
-              <div>
-                <span className="font-bold font-poppins text-white block text-sm mb-1">
-                  {BRAND.contact.headOffice.title}
-                </span>
-                <p className="text-[#E8D6C0] text-xs leading-relaxed">
-                  {BRAND.contact.headOffice.address}
-                </p>
-              </div>
-
-              <div className="w-full h-48 rounded-xl overflow-hidden bg-slate-800/50 relative border border-slate-700/50">
-                <iframe
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(BRAND.contact.headOffice.title + " " + BRAND.contact.headOffice.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0"
-                  title="Corporate Office Location"
-                ></iframe>
-              </div>
-            </div>
+            <ul className="space-y-2.5 text-sm text-[#E8D6C0] font-semibold">
+              <li>
+                <a href="#services" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="#why-us" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>Why Choose Us</span>
+                </a>
+              </li>
+              <li>
+                <a href="#team" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>Our Team</span>
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
+                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
+                  <span>FAQs</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

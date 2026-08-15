@@ -126,8 +126,8 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
 
   return (
     <section
-      id="products"
-      className="py-12 sm:py-16 lg:py-12 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[720px] lg:max-h-[900px] lg:flex lg:flex-col lg:justify-center"
+      id="services"
+      className="py-6 sm:py-16 lg:py-12 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[720px] lg:max-h-[900px] lg:flex lg:flex-col lg:justify-center"
       aria-label="Apparel Product Categories Catalog"
     >
       {/* Decorative ambient background lights */}
@@ -150,7 +150,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
         </div>
 
         {/* Layout: Centered Poster Showcase (bg-transparent, no borders, optimized height, full width) */}
-        <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[450px] xl:h-[480px] bg-transparent overflow-hidden flex flex-col justify-between items-center z-10">
+        <div className="relative w-full h-[290px] sm:h-[480px] lg:h-[450px] xl:h-[480px] bg-transparent overflow-hidden flex flex-col justify-between items-center z-10">
           
           {/* Background oversized outline typography (fit to screen, no crop) */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
@@ -194,7 +194,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
           </div>
 
           {/* Centered Clickable Image Showcase */}
-          <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-20 flex items-center justify-center">
+          <div className="absolute top-[48%] sm:top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-20 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab.id}
@@ -205,7 +205,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 className="w-full h-full flex items-center justify-center"
               >
                 <a 
-                  href="#products" 
+                  href="#services" 
                   className="w-full h-full flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105"
                   aria-label={`View catalog details for ${activeTab.heading}`}
                 >
@@ -235,10 +235,10 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.35 }}
-              className="absolute left-4 sm:left-8 md:left-12 lg:left-20 top-[45%] -translate-y-1/2 max-w-[80px] sm:max-w-[150px] md:max-w-[200px] text-left z-20 space-y-0.5 sm:space-y-1"
+              className="absolute left-2 sm:left-8 md:left-12 lg:left-20 top-[48%] sm:top-[45%] -translate-y-1/2 max-w-[70px] xs:max-w-[85px] sm:max-w-[150px] md:max-w-[200px] text-left z-20 space-y-0.5 sm:space-y-1"
             >
               <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">Featured Spec</span>
-              <h4 className="text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
+              <h4 className="text-[10px] xs:text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
                 {activeTab.productsList[0]}
               </h4>
               <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-400 font-inter">Premium custom build.</p>
@@ -253,10 +253,10 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 30 }}
               transition={{ duration: 0.35 }}
-              className="absolute right-4 sm:right-8 md:left-auto md:right-12 lg:right-20 top-[45%] -translate-y-1/2 max-w-[80px] sm:max-w-[150px] md:max-w-[200px] text-right z-20 space-y-0.5 sm:space-y-1"
+              className="absolute right-2 sm:right-8 md:left-auto md:right-12 lg:right-20 top-[48%] sm:top-[45%] -translate-y-1/2 max-w-[70px] xs:max-w-[85px] sm:max-w-[150px] md:max-w-[200px] text-right z-20 space-y-0.5 sm:space-y-1"
             >
               <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">Material standard</span>
-              <h4 className="text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
+              <h4 className="text-[10px] xs:text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
                 {activeTab.productsList[1] || "Custom Fit"}
               </h4>
               <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-400 font-inter">Zero compromise fabric.</p>
@@ -272,7 +272,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-28 sm:bottom-32 left-1/2 -translate-x-1/2 z-20 text-center"
+                className="absolute bottom-2 sm:bottom-32 left-1/2 -translate-x-1/2 z-20 text-center"
               >
                 <span className="text-[8px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Also Available</span>
                 <p className="text-xs sm:text-sm font-poppins font-black text-[#241A1D]">{activeTab.productsList[2]}</p>
@@ -281,7 +281,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
           )}
 
           {/* Spacer to push flex elements */}
-          <div className="h-4 sm:h-8" />
+          <div className="h-2 sm:h-8" />
 
         </div>
 

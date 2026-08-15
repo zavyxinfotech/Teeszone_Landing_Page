@@ -49,7 +49,7 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({
               </Button>
 
               <a
-                href="#products"
+                href="#services"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold text-[#F7E7CE] bg-white/10 hover:bg-white/20 border border-[#F7E7CE]/30 hover:border-[#F7E7CE] transition-all cursor-pointer shadow-lg"
               >
                 <Compass className="w-4 h-4 text-[#F7E7CE]" />

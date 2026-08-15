@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Factory, Layers, Printer, Truck } from 'lucide-react';
 import chooseusBg from '../../assets/images/chooseusBg.png';
@@ -27,10 +27,36 @@ export const WhyChooseSection: React.FC = () => {
     }
   ];
 
+  // Mobile state for pause/resume interaction
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const togglePause = () => {
+    setIsPaused((prev) => {
+      const next = !prev;
+      if (next) {
+        // Auto-resume after 5 seconds of inactivity
+        if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+        pauseTimeoutRef.current = setTimeout(() => {
+          setIsPaused(false);
+        }, 5000);
+      } else {
+        if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+      }
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <section 
       id="why-us" 
-      className="pt-20 pb-28 lg:pt-28 lg:pb-40 bg-cover bg-center bg-no-repeat text-white relative overflow-hidden select-none"
+      className="pt-12 pb-16 lg:pt-28 lg:pb-40 bg-cover bg-center bg-no-repeat text-white relative overflow-hidden select-none"
       style={{ backgroundImage: `url(${chooseusBg})` }}
       aria-label="Why Choose TeesZone"
     >
@@ -46,7 +72,7 @@ export const WhyChooseSection: React.FC = () => {
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-1">
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20 space-y-1">
           {/* Row 1: Cursive "Why" */}
           <span 
             className="text-xl sm:text-2xl lg:text-3xl text-[#F7E7CE] block tracking-wide select-none drop-shadow-sm"
@@ -97,7 +123,7 @@ export const WhyChooseSection: React.FC = () => {
         </div>
 
         {/* 4 Steps Section with Wave path */}
-        <div className="relative mt-24">
+        <div className="relative mt-12 lg:mt-24">
           
           {/* SVG connecting wave path (visible on desktop) */}
           <div className="absolute top-20 left-0 w-full h-16 hidden lg:block pointer-events-none z-0">
@@ -127,25 +153,22 @@ export const WhyChooseSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Vertical dashed line for mobile/tablet */}
-          <div className="absolute top-16 bottom-16 left-1/2 w-[2px] -translate-x-1/2 border-l-2 border-dashed border-white/20 lg:hidden z-0" />
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 relative z-10">
+          {/* Desktop Cards Grid with Cinematic 3D perspective and rotation */}
+          <div className="hidden lg:grid grid-cols-4 gap-8 relative z-10 [perspective:1200px] [transform-style:preserve-3d]">
             {points.map((point, idx) => {
               const Icon = point.icon;
               const isEven = idx % 2 === 1;
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: idx * 0.15 }}
-                  className="flex flex-col items-center text-center group"
+                  initial={{ opacity: 0, y: 80, rotateX: 65, scale: 0.85 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ type: "spring", stiffness: 60, damping: 14, delay: idx * 0.12 }}
+                  className="flex flex-col items-center text-center group [transform-style:preserve-3d]"
                 >
                   {/* Circular container */}
-                  <div className="relative">
+                  <div className="relative [transform-style:preserve-3d]">
                     
                     {/* Circle Card */}
                     <div 
@@ -164,12 +187,12 @@ export const WhyChooseSection: React.FC = () => {
                         isEven ? 'bg-[#0A2540] text-[#F7E7CE] border border-white/10' : 'bg-[#80011F] text-white'
                       }`}
                     >
-                      {`0${idx + 1}`}
+                      0{idx + 1}
                     </div>
 
                     {/* Wave intersection connection node (visible on desktop) */}
                     <div 
-                      className={`hidden lg:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-white shadow-sm z-20 ${
+                      className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-white shadow-sm z-20 ${
                         isEven ? 'bg-[#F7E7CE]' : 'bg-[#80011F]'
                       }`}
                     />
@@ -189,11 +212,80 @@ export const WhyChooseSection: React.FC = () => {
             })}
           </div>
 
+          {/* Mobile Cinematic Carousel (Continuous Horizontal Auto-scroll) */}
+          <div 
+            className="lg:hidden relative w-full overflow-hidden py-4 z-10 cursor-pointer select-none"
+            onClick={togglePause}
+            onTouchStart={() => setIsPaused(true)}
+          >
+            {/* Edge fading gradients */}
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0A2540] to-transparent z-20 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0A2540] to-transparent z-20 pointer-events-none" />
+
+            <motion.div
+              className="flex gap-6 w-max"
+              animate={isPaused ? {} : { x: [0, -480] }}
+              transition={{
+                repeat: Infinity,
+                ease: "linear",
+                duration: 16
+              }}
+            >
+              {[...points, ...points].map((point, idx) => {
+                const Icon = point.icon;
+                const isEven = idx % 2 === 1;
+                return (
+                  <div
+                    key={idx}
+                    className="w-48 shrink-0 flex flex-col items-center text-center p-4 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md relative z-10 transition-transform duration-300 hover:scale-[1.02]"
+                  >
+                    {/* Circle Card */}
+                    <div className="relative">
+                      <div 
+                        className={`w-20 h-20 rounded-full bg-white flex items-center justify-center border-2 shadow-md ${
+                          isEven ? 'border-[#F7E7CE]' : 'border-[#80011F]'
+                        }`}
+                      >
+                        <div className={`p-2.5 rounded-full ${isEven ? 'bg-[#F7E7CE]/20 text-[#80011F]' : 'bg-[#80011F]/10 text-[#80011F]'}`}>
+                          <Icon className="w-6 h-6" />
+                        </div>
+                      </div>
+
+                      {/* Step Number Badge */}
+                      <div 
+                        className={`absolute -top-1 -left-1 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-poppins font-black shadow-md ${
+                          isEven ? 'bg-[#0A2540] text-[#F7E7CE] border border-white/10' : 'bg-[#80011F] text-white'
+                        }`}
+                      >
+                        0{(idx % 4) + 1}
+                      </div>
+                    </div>
+
+                    {/* Text Details */}
+                    <div className="mt-4 space-y-1">
+                      <h4 className="text-xs font-poppins font-bold text-[#F7E7CE] uppercase tracking-wide">
+                        {point.title}
+                      </h4>
+                      <p className="text-[10px] sm:text-xs text-slate-200 font-inter font-medium leading-relaxed max-w-[150px] mx-auto whitespace-normal">
+                        {point.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
+
+            {/* HUD Status label */}
+            <div className="text-center mt-6">
+              <span className="text-[9px] font-bold text-[#F7E7CE]/60 uppercase tracking-widest font-poppins">
+                {isPaused ? "Paused • Tap to Resume" : "Tap to Pause / Inspect"}
+              </span>
+            </div>
+          </div>
+
         </div>
 
       </div>
     </section>
   );
 };
-
-

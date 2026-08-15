@@ -14,10 +14,10 @@ export const Logo: React.FC<LogoProps> = ({
   size = 'md'
 }) => {
   const imgSizeClass = size === 'sm'
-    ? 'h-8 sm:h-12'
+    ? 'h-5 sm:h-6 md:h-7'
     : size === 'lg'
-    ? 'h-12 sm:h-20'
-    : 'h-10 sm:h-16';
+    ? 'h-8 sm:h-10 md:h-11 lg:h-12'
+    : 'h-6 sm:h-8 md:h-9';
 
   const logoSrc = variant === 'dark' ? logoLightPng : logoPng;
 

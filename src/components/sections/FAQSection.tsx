@@ -8,7 +8,7 @@ export const FAQSection: React.FC = () => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(FAQS[0].id);
 
   return (
-    <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-cream-light text-[#241A1D] relative" aria-label="Frequently Asked Questions">
+    <section id="faq" className="py-10 sm:py-16 lg:py-24 bg-cream-light text-[#241A1D] relative" aria-label="Frequently Asked Questions">
       <div className="w-full max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* Section Header */}

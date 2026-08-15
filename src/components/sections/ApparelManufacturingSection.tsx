@@ -1,213 +1,109 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Button } from '../common/Button';
-import { ArrowRight } from 'lucide-react';
-
-// Import existing images to serve as placeholders for the custom uploaded images
-import fabricImage from '../../assets/images/cat_blank_tshirt_1786522045486.jpg';
-import brandingImage from '../../assets/images/cat_polo_tshirt_1786521728445.jpg';
-import productionImage from '../../assets/images/cat_industrial_tshirt_1786521333010.jpg';
-import inspectionImage from '../../assets/images/cat_corporate_tshirt_1786521137829.jpg';
+import React from 'react';
+import { motion } from 'motion/react';
+import { ClipboardList, Receipt, CheckCircle, CreditCard, Truck } from 'lucide-react';
 
 interface ApparelManufacturingSectionProps {
   onOpenQuoteModal?: () => void;
 }
 
-interface MfgCategory {
-  id: string;
-  label: string;
-  description: string;
-  image: string;
-}
-
-export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionProps> = ({
-  onOpenQuoteModal
-}) => {
-  const categories: MfgCategory[] = [
+export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionProps> = () => {
+  const steps = [
     {
-      id: 'fabric',
-      label: 'Fabric Selection',
-      description: 'Sourcing high-density, bio-washed cotton, poly-cotton blends, and premium athletic knits.',
-      image: fabricImage
+      number: '01',
+      title: 'SHARE REQUIREMENTS',
+      sub: 'Quantity, Style, Logo',
+      icon: ClipboardList
     },
     {
-      id: 'branding',
-      label: 'Custom Branding',
-      description: 'High-precision computer embroidery and 1200 DPI durable printing solutions.',
-      image: brandingImage
+      number: '02',
+      title: 'RECEIVE FREE QUOTE',
+      sub: 'Pricing in 24 Hrs',
+      icon: Receipt
     },
     {
-      id: 'production',
-      label: 'Precision Production',
-      description: 'Automated fabric cutting and heavy-duty stitching lines for durable finished apparel.',
-      image: productionImage
+      number: '03',
+      title: 'APPROVE SAMPLE',
+      sub: 'See Before You Commit',
+      icon: CheckCircle
     },
     {
-      id: 'inspection',
-      label: 'Quality Inspection',
-      description: 'Multi-point measurement and structural inspection checks before final steam pressing.',
-      image: inspectionImage
+      number: '04',
+      title: 'CONFIRM & PAY',
+      sub: 'Advance Locks Your Slot',
+      icon: CreditCard
+    },
+    {
+      number: '05',
+      title: 'DELIVERED TO YOUR DOOR',
+      sub: 'Pan-India Delivery',
+      icon: Truck
     }
   ];
-
-  const [activeCategory, setActiveCategory] = useState<string>('fabric');
-
-  const currentCategoryData = categories.find(c => c.id === activeCategory) || categories[0];
 
   return (
     <section 
       id="manufacturing" 
-      className="py-12 sm:py-16 lg:py-6 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[680px] lg:max-h-[850px] lg:flex lg:flex-col lg:justify-center"
-      aria-label="Apparel Manufacturing Process"
+      className="py-16 sm:py-24 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
+      aria-label="Apparel Ordering Process Timeline"
     >
-      {/* Decorative ambient bubble */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#80011F]/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 lg:flex lg:flex-col lg:justify-between lg:h-full lg:py-4">
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
+      
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10 space-y-12">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-4 sm:mb-12 space-y-2 shrink-0">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
           <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
-            PRECISION MANUFACTURING
+            HOW WE WORK
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
-            From Fabric to Finished Apparel.
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+            Our 5-Step Ordering Process
           </h2>
-          <p className="text-sm sm:text-base lg:text-sm text-[#6B5B60] font-inter font-semibold leading-relaxed max-w-2xl mx-auto">
-            End-to-end apparel manufacturing powered by premium fabrics, modern production, precise sizing, and professional quality inspection.
+          <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold max-w-xl mx-auto pt-2">
+            A simple, premium path from custom design requirements to door-step delivery.
           </p>
         </div>
 
-        {/* Layout: Asymmetric split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Process Timeline: Horizontal on Desktop/Tablet, Vertical on Mobile */}
+        <div className="relative pt-4 lg:pt-12">
           
-          {/* Left Column: Typography copy & interactive selector list */}
-          <div className="lg:col-span-5 space-y-6 lg:space-y-4">
-            <div className="space-y-4 lg:space-y-1.5 text-left">
-              <h3 className="text-xl sm:text-2xl lg:text-lg xl:text-xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
-                Our Production Stages
-              </h3>
-              <p className="text-sm lg:text-xs text-[#6B5B60] font-inter font-medium leading-relaxed">
-                Click on the stages below to explore our detailed manufacturing steps and inspect the close-up visuals.
-              </p>
-            </div>
+          {/* Connector Line (Desktop/Tablet) */}
+          <div className="absolute top-[48px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#80011F]/10 via-[#80011F]/30 to-[#80011F]/10 hidden lg:block" />
 
-            {/* Interactive Selector List (Vertical Timeline Style) */}
-            <div className="space-y-3.5 lg:space-y-2.5 pt-2 lg:pt-0">
-              {categories.map((cat, idx) => {
-                const isActive = cat.id === activeCategory;
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`w-full text-left p-4 lg:p-3 rounded-2xl transition-all duration-300 flex gap-4 border cursor-pointer ${
-                      isActive 
-                        ? 'bg-white border-[#80011F] shadow-lg shadow-[#80011F]/5 lg:translate-x-1' 
-                        : 'bg-white/60 border-slate-200/80 hover:bg-white hover:border-[#80011F]/30'
-                    }`}
-                  >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-poppins font-black text-xs shrink-0 ${
-                      isActive ? 'bg-[#80011F] text-white' : 'bg-slate-100 text-[#6B5B60]'
-                    }`}>
-                      0{idx + 1}
-                    </div>
-                    <div className="space-y-0.5 min-w-0">
-                      <h4 className={`text-sm lg:text-xs xl:text-sm font-poppins font-extrabold ${
-                        isActive ? 'text-[#241A1D]' : 'text-slate-600'
-                      }`}>
-                        {cat.label}
-                      </h4>
-                      {isActive && (
-                        <motion.p 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          className="text-xs lg:text-[11px] xl:text-xs text-[#6B5B60] font-inter leading-relaxed mt-1"
-                        >
-                          {cat.description}
-                        </motion.p>
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="pt-4 lg:pt-2 flex">
-              <Button
-                variant="primary"
-                size="md"
-                onClick={onOpenQuoteModal}
-                icon={<ArrowRight className="w-4 h-4" />}
-                className="shadow-lg shadow-[#80011F]/20 px-6 py-3.5 lg:px-5 lg:py-2.5 rounded-xl text-xs font-bold w-full sm:w-auto justify-center"
-              >
-                Explore Our Manufacturing
-              </Button>
-            </div>
-          </div>
-
-          {/* Right Column: Visual demonstration */}
-          <div className="lg:col-span-7 space-y-6 lg:space-y-3">
-            
-            {/* Large main manufacturing photograph container */}
-            <div className="relative aspect-[16/9] lg:aspect-[16/8.5] w-full rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-200/80">
-              <AnimatePresence mode="wait">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-6 justify-between relative z-10">
+            {steps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
                 <motion.div
-                  key={activeCategory}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 w-full h-full"
+                  key={step.number}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="flex flex-row lg:flex-col items-center lg:items-center text-left lg:text-center gap-5 lg:gap-0 group w-full lg:w-1/5"
                 >
-                  <img 
-                    src={currentCategoryData.image} 
-                    alt={currentCategoryData.label} 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
-                  
-                  {/* Category Name overlay */}
-                  <div className="absolute bottom-5 left-5 right-5 text-left text-white z-10">
-                    <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F]">
-                      Active Preview
-                    </span>
-                    <h3 className="text-lg lg:text-base xl:text-lg font-poppins font-extrabold">
-                      {currentCategoryData.label} Production Close-up
+                  {/* Step Bubble with Icon */}
+                  <div className="relative shrink-0 lg:mb-6">
+                    <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-white border-2 border-[#80011F]/20 flex items-center justify-center shadow-md group-hover:border-[#80011F] group-hover:shadow-lg transition-all duration-300 relative z-10">
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-[#80011F]" />
+                    </div>
+                    {/* Badge Number */}
+                    <div className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-[#80011F] text-white flex items-center justify-center font-poppins font-black text-[10px] shadow-sm z-20">
+                      {step.number}
+                    </div>
+                  </div>
+
+                  {/* Heading & Details */}
+                  <div className="space-y-1">
+                    <h3 className="text-sm sm:text-base font-poppins font-extrabold text-[#241A1D] tracking-tight uppercase">
+                      {step.title}
                     </h3>
+                    <p className="text-xs sm:text-sm text-[#6B5B60] font-inter font-medium leading-relaxed">
+                      {step.sub}
+                    </p>
                   </div>
                 </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Grid of 4 smaller close-up visual labels */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-3">
-              {categories.map((cat) => {
-                const isActive = cat.id === activeCategory;
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`relative rounded-xl overflow-hidden aspect-[4/3] group transition-all duration-300 border-2 cursor-pointer ${
-                      isActive 
-                        ? 'border-[#80011F] scale-[1.02] shadow-md shadow-[#80011F]/10' 
-                        : 'border-transparent hover:border-slate-300'
-                    }`}
-                  >
-                    <img 
-                      src={cat.image} 
-                      alt={cat.label} 
-                      className="w-full h-full object-cover filter brightness-[0.7] group-hover:brightness-[0.85] transition-all duration-300"
-                    />
-                    <div className="absolute inset-0 flex flex-col justify-end p-2.5 lg:p-1.5 text-left bg-gradient-to-t from-black/85 via-black/35 to-transparent">
-                      <span className="text-[9px] lg:text-[8px] xl:text-[9px] sm:text-[10px] font-poppins font-extrabold text-white leading-tight">
-                        {cat.label}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
+              );
+            })}
           </div>
 
         </div>

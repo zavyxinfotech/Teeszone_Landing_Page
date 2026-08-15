@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '../common/Button';
-import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShoppingCart } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShoppingCart, Package, Truck, BadgeCheck } from 'lucide-react';
 
 // Background/Product images for the slides
 import customApparelBg from '../../assets/images/Hero_01.png';
@@ -19,6 +19,7 @@ const HERO_SLIDES = [
     headingPrefix: "Built for Your Brand. ",
     headingAccent: "Made to Stand Out.",
     subheading: "Premium custom apparel and uniforms crafted for businesses, institutions, teams, and events—with quality, precision, and professional branding.",
+    shortDescription: "Premium custom apparel tailored to stand out.",
     ctaText: "Explore Custom Apparel",
     productImage: customApparelBg
   },
@@ -27,6 +28,7 @@ const HERO_SLIDES = [
     headingPrefix: "Professional Uniforms. ",
     headingAccent: "Powerful First Impressions.",
     subheading: "From corporate and office wear to industrial, hospitality, school, and college uniforms—designed to strengthen your organization's identity.",
+    shortDescription: "Professional uniform solutions for your corporate identity.",
     ctaText: "Explore Uniform Solutions",
     productImage: hero2A
   },
@@ -35,6 +37,7 @@ const HERO_SLIDES = [
     headingPrefix: "Premium Tees. ",
     headingAccent: "Ready When You Are.",
     subheading: "Discover quality ready-stock polos, crew necks, and hoodies—premium fabrics, modern styles, and reliable quality for everyday wear.",
+    shortDescription: "Premium quality ready-stock polos, tees and hoodies.",
     ctaText: "Shop Ready Stock",
     productImage: readyStockBg
   }
@@ -153,15 +156,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </span>
 
                 {/* 2. Main Headline */}
-                <h1 className="text-[32px] sm:text-[38px] md:text-[48px] lg:text-[56px] xl:text-[68px] font-poppins font-black text-[#0A2540] tracking-[-0.02em] md:tracking-[-0.03em] lg:tracking-[-0.03em] xl:tracking-[-0.04em] leading-[1.1] sm:leading-[1.08] md:leading-[1.08] lg:leading-[1.05] xl:leading-[1.05] max-w-full md:max-w-[560px] lg:max-w-[640px] xl:max-w-[740px] mt-4 sm:mt-6 lg:mt-8">
+                <h1 className="text-[26px] xs:text-[28px] sm:text-[34px] md:text-[48px] lg:text-[56px] xl:text-[68px] font-poppins font-extrabold text-[#0A2540] tracking-[-0.02em] md:tracking-[-0.03em] lg:tracking-[-0.03em] xl:tracking-[-0.04em] leading-[1.1] sm:leading-[1.08] md:leading-[1.08] lg:leading-[1.05] xl:leading-[1.05] max-w-full md:max-w-[560px] lg:max-w-[640px] xl:max-w-[740px] mt-4 sm:mt-6 lg:mt-8">
                   {HERO_SLIDES[currentSlide].headingPrefix} <br className="hidden sm:inline" />
                   <span className="text-[#80011F]">
                     {HERO_SLIDES[currentSlide].headingAccent}
                   </span>
                 </h1>
 
+                {/* Short Description */}
+                <p className="text-[11px] sm:text-xs md:text-sm xl:text-base text-[#6B5B60] font-inter font-semibold mt-2.5 max-w-md leading-relaxed">
+                  {HERO_SLIDES[currentSlide].shortDescription}
+                </p>
+
                 {/* 3. Mobile-only Image (Positioned directly under heading on mobile, using 3D rotating cylinder) */}
-                <div className="block lg:hidden relative w-[80%] max-w-[250px] sm:max-w-[320px] aspect-[16/10] shrink-0 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible mt-4">
+                <div className="block lg:hidden relative w-[85%] max-w-[280px] sm:max-w-[420px] md:max-w-[520px] aspect-[16/10] shrink-0 mx-auto [perspective:1000px] [transform-style:preserve-3d] overflow-visible mt-4">
                   <motion.div
                     className="relative w-full h-full [transform-style:preserve-3d]"
                     animate={{
@@ -174,7 +182,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   >
                     {HERO_SLIDES.map((slide, idx) => {
                       const angle = idx * 120;
-                      const zOffset = 90;
+                      const zOffset = 150;
                       return (
                         <div
                           key={`mobile-${slide.id}`}
@@ -193,16 +201,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                             onMouseLeave={() => idx === 1 && setIsHoveredSlide2(false)}
                             onTouchStart={() => idx === 1 && setIsHoveredSlide2(true)}
                             onTouchEnd={() => idx === 1 && setIsHoveredSlide2(false)}
-                            animate={{
-                              y: [0, -4, 0],
-                              rotateX: [idx === currentSlide ? -1.5 : 0, idx === currentSlide ? 1.5 : 0, idx === currentSlide ? -1.5 : 0]
-                            }}
-                            transition={{
-                              duration: 5,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                              delay: idx * 0.5
-                            }}
                           />
                         </div>
                       );
@@ -211,30 +209,36 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
 
                 {/* 4. Supporting value/trust points */}
-                <div className="flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-4 gap-y-1.5 font-poppins font-semibold text-xs md:text-sm xl:text-[15px] tracking-[0.01em] text-[#6B5B60] mt-[20px] md:mt-[22px] lg:mt-[24px]">
-                  <span>BULK ORDERS</span>
-                  <span className="text-[#80011F]/30 font-light">•</span>
-                  <span>FAST DELIVERY</span>
-                  <span className="text-[#80011F]/30 font-light">•</span>
-                  <span>PREMIUM QUALITY</span>
+                <div className="flex flex-wrap items-center justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-[10px] sm:text-xs md:text-sm xl:text-[15px] text-[#6B5B60] font-poppins font-bold mt-[20px] md:mt-[22px] lg:mt-[24px]">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Package className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-[#80011F]/70" />
+                    <span>BULK ORDERS</span>
+                  </div>
+                  <span className="text-[#80011F]/30 font-light hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Truck className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-[#80011F]/70" />
+                    <span>FAST DELIVERY</span>
+                  </div>
+                  <span className="text-[#80011F]/30 font-light hidden sm:inline">•</span>
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <BadgeCheck className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-[#80011F]/70" />
+                    <span>PREMIUM QUALITY</span>
+                  </div>
                 </div>
 
-                {/* 5. Primary and Secondary CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-stretch sm:items-center mt-[24px] lg:mt-[30px] w-full sm:w-auto">
-                  {/* Primary CTA (Burgundy) */}
+                {/* 5. Primary CTA Button (Scrolls to services) */}
+                <div className="flex items-center mt-[24px] lg:mt-[30px] w-full sm:w-auto">
                   <button
-                    onClick={onOpenQuoteModal}
-                    className="h-[46px] sm:h-[48px] md:h-[50px] xl:h-[52px] px-5 sm:px-6 md:px-[24px] xl:px-[28px] rounded-[10px] sm:rounded-xl font-poppins font-semibold text-sm md:text-[15px] xl:text-[16px] tracking-wide bg-[#80011F] text-[#F7E7CE] hover:bg-[#600018] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-0 shadow-xs"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const target = document.getElementById('services');
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="h-[42px] sm:h-[46px] md:h-[48px] lg:h-[50px] xl:h-[52px] px-5 sm:px-6 md:px-[24px] xl:px-[28px] rounded-[10px] sm:rounded-xl font-poppins font-semibold text-xs sm:text-sm md:text-[15px] xl:text-[16px] tracking-wide bg-[#80011F] text-[#F7E7CE] hover:bg-[#600018] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-0 shadow-xs w-full sm:w-auto"
                   >
                     {HERO_SLIDES[currentSlide].ctaText}
-                  </button>
-
-                  {/* Secondary CTA (White with Burgundy Border) */}
-                  <button
-                    onClick={onOpenQuoteModal}
-                    className="h-[46px] sm:h-[48px] md:h-[50px] xl:h-[52px] px-5 sm:px-6 md:px-[24px] xl:px-[28px] rounded-[10px] sm:rounded-xl font-poppins font-semibold text-sm md:text-[15px] xl:text-[16px] tracking-wide bg-white text-[#80011F] border-2 border-[#80011F] hover:bg-[#FFF8F9] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-xs animate-none"
-                  >
-                    {currentSlide === 2 ? "Explore Custom Apparel" : "Shop Ready Stock"}
                   </button>
                 </div>
 
@@ -275,16 +279,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       className="w-full h-full object-contain pointer-events-auto cursor-pointer"
                       onMouseEnter={() => idx === 1 && setIsHoveredSlide2(true)}
                       onMouseLeave={() => idx === 1 && setIsHoveredSlide2(false)}
-                      animate={{
-                        y: [0, -8, 0],
-                        rotateX: [idx === currentSlide ? -2 : 0, idx === currentSlide ? 2 : 0, idx === currentSlide ? -2 : 0]
-                      }}
-                      transition={{
-                        duration: 5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: idx * 0.5
-                      }}
                     />
                   </div>
                 );
