@@ -31,10 +31,10 @@ export const Header: React.FC<HeaderProps> = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 lg:px-12 transition-all duration-300 overflow-x-hidden ${
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 lg:px-12 transition-all duration-300 overflow-x-hidden border-0 shadow-none ${
       isScrolled || mobileMenuOpen
-        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200/50 py-2 sm:py-3 shadow-sm' 
-        : 'bg-transparent border-b-0 py-4 sm:py-[22px]'
+        ? 'bg-transparent py-2 sm:py-3' 
+        : 'bg-transparent py-4 sm:py-[22px]'
     }`}>
       {/* Three-Zone Layout Container */}
       <div className="w-full max-w-[1500px] mx-auto grid grid-cols-2 lg:grid-cols-3 items-center gap-2 sm:gap-4">
@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = () => {
             animate={{ opacity: 1, height: 'auto', y: 0 }}
             exit={{ opacity: 0, height: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden bg-white/80 backdrop-blur-lg border border-white/20 mt-3 px-4 pt-3 pb-5 space-y-3 shadow-2xl shadow-[#80011F]/5 rounded-2xl overflow-hidden"
+            className="lg:hidden bg-white/10 backdrop-blur-xl border border-white/10 mt-3 px-4 pt-3 pb-5 space-y-3 rounded-2xl overflow-hidden shadow-none"
           >
             <nav className="flex flex-col space-y-1 font-inter">
               {primaryNavLinks.map((link) => (

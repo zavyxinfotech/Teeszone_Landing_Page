@@ -29,9 +29,9 @@ export const Footer: React.FC = () => {
             <p className="text-sm text-[#E8D6C0] leading-relaxed">
               {BRAND.description}
             </p>
-            <div className="text-xs font-mono text-[#F7E7CE] mt-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg w-fit">
+            <p className="text-xs font-mono text-[#F7E7CE] mt-2 select-all">
               GSTIN: {BRAND.gstin}
-            </div>
+            </p>
 
             {/* Contact Actions */}
             <div className="flex flex-col gap-4">
@@ -101,7 +101,7 @@ export const Footer: React.FC = () => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
               Quick Links
             </h3>
-            <ul className="space-y-2.5 text-sm text-[#E8D6C0] font-semibold">
+            <ul className="space-y-2 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
               <li>
                 <a href="#" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
                   <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
               Explore
             </h3>
-            <ul className="space-y-2.5 text-sm text-[#E8D6C0] font-semibold">
+            <ul className="space-y-2 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
               <li>
                 <a href="#services" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
                   <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />

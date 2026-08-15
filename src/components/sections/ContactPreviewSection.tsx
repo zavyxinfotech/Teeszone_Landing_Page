@@ -12,14 +12,14 @@ export const ContactPreviewSection: React.FC = () => {
         {/* Equal width, stretched equal height columns grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
-          {/* Left Column: Contact Details & Official Locations (Formatted inside matched card) */}
-          <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-xl flex flex-col justify-between">
+          {/* Left Column: Contact Details & Official Locations (Formatted inside borderless matched card) */}
+          <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
             <div className="space-y-5">
               <div>
                 <Badge variant="primary" size="md" className="mb-2">
                   CORPORATE OFFICE & CONTACT
                 </Badge>
-                <h2 className="text-xl sm:text-2xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
                   Speak With a Dedicated Apparel Specialist
                 </h2>
                 <p className="text-xs sm:text-sm text-[#6B5B60] mt-2 leading-relaxed font-inter">
@@ -28,8 +28,8 @@ export const ContactPreviewSection: React.FC = () => {
               </div>
 
               <div className="space-y-4 font-inter">
-                {/* GSTIN & Legal Name */}
-                <div className="p-3.5 bg-cream-light/35 rounded-2xl flex items-center gap-3.5 border border-[#80011F]/5 shadow-2xs">
+                {/* GSTIN & Legal Name (Borderless) */}
+                <div className="p-3.5 bg-cream-light/35 rounded-2xl flex items-center gap-3.5">
                   <div className="p-2.5 bg-[#80011F]/10 text-[#80011F] rounded-xl shrink-0">
                     <FileText className="w-4.5 h-4.5" />
                   </div>
@@ -40,8 +40,8 @@ export const ContactPreviewSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Phone Numbers */}
-                <div className="p-3.5 bg-cream-light/35 rounded-2xl flex items-center gap-3.5 border border-[#80011F]/5 shadow-2xs">
+                {/* Phone Numbers (Borderless) */}
+                <div className="p-3.5 bg-cream-light/35 rounded-2xl flex items-center gap-3.5">
                   <div className="p-2.5 bg-emerald-50 text-emerald-700 rounded-xl shrink-0">
                     <Phone className="w-4.5 h-4.5" />
                   </div>
@@ -59,8 +59,8 @@ export const ContactPreviewSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Official Email */}
-                <div className="p-3.5 bg-cream-light/35 rounded-2xl flex items-center gap-3.5 border border-[#80011F]/5 shadow-2xs">
+                {/* Official Email (Borderless) */}
+                <div className="p-3.5 bg-cream-light/35 rounded-2xl flex items-center gap-3.5">
                   <div className="p-2.5 bg-[#80011F]/10 text-[#80011F] rounded-xl shrink-0">
                     <Mail className="w-4.5 h-4.5" />
                   </div>
@@ -80,8 +80,8 @@ export const ContactPreviewSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Google Maps & Exact Head Office Address */}
-          <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 space-y-6 flex flex-col justify-between border border-white/20 shadow-xl">
+          {/* Right Column: Google Maps & Exact Head Office Address (Borderless) */}
+          <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 space-y-6 flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-poppins font-extrabold text-[#241A1D] mb-1.5 flex items-center gap-2">
                 <MapIcon className="w-5.5 h-5.5 text-[#80011F]" />
@@ -107,8 +107,8 @@ export const ContactPreviewSection: React.FC = () => {
               ></iframe>
             </div>
 
-            {/* Address Display Block */}
-            <div className="p-4 rounded-2xl bg-cream-light/60 border border-[#80011F]/10 flex items-start gap-3.5 mt-2">
+            {/* Address Display Block (Borderless) */}
+            <div className="p-4 rounded-2xl bg-cream-light/60 flex items-start gap-3.5 mt-2">
               <MapPin className="w-5 h-5 text-[#80011F] shrink-0 mt-0.5" />
               <div>
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block font-poppins">TeesZone Head Office</span>

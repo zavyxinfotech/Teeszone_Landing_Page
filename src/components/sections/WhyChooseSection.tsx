@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Factory, Layers, Printer, Truck } from 'lucide-react';
 import chooseusBg from '../../assets/images/chooseusBg.png';
@@ -12,7 +12,7 @@ export const WhyChooseSection: React.FC = () => {
     },
     {
       title: "Premium Fabrics",
-      description: "Cotton, Polycotton, EcoBlend & Nano Poly options.",
+      description: "Cotton, EcoBlend & Nano Poly options.",
       icon: Layers
     },
     {
@@ -26,32 +26,6 @@ export const WhyChooseSection: React.FC = () => {
       icon: Truck
     }
   ];
-
-  // Mobile state for pause/resume interaction
-  const [isPaused, setIsPaused] = useState(false);
-  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const togglePause = () => {
-    setIsPaused((prev) => {
-      const next = !prev;
-      if (next) {
-        // Auto-resume after 5 seconds of inactivity
-        if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
-        pauseTimeoutRef.current = setTimeout(() => {
-          setIsPaused(false);
-        }, 5000);
-      } else {
-        if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
-      }
-      return next;
-    });
-  };
-
-  useEffect(() => {
-    return () => {
-      if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
-    };
-  }, []);
 
   return (
     <section 
@@ -88,84 +62,44 @@ export const WhyChooseSection: React.FC = () => {
           <div className="flex items-center justify-center gap-3 sm:gap-4 mt-2">
             {/* Left Flanking Dashes */}
             <div className="flex items-end gap-0.5 select-none h-5">
-              <div className="w-[2px] h-3 bg-[#F7E7CE] rounded-full rotate-[30deg] transform origin-bottom" />
-              <div className="w-[2px] h-5 bg-[#F7E7CE] rounded-full rotate-[15deg] transform origin-bottom -translate-y-0.5" />
-              <div className="w-[2px] h-3 bg-[#F7E7CE] rounded-full rotate-[0deg] transform origin-bottom" />
+              <div className="w-2.5 h-[1.5px] bg-[#F7E7CE] rounded-full opacity-40" />
+              <div className="w-6 h-[1.5px] bg-[#F7E7CE] rounded-full opacity-70" />
+              <div className="w-1.5 h-[1.5px] bg-[#F7E7CE] rounded-full" />
             </div>
-            
-            <span className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-black text-[#F7E7CE] tracking-tight leading-none uppercase select-none drop-shadow-md">
-              US?
+            {/* Center Text */}
+            <span className="text-lg sm:text-2xl lg:text-3xl font-poppins font-extrabold text-[#F7E7CE] tracking-wider uppercase select-none">
+              TEESZONE
             </span>
-
             {/* Right Flanking Dashes */}
             <div className="flex items-end gap-0.5 select-none h-5">
-              <div className="w-[2px] h-3 bg-[#F7E7CE] rounded-full rotate-[0deg] transform origin-bottom" />
-              <div className="w-[2px] h-5 bg-[#F7E7CE] rounded-full rotate-[-15deg] transform origin-bottom -translate-y-0.5" />
-              <div className="w-[2px] h-3 bg-[#F7E7CE] rounded-full rotate-[-30deg] transform origin-bottom" />
+              <div className="w-1.5 h-[1.5px] bg-[#F7E7CE] rounded-full" />
+              <div className="w-6 h-[1.5px] bg-[#F7E7CE] rounded-full opacity-70" />
+              <div className="w-2.5 h-[1.5px] bg-[#F7E7CE] rounded-full opacity-40" />
             </div>
-          </div>
-
-          {/* Description Text */}
-          <p className="text-sm sm:text-base text-slate-200 font-inter font-semibold leading-relaxed max-w-xl mx-auto pt-6">
-            Find the right quality fabric with the right custom printing and the right manufacturing partner with us.
-          </p>
-
-          {/* Divider Line with 3 dots */}
-          <div className="flex items-center justify-center gap-4 pt-6">
-            <div className="h-[1px] w-12 bg-white/20" />
-            <div className="flex gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-[#80011F]" />
-              <div className="w-2 h-2 rounded-full bg-[#F7E7CE]" />
-              <div className="w-2 h-2 rounded-full bg-[#80011F]" />
-            </div>
-            <div className="h-[1px] w-12 bg-white/20" />
           </div>
         </div>
 
-        {/* 4 Steps Section with Wave path */}
-        <div className="relative mt-12 lg:mt-24">
+        {/* Outer grid wrapper */}
+        <div className="relative z-10">
           
-          {/* SVG connecting wave path (visible on desktop) */}
-          <div className="absolute top-20 left-0 w-full h-16 hidden lg:block pointer-events-none z-0">
-            <svg className="w-full h-full" viewBox="0 0 1000 100" fill="none" preserveAspectRatio="none">
-              <path d="M 50,60 C 87.5,60 87.5,60 125,60 C 187.5,60 187.5,30 250,30 C 312.5,30 312.5,60 375,60 C 437.5,60 437.5,30 500,30 C 562.5,30 562.5,60 625,60 C 687.5,60 687.5,30 750,30 C 812.5,30 812.5,60 875,60 C 920,60 950,50 980,10" 
-                    stroke="#F7E7CE" 
-                    strokeWidth="3" 
-                    strokeDasharray="6,6"
-                    className="opacity-40" />
-            </svg>
-            
-            {/* Animated Launching Rocket */}
-            <motion.div 
-              className="absolute text-[#F7E7CE]"
-              style={{ left: '97.5%', top: '0%' }}
-              animate={{ y: [0, -3, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            >
-              <div className="rotate-[35deg] transform -translate-x-1/2 -translate-y-1/2">
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L16 7l-5-5L4.5 16.5z" fill="#80011F" />
-                  <path d="m12 5 9 9-4 4.5H9.5L12 5z" fill="#F7E7CE" />
-                  <path d="M9 15 4 20" stroke="#80011F" />
-                  <path d="M15 9 20 4" stroke="#F7E7CE" />
-                </svg>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Desktop Cards Grid with Cinematic 3D perspective and rotation */}
+          {/* Desktop Cards Grid with Cinematic 3D perspective and continuous floating animations */}
           <div className="hidden lg:grid grid-cols-4 gap-8 relative z-10 [perspective:1200px] [transform-style:preserve-3d]">
             {points.map((point, idx) => {
               const Icon = point.icon;
               const isEven = idx % 2 === 1;
               return (
-                <motion.div
+                <motion.div 
                   key={idx}
-                  initial={{ opacity: 0, y: 80, rotateX: 65, scale: 0.85 }}
-                  whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ type: "spring", stiffness: 60, damping: 14, delay: idx * 0.12 }}
-                  className="flex flex-col items-center text-center group [transform-style:preserve-3d]"
+                  className="flex flex-col items-center text-center group relative cursor-pointer"
+                  animate={{
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    duration: 5 + (idx % 2) * 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: idx * 0.4
+                  }}
                 >
                   {/* Circular container */}
                   <div className="relative [transform-style:preserve-3d]">
@@ -177,7 +111,12 @@ export const WhyChooseSection: React.FC = () => {
                       }`}
                     >
                       <div className={`p-4 rounded-full ${isEven ? 'bg-[#F7E7CE]/20 text-[#80011F]' : 'bg-[#80011F]/10 text-[#80011F]'} group-hover:bg-[#80011F] group-hover:text-white transition-all duration-300`}>
-                        <Icon className="w-10 h-10" />
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+                        >
+                          <Icon className="w-10 h-10" />
+                        </motion.div>
                       </div>
                     </div>
 
@@ -212,23 +151,19 @@ export const WhyChooseSection: React.FC = () => {
             })}
           </div>
 
-          {/* Mobile Cinematic Carousel (Continuous Horizontal Auto-scroll) */}
-          <div 
-            className="lg:hidden relative w-full overflow-hidden py-4 z-10 cursor-pointer select-none"
-            onClick={togglePause}
-            onTouchStart={() => setIsPaused(true)}
-          >
+          {/* Mobile Cinematic Carousel (Continuous Horizontal Auto-scroll, NO card borders, matches desktop styling) */}
+          <div className="lg:hidden relative w-full overflow-hidden py-4 z-10 select-none">
             {/* Edge fading gradients */}
             <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0A2540] to-transparent z-20 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0A2540] to-transparent z-20 pointer-events-none" />
 
             <motion.div
-              className="flex gap-6 w-max"
-              animate={isPaused ? {} : { x: [0, -480] }}
+              className="flex gap-12 w-max"
+              animate={{ x: [0, -960] }}
               transition={{
                 repeat: Infinity,
                 ease: "linear",
-                duration: 16
+                duration: 20
               }}
             >
               {[...points, ...points].map((point, idx) => {
@@ -237,7 +172,7 @@ export const WhyChooseSection: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="w-48 shrink-0 flex flex-col items-center text-center p-4 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md relative z-10 transition-transform duration-300 hover:scale-[1.02]"
+                    className="w-48 shrink-0 flex flex-col items-center text-center relative z-10 transition-transform duration-300"
                   >
                     {/* Circle Card */}
                     <div className="relative">
@@ -247,7 +182,12 @@ export const WhyChooseSection: React.FC = () => {
                         }`}
                       >
                         <div className={`p-2.5 rounded-full ${isEven ? 'bg-[#F7E7CE]/20 text-[#80011F]' : 'bg-[#80011F]/10 text-[#80011F]'}`}>
-                          <Icon className="w-6 h-6" />
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+                          >
+                            <Icon className="w-6 h-6" />
+                          </motion.div>
                         </div>
                       </div>
 
@@ -274,13 +214,6 @@ export const WhyChooseSection: React.FC = () => {
                 );
               })}
             </motion.div>
-
-            {/* HUD Status label */}
-            <div className="text-center mt-6">
-              <span className="text-[9px] font-bold text-[#F7E7CE]/60 uppercase tracking-widest font-poppins">
-                {isPaused ? "Paused • Tap to Resume" : "Tap to Pause / Inspect"}
-              </span>
-            </div>
           </div>
 
         </div>

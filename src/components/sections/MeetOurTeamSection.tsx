@@ -166,7 +166,7 @@ export const MeetOurTeamSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile/Tablet View: Smooth 3D Auto-scrolling Marquee */}
+      {/* Mobile/Tablet View: Smooth Auto-scrolling Team list */}
       <div className="block lg:hidden relative w-full mt-10 z-10 overflow-hidden px-4">
         <div 
           ref={scrollRef}
@@ -186,7 +186,7 @@ export const MeetOurTeamSection: React.FC = () => {
                 ease: "easeInOut",
                 delay: idx * 0.4
               }}
-              className="w-48 shrink-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center text-center snap-center relative [transform-style:preserve-3d]"
+              className="w-48 shrink-0 flex flex-col items-center text-center snap-center relative [transform-style:preserve-3d] py-2 px-1"
             >
               {/* Avatar */}
               <div className="relative z-10 w-20 h-20 mb-4 mx-auto shrink-0 mt-2">
@@ -217,13 +217,6 @@ export const MeetOurTeamSection: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* HUD Indicator */}
-        <div className="text-center mt-3">
-          <span className="text-[9px] font-bold text-[#F7E7CE]/60 uppercase tracking-widest font-poppins">
-            {isTeamPaused ? "Touch Paused • Auto-resumes" : "Swipe or Inspect Team"}
-          </span>
         </div>
       </div>
 

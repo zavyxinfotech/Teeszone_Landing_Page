@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FAQS } from '../../data/faqs';
 import { Badge } from '../common/Badge';
-import { ChevronDown, Search, PhoneCall } from 'lucide-react';
+import { ChevronDown, PhoneCall } from 'lucide-react';
 import { BRAND } from '../../data/brand';
 
 export const FAQSection: React.FC = () => {
@@ -24,7 +24,7 @@ export const FAQSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Accordion FAQ Items */}
+        {/* Accordion FAQ Items (With slightly reduced typography) */}
         <div className="space-y-3">
           {FAQS.slice(0, 5).map((faq) => {
             const isOpen = openFaqId === faq.id;
@@ -38,7 +38,7 @@ export const FAQSection: React.FC = () => {
                   aria-expanded={isOpen}
                   className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-cream-light/30 transition-colors"
                 >
-                  <span className={`text-sm sm:text-base font-poppins font-bold transition-colors ${isOpen ? 'text-[#80011F]' : 'text-[#241A1D]'}`}>
+                  <span className={`text-xs sm:text-sm md:text-[15px] font-poppins font-bold transition-colors ${isOpen ? 'text-[#80011F]' : 'text-[#241A1D]'}`}>
                     {faq.question}
                   </span>
                   <div className={`p-1.5 rounded-lg transition-all duration-200 ${isOpen ? 'rotate-180 bg-[#80011F] text-white' : 'bg-cream-light text-[#241A1D]'}`}>
@@ -47,7 +47,7 @@ export const FAQSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#6B5B60] leading-relaxed font-inter bg-white">
+                  <div className="px-5 pb-5 pt-1 text-[11px] sm:text-xs md:text-sm text-[#6B5B60] leading-relaxed font-inter bg-white">
                     {faq.answer}
                   </div>
                 )}
@@ -56,20 +56,20 @@ export const FAQSection: React.FC = () => {
           })}
         </div>
 
-        {/* Help Banner */}
-        <div className="mt-8 p-5 rounded-3xl bg-white border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-lg">
+        {/* Help Banner (With smaller and balanced CTA text and elements) */}
+        <div className="mt-8 p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-lg">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-[#80011F]/10 text-[#80011F] rounded-2xl hidden sm:block">
-              <PhoneCall className="w-5 h-5" />
+            <div className="p-2.5 bg-[#80011F]/10 text-[#80011F] rounded-xl hidden sm:block">
+              <PhoneCall className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm font-poppins font-bold text-[#241A1D]">Need specialized corporate ordering support?</h3>
-              <p className="text-xs text-[#6B5B60] font-inter">Our dedicated prepress apparel engineers are available 24/7.</p>
+              <h3 className="text-xs sm:text-sm font-poppins font-bold text-[#241A1D]">Need specialized corporate ordering support?</h3>
+              <p className="text-[10px] sm:text-xs text-[#6B5B60] font-inter">Our dedicated prepress apparel engineers are available 24/7.</p>
             </div>
           </div>
           <a
             href={`tel:${BRAND.contact.phonePrimary}`}
-            className="px-5 py-2.5 bg-[#80011F] hover:bg-[#600018] text-white text-xs font-poppins font-bold rounded-xl transition-all whitespace-nowrap shadow-md"
+            className="px-4 py-2 bg-[#80011F] hover:bg-[#600018] text-white text-[10px] sm:text-xs font-poppins font-bold rounded-xl transition-all whitespace-nowrap shadow-md"
           >
             Call {BRAND.contact.phonePrimary}
           </a>

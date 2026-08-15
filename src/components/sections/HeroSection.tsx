@@ -209,19 +209,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
 
                 {/* 4. Supporting value/trust points */}
-                <div className="flex flex-wrap items-center justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-[10px] sm:text-xs md:text-sm xl:text-[15px] text-[#6B5B60] font-poppins font-bold mt-[20px] md:mt-[22px] lg:mt-[24px]">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <Package className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-[#80011F]/70" />
+                <div className="flex flex-row items-center justify-start gap-x-1.5 xs:gap-x-2 sm:gap-x-3 md:gap-x-4 text-[8px] xs:text-[10px] sm:text-xs md:text-sm xl:text-[15px] text-[#6B5B60] font-poppins font-bold mt-[20px] md:mt-[22px] lg:mt-[24px] whitespace-nowrap w-full overflow-x-hidden">
+                  <div className="flex items-center gap-0.5 xs:gap-1 sm:gap-1.5 shrink-0">
+                    <Package className="w-3 h-3 sm:w-4 sm:h-4 text-[#80011F]/70" />
                     <span>BULK ORDERS</span>
                   </div>
-                  <span className="text-[#80011F]/30 font-light hidden sm:inline">•</span>
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <Truck className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-[#80011F]/70" />
+                  <span className="text-[#80011F]/30 font-light select-none shrink-0">•</span>
+                  <div className="flex items-center gap-0.5 xs:gap-1 sm:gap-1.5 shrink-0">
+                    <Truck className="w-3 h-3 sm:w-4 sm:h-4 text-[#80011F]/70" />
                     <span>FAST DELIVERY</span>
                   </div>
-                  <span className="text-[#80011F]/30 font-light hidden sm:inline">•</span>
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <BadgeCheck className="w-3.5 h-3.5 sm:w-[18px] sm:h-[18px] text-[#80011F]/70" />
+                  <span className="text-[#80011F]/30 font-light select-none shrink-0">•</span>
+                  <div className="flex items-center gap-0.5 xs:gap-1 sm:gap-1.5 shrink-0">
+                    <BadgeCheck className="w-3 h-3 sm:w-4 sm:h-4 text-[#80011F]/70" />
                     <span>PREMIUM QUALITY</span>
                   </div>
                 </div>
@@ -296,8 +296,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <button
             key={slide.id}
             onClick={() => setCurrentSlide(idx)}
-            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? 'w-8 bg-[#80011F]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+            className={`h-1.5 sm:h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentSlide ? 'w-6 sm:w-8 bg-[#80011F]' : 'w-1.5 sm:w-2.5 bg-slate-300 hover:bg-slate-400'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
