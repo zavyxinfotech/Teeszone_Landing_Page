@@ -112,8 +112,7 @@ export const WhyChooseSection: React.FC = () => {
                     >
                       <div className={`p-4 rounded-full ${isEven ? 'bg-[#F7E7CE]/20 text-[#80011F]' : 'bg-[#80011F]/10 text-[#80011F]'} group-hover:bg-[#80011F] group-hover:text-white transition-all duration-300`}>
                         <motion.div
-                          animate={{ rotate: 360 }}
-                          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+                        
                         >
                           <Icon className="w-10 h-10" />
                         </motion.div>

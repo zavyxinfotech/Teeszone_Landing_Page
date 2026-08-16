@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Import existing category product images
+// Import transparent PNG model category product images
 import corporateImg from '../../assets/images/corporate.png';
-import catSportsJersey from '../../assets/images/cat_sports_jersey_1786521568260.jpg';
+import sportsImg from '../../assets/images/sports.png';
 import industryImg from '../../assets/images/industry.png';
-import catSchoolTshirt from '../../assets/images/cat_school_tshirt_1786521465042.jpg';
-import catHospitalityTshirt from '../../assets/images/cat_hospitality_tshirt_1786521661746.jpg';
-import catEventTshirt from '../../assets/images/cat_event_tshirt_1786521633256.jpg';
-import catReadyStock from '../../assets/images/cat_custom_hoodie_1786521924888.jpg';
+import schoolImg from '../../assets/images/school.png';
+import hospitalImg from '../../assets/images/hospital.png';
+import eventImg from '../../assets/images/events.png';
+import readyStockImg from '../../assets/images/readyStock.png';
 
 // Import category dynamic background images
 import corporateBg from '../../assets/images/corporate_bg.jpeg';
@@ -52,7 +52,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'SPORTSWEAR',
       heading: 'High-Performance Jerseys',
       type: 'Custom Apparel',
-      image: catSportsJersey,
+      image: sportsImg,
       bgImage: sportsBg,
       productsList: ['Sports Jerseys', 'Team Training Kits']
     },
@@ -72,7 +72,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'ACADEMIC',
       heading: 'School & College Uniforms',
       type: 'Custom Apparel',
-      image: catSchoolTshirt,
+      image: schoolImg,
       bgImage: schoolBg,
       productsList: ['School Uniforms', 'College Uniforms']
     },
@@ -82,7 +82,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'HOSPITALITY',
       heading: 'Premium Service Apparel',
       type: 'Custom Apparel',
-      image: catHospitalityTshirt,
+      image: hospitalImg,
       bgImage: hospitalBg,
       productsList: ['Hospitality Uniforms', 'Restaurant & Hotel Wear']
     },
@@ -92,7 +92,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'PROMOTIONAL',
       heading: 'Event & Promo Clothing',
       type: 'Custom Apparel',
-      image: catEventTshirt,
+      image: eventImg,
       bgImage: eventBg,
       productsList: ['Event T-Shirts', 'Promotional Apparel']
     },
@@ -102,7 +102,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'READY STOCK',
       heading: 'Premium Ready Apparel',
       type: 'Ready Stock',
-      image: catReadyStock,
+      image: readyStockImg,
       bgImage: corporateBg,
       productsList: ['AeroSoft Polo T-Shirts', 'Crew Neck T-Shirts', 'Customized Hoodies']
     }
@@ -155,7 +155,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
     <section
       ref={sectionRef}
       id="services"
-      className="py-8 sm:py-14 lg:py-16 bg-cream-light text-[#241A1D] relative overflow-hidden select-none min-h-[700px] lg:min-h-[800px] flex flex-col justify-between [perspective:1400px]"
+      className="py-8 sm:py-14 lg:py-16 bg-[#FFFCFA] text-[#241A1D] relative overflow-hidden select-none min-h-[700px] lg:min-h-[800px] flex flex-col justify-between [perspective:1400px]"
       aria-label="Apparel Product Categories Catalog"
     >
       {/* 1. Dynamic Background Image with Smooth 60fps Crossfade */}
@@ -253,7 +253,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
 
           {/* Center 3D Floating Product Showcase */}
           <div className="relative w-full flex-grow flex items-center justify-center my-2 sm:my-0 [perspective:1000px]">
-            <div className="relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[420px] lg:h-[360px] flex items-center justify-center [transform-style:preserve-3d]">
+            <div className="relative w-56 h-48 sm:w-80 sm:h-72 md:w-96 md:h-80 lg:w-[480px] lg:h-[360px] flex items-center justify-center [transform-style:preserve-3d]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab.id}
@@ -284,15 +284,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                       y: modelParallaxY,
                       rotateZ: modelRotateParallax
                     }}
-                    animate={{
-                      y: [0, -10, 0],
-                      rotateY: [-2, 2, -2]
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: 'easeInOut'
-                    }}
+                   
                     className="w-full h-full flex items-center justify-center relative z-20 cursor-pointer group transform-gpu will-change-transform"
                   >
                     <a
