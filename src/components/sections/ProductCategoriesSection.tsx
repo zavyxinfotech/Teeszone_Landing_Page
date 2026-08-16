@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Button } from '../common/Button';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Import existing category images
-import catCorporateTshirt from '../../assets/images/cat_corporate_tshirt_1786521137829.jpg';
+// Import existing category product images
+import corporateImg from '../../assets/images/corporate.png';
 import catSportsJersey from '../../assets/images/cat_sports_jersey_1786521568260.jpg';
 import industryImg from '../../assets/images/industry.png';
 import catSchoolTshirt from '../../assets/images/cat_school_tshirt_1786521465042.jpg';
@@ -12,7 +11,7 @@ import catHospitalityTshirt from '../../assets/images/cat_hospitality_tshirt_178
 import catEventTshirt from '../../assets/images/cat_event_tshirt_1786521633256.jpg';
 import catReadyStock from '../../assets/images/cat_custom_hoodie_1786521924888.jpg';
 
-// Import category background images
+// Import category dynamic background images
 import corporateBg from '../../assets/images/corporate_bg.jpeg';
 import sportsBg from '../../assets/images/sports_bg.jpeg';
 import industryBg from '../../assets/images/industry_bg.jpeg';
@@ -35,9 +34,7 @@ interface ProductTab {
   productsList: string[];
 }
 
-export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> = ({
-  onOpenQuoteModal
-}) => {
+export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> = () => {
   const tabs: ProductTab[] = [
     {
       id: 'office',
@@ -45,7 +42,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'CORPORATE',
       heading: 'Corporate & Office Uniforms',
       type: 'Custom Apparel',
-      image: catCorporateTshirt,
+      image: corporateImg,
       bgImage: corporateBg,
       productsList: ['Corporate Uniforms', 'Office Uniforms']
     },
@@ -112,17 +109,31 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
   ];
 
   const [activeTabIdx, setActiveTabIdx] = useState<number>(0);
+  const [slideDirection, setSlideDirection] = useState<number>(1);
+  const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const activeTab = tabs[activeTabIdx];
 
-  const handleNextTab = () => {
-    setActiveTabIdx((prev) => (prev + 1) % tabs.length);
-  };
+  // Scroll parallax effects for 3D depth
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
 
-  const handlePrevTab = () => {
+  const watermarkParallaxY = useTransform(scrollYProgress, [0, 1], [-25, 25]);
+  const modelParallaxY = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  const modelRotateParallax = useTransform(scrollYProgress, [0, 1], [-2, 2]);
+
+  const handleNextTab = useCallback(() => {
+    setSlideDirection(1);
+    setActiveTabIdx((prev) => (prev + 1) % tabs.length);
+  }, [tabs.length]);
+
+  const handlePrevTab = useCallback(() => {
+    setSlideDirection(-1);
     setActiveTabIdx((prev) => (prev - 1 + tabs.length) % tabs.length);
-  };
+  }, [tabs.length]);
 
   // Center the active tab in the scrolling menu
   useEffect(() => {
@@ -142,42 +153,45 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
 
   return (
     <section
+      ref={sectionRef}
       id="services"
-      className="py-6 sm:py-16 lg:py-12 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[720px] lg:max-h-[900px] lg:flex lg:flex-col lg:justify-center"
+      className="py-8 sm:py-14 lg:py-16 bg-cream-light text-[#241A1D] relative overflow-hidden select-none min-h-[700px] lg:min-h-[800px] flex flex-col justify-between [perspective:1400px]"
       aria-label="Apparel Product Categories Catalog"
     >
-      {/* Dynamic Background Image with Smooth Crossfade */}
+      {/* 1. Dynamic Background Image with Smooth 60fps Crossfade */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <AnimatePresence mode="wait">
           {activeTab.bgImage && (
             <motion.div
               key={activeTab.id}
-              initial={{ opacity: 0, scale: 1.05 }}
+              initial={{ opacity: 0, scale: 1.06 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0"
             >
               <img
                 src={activeTab.bgImage}
-                alt={activeTab.heading}
-                className="w-full h-full object-cover object-center"
+                alt=""
+                className="w-full h-full object-cover object-center transform-gpu"
+                loading="lazy"
+                decoding="async"
               />
-              {/* Subtle ambient gradient overlay to maintain text readability and high-end brand feel */}
-              <div className="absolute inset-0 bg-gradient-to-b from-[#FCF5EA]/92 via-[#FCF5EA]/85 to-[#FCF5EA]/95" />
+              {/* Subtle ambient brand gradient overlay ensuring high text readability & contrast */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#FCF5EA]/94 via-[#FCF5EA]/88 to-[#FCF5EA]/96" />
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Decorative ambient background lights */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.03] blur-[150px] rounded-full pointer-events-none z-0" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
+      {/* 2. Decorative ambient 3D depth lights */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.035] blur-[150px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.025] blur-[150px] rounded-full pointer-events-none z-0" />
 
-      <div className="w-full px-4 sm:px-8 lg:px-12 relative z-10 lg:h-full lg:max-h-[820px] lg:flex lg:flex-col lg:justify-between">
+      <div className="w-full px-4 sm:px-8 lg:px-12 relative z-10 max-w-7xl mx-auto flex flex-col justify-between flex-grow">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-4 space-y-2 shrink-0">
+        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-6 space-y-2 shrink-0">
           <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             OUR SERVICES
           </span>
@@ -189,172 +203,236 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
           </p>
         </div>
 
-        {/* Layout: Centered Poster Showcase (bg-transparent, no borders, optimized height, full width) */}
-        <div className="relative w-full h-[290px] sm:h-[480px] lg:h-[450px] xl:h-[480px] bg-transparent overflow-hidden flex flex-col justify-between items-center z-10">
+        {/* 3. Main 3D Poster Showcase Stage */}
+        <div className="relative w-full min-h-[360px] sm:min-h-[460px] lg:min-h-[500px] flex flex-col justify-between items-center z-10 [transform-style:preserve-3d]">
           
-          {/* Background oversized outline typography (fit to screen, no crop) */}
+          {/* Background Oversized Parallax Watermark Text */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={activeTab.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{ duration: 0.4 }}
-                className="font-poppins font-black text-[12vw] sm:text-[10vw] text-center select-none leading-none tracking-tight uppercase"
-                style={{
-                  WebkitTextStroke: '2.5px rgba(10, 37, 64, 0.05)',
-                  color: 'transparent',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {activeTab.backdropText}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-
-          {/* Top Info */}
-          <div className="text-center z-10 pointer-events-none mt-2 sm:mt-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab.id}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.3 }}
+                style={{ y: watermarkParallaxY }}
+                initial={{ opacity: 0, scale: 0.9, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 1.08, y: -15 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="font-poppins font-black text-[15vw] sm:text-[12vw] lg:text-[10.5vw] text-center select-none leading-none tracking-tight uppercase transform-gpu will-change-transform"
+              >
+                <span
+                  style={{
+                    WebkitTextStroke: '2.5px rgba(10, 37, 64, 0.07)',
+                    color: 'transparent',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {activeTab.backdropText}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Top Category Title Banner */}
+          <div className="text-center z-20 pointer-events-none mt-1 sm:mt-2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab.id}
+                initial={{ opacity: 0, y: -16, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 16, scale: 0.96 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
               >
                 <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-widest text-[#80011F]">
                   Our Premium Collection of
                 </span>
-                <h3 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] mt-1 sm:mt-2 uppercase tracking-tight">
+                <h3 className="text-lg sm:text-2xl lg:text-3xl font-poppins font-extrabold text-[#241A1D] mt-0.5 sm:mt-1 uppercase tracking-tight">
                   {activeTab.heading}
                 </h3>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Centered Clickable Image Showcase */}
-          <div className="absolute top-[48%] sm:top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-20 flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab.id}
-                initial={{ opacity: 0, y: 30, scale: 0.85 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -30, scale: 0.85 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="w-full h-full flex items-center justify-center"
-              >
-                <a 
-                  href="#services" 
-                  className="w-full h-full flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105"
-                  aria-label={`View catalog details for ${activeTab.heading}`}
+          {/* Center 3D Floating Product Showcase */}
+          <div className="relative w-full flex-grow flex items-center justify-center my-2 sm:my-0 [perspective:1000px]">
+            <div className="relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[420px] lg:h-[360px] flex items-center justify-center [transform-style:preserve-3d]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab.id}
+                  initial={{ 
+                    opacity: 0, 
+                    y: 35 * slideDirection, 
+                    rotateY: 20 * slideDirection, 
+                    scale: 0.88 
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0, 
+                    rotateY: 0, 
+                    scale: 1 
+                  }}
+                  exit={{ 
+                    opacity: 0, 
+                    y: -35 * slideDirection, 
+                    rotateY: -20 * slideDirection, 
+                    scale: 0.88 
+                  }}
+                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full flex flex-col items-center justify-center relative [transform-style:preserve-3d]"
                 >
-                  <motion.img
-                    src={activeTab.image}
-                    alt={activeTab.heading}
-                    className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
+                  {/* Floating Central Model/Apparel Container */}
+                  <motion.div
+                    style={{ 
+                      y: modelParallaxY,
+                      rotateZ: modelRotateParallax
+                    }}
                     animate={{
-                      y: [0, -8, 0]
+                      y: [0, -10, 0],
+                      rotateY: [-2, 2, -2]
                     }}
                     transition={{
-                      duration: 4,
+                      duration: 5,
                       repeat: Infinity,
-                      ease: "easeInOut"
+                      ease: 'easeInOut'
                     }}
+                    className="w-full h-full flex items-center justify-center relative z-20 cursor-pointer group transform-gpu will-change-transform"
+                  >
+                    <a
+                      href="#services"
+                      className="w-full h-full flex items-center justify-center"
+                      aria-label={`View catalog details for ${activeTab.heading}`}
+                    >
+                      <motion.img
+                        src={activeTab.image}
+                        alt={activeTab.heading}
+                        className="w-full h-full max-h-[190px] sm:max-h-[290px] md:max-h-[320px] lg:max-h-[360px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)] group-hover:scale-105 transition-transform duration-500 ease-out"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </a>
+                  </motion.div>
+
+                  {/* Soft Cinematic Dynamic 3D Ground Shadow */}
+                  <motion.div
+                    animate={{
+                      scaleX: [1, 0.82, 1],
+                      scaleY: [1, 0.75, 1],
+                      opacity: [0.35, 0.18, 0.35]
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: 'easeInOut'
+                    }}
+                    className="absolute -bottom-2 sm:-bottom-4 left-1/2 -translate-x-1/2 w-32 sm:w-56 lg:w-64 h-4 sm:h-6 rounded-full bg-black/40 blur-md pointer-events-none z-10"
                   />
-                </a>
-              </motion.div>
-            </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Left Specification Callout ("FEATURED SPEC") */}
+            <div className="absolute left-1 sm:left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-20 pointer-events-none">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab.id}
+                  initial={{ opacity: 0, x: -40, rotateY: -15 }}
+                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                  exit={{ opacity: 0, x: -40, rotateY: -15 }}
+                  transition={{ duration: 0.45, ease: 'easeOut', delay: 0.1 }}
+                  className="max-w-[80px] xs:max-w-[95px] sm:max-w-[170px] md:max-w-[210px] text-left space-y-0.5 sm:space-y-1"
+                >
+                  <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">
+                    FEATURED SPEC
+                  </span>
+                  <h4 className="text-[11px] xs:text-xs sm:text-base md:text-lg lg:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
+                    {activeTab.productsList[0]}
+                  </h4>
+                  <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 font-inter font-medium hidden xs:block">
+                    Premium custom build.
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right Specification Callout ("MATERIAL STANDARD") */}
+            <div className="absolute right-1 sm:right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-20 pointer-events-none">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab.id}
+                  initial={{ opacity: 0, x: 40, rotateY: 15 }}
+                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                  exit={{ opacity: 0, x: 40, rotateY: 15 }}
+                  transition={{ duration: 0.45, ease: 'easeOut', delay: 0.1 }}
+                  className="max-w-[80px] xs:max-w-[95px] sm:max-w-[170px] md:max-w-[210px] text-right space-y-0.5 sm:space-y-1"
+                >
+                  <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">
+                    MATERIAL STANDARD
+                  </span>
+                  <h4 className="text-[11px] xs:text-xs sm:text-base md:text-lg lg:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
+                    {activeTab.productsList[1] || 'Custom Fit'}
+                  </h4>
+                  <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-500 font-inter font-medium hidden xs:block">
+                    Zero compromise fabric.
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-
-          {/* Left Specification Callout */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab.id}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.35 }}
-              className="absolute left-2 sm:left-8 md:left-12 lg:left-20 top-[48%] sm:top-[45%] -translate-y-1/2 max-w-[70px] xs:max-w-[85px] sm:max-w-[150px] md:max-w-[200px] text-left z-20 space-y-0.5 sm:space-y-1"
-            >
-              <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">Featured Spec</span>
-              <h4 className="text-[10px] xs:text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
-                {activeTab.productsList[0]}
-              </h4>
-              <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-400 font-inter">Premium custom build.</p>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Right Specification Callout */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab.id}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }}
-              transition={{ duration: 0.35 }}
-              className="absolute right-2 sm:right-8 md:left-auto md:right-12 lg:right-20 top-[48%] sm:top-[45%] -translate-y-1/2 max-w-[70px] xs:max-w-[85px] sm:max-w-[150px] md:max-w-[200px] text-right z-20 space-y-0.5 sm:space-y-1"
-            >
-              <span className="text-[9px] sm:text-xs font-poppins font-bold text-[#80011F] uppercase tracking-wider block">Material standard</span>
-              <h4 className="text-[10px] xs:text-xs sm:text-base md:text-xl font-poppins font-black text-[#241A1D] leading-tight break-words">
-                {activeTab.productsList[1] || "Custom Fit"}
-              </h4>
-              <p className="text-[8px] sm:text-[10px] md:text-xs text-slate-400 font-inter">Zero compromise fabric.</p>
-            </motion.div>
-          </AnimatePresence>
 
           {/* Ready Stock 3rd Product (conditional) */}
           {activeTab.productsList[2] && (
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
+                exit={{ opacity: 0, y: 15 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-2 sm:bottom-32 left-1/2 -translate-x-1/2 z-20 text-center"
+                className="z-20 text-center mb-1"
               >
-                <span className="text-[8px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Also Available</span>
-                <p className="text-xs sm:text-sm font-poppins font-black text-[#241A1D]">{activeTab.productsList[2]}</p>
+                <span className="text-[8px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
+                  Also Available
+                </span>
+                <p className="text-xs sm:text-sm font-poppins font-black text-[#241A1D]">
+                  {activeTab.productsList[2]}
+                </p>
               </motion.div>
             </AnimatePresence>
           )}
 
-          {/* Spacer to push flex elements */}
-          <div className="h-2 sm:h-8" />
-
         </div>
 
-        {/* Horizontal Scroll Menu with active indicator & prev/next buttons */}
-        <div className="mt-6 lg:mt-4 pt-4 border-t border-slate-200/80 flex items-center justify-between gap-4 shrink-0">
+        {/* 4. Bottom Horizontal Tab Navigation with Flanking Arrow Controls */}
+        <div className="mt-4 sm:mt-6 pt-3 border-t border-slate-200/80 flex items-center justify-between gap-2 sm:gap-4 shrink-0 relative z-30">
           <button
             onClick={handlePrevTab}
-            className="p-2.5 rounded-xl bg-white hover:bg-cream-light text-[#6B5B60] transition-all cursor-pointer hidden sm:flex shrink-0 border border-slate-200/60"
-            aria-label="Previous category"
+            className="p-2 sm:p-2.5 rounded-xl bg-white/90 backdrop-blur-sm hover:bg-white hover:border-[#80011F]/30 text-[#6B5B60] hover:text-[#80011F] transition-all cursor-pointer flex shrink-0 border border-slate-200/80 shadow-xs active:scale-95"
+            aria-label="Previous category tab"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           <div
             ref={scrollContainerRef}
-            className="flex items-center gap-6 sm:gap-10 overflow-x-auto scrollbar-none py-2.5 w-full justify-start sm:justify-center"
+            className="flex items-center gap-4 sm:gap-8 lg:gap-10 overflow-x-auto scrollbar-none py-2 px-1 w-full justify-start sm:justify-center no-scrollbar"
           >
             {tabs.map((tab, idx) => {
               const isActive = idx === activeTabIdx;
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTabIdx(idx)}
-                  className={`relative py-2 px-3 text-xs sm:text-sm font-poppins font-black uppercase tracking-wider transition-all duration-300 shrink-0 cursor-pointer ${
-                    isActive ? 'text-[#80011F] scale-105' : 'text-slate-400 hover:text-slate-600'
+                  onClick={() => {
+                    setSlideDirection(idx > activeTabIdx ? 1 : -1);
+                    setActiveTabIdx(idx);
+                  }}
+                  className={`relative py-1.5 px-2.5 sm:px-3 text-[11px] sm:text-xs lg:text-sm font-poppins font-black uppercase tracking-wider transition-all duration-300 shrink-0 cursor-pointer ${
+                    isActive ? 'text-[#80011F] scale-105' : 'text-slate-400 hover:text-slate-700'
                   }`}
                 >
                   {tab.menuLabel}
                   {isActive && (
                     <motion.div
-                      layoutId="activeTabUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#80011F]"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      layoutId="servicesActiveTabUnderline"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#80011F] rounded-full"
+                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
                 </button>
@@ -364,10 +442,10 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
 
           <button
             onClick={handleNextTab}
-            className="p-2.5 rounded-xl bg-white hover:bg-cream-light text-[#6B5B60] transition-all cursor-pointer hidden sm:flex shrink-0 border border-slate-200/60"
-            aria-label="Next category"
+            className="p-2 sm:p-2.5 rounded-xl bg-white/90 backdrop-blur-sm hover:bg-white hover:border-[#80011F]/30 text-[#6B5B60] hover:text-[#80011F] transition-all cursor-pointer flex shrink-0 border border-slate-200/80 shadow-xs active:scale-95"
+            aria-label="Next category tab"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 
