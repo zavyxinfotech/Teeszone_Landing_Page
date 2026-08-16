@@ -19,7 +19,7 @@ export const ContactPreviewSection: React.FC = () => {
                 <Badge variant="primary" size="md" className="mb-2">
                   CORPORATE OFFICE & CONTACT
                 </Badge>
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
                   Speak With a Dedicated Apparel Specialist
                 </h2>
                 <p className="text-xs sm:text-sm text-[#6B5B60] mt-2 leading-relaxed font-inter">

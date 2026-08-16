@@ -112,7 +112,7 @@ export const MeetOurTeamSection: React.FC = () => {
       {/* Section Header */}
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-bold text-white tracking-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-bold text-white tracking-tight">
             Our Team
           </h2>
           <p className="text-sm sm:text-base text-white/90 font-inter leading-relaxed max-w-xl mx-auto">

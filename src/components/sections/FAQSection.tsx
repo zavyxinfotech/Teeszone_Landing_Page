@@ -16,10 +16,10 @@ export const FAQSection: React.FC = () => {
           <Badge size="md" className="text-[#80011F] mb-2">
             FREQUENTLY ASKED QUESTIONS
           </Badge>
-          <h2 className="text-2xl sm:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Everything You Need to Know About Ordering
           </h2>
-          <p className="text-xs sm:text-sm text-[#6B5B60] font-inter leading-relaxed">
+          <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold max-w-xl mx-auto pt-2">
             Have questions about minimum order quantities, Pantone matching, sample kits, or express dispatch?
           </p>
         </div>

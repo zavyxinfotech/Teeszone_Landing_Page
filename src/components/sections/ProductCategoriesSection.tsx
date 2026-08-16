@@ -141,7 +141,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
           <span className="text-[10px] font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             OUR SERVICES
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Apparel for Every Purpose.
           </h2>
           <p className="text-sm sm:text-base text-slate-600 font-inter font-semibold leading-relaxed max-w-2xl mx-auto">

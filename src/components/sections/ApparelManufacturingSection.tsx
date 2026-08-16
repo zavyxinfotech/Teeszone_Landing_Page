@@ -55,7 +55,7 @@ export const ApparelManufacturingSection: React.FC<ApparelManufacturingSectionPr
           <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             HOW WE WORK
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Our 5-Step Ordering Process
           </h2>
           <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold max-w-xl mx-auto pt-2">

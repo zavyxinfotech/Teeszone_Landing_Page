@@ -13,10 +13,10 @@ export const TestimonialsSection: React.FC = () => {
           <Badge size="md" className="text-[#80011F]">
             VERIFIED CLIENT REVIEWS
           </Badge>
-          <h2 className="text-2xl sm:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight">
             Trusted by 12,000+ Corporate Buyers & HR Leaders
           </h2>
-          <p className="text-xs sm:text-sm text-[#6B5B60] font-inter leading-relaxed">
+          <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold max-w-xl mx-auto pt-2">
             See why Fortune 500 brands and high-growth technology startups choose TeesZone for conference merchandise, uniforms, and swag.
           </p>
         </div>

@@ -55,7 +55,7 @@ export const WhyChooseSection: React.FC = () => {
             Why
           </span>
           {/* Row 2: Heavy "CHOOSE" */}
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-black text-white tracking-tight leading-none uppercase select-none drop-shadow-md">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-black text-white tracking-tight leading-none uppercase select-none drop-shadow-md">
             CHOOSE
           </h2>
           {/* Row 3: Flanked "US?" */}

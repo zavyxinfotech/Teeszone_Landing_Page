@@ -181,7 +181,7 @@ export const TrustedClientsSection: React.FC = () => {
                 alt={client.altText}
                 loading="lazy"
                 decoding="async"
-                className={`${client.scaleClass || 'h-6 sm:h-9 lg:h-11'} w-auto max-w-[120px] sm:max-w-[170px] lg:max-w-[210px] object-contain mix-blend-multiply border-0 outline-none transition-all duration-300 opacity-75 group-hover:opacity-100`}
+                className="h-7 sm:h-10 lg:h-12 w-auto max-w-[85px] sm:max-w-[130px] lg:max-w-[170px] object-contain mix-blend-multiply border-0 outline-none transition-all duration-300 opacity-75 group-hover:opacity-100"
               />
             </div>
           ))}

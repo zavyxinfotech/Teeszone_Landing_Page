@@ -26,7 +26,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
           <span className="text-xs font-poppins font-black uppercase tracking-widest text-[#80011F] block">
             ABOUT TEESZONE
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-poppins font-extrabold text-[#241A1D] tracking-tight leading-tight">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-poppins font-extrabold text-[#241A1D] tracking-tight leading-tight">
             Built to Represent Your Brand.
           </h2>
           <p className="text-sm sm:text-base text-[#6B5B60] font-inter font-semibold leading-relaxed max-w-2xl">
