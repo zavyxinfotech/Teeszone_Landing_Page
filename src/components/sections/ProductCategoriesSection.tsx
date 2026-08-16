@@ -6,11 +6,19 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 // Import existing category images
 import catCorporateTshirt from '../../assets/images/cat_corporate_tshirt_1786521137829.jpg';
 import catSportsJersey from '../../assets/images/cat_sports_jersey_1786521568260.jpg';
-import catIndustrialTshirt from '../../assets/images/cat_industrial_tshirt_1786521333010.jpg';
+import industryImg from '../../assets/images/industry.png';
 import catSchoolTshirt from '../../assets/images/cat_school_tshirt_1786521465042.jpg';
 import catHospitalityTshirt from '../../assets/images/cat_hospitality_tshirt_1786521661746.jpg';
 import catEventTshirt from '../../assets/images/cat_event_tshirt_1786521633256.jpg';
 import catReadyStock from '../../assets/images/cat_custom_hoodie_1786521924888.jpg';
+
+// Import category background images
+import corporateBg from '../../assets/images/corporate_bg.jpeg';
+import sportsBg from '../../assets/images/sports_bg.jpeg';
+import industryBg from '../../assets/images/industry_bg.jpeg';
+import hospitalBg from '../../assets/images/hospital_bg.jpeg';
+import schoolBg from '../../assets/images/school_bg.jpeg';
+import eventBg from '../../assets/images/event_bg.jpeg';
 
 interface ProductCategoriesSectionProps {
   onOpenQuoteModal?: () => void;
@@ -23,6 +31,7 @@ interface ProductTab {
   heading: string;
   type: 'Custom Apparel' | 'Ready Stock';
   image: string;
+  bgImage: string;
   productsList: string[];
 }
 
@@ -37,6 +46,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       heading: 'Corporate & Office Uniforms',
       type: 'Custom Apparel',
       image: catCorporateTshirt,
+      bgImage: corporateBg,
       productsList: ['Corporate Uniforms', 'Office Uniforms']
     },
     {
@@ -46,6 +56,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       heading: 'High-Performance Jerseys',
       type: 'Custom Apparel',
       image: catSportsJersey,
+      bgImage: sportsBg,
       productsList: ['Sports Jerseys', 'Team Training Kits']
     },
     {
@@ -54,7 +65,8 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       backdropText: 'INDUSTRIAL',
       heading: 'Heavy-Duty Factory Wear',
       type: 'Custom Apparel',
-      image: catIndustrialTshirt,
+      image: industryImg,
+      bgImage: industryBg,
       productsList: ['Industrial Uniforms', 'Factory Safety Wear']
     },
     {
@@ -64,6 +76,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       heading: 'School & College Uniforms',
       type: 'Custom Apparel',
       image: catSchoolTshirt,
+      bgImage: schoolBg,
       productsList: ['School Uniforms', 'College Uniforms']
     },
     {
@@ -73,6 +86,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       heading: 'Premium Service Apparel',
       type: 'Custom Apparel',
       image: catHospitalityTshirt,
+      bgImage: hospitalBg,
       productsList: ['Hospitality Uniforms', 'Restaurant & Hotel Wear']
     },
     {
@@ -82,6 +96,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       heading: 'Event & Promo Clothing',
       type: 'Custom Apparel',
       image: catEventTshirt,
+      bgImage: eventBg,
       productsList: ['Event T-Shirts', 'Promotional Apparel']
     },
     {
@@ -91,6 +106,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       heading: 'Premium Ready Apparel',
       type: 'Ready Stock',
       image: catReadyStock,
+      bgImage: corporateBg,
       productsList: ['AeroSoft Polo T-Shirts', 'Crew Neck T-Shirts', 'Customized Hoodies']
     }
   ];
@@ -130,6 +146,30 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       className="py-6 sm:py-16 lg:py-12 bg-cream-light text-[#241A1D] relative overflow-hidden select-none lg:h-screen lg:min-h-[720px] lg:max-h-[900px] lg:flex lg:flex-col lg:justify-center"
       aria-label="Apparel Product Categories Catalog"
     >
+      {/* Dynamic Background Image with Smooth Crossfade */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <AnimatePresence mode="wait">
+          {activeTab.bgImage && (
+            <motion.div
+              key={activeTab.id}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <img
+                src={activeTab.bgImage}
+                alt={activeTab.heading}
+                className="w-full h-full object-cover object-center"
+              />
+              {/* Subtle ambient gradient overlay to maintain text readability and high-end brand feel */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#FCF5EA]/92 via-[#FCF5EA]/85 to-[#FCF5EA]/95" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* Decorative ambient background lights */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.03] blur-[150px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#80011F] opacity-[0.02] blur-[150px] rounded-full pointer-events-none z-0" />

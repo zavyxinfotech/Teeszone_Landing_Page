@@ -2,7 +2,7 @@ import heroMockupImg from '../assets/images/teeszone_hero_mockup_1786102788341.j
 import corporatePolosImg from '../assets/images/teeszone_corporate_polos_1786102801522.jpg';
 import catalogHoodiePoster from '../assets/images/catalog_hoodie_poster.jpg';
 import catCorporateTshirt from '../assets/images/cat_corporate_tshirt_1786521137829.jpg';
-import catIndustrialTshirt from '../assets/images/cat_industrial_tshirt_1786521333010.jpg';
+import catIndustrialTshirt from '../assets/images/industry.png';
 import catSchoolTshirt from '../assets/images/cat_school_tshirt_1786521465042.jpg';
 import catCollegeTshirt from '../assets/images/cat_college_tshirt_1786521482659.jpg';
 import catSportsJersey from '../assets/images/cat_sports_jersey_1786521568260.jpg';
