@@ -127,7 +127,7 @@ export const ContactPreviewSection: React.FC = () => {
             */}
             <div className="w-full h-[260px] sm:h-[300px] lg:h-[340px] rounded-2xl overflow-hidden relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.1804791000674!2d77.62575457585097!3d11.272186788910404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96e2e5c673cad%3A0x9c13b8c8e3271c6e!2sTeeszone%20Clothing%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1723900000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=%232155+Fortune+City+Global+Market+Texvalley+NH+544+Chithode+Erode+638102+Tamil+Nadu+India&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -135,7 +135,7 @@ export const ContactPreviewSection: React.FC = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 w-full h-full"
-                title="TeesZone Corporate Office — Texvalley, Erode"
+                title="TeesZone Corporate Office — #2155 Fortune City, Global Market, Texvalley, Erode"
               />
             </div>
 

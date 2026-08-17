@@ -24,9 +24,9 @@ export const FinalCTASection: React.FC<FinalCTASectionProps> = ({
           <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#F7E7CE]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-3xl space-y-6 relative z-10">
-            
+            <span className="text-[10px] sm:text-xs font-poppins font-black uppercase tracking-widest text-[#F7E7CE]/80 block">
               READY TO ELEVATE YOUR BRAND?
-          
+            </span>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-extrabold tracking-tight leading-tight">
               Bring Your Brand to Life With <span className="text-[#F7E7CE]">Premium Custom Apparel.</span>
