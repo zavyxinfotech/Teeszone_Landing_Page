@@ -5,13 +5,13 @@ export const FAQS: FAQItem[] = [
     id: 'faq-01',
     category: 'Orders & MOQ',
     question: 'What is the Minimum Order Quantity (MOQ) at TeesZone?',
-    answer: 'We offer Zero Minimum Order Quantity (MOQ = 1 unit) on all digital printing (DTG) and custom sample orders. For screen printing and custom woven neck tags, our standard bulk pricing kicks in at just 10 to 25 units depending on the garment.'
+    answer: 'We offer Zero Minimum Order Quantity (MOQ = 1 unit) on all digital printing (DTG) and custom sample orders. For screen printing and custom woven neck tags, our standard bulk pricing kicks in at just 25 to 50 units depending on the garment.'
   },
   {
     id: 'faq-02',
     category: 'Shipping & Turnaround',
     question: 'How fast can you print and ship my custom apparel order?',
-    answer: 'Our standard production time is 3 to 5 business days. We also offer a guaranteed 48-Hour Express Rush Service for urgent corporate events and launch activations. Shipping via air freight usually takes 1–2 days.'
+    answer: 'Our standard production time is 7 to 10 business days. We also offer a guaranteed 48-Hour Express Rush Service for urgent corporate events and launch activationss.'
   },
   {
     id: 'faq-03',

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Button } from '../common/Button';
-import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShoppingCart, Package, Truck, BadgeCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Package, Truck, BadgeCheck } from 'lucide-react';
 
 // Background/Product images for the slides
 import customApparelBg from '../../assets/images/Hero_01.png';

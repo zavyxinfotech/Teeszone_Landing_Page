@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 // Import images from assets
 import corporateImage from '../../assets/images/corporate.png';
 import visionBgImage from '../../assets/images/ourvision.jpeg';
-import manufacturingImage from '../../assets/categories/Industrial_Factory_Uniforms.png';
 
 interface AboutTeesZoneSectionProps {
   onOpenQuoteModal?: () => void;
@@ -108,8 +107,6 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
       className="py-10 sm:py-16 lg:py-24 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
       aria-label="About TeesZone"
     >
-      {/* No hidden SVG needed — clip-paths are inline polygon() values */}
-
       {/* Decorative background grid pattern for texture */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
 
@@ -145,12 +142,6 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               {/* Decorative background bar */}
               <div className="absolute left-[-100vw] right-[15%] lg:right-[20%] top-4 bottom-4 bg-[#80011F]/10 rounded-r-[2.5rem] pointer-events-none hidden md:block z-0" />
 
-              {/*
-                ── Ink-splash image wrapper ──
-                clip-path references the SVG clipPath defined above.
-                The container is square so the path maps correctly (objectBoundingBox).
-                Padding gives breathing room so the subject isn't cropped at the edges.
-              */}
               <div
                 className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
                 style={{ clipPath: SPLASH_VISION }}
@@ -209,9 +200,6 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="md:col-span-5 order-1 md:order-2 relative z-10 flex justify-center md:justify-end"
             >
-              {/* Decorative background bar */}
-              <div className="absolute right-[-100vw] left-[15%] lg:left-[20%] top-4 bottom-4 bg-[#38BDF8]/10 rounded-l-[2.5rem] pointer-events-none hidden md:block z-0" />
-
               <div
                 className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
                 style={{ clipPath: SPLASH_MISSION }}

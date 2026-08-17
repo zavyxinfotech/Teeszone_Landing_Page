@@ -3,7 +3,7 @@ export const BRAND = {
   legalName: "TEESZONE CLOTHING PRIVATE LIMITED",
   gstin: "33AAMCT4535C1ZI",
   tagline: "Enterprise Custom Apparel & Precision T-Shirt Printing",
-  description: "TeesZone Clothing Private Limited crafts premium corporate uniforms, custom promotional apparel, and luxury branded merch for top-tier enterprises worldwide. Zero compromise on fabric quality, print density, or delivery speed.",
+  description: "TeesZone Clothing Private Limited provides premium corporate uniforms, custom promotional apparel, and luxury branded merchandise with high-quality fabrics, precise printing, and fast global delivery.",
   foundedYear: 2018,
   contact: {
     phonePrimary: "+91 99446 87485",
@@ -30,24 +30,5 @@ export const BRAND = {
     facebook: "https://www.facebook.com/teeszoneindia",
     instagram: "https://www.instagram.com/teeszoneindia",
     linkedin: "https://www.linkedin.com/company/teeszone/",
-  },
-  clientLogos: [
-    { name: "Stripe", logoText: "STRIPE", industry: "Fintech" },
-    { name: "Linear", logoText: "LINEAR", industry: "SaaS" },
-    { name: "Vercel", logoText: "VERCEL", industry: "Cloud Tech" },
-    { name: "Shopify", logoText: "SHOPIFY", industry: "E-Commerce" },
-    { name: "OpenAI", logoText: "OPENAI", industry: "AI Research" },
-    { name: "Figma", logoText: "FIGMA", industry: "Design" },
-    { name: "Airbnb", logoText: "AIRBNB", industry: "Hospitality" },
-    { name: "Tesla", logoText: "TESLA", industry: "Automotive" },
-    { name: "Spotify", logoText: "SPOTIFY", industry: "Media" },
-    { name: "Red Bull", logoText: "RED BULL", industry: "Sports & Events" }
-  ],
-  trustBadges: [
-    { label: "48-Hour Rush Guarantee", icon: "Clock" },
-    { label: "OEKO-TEX Certified Eco Cotton", icon: "ShieldCheck" },
-    { label: "100% Pantone Precision Guarantee", icon: "Palette" },
-    { label: "Zero Minimum Order Quantity", icon: "Zap" },
-    { label: "4.9/5 Rating (12k+ Reviews)", icon: "Star" }
-  ]
+  }
 };

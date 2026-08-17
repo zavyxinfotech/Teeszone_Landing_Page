@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useLenis } from "lenis/react";
 import { BRAND } from "../../data/brand";
 import { Logo } from "../common/Logo";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  MessageSquare,
-} from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
-// Reusable link item used in both Quick Links and Explore columns
-const NavLink: React.FC<{ href: string; label: string }> = ({ href, label }) => (
+interface NavLinkProps {
+  href: string;
+  label: string;
+  onNavigate: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ href, label, onNavigate }) => (
   <li>
     <a
       href={href}
-      className="hover:text-[#F7E7CE] transition-all flex items-center gap-1.5 group"
+      onClick={(e) => onNavigate(e, href)}
+      className="hover:text-[#F7E7CE] transition-all flex items-center gap-1.5 group cursor-pointer"
     >
       <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors shrink-0" />
       <span>{label}</span>
@@ -22,6 +24,34 @@ const NavLink: React.FC<{ href: string; label: string }> = ({ href, label }) => 
 );
 
 export const Footer: React.FC = () => {
+  const lenis = useLenis();
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      if (href === '#' || href === '#top') {
+        if (lenis) {
+          lenis.scrollTo(0, { offset: 0, duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        return;
+      }
+
+      const id = href.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        if (lenis) {
+          lenis.scrollTo(el, { offset: -70, duration: 1.2 });
+        } else {
+          const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    },
+    [lenis]
+  );
+
   return (
     <footer
       className="bg-[#600018] text-white pt-16 pb-10 relative overflow-hidden font-inter border-t border-[#A51F3D]/30"
@@ -107,12 +137,6 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* ── Quick Links + Explore: side-by-side 2-column grid on ALL screens ── */}
-          {/*
-            On mobile:  col-span-1 → the parent is a 1-col grid, so this spans full width
-                        Inside we use grid-cols-2 to place Quick Links & Explore side by side.
-            On md+:     col-span-1 in the parent 2-col grid.
-            On lg+:     col-span-6 in the parent 12-col grid.
-          */}
           <div className="col-span-1 md:col-span-1 lg:col-span-6 grid grid-cols-2 gap-8 font-poppins">
 
             {/* Quick Links */}
@@ -121,10 +145,10 @@ export const Footer: React.FC = () => {
                 Quick Links
               </h3>
               <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
-                <NavLink href="#" label="Home" />
-                <NavLink href="#about" label="About Us" />
-                <NavLink href="#services" label="Services" />
-                <NavLink href="#contact" label="Contact Us" />
+                <NavLink href="#" label="Home" onNavigate={handleNavClick} />
+                <NavLink href="#about" label="About Us" onNavigate={handleNavClick} />
+                <NavLink href="#services" label="Services" onNavigate={handleNavClick} />
+                <NavLink href="#contact" label="Contact Us" onNavigate={handleNavClick} />
               </ul>
             </div>
 
@@ -134,10 +158,10 @@ export const Footer: React.FC = () => {
                 Explore
               </h3>
               <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
-                <NavLink href="#services" label="Categories" />
-                <NavLink href="#why-us" label="Why Choose Us" />
-                <NavLink href="#team" label="Our Team" />
-                <NavLink href="#faq" label="FAQs" />
+                <NavLink href="#services" label="Categories" onNavigate={handleNavClick} />
+                <NavLink href="#why-us" label="Why Choose Us" onNavigate={handleNavClick} />
+                <NavLink href="#team" label="Our Team" onNavigate={handleNavClick} />
+                <NavLink href="#faq" label="FAQs" onNavigate={handleNavClick} />
               </ul>
             </div>
           </div>
