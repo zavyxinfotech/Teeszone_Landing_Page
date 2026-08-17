@@ -184,14 +184,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs text-[#E8D6C0]">
-            <a href="#" className="hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Terms of Service
-            </a>
-          </div>
+         
         </div>
 
       </div>

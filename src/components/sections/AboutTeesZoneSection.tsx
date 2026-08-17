@@ -139,8 +139,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="md:col-span-5 relative z-10 flex justify-center md:justify-start"
             >
-              {/* Decorative background bar */}
-              <div className="absolute left-[-100vw] right-[15%] lg:right-[20%] top-4 bottom-4 bg-[#80011F]/10 rounded-r-[2.5rem] pointer-events-none hidden md:block z-0" />
+           
 
               <div
                 className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
