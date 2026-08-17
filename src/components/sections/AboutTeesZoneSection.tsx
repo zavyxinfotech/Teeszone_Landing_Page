@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 // Import images from assets
-import corporateImage from '../../assets/images/corporate.png';
-import visionBgImage from '../../assets/images/ourvision.jpeg';
+import corporateImage from '../../assets/images/OurVision.png';
+import visionBgImage from '../../assets/images/OuMission.png';
 
 interface AboutTeesZoneSectionProps {
   onOpenQuoteModal?: () => void;
@@ -146,8 +146,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
                 className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
                 style={{ clipPath: SPLASH_VISION }}
               >
-                {/* Soft blush background fill inside the splash shape */}
-                <div className="absolute inset-0 bg-[#FCF0F2]" />
+
                 <img
                   src={corporateImage}
                   alt="Our Vision"
@@ -204,8 +203,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
                 className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
                 style={{ clipPath: SPLASH_MISSION }}
               >
-                {/* Soft blue background fill inside the splash shape */}
-                <div className="absolute inset-0 bg-[#EFF6FF]" />
+
                 <img
                   src={visionBgImage}
                   alt="Our Mission"

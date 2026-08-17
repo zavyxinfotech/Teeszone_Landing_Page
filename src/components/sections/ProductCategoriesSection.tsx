@@ -7,7 +7,6 @@ import corporateImg from '../../assets/images/corporate.png';
 import sportsImg from '../../assets/images/sports.png';
 import industryImg from '../../assets/images/industry.png';
 import schoolImg from '../../assets/images/school.png';
-import hospitalImg from '../../assets/images/hospital.png';
 import eventImg from '../../assets/images/events.png';
 import readyStockImg from '../../assets/images/readyStock.png';
 
@@ -15,7 +14,6 @@ import readyStockImg from '../../assets/images/readyStock.png';
 import corporateBg from '../../assets/images/corporate_bg.jpeg';
 import sportsBg from '../../assets/images/sports_bg.jpeg';
 import industryBg from '../../assets/images/industry_bg.jpeg';
-import hospitalBg from '../../assets/images/hospital_bg.jpeg';
 import schoolBg from '../../assets/images/school_bg.jpeg';
 import eventBg from '../../assets/images/event_bg.jpeg';
 
@@ -92,19 +90,6 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
       tagLine: 'Uniform pride, individual identity'
     },
     {
-      id: 'hospitality',
-      menuLabel: 'HOSPITALITY',
-      backdropText: 'HOSPITALITY',
-      heading: 'Premium Service Apparel',
-      subLabel: 'Custom Apparel',
-      type: 'Custom Apparel',
-      image: hospitalImg,
-      bgImage: hospitalBg,
-      specLeft: 'Hospitality Uniforms',
-      specRight: 'Restaurant & Hotel Wear',
-      tagLine: 'Elegant wear for every service'
-    },
-    {
       id: 'events',
       menuLabel: 'EVENTS',
       backdropText: 'PROMOTIONAL',
@@ -135,6 +120,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
   const [activeTabIdx, setActiveTabIdx] = useState<number>(0);
   const [slideDirection, setSlideDirection] = useState<number>(1);
   const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -152,16 +138,16 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
   const modelParallaxY = useTransform(scrollYProgress, [0, 1], [15, -15]);
   const modelRotateParallax = useTransform(scrollYProgress, [0, 1], [-2, 2]);
 
-  // Auto-rotation every 1.5 seconds
+  // Auto-rotation every 1.5 seconds (stops on hover or manual pause)
   const startAutoPlay = useCallback(() => {
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     autoPlayRef.current = setInterval(() => {
-      if (!isPaused) {
+      if (!isPaused && !isHovered) {
         setSlideDirection(1);
-        setActiveTabIdx(prev => (prev + 1) % tabs.length);
+        setActiveTabIdx((prev) => (prev + 1) % tabs.length);
       }
     }, 1500);
-  }, [isPaused, tabs.length]);
+  }, [isPaused, isHovered, tabs.length]);
 
   useEffect(() => {
     startAutoPlay();
@@ -274,8 +260,8 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
         {/* 3. Main 3D Poster Showcase Stage */}
         <div className="relative w-full flex flex-col justify-between items-center z-10 [transform-style:preserve-3d] flex-grow">
 
-          {/* Background Oversized Parallax Watermark Text — darker and more visible */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
+          {/* Background Oversized Parallax Watermark Text — customized font size so full text displays clearly */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0 px-2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab.id}
@@ -284,13 +270,13 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 1.08, y: -15 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="font-poppins font-black text-[15vw] sm:text-[12vw] lg:text-[10.5vw] text-center select-none leading-none tracking-tight uppercase transform-gpu will-change-transform"
+                className="font-poppins font-black text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4.5vw] xl:text-[4.5rem] text-center select-none leading-none tracking-normal uppercase transform-gpu will-change-transform max-w-full"
               >
                 {/* Darker watermark: stronger stroke + semi-transparent fill */}
                 <span
                   style={{
-                    WebkitTextStroke: '2px rgba(36, 26, 29, 0.20)',
-                    color: 'rgba(128,1,31,0.07)',
+                    WebkitTextStroke: '1.5px rgba(36, 26, 29, 0.22)',
+                    color: 'rgba(128,1,31,0.08)',
                     whiteSpace: 'nowrap'
                   }}
                 >
@@ -357,8 +343,12 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
               </AnimatePresence>
             </div>
 
-            {/* Large Central Product Image */}
-            <div className="relative w-52 h-56 sm:w-80 sm:h-[340px] md:w-[380px] md:h-[400px] lg:w-[520px] lg:h-[480px] xl:w-[580px] xl:h-[520px] flex items-center justify-center [transform-style:preserve-3d]">
+            {/* Large Central Product Image — increased size & pause auto-rotation on hover */}
+            <div
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="relative w-72 h-80 sm:w-96 sm:h-[400px] md:w-[480px] md:h-[470px] lg:w-[620px] lg:h-[560px] xl:w-[680px] xl:h-[600px] flex items-center justify-center [transform-style:preserve-3d] cursor-pointer"
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab.id}
@@ -388,12 +378,12 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                       y: modelParallaxY,
                       rotateZ: modelRotateParallax
                     }}
-                    className="w-full h-full flex items-center justify-center relative z-20 cursor-pointer group transform-gpu will-change-transform"
+                    className="w-full h-full flex items-center justify-center relative z-20 group transform-gpu will-change-transform"
                   >
                     <motion.img
                       src={activeTab.image}
                       alt={activeTab.heading}
-                      className="w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.22)] group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+                      className="w-full h-full object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.22)] group-hover:scale-[1.05] transition-transform duration-500 ease-out"
                       loading="eager"
                       decoding="async"
                     />
@@ -411,7 +401,7 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
                       repeat: Infinity,
                       ease: 'easeInOut'
                     }}
-                    className="absolute -bottom-2 sm:-bottom-4 left-1/2 -translate-x-1/2 w-36 sm:w-60 lg:w-72 h-4 sm:h-6 rounded-full bg-black/40 blur-md pointer-events-none z-10"
+                    className="absolute -bottom-2 sm:-bottom-4 left-1/2 -translate-x-1/2 w-44 sm:w-72 lg:w-96 h-4 sm:h-6 rounded-full bg-black/40 blur-md pointer-events-none z-10"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -527,8 +517,8 @@ export const ProductCategoriesSection: React.FC<ProductCategoriesSectionProps> =
             key={activeTabIdx + '-strip'}
             className="h-full bg-[#80011F]/50 rounded-full origin-left"
             initial={{ scaleX: 0 }}
-            animate={{ scaleX: isPaused ? 0 : 1 }}
-            transition={{ duration: isPaused ? 0 : 1.5, ease: 'linear' }}
+            animate={{ scaleX: isPaused || isHovered ? 0 : 1 }}
+            transition={{ duration: isPaused || isHovered ? 0 : 1.5, ease: 'linear' }}
           />
         </div>
 
