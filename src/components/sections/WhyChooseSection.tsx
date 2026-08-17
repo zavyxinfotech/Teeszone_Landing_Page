@@ -181,12 +181,7 @@ export const WhyChooseSection: React.FC = () => {
                         }`}
                       >
                         <div className={`p-2.5 rounded-full ${isEven ? 'bg-[#F7E7CE]/20 text-[#80011F]' : 'bg-[#80011F]/10 text-[#80011F]'}`}>
-                          <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-                          >
-                            <Icon className="w-6 h-6" />
-                          </motion.div>
+                          <Icon className="w-6 h-6" />
                         </div>
                       </div>
 

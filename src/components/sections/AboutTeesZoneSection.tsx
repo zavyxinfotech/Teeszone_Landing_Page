@@ -3,101 +3,103 @@ import { motion } from 'motion/react';
 
 // Import images from assets
 import corporateImage from '../../assets/images/corporate.png';
+import visionBgImage from '../../assets/images/ourvision.jpeg';
 import manufacturingImage from '../../assets/categories/Industrial_Factory_Uniforms.png';
 
 interface AboutTeesZoneSectionProps {
   onOpenQuoteModal?: () => void;
 }
 
-/**
- * InkSplashMask
- * ─────────────
- * Renders a hidden <svg> block that declares two <clipPath> elements —
- * one for Vision (id="inkSplashVision") and one for Mission (id="inkSplashMission",
- * mirrored horizontally).  Both are referenced via CSS clip-path url(#...).
- *
- * The path is hand-crafted from the reference ink-splash silhouette:
- *   – organic irregular outer blobs
- *   – small satellite droplet protrusions
- *   – smooth bezier curves, no straight lines
- * ViewBox: 0 0 200 200  — a square unit space so the shape scales uniformly.
- */
-const INK_SPLASH_PATH =
-  // Main irregular splash body — bezier curves give organic blob edges
-  'M100,14 ' +
-  'C108,4 122,-2 132,8 ' +
-  'C140,16 138,28 148,30 ' +
-  // top-right protrusion / droplet
-  'C158,32 168,24 172,34 ' +
-  'C176,44 166,54 162,60 ' +
-  // right-side blob
-  'C172,66 186,70 186,82 ' +
-  'C186,94 174,100 174,110 ' +
-  'C180,120 192,128 186,140 ' +
-  'C180,152 164,152 158,162 ' +
-  // bottom-right droplet
-  'C162,172 168,184 158,190 ' +
-  'C148,196 138,186 130,182 ' +
-  // bottom-center
-  'C122,192 112,202 100,196 ' +
-  'C88,202 78,192 70,182 ' +
-  // bottom-left droplet
-  'C62,186 52,196 42,190 ' +
-  'C32,184 38,172 42,162 ' +
-  // lower-left blob
-  'C36,152 20,152 14,140 ' +
-  'C8,128 20,120 26,110 ' +
-  'C26,100 14,94 14,82 ' +
-  // left-side protrusion
-  'C14,70 28,66 38,60 ' +
-  'C34,54 24,44 28,34 ' +
-  // top-left blob
-  'C32,24 42,32 52,30 ' +
-  'C62,28 60,16 68,8 ' +
-  'C78,-2 92,4 100,14 Z ' +
-  // ── small satellite droplets ──
-  // top-right satellite
-  'M152,10 C156,4 164,6 162,14 C160,20 152,18 152,10 Z ' +
-  // right satellite
-  'M190,96 C196,90 204,94 200,102 C196,110 188,108 190,96 Z ' +
-  // bottom-right satellite
-  'M166,188 C172,184 178,190 172,196 C166,202 160,196 166,188 Z ' +
-  // bottom-left satellite
-  'M34,188 C40,196 34,202 28,196 C22,190 28,184 34,188 Z ' +
-  // left satellite
-  'M10,96 C12,88 4,86 2,94 C0,102 8,106 10,96 Z ' +
-  // top-left satellite
-  'M50,8 C48,0 56,-4 60,4 C64,12 56,16 50,8 Z';
+/*
+  Organic ink-splash shapes defined as CSS polygon clip-paths.
+  These work inline (no external SVG ID reference needed) and are
+  immune to overflow:hidden clipping the SVG defs element.
 
-const InkSplashMask: React.FC = () => (
-  <svg
-    width="0"
-    height="0"
-    style={{ position: 'absolute', overflow: 'hidden' }}
-    aria-hidden="true"
-    focusable="false"
-  >
-    <defs>
-      {/* Vision mask — normal orientation */}
-      <clipPath id="inkSplashVision" clipPathUnits="objectBoundingBox">
-        {/* We use a transform to map the 200×200 viewBox into 0–1 objectBoundingBox space */}
-        <path
-          d={INK_SPLASH_PATH}
-          transform="scale(0.005, 0.005)"
-        />
-      </clipPath>
+  Vision  — irregular left-leaning blob with droplet protrusions
+  Mission — mirrored / rotated variant for variety
+*/
+const SPLASH_VISION =
+  'polygon(' +
+  '50% 2%,' +
+  '58% 0%,' +
+  '67% 4%,' +
+  '74% 2%,' +
+  '80% 8%,' +
+  '86% 6%,' +
+  '92% 12%,' +
+  '98% 18%,' +
+  '100% 26%,' +
+  '96% 34%,' +
+  '100% 42%,' +
+  '98% 52%,' +
+  '100% 60%,' +
+  '96% 68%,' +
+  '98% 76%,' +
+  '94% 84%,' +
+  '88% 90%,' +
+  '80% 96%,' +
+  '72% 100%,' +
+  '62% 98%,' +
+  '54% 100%,' +
+  '44% 96%,' +
+  '36% 98%,' +
+  '28% 94%,' +
+  '20% 90%,' +
+  '14% 82%,' +
+  '8% 74%,' +
+  '4% 64%,' +
+  '0% 56%,' +
+  '4% 46%,' +
+  '2% 36%,' +
+  '6% 28%,' +
+  '4% 18%,' +
+  '10% 10%,' +
+  '18% 6%,' +
+  '28% 2%,' +
+  '38% 0%,' +
+  '44% 4%,' +
+  '50% 2%' +
+  ')';
 
-      {/* Mission mask — mirrored horizontally for variety */}
-      <clipPath id="inkSplashMission" clipPathUnits="objectBoundingBox">
-        <path
-          d={INK_SPLASH_PATH}
-          /* mirror: translate by 200 then scale x by -1, then scale both by 0.005 */
-          transform="translate(200,0) scale(-0.005, 0.005)"
-        />
-      </clipPath>
-    </defs>
-  </svg>
-);
+const SPLASH_MISSION =
+  'polygon(' +
+  '50% 4%,' +
+  '60% 0%,' +
+  '68% 2%,' +
+  '76% 0%,' +
+  '84% 6%,' +
+  '90% 4%,' +
+  '96% 10%,' +
+  '100% 20%,' +
+  '98% 30%,' +
+  '100% 40%,' +
+  '96% 50%,' +
+  '100% 58%,' +
+  '96% 68%,' +
+  '92% 78%,' +
+  '86% 86%,' +
+  '78% 92%,' +
+  '68% 98%,' +
+  '58% 100%,' +
+  '48% 98%,' +
+  '40% 100%,' +
+  '30% 96%,' +
+  '22% 92%,' +
+  '14% 86%,' +
+  '8% 78%,' +
+  '2% 68%,' +
+  '0% 58%,' +
+  '4% 48%,' +
+  '0% 38%,' +
+  '4% 28%,' +
+  '2% 18%,' +
+  '8% 10%,' +
+  '16% 4%,' +
+  '26% 0%,' +
+  '36% 2%,' +
+  '44% 0%,' +
+  '50% 4%' +
+  ')';
 
 export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
   return (
@@ -106,8 +108,7 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
       className="py-10 sm:py-16 lg:py-24 bg-cream-light text-[#241A1D] relative overflow-hidden select-none"
       aria-label="About TeesZone"
     >
-      {/* Hidden SVG mask definitions */}
-      <InkSplashMask />
+      {/* No hidden SVG needed — clip-paths are inline polygon() values */}
 
       {/* Decorative background grid pattern for texture */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#80011F_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -151,27 +152,15 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
                 Padding gives breathing room so the subject isn't cropped at the edges.
               */}
               <div
-                className="
-                  relative z-10
-                  w-52 h-52
-                  sm:w-60 sm:h-60
-                  md:w-64 md:h-64
-                  lg:w-80 lg:h-80
-                  xl:w-88 xl:h-88
-                "
-                style={{ clipPath: 'url(#inkSplashVision)' }}
+                className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
+                style={{ clipPath: SPLASH_VISION }}
               >
                 {/* Soft blush background fill inside the splash shape */}
                 <div className="absolute inset-0 bg-[#FCF0F2]" />
                 <img
                   src={corporateImage}
                   alt="Our Vision"
-                  className="
-                    absolute inset-0 w-full h-full
-                    object-contain
-                    p-3
-                    hover:scale-105 transition-transform duration-500
-                  "
+                  className="absolute inset-0 w-full h-full object-contain p-3 hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </motion.div>
@@ -224,27 +213,15 @@ export const AboutTeesZoneSection: React.FC<AboutTeesZoneSectionProps> = () => {
               <div className="absolute right-[-100vw] left-[15%] lg:left-[20%] top-4 bottom-4 bg-[#38BDF8]/10 rounded-l-[2.5rem] pointer-events-none hidden md:block z-0" />
 
               <div
-                className="
-                  relative z-10
-                  w-52 h-52
-                  sm:w-60 sm:h-60
-                  md:w-64 md:h-64
-                  lg:w-80 lg:h-80
-                  xl:w-88 xl:h-88
-                "
-                style={{ clipPath: 'url(#inkSplashMission)' }}
+                className="relative z-10 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80"
+                style={{ clipPath: SPLASH_MISSION }}
               >
-                {/* Soft slate background fill inside the splash shape */}
+                {/* Soft blue background fill inside the splash shape */}
                 <div className="absolute inset-0 bg-[#EFF6FF]" />
                 <img
-                  src={manufacturingImage}
+                  src={visionBgImage}
                   alt="Our Mission"
-                  className="
-                    absolute inset-0 w-full h-full
-                    object-contain
-                    p-3
-                    hover:scale-105 transition-transform duration-500
-                  "
+                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </motion.div>
