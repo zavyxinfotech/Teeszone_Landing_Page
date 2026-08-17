@@ -8,6 +8,19 @@ import {
   MessageSquare,
 } from "lucide-react";
 
+// Reusable link item used in both Quick Links and Explore columns
+const NavLink: React.FC<{ href: string; label: string }> = ({ href, label }) => (
+  <li>
+    <a
+      href={href}
+      className="hover:text-[#F7E7CE] transition-all flex items-center gap-1.5 group"
+    >
+      <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors shrink-0" />
+      <span>{label}</span>
+    </a>
+  </li>
+);
+
 export const Footer: React.FC = () => {
   return (
     <footer
@@ -15,11 +28,12 @@ export const Footer: React.FC = () => {
       aria-label="Footer"
     >
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 max-w-7xl mx-auto space-y-12">
+
         {/* Main Multi-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-10 border-b border-[#A51F3D]/20">
-          {/* Company Brand */}
-          <div className="lg:col-span-6 space-y-4">
-            {/* Logo + Brand Name */}
+
+          {/* ── Brand column (full-width on mobile, 6-span on desktop) ── */}
+          <div className="col-span-1 md:col-span-2 lg:col-span-6 space-y-4">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <Logo size="md" variant="dark" />
@@ -33,7 +47,7 @@ export const Footer: React.FC = () => {
               GSTIN: {BRAND.gstin}
             </p>
 
-            {/* Contact Actions */}
+            {/* Contact Action */}
             <div className="flex flex-col gap-4">
               <a
                 href={`tel:${BRAND.contact.phonePrimary}`}
@@ -46,16 +60,14 @@ export const Footer: React.FC = () => {
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
-              {/* Email */}
               <a
                 href={`mailto:${BRAND.contact.email}`}
                 aria-label="Email"
-                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#F7E7CE] flex items-center justify-center text-white transition-all shadow-xs group"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#F7E7CE] hover:text-[#241A1D] flex items-center justify-center text-white transition-all shadow-xs group"
               >
                 <Mail className="w-4 h-4" />
               </a>
 
-              {/* LinkedIn */}
               <a
                 href={BRAND.socials.linkedin}
                 target="_blank"
@@ -68,7 +80,6 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
 
-              {/* Facebook */}
               <a
                 href={BRAND.socials.facebook}
                 target="_blank"
@@ -81,7 +92,6 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
 
-              {/* Instagram */}
               <a
                 href={BRAND.socials.instagram}
                 target="_blank"
@@ -96,79 +106,49 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="lg:col-span-3 space-y-3 font-poppins">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
-              Quick Links
-            </h3>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
-              <li>
-                <a href="#" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>Home</span>
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>About us</span>
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>Services</span>
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>Contact Us</span>
-                </a>
-              </li>
-            </ul>
+          {/* ── Quick Links + Explore: side-by-side 2-column grid on ALL screens ── */}
+          {/*
+            On mobile:  col-span-1 → the parent is a 1-col grid, so this spans full width
+                        Inside we use grid-cols-2 to place Quick Links & Explore side by side.
+            On md+:     col-span-1 in the parent 2-col grid.
+            On lg+:     col-span-6 in the parent 12-col grid.
+          */}
+          <div className="col-span-1 md:col-span-1 lg:col-span-6 grid grid-cols-2 gap-8 font-poppins">
+
+            {/* Quick Links */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
+                Quick Links
+              </h3>
+              <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
+                <NavLink href="#" label="Home" />
+                <NavLink href="#about" label="About Us" />
+                <NavLink href="#services" label="Services" />
+                <NavLink href="#contact" label="Contact Us" />
+              </ul>
+            </div>
+
+            {/* Explore */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
+                Explore
+              </h3>
+              <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
+                <NavLink href="#services" label="Categories" />
+                <NavLink href="#why-us" label="Why Choose Us" />
+                <NavLink href="#team" label="Our Team" />
+                <NavLink href="#faq" label="FAQs" />
+              </ul>
+            </div>
           </div>
 
-          {/* Column 3: Explore Links */}
-          <div className="lg:col-span-3 space-y-3 font-poppins">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-[#F7E7CE]">
-              Explore
-            </h3>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#E8D6C0] font-medium">
-              <li>
-                <a href="#services" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>Categories</span>
-                </a>
-              </li>
-              <li>
-                <a href="#why-us" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>Why Choose Us</span>
-                </a>
-              </li>
-              <li>
-                <a href="#team" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>Our Team</span>
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#F7E7CE] transition-all flex items-center gap-1 group">
-                  <span className="w-1 h-1 rounded-full bg-[#80011F] group-hover:bg-[#F7E7CE] transition-colors" />
-                  <span>FAQs</span>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom Copyright & Compliance */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E8D6C0] font-inter">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 text-center sm:text-left">
             <div>
-              © {new Date().getFullYear()} {BRAND.legalName} . Developed with ❤️
-              by{" "}
+              © {new Date().getFullYear()} {BRAND.legalName}. Developed with ❤️ by{" "}
               <a
                 href="https://zavyx.odoo.com/"
                 target="_blank"
@@ -189,6 +169,7 @@ export const Footer: React.FC = () => {
             </a>
           </div>
         </div>
+
       </div>
     </footer>
   );
